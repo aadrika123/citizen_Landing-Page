@@ -6,6 +6,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { allowFloatInput } from '../CitizenPowerupFunctions';
+import { getCurrentDate } from '../CitizenPowerupFunctions'
 import axios from 'axios';
 
 function CitizenObjectionEntryForm(props) {
@@ -21,6 +22,8 @@ function CitizenObjectionEntryForm(props) {
     const [mobileTowerObjValueStatus, setmobileTowerObjValueStatus] = useState(false)
     const [petrolPumpObjValueStatus, setpetrolPumpObjValueStatus] = useState(false)
     const [hoardingObjValueStatus, sethoardingObjValueStatus] = useState(false)
+    const [responseScreenStatus, setResponseScreenStatus] = useState('')
+
 
     const validationSchema = yup.object({
         harvestingToggleStatus: yup.boolean(),
@@ -73,6 +76,77 @@ function CitizenObjectionEntryForm(props) {
         objRemarks: yup.string().required('Enter water consumer no.'),
 
     })
+
+    const bearerTokenInit = localStorage.getItem('token');
+    const handleSubmiBtn = () => {
+
+        let ObjectionFormData = {
+            "saf_dtl_id": 2,
+
+            "harvestingObjValue": 1,//formik.values.harvestingObjValue,
+            "roadWidthObjValue": formik.values.roadWidthObjValue,
+            "propertyTypeObjValue": formik.values.propertyTypeObjValue,
+            "plotAreaObjValue": formik.values.plotAreaObjValue,
+            "mobileTowerObjValue": formik.values.mobileTowerObjValue,
+            "isPetrolPump": formik.values.petrolPumpObjValue,
+            "hoardingObjValue": formik.values.hoardingObjValue,
+            "FloorDetailValues": "yes",
+            "objectionFormDoc": formik.values.objFormDoc,
+            "evidenceDoc": formik.values.objevidenceDoc,
+            "Remark": formik.values.objRemarks,
+            "mobileTowerObjArea": "556",//formik.values.mobileTowerArea,
+            "mobileTowerObjDate": formik.values.mobileTowerDate,
+            "hoardingObjArea": "22",//formik.values.hoardingObjArea,
+            "hoardingObjDate": formik.values.HoardingBoardDate,
+
+
+
+            "harvestingToggleStatus": formik.values.harvestingToggleStatus,
+            "roadWidthToggleStatus": formik.values.roadWidthToggleStatus,
+            "propertyTypeToggleStatus": formik.values.propertyTypeToggleStatus,
+            "ploatAreaToggleStatus": formik.values.plotAreaToggleStatus,
+            "mobileTowerToggleStatus": formik.values.mobileTowerToggleStatus,
+            "petrolPumpToggleStatus": formik.values.petrolPumpToggleStatus,
+            "hoardigToggleStatus": formik.values.hoardingToggleStatus,
+            "floorToggleStatus": formik.values.floorToggleStatus,
+
+        }
+        console.log('before submitting to api ...', ObjectionFormData)
+
+        axios({
+            method: "post",
+            url: "http://192.168.0.166/api/property-objection/2",
+            data: ObjectionFormData,
+            headers: {
+                Authorization: `Bearer ${bearerTokenInit}`,
+                Accept: 'application/json',
+            }
+        })
+            .then(function (response) {
+                console.log("Objection form uploaded......", response);
+                console.log("Check ==== ", response.data.status)
+                if (response.data.status) {
+                    setResponseScreenStatus('success')
+                } else if (!response.data.status) {
+                    console.log("objection form Not submitted ==== ", response.data.status)
+                    alert("form Not Submiteed..")
+                } else {
+                    alert("Somethig Went Wrong.")
+                }
+
+                // console.log("Message", response.data);
+                // setRegMsg(response.data);
+                // regComplated()
+            })
+            .catch(function (response) {
+                // console.log("Failed", response.response.data.ulb[0]);
+                console.log("Failed", response);
+                // console.log("Message", response.message);
+                // setRegMsg(response.message);
+                // setRegMsg(response.response.data.ulb[0]);
+            });
+
+    }
     const formik = useFormik({
         initialValues: {
             harvestingToggleStatus: false,
@@ -91,6 +165,15 @@ function CitizenObjectionEntryForm(props) {
             mobileTowerObjValue: '',
             hoardingObjValue: '',
 
+            mobileTowerArea: '',
+            petrolPumpArea: '',
+            HoardingBoardArea: '',
+
+            mobileTowerDate: getCurrentDate(),
+            petrolPumpDate: getCurrentDate(),
+            HoardingBoardDate: getCurrentDate(),
+
+
             objFormDoc: '',
             objevidenceDoc: '',
             objRemarks: '',
@@ -99,14 +182,16 @@ function CitizenObjectionEntryForm(props) {
 
 
         onSubmit: (values, resetForm) => {
-            console.log('electricity ', values)
-            alert('submitted')
-            props.collectFormDataFun('allFormData', values) //sending ElectricityWaterDetails data to parent to store all form data at one container
-       
+            alert("save")
+            console.log('objection ', values)
+            handleSubmiBtn()
 
         }
         , validationSchema
     })
+
+
+
 
     const floorList = [
         { floorNo: '2', usageType: 'Residential', occupancyType: 'Tenanted', constructionType: 'pucca', area: 200, from_date: '2022-05-21', uptoDate: '2022-06-01' }
@@ -118,6 +203,8 @@ function CitizenObjectionEntryForm(props) {
         let checkValue = e.target.checked
         let value = e.target.value
         console.log('switched is clicked ', e.target.name)
+        console.log('switched is clicked ', e.target.checkValue)
+        console.log('switched is clicked ', e.target.value)
 
         //toggling the visibility of specific objection sections
         { name === 'harvestingToggleStatus' && (checkValue === true ? setHarvestingStatus(true) : setHarvestingStatus(false)) }
@@ -140,7 +227,7 @@ function CitizenObjectionEntryForm(props) {
         setmasterTypeData(props?.masterTypeData)
         console.log('master data property ', props?.masterTypeData?.property_master)
         console.log('master data floor ', props?.masterTypeData?.floor_master)
-        // console.log('master floor id ', props?.masterTypeData?.floor_mstr_id?.floor_master.name)
+        console.log('master floor id ', props?.masterTypeData?.prop_floors)
     }, [props.masterTypeData])
 
 
@@ -156,422 +243,419 @@ function CitizenObjectionEntryForm(props) {
                         <FormGroup className='col-span-4 grid grid-cols-4'>
                             {/* harvesting objection content */}
 
-                           
-                                    <div className="col-span-4 grid grid-cols-4 gap-2">
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>RainWater Harvesting</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={harvestingStatus}
-                                                    // name="harvestingSwitch"
-                                                    // onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('harvestingToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
 
-                                        <div className={`col-span-4 ${harvestingStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Rainwater Harvesting</label>
+                            <div className="col-span-4 grid grid-cols-4 gap-2">
+                                <div className="col-span-4 grid grid-cols-4">
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>RainWater Harvesting</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={harvestingStatus}
+                                            // name="harvestingSwitch"
+                                            // onChange={switchHandleChange}
+                                            {...formik.getFieldProps('harvestingToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
 
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>Yes</div>
-
-                                            </div>
-
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <select {...formik.getFieldProps('harvestingObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                >
-                                                    <option value="no" selected>No</option>
-                                                    <option value="yes">Yes</option>
-
-                                                </select>
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.harvestingObjValue && formik.errors.harvestingObjValue ? formik.errors.harvestingObjValue : null}</span>
-                                            </div>
-
-                                        </div>
-                                        {/* roadWidth objection content */}
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Road Width</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={roadWidthStatus}
-                                                    // name="roadWidthSwitch"
-                                                    // onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('roadWidthToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-
-
-                                        <div className={`col-span-4 ${roadWidthStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Road Width</label>
-
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>20 ft. - 39 ft. (Main Road)	</div>
-
-                                            </div>
-
-
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <select {...formik.getFieldProps('roadWidthObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                >
-                                                    <option value="no" selected>No</option>
-                                                    <option value="yes">Yes</option>
-                                                </select>
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.roadWidthObjValue && formik.errors.roadWidthObjValue ? formik.errors.roadWidthObjValue : null}</span>
-                                            </div>
-
-                                        </div>
-                                        {/* propertyType objection content */}
-
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Property Type</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={propertyTypeStatus}
-                                                    // name="propertyTypeSwitch"
-                                                    // onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('propertyTypeToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-
-
-
-                                        <div className={`col-span-4 ${propertyTypeStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Property Type</label>
-
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>FLATS / UNIT IN MULTI STORIED BUILDING</div>
-
-                                            </div>
-
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <select {...formik.getFieldProps('propertyTypeObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                >
-                                                    {/* <option value="no" selected>No</option>
-                                            <option value="yes">Yes</option>
-                                             */}
-                                                    {
-                                                        masterTypeData?.property_master?.map((data) => (
-                                                            <option value={data.id}>{data.type}</option>
-
-                                                        ))
-                                                        // props?.masterTypeData?.property_type.map((data) => (
-                                                        //     <option value="1">{data.type}</option>
-
-                                                        // ))
-                                                    }
-                                                </select>
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.propertyTypeObjValue && formik.errors.propertyTypeObjValue ? formik.errors.propertyTypeObjValue : null}</span>
-                                            </div>
-
-                                        </div>
-                                        {/* area of plot objection content */}
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Area of Plot</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={plotAreaStatus} name="areaPlotSwitch"
-                                                    //     onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('plotAreaToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-
-                                        <div className={`col-span-4 ${plotAreaStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Area of plot</label>
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>2.86</div>
-
-                                            </div>
-
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <input {...formik.getFieldProps('plotAreaObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                />
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.plotAreaObjValue && formik.errors.plotAreaObjValue ? formik.errors.plotAreaObjValue : null}</span>
-                                            </div>
-
-                                        </div>
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            {/* mobile tower objection content */}
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Mobile Tower</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={mobileTowerStatus} name="mobileTowerSwitch"
-                                                    //     onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('mobileTowerToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-
-                                        <div className={`col-span-4 ${mobileTowerStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Mobile Tower</label>
-
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>No</div>
-
-                                            </div>
-
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <select {...formik.getFieldProps('mobileTowerObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                >
-                                                    <option value="no" selected>No</option>
-                                                    <option value="yes">Yes</option>
-                                                </select>
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.mobileTowerObjValue && formik.errors.mobileTowerObjValue ? formik.errors.mobileTowerObjValue : null}</span>
-                                            </div>
-
-                                            <div className={` ${mobileTowerObjValueStatus ? 'grid' : 'hidden '}form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4`}>
-                                                <div className={` mr-2`}>
-                                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area Covered</label>
-                                                    <input type="text" name='mobileTowerArea' className='bg-slate-50 w-full border' />
-                                                </div>
-                                                <div className=''>
-                                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Installation Date</label>
-                                                    <input type="date" name='mobileTowerArea' className=' w-full border ' />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            {/* mobile tower objection content */}
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Petrol Pump</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={mobileTowerStatus} name="mobileTowerSwitch"
-                                                    //     onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('petrolPumpToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-
-                                        <div className={`col-span-4 ${petrolPumpStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Petrol Pump</label>
-
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>No</div>
-
-                                            </div>
-
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <select {...formik.getFieldProps('petrolPumpObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                >
-                                                    <option value="no" selected>No</option>
-                                                    <option value="yes">Yes</option>
-                                                </select>
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.petrolPumpObjValue && formik.errors.petrolPumpObjValue ? formik.errors.petrolPumpObjValue : null}</span>
-                                            </div>
-
-                                            <div className={` ${petrolPumpObjValueStatus ? 'grid' : 'hidden '}form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4`}>
-                                                <div className={` mr-2`}>
-                                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area Covered</label>
-                                                    <input type="text" name='petrolPumpArea' className='bg-slate-50 w-full border' />
-                                                </div>
-                                                <div className=''>
-                                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Installation Date</label>
-                                                    <input type="date" name='petrolPumpArea' className=' w-full border ' />
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        {/* hoarding objection content */}
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Hoarding Board</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={hoardingStatus} name="hoardingSwitch"
-                                                    //     onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('hoardingToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-
-
-                                        <div className={`col-span-4 ${hoardingStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">
-                                                    Objection On: Hording Board</label>
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
-                                                <div className='font-bold font-serif'>No</div>
-
-                                            </div>
-                                            <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
-                                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
-                                                <select {...formik.getFieldProps('hoardingObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
-                                                >
-                                                    <option value="no" selected>No</option>
-                                                    <option value="yes">Yes</option>
-                                                </select>
-                                                <span className="text-red-600 absolute text-xs">{formik.touched.hoardingObjValue && formik.errors.hoardingObjValue ? formik.errors.hoardingObjValue : null}</span>
-                                            </div>
-                                            <div className={` ${hoardingObjValueStatus ? 'grid' : 'hidden '}form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4`}>
-                                                <div className={` mr-2`}>
-                                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area Covered</label>
-                                                    <input type="text" name='hordingArea' className='bg-slate-50 w-full border' />
-                                                </div>
-                                                <div className=''>
-                                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Installation Date</label>
-                                                    <input type="date" name='hordingArea' className=' w-full border ' />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        {/* floor objection content */}
-                                        <div className="col-span-4 grid grid-cols-4">
-                                            <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
-                                                <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Floor Detail</span></label>
-                                                <FormControlLabel control={<Switch
-                                                    // checked={floorStatus} name="floorSwitch"
-                                                    //     onChange={switchHandleChange}
-                                                    {...formik.getFieldProps('floorToggleStatus')}
-                                                    inputProps={{ 'aria-label': 'controlled' }} />} label="" />
-                                            </div>
-                                        </div>
-                                        <div className={`col-span-4 ${floorStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
-                                            <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
-                                                <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Floor Details</label>
-                                            </div>
-                                            <div className="col-span-4 overflow-x-auto">
-                                                <table className='min-w-full leading-normal'>
-                                                    <thead className='font-bold text-left text-sm bg-sky-50'>
-
-                                                        <tr className="px-2 py-3 border-b border-gray-200 text-gray-800  text-left text-xs uppercase text-left">
-                                                            <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Floor No</th>
-                                                            <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Usage Type</th>
-                                                            <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Occupancy Type</th>
-                                                            <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Construction Type</th>
-                                                            <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Built Up Area <small className="block mt-1 text-xs text-gray-600 inline "><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>(in Sq. Ft)</small></th>
-                                                            <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>From Date</th>
-                                                            <th className='py-2 px-2'>Upto Date <small className="block mt-1 text-xs text-gray-600 inline ">(Leave blank for current date)</small></th>
-                                                        </tr>
-
-                                                    </thead>
-                                                    <tbody className="text-xs">
-                                                        {
-                                                            floorList.map((floor) => (
-                                                                <>
-                                                                    {
-                                                                        masterTypeData?.floor_mstr_id?.map((data) => (
-
-                                                                            <tr className="bg-white shadow-lg border-b border-gray-200">
-
-
-                                                                                <td className="px-2 py-2 text-left">{floor?.floorNo}</td>
-                                                                                <td className="px-2 py-2 text-left">{floor?.usageType}</td>
-                                                                                <td className="px-2 py-2 text-left">{floor?.occupancyType}</td>
-                                                                                <td className="px-2 py-2 text-left">{floor?.constructionType}</td>
-                                                                                <td className="px-2 py-2 text-left">{floor?.area}</td>
-                                                                                <td className="px-2 py-2 text-left">{floor?.from_date}-04</td>
-                                                                                <td className="px-2 py-2 text-left">{floor?.uptoDate}</td>
-                                                                            </tr>
-                                                                        ))
-                                                                    }
-                                                                    <tr className="bg-white shadow-lg border-b border-gray-200 border-b border-gray-600">
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            {/* <option value="0">0</option>
-                                                                    <option value="1">1</option> */}
-                                                                            {
-
-                                                                                masterTypeData?.floor_master?.map((data) => (
-                                                                                    <option value={data.id}>{data.name}</option>
-                                                                                ))
-
-                                                                            }
-                                                                        </select></td>
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            {/* <option value="0">0</option>
-                                                                    <option value="1">1</option> */}
-
-                                                                            {
-
-                                                                                masterTypeData?.usage_master?.map((data) => (
-                                                                                    <option value={data.type}>{data.type}</option>
-                                                                                ))
-
-                                                                            }
-                                                                        </select></td>
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            {/* <option value="0">0</option>
-                                                                    <option value="1">1</option> */}
-                                                                            {
-
-                                                                                masterTypeData?.occupency_master?.map((data) => (
-                                                                                    <option value={data.id}>{data.type}</option>
-                                                                                ))
-
-                                                                            }
-                                                                        </select></td>
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            {/* <option value="0">0</option>
-                                                                    <option value="1">1</option> */}
-                                                                            {
-
-                                                                                masterTypeData?.constunction_master?.map((data) => (
-                                                                                    <option value={data.id}>{data.type}</option>
-                                                                                ))
-
-                                                                            }
-                                                                        </select></td>
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            <option value="0">0</option>
-                                                                            <option value="1">1</option>
-                                                                        </select></td>
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            <option value="0">0</option>
-                                                                            <option value="1">1</option>
-                                                                        </select></td>
-                                                                        <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
-                                                                        >
-                                                                            <option value="0">0</option>
-                                                                            <option value="1">1</option>
-                                                                        </select></td>
-                                                                    </tr>
-                                                                </>
-                                                            ))
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-
+                                <div className={`col-span-4 ${harvestingStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Rainwater Harvesting</label>
 
                                     </div>
-                             
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>Yes</div>
+
+                                    </div>
+
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <select {...formik.getFieldProps('harvestingObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        >
+                                            <option value="no" selected>No</option>
+                                            <option value="yes">Yes</option>
+
+                                        </select>
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.harvestingObjValue && formik.errors.harvestingObjValue ? formik.errors.harvestingObjValue : null}</span>
+                                    </div>
+
+                                </div>
+                                {/* roadWidth objection content */}
+                                <div className="col-span-4 grid grid-cols-4">
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Road Width</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={roadWidthStatus}
+                                            // name="roadWidthSwitch"
+                                            // onChange={switchHandleChange}
+                                            {...formik.getFieldProps('roadWidthToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+
+
+                                <div className={`col-span-4 ${roadWidthStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Road Width</label>
+
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>20 ft. - 39 ft. (Main Road)	</div>
+
+                                    </div>
+
+
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <select {...formik.getFieldProps('roadWidthObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        >
+                                            <option value="no" selected>No</option>
+                                            <option value="yes">Yes</option>
+                                        </select>
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.roadWidthObjValue && formik.errors.roadWidthObjValue ? formik.errors.roadWidthObjValue : null}</span>
+                                    </div>
+
+                                </div>
+                                {/* propertyType objection content */}
+
+                                <div className="col-span-4 grid grid-cols-4">
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Property Type</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={propertyTypeStatus}
+                                            // name="propertyTypeSwitch"
+                                            // onChange={switchHandleChange}
+                                            {...formik.getFieldProps('propertyTypeToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+
+
+
+                                <div className={`col-span-4 ${propertyTypeStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Property Type</label>
+
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>FLATS / UNIT IN MULTI STORIED BUILDING</div>
+
+                                    </div>
+
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <select {...formik.getFieldProps('propertyTypeObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        >
+                                            {/* <option value="no" selected>No</option>
+                                            <option value="yes">Yes</option>
+                                             */}
+                                            {
+                                                masterTypeData?.property_master?.map((data) => (
+                                                    <option value={data.id}>{data.type}</option>
+
+                                                ))
+                                                // props?.masterTypeData?.property_type.map((data) => (
+                                                //     <option value="1">{data.type}</option>
+
+                                                // ))
+                                            }
+                                        </select>
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.propertyTypeObjValue && formik.errors.propertyTypeObjValue ? formik.errors.propertyTypeObjValue : null}</span>
+                                    </div>
+
+                                </div>
+                                {/* area of plot objection content */}
+                                <div className="col-span-4 grid grid-cols-4">
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Area of Plot</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={plotAreaStatus} name="areaPlotSwitch"
+                                            //     onChange={switchHandleChange}
+                                            {...formik.getFieldProps('plotAreaToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+
+                                <div className={`col-span-4 ${plotAreaStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Area of plot</label>
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>2.86</div>
+
+                                    </div>
+
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <input {...formik.getFieldProps('plotAreaObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        />
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.plotAreaObjValue && formik.errors.plotAreaObjValue ? formik.errors.plotAreaObjValue : null}</span>
+                                    </div>
+
+                                </div>
+                                <div className="col-span-4 grid grid-cols-4">
+                                    {/* mobile tower objection content */}
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Mobile Tower</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={mobileTowerStatus} name="mobileTowerSwitch"
+                                            //     onChange={switchHandleChange}
+                                            {...formik.getFieldProps('mobileTowerToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+
+                                <div className={`col-span-4 ${mobileTowerStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Mobile Tower</label>
+
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>No</div>
+
+                                    </div>
+
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <select {...formik.getFieldProps('mobileTowerObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        >
+                                            <option value="no" selected>No</option>
+                                            <option value="yes">Yes</option>
+                                        </select>
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.mobileTowerObjValue && formik.errors.mobileTowerObjValue ? formik.errors.mobileTowerObjValue : null}</span>
+                                    </div>
+
+                                    <div className={` ${mobileTowerObjValueStatus ? 'grid' : 'hidden '}form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4`}>
+                                        <div className={` mr-2`}>
+                                            <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area Covered</label>
+                                            <input type="text" name='mobileTowerArea' className='bg-slate-50 w-full border' />
+                                        </div>
+                                        <div className=''>
+                                            <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Installation Date</label>
+                                            <input type="date" name='mobileTowerArea' className=' w-full border ' />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-span-4 grid grid-cols-4">
+                                    {/* mobile tower objection content */}
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Petrol Pump</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={mobileTowerStatus} name="mobileTowerSwitch"
+                                            //     onChange={switchHandleChange}
+                                            {...formik.getFieldProps('petrolPumpToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+
+                                <div className={`col-span-4 ${petrolPumpStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Petrol Pump</label>
+
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>No</div>
+
+                                    </div>
+
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <select {...formik.getFieldProps('petrolPumpObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        >
+                                            <option value="no" selected>No</option>
+                                            <option value="yes">Yes</option>
+                                        </select>
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.petrolPumpObjValue && formik.errors.petrolPumpObjValue ? formik.errors.petrolPumpObjValue : null}</span>
+                                    </div>
+
+                                    <div className={` ${petrolPumpObjValueStatus ? 'grid' : 'hidden '}form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4`}>
+                                        <div className={` mr-2`}>
+                                            <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area Covered</label>
+                                            <input type="text" name='petrolPumpArea' className='bg-slate-50 w-full border' />
+                                        </div>
+                                        <div className=''>
+                                            <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Installation Date</label>
+                                            <input type="date" name='petrolPumpArea' className=' w-full border ' />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {/* hoarding objection content */}
+                                <div className="col-span-4 grid grid-cols-4">
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Hoarding Board</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={hoardingStatus} name="hoardingSwitch"
+                                            //     onChange={switchHandleChange}
+                                            {...formik.getFieldProps('hoardingToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+
+
+                                <div className={`col-span-4 ${hoardingStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">
+                                            Objection On: Hording Board</label>
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">As Per Assessment</label>
+                                        <div className='font-bold font-serif'>No</div>
+
+                                    </div>
+                                    <div className="form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4">
+                                        <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
+                                        <select {...formik.getFieldProps('hoardingObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
+                                        >
+                                            <option value="no" selected>No</option>
+                                            <option value="yes">Yes</option>
+                                        </select>
+                                        <span className="text-red-600 absolute text-xs">{formik.touched.hoardingObjValue && formik.errors.hoardingObjValue ? formik.errors.hoardingObjValue : null}</span>
+                                    </div>
+                                    <div className={` ${hoardingObjValueStatus ? 'grid' : 'hidden '}form-group mb-6 col-span-4 md:col-span-1 px-2 md:px-4`}>
+                                        <div className={` mr-2`}>
+                                            <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area Covered</label>
+                                            <input type="text" name='hordingArea' className='bg-slate-50 w-full border' />
+                                        </div>
+                                        <div className=''>
+                                            <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Installation Date</label>
+                                            <input type="date" name='hordingArea' className=' w-full border ' />
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {/* floor objection content */}
+                                <div className="col-span-4 grid grid-cols-4">
+                                    <div className="col-span-4 md:col-span-1  mb-2 px-2 md:px-4 bg-gray-100 shadow-md border border-gray-300">
+                                        <label className=" text-gray-800 pr-2" > <span className='inline text-gray-700 text-sm font-semibold'>Floor Detail</span></label>
+                                        <FormControlLabel control={<Switch
+                                            // checked={floorStatus} name="floorSwitch"
+                                            //     onChange={switchHandleChange}
+                                            {...formik.getFieldProps('floorToggleStatus')}
+                                            inputProps={{ 'aria-label': 'controlled' }} />} label="" />
+                                    </div>
+                                </div>
+                                <div className={`col-span-4 ${floorStatus ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-4  mt-2`}>
+                                    <div className="form-group col-span-4 mb-6 px-2 md:px-4 bg-red-100 shadow-md">
+                                        <label className="form-label inline-block mb-1 text-gray-700 text-sm font-semibold">Objection On: Floor Details</label>
+                                    </div>
+                                    <div className="col-span-4 overflow-x-auto">
+                                        <table className='min-w-full leading-normal'>
+                                            <thead className='font-bold text-left text-sm bg-sky-50'>
+
+                                                <tr className="px-2 py-3 border-b border-gray-200 text-gray-800  text-left text-xs uppercase text-left">
+                                                    <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Floor No</th>
+                                                    <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Usage Type</th>
+                                                    <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Occupancy Type</th>
+                                                    <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Construction Type</th>
+                                                    <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Built Up Area <small className="block mt-1 text-xs text-gray-600 inline "><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>(in Sq. Ft)</small></th>
+                                                    <th className='py-2 px-2'><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>From Date</th>
+                                                    <th className='py-2 px-2'>Upto Date <small className="block mt-1 text-xs text-gray-600 inline ">(Leave blank for current date)</small></th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody className="text-xs">
+                                                {
+                                                    // floorList.map((floor) => (
+                                                    masterTypeData?.prop_floors?.map((data) => (
+                                                        <>
+                                                            <tr className="bg-white shadow-lg border-b border-gray-200">
+
+
+                                                                <td className="px-2 py-2 text-left">{data?.floor_name}</td>
+                                                                <td className="px-2 py-2 text-left">{data?.usage_type}</td>
+                                                                <td className="px-2 py-2 text-left">{data?.occupancy_type}</td>
+                                                                <td className="px-2 py-2 text-left">{data?.construction_type}</td>
+                                                                <td className="px-2 py-2 text-left">{data?.builtup_area}</td>
+                                                                <td className="px-2 py-2 text-left">{data?.date_from}</td>
+                                                                <td className="px-2 py-2 text-left">{data?.date_upto}</td>
+                                                            </tr>
+
+                                                            <tr className="bg-white shadow-lg border-b border-gray-200 border-b border-gray-600">
+                                                                <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+                                                                    {
+
+                                                                        masterTypeData?.floor_master?.map((data) => (
+                                                                            <option value={data.id}>{data.name}</option>
+                                                                        ))
+
+                                                                    }
+                                                                </select></td>
+                                                                <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+
+                                                                    {
+
+                                                                        masterTypeData?.usage_master?.map((data) => (
+                                                                            <option value={data.type}>{data.type}</option>
+                                                                        ))
+
+                                                                    }
+                                                                </select></td>
+                                                                <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+                                                                    {
+
+                                                                        masterTypeData?.occupency_master?.map((data) => (
+                                                                            <option value={data.id}>{data.type}</option>
+                                                                        ))
+
+                                                                    }
+                                                                </select></td>
+                                                                <td className="px-2 py-2 text-sm text-left"><select {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+                                                                    {
+
+                                                                        masterTypeData?.constunction_master?.map((data) => (
+                                                                            <option value={data.id}>{data.type}</option>
+                                                                        ))
+
+                                                                    }
+                                                                </select></td>
+                                                                <td className="px-2 py-2 text-sm text-left"><input {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+                                                                </input></td>
+                                                                <td className="px-2 py-2 text-sm text-left"><input {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md" type="date"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+                                                                </input></td>
+                                                                <td className="px-2 py-2 text-sm text-left"><input {...formik.getFieldProps('floorNo')} className="form-control block w-full px-3 py-1.5 text-base md:text-xs font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-pointer shadow-md" type="date"
+                                                                >
+                                                                    {/* <option value="0">0</option>
+                                                                    <option value="1">1</option> */}
+                                                                </input></td>
+                                                            </tr>
+                                                        </>
+                                                    ))
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
                         </FormGroup>
 
 

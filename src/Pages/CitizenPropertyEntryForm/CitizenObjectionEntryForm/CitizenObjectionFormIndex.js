@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ImUpload2 } from 'react-icons/im'
@@ -43,7 +43,69 @@ function CitizenObjectionFormIndex() {
     }, [])
 
 
-    console.log("all form data ", allFormData)
+
+    //     alert("submit")
+    //     console.log("OBJECTION DETAIL", allFormData)
+
+    //     let ObjectionFormData = {
+    //         "isRainWaterHarvesting": allFormData.harvestingObjValue,
+    //         "isRoadWidth": allFormData.roadWidthObjValue,
+    //         "isPropertyType": allFormData.propertyTypeObjValue,
+    //         "isAreaPlot":allFormData.plotAreaObjValue ,
+    //         "isMobileTower": allFormData.mobileTowerObjValue,
+    //         "isPetrolPump": allFormData.petrolPumpObjValue,
+    //         "isHoardingBoard": allFormData.hoardingObjValue,
+    //         "IsfloorDetail":"yes",
+    //         "objectionFormDoc": allFormData.objFormDoc,
+    //         "evidenceDoc": allFormData.objevidenceDoc,
+    //         "Remark": allFormData.objRemarks,
+
+    //         "harvestingToggleStatus": allFormData.harvestingToggleStatus,
+    //         "roadWidthToggleStatus": allFormData.roadWidthToggleStatus,
+    //         "propertyTypeToggleStatus": allFormData.propertyTypeToggleStatus,
+    //         "plotAreaToggleStatus": allFormData.plotAreaToggleStatus,
+    //         "mobileTowerToggleStatus":allFormData.mobileTowerToggleStatus ,
+    //         "petrolPumpToggleStatus":allFormData.petrolPumpToggleStatus,
+    //         "hoardingToggleStatus": allFormData.hoardingToggleStatus,
+    //         "floorToggleStatus": allFormData.floorToggleStatus,
+
+    //     }
+    //     axios({
+    //         method: "post",
+    //         url: "http://192.168.0.166/api/property-objection/2",
+    //         data: ObjectionFormData,
+    //         headers: {
+    //             Authorization: `Bearer ${bearerTokenInit}`,
+    //             Accept: 'application/json',
+    //         }
+    //     })
+    //         .then(function (response) {
+    //             console.log("Objection form uploaded......", response);
+    //             console.log("Check ==== ", response.data.status)
+    //             if (response.data.status) {
+    //                 setResponseScreenStatus('success')
+    //             } else if (!response.data.status) {
+    //                 console.log("objection form Not submitted ==== ", response.data.status)
+    //                 alert("form Not Submiteed..")
+    //             } else {
+    //                 alert("Somethig Went Wrong.")
+    //             }
+
+    //             // console.log("Message", response.data);
+    //             // setRegMsg(response.data);
+    //             // regComplated()
+    //         })
+    //         .catch(function (response) {
+    //             // console.log("Failed", response.response.data.ulb[0]);
+    //             console.log("Failed", response);
+    //             // console.log("Message", response.message);
+    //             // setRegMsg(response.message);
+    //             // setRegMsg(response.response.data.ulb[0]);
+    //         });
+
+    // }
+
+    // console.log("objection form data ", allFormData)
     //activating notification if no owner or no floor added
     const notify = (toastData) => {
         toast.dismiss();
@@ -56,9 +118,8 @@ function CitizenObjectionFormIndex() {
     }
 
     const collectAllFormData = (key, formData) => {
-        console.log('prev Data', allFormData)
-        // setAllFormData({...allFormData,formData}) //this is going to replace upcoming data since has same formData key all the time
-        setAllFormData({ ...allFormData, [key]: formData })
+        console.log('objection Data...', formData)
+        setAllFormData(formData) //this is going to replace upcoming data since has same formData key all the time
     }
     if (responseScreenStatus == 'success') {
         return (
@@ -88,7 +149,8 @@ function CitizenObjectionFormIndex() {
 
 
 
-                {submitStatus && <div onClick={() => setResponseScreenStatus('success')} className="flex items-center justify-center"><button type="submit" className="absolute bottom-40 mx-auto px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-xl hover:bg-blue-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit Form <ImUpload2 className='inline text-xl' /></button></div>}
+                {/* {submitStatus && <div onClick={() => setResponseScreenStatus('success')} className="flex items-center justify-center"><button type="submit" className="absolute bottom-40 mx-auto px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-xl hover:bg-blue-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit Form <ImUpload2 className='inline text-xl' /></button></div>} */}
+                {/* {submitStatus == false && <div onClick={() => handleSubmiBtn()} className="flex items-center justify-center"><button type="submit" className="absolute bottom-40 mx-auto px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-xl hover:bg-blue-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out">Submit Form <ImUpload2 className='inline text-xl' /></button></div>} */}
 
 
 
