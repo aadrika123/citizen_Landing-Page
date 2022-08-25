@@ -68,7 +68,7 @@ function SliderImage() {
     };
 
     return (
-        <Box sx={{ maxWidth: '100%', flexGrow: 1 }}>
+        <Box sx={{ maxWidth: '100%', flexGrow: 1 , maxHeight: '100%' }}>
             <Paper
                 square
                 elevation={0}
@@ -98,14 +98,12 @@ function SliderImage() {
                             <Box
                                 component="img"
                                 sx={{
-                                    height: 255,
+                                    maxHeight:'100%', 
                                     display: 'block',
                                     maxWidth: '100%',
                                     overflow: 'hidden',
                                     width: '100%',
-                                    height: 350,
-
-
+                                    height: '90%'
                                 }}
 
                                 src={step.imgPath}

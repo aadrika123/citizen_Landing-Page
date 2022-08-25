@@ -19,9 +19,9 @@ function CitizenObjectionEntryForm(props) {
     const [petrolPumpStatus, setpetrolPumpStatus] = useState(false)
     const [hoardingStatus, sethoardingStatus] = useState(false)
     const [floorStatus, setfloorStatus] = useState(false)
-    const [mobileTowerObjValueStatus, setmobileTowerObjValueStatus] = useState(false)
-    const [petrolPumpObjValueStatus, setpetrolPumpObjValueStatus] = useState(false)
-    const [hoardingObjValueStatus, sethoardingObjValueStatus] = useState(false)
+    const [mobileTowerObjValueStatus, setmobileTowerObjValueStatus] = useState('')
+    const [petrolPumpObjValueStatus, setpetrolPumpObjValueStatus] = useState('')
+    const [hoardingObjValueStatus, sethoardingObjValueStatus] = useState('')
     const [responseScreenStatus, setResponseScreenStatus] = useState('')
 
 
@@ -83,7 +83,7 @@ function CitizenObjectionEntryForm(props) {
         let ObjectionFormData = {
             "saf_dtl_id": 2,
 
-            "harvestingObjValue": 1,//formik.values.harvestingObjValue,
+            "harvestingObjValue": formik.values.harvestingObjValue,
             "roadWidthObjValue": formik.values.roadWidthObjValue,
             "propertyTypeObjValue": formik.values.propertyTypeObjValue,
             "plotAreaObjValue": formik.values.plotAreaObjValue,
@@ -96,7 +96,7 @@ function CitizenObjectionEntryForm(props) {
             "Remark": formik.values.objRemarks,
             "mobileTowerObjArea": "556",//formik.values.mobileTowerArea,
             "mobileTowerObjDate": formik.values.mobileTowerDate,
-            "hoardingObjArea": "22",//formik.values.hoardingObjArea,
+            "hoardingObjArea": formik.values.hoardingObjArea,
             "hoardingObjDate": formik.values.HoardingBoardDate,
 
 
@@ -167,7 +167,7 @@ function CitizenObjectionEntryForm(props) {
 
             mobileTowerArea: '',
             petrolPumpArea: '',
-            HoardingBoardArea: '',
+            hoardingObjArea: '',
 
             mobileTowerDate: getCurrentDate(),
             petrolPumpDate: getCurrentDate(),
@@ -177,6 +177,10 @@ function CitizenObjectionEntryForm(props) {
             objFormDoc: '',
             objevidenceDoc: '',
             objRemarks: '',
+
+         
+
+            
             //   floor inputs will be dynamic, think it
         },
 
@@ -215,9 +219,9 @@ function CitizenObjectionEntryForm(props) {
         { name === 'hoardingToggleStatus' && (checkValue === true ? sethoardingStatus(true) : sethoardingStatus(false)) }
         { name === 'mobileTowerToggleStatus' && (checkValue === true ? setmobileTowerStatus(true) : setmobileTowerStatus(false)) }
         { name === 'petrolPumpToggleStatus' && (checkValue === true ? setpetrolPumpStatus(true) : setpetrolPumpStatus(false)) }
-        { name === 'mobileTowerObjValue' && (value === 'yes' ? setmobileTowerObjValueStatus(true) : setmobileTowerObjValueStatus(false)) }
-        { name === 'petrolPumpObjValue' && (value === 'yes' ? setpetrolPumpObjValueStatus(true) : setpetrolPumpObjValueStatus(false)) }
-        { name === 'hoardingObjValue' && (value === 'yes' ? sethoardingObjValueStatus(true) : sethoardingObjValueStatus(false)) }
+        { name === 'mobileTowerObjValue' && (value === '1' ? setmobileTowerObjValueStatus('1') : setmobileTowerObjValueStatus('')) }
+        { name === 'petrolPumpObjValue' && (value === '1' ? setpetrolPumpObjValueStatus('1') : setpetrolPumpObjValueStatus('')) }
+        { name === 'hoardingObjValue' && (value === '1' ? sethoardingObjValueStatus('1') : sethoardingObjValueStatus('')) }
         //input restrict validation
         { name == 'builtupArea' && formik.setFieldValue("builtupArea", allowFloatInput(value, formik.values.builtupArea, 20)) }
     }
@@ -226,8 +230,11 @@ function CitizenObjectionEntryForm(props) {
     useEffect(() => {
         setmasterTypeData(props?.masterTypeData)
         console.log('master data property ', props?.masterTypeData?.property_master)
+
         console.log('master data floor ', props?.masterTypeData?.floor_master)
+        return
         console.log('master floor id ', props?.masterTypeData?.prop_floors)
+     
     }, [props.masterTypeData])
 
 
@@ -272,8 +279,8 @@ function CitizenObjectionEntryForm(props) {
                                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
                                         <select {...formik.getFieldProps('harvestingObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         >
-                                            <option value="no" selected>No</option>
-                                            <option value="yes">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
 
                                         </select>
                                         <span className="text-red-600 absolute text-xs">{formik.touched.harvestingObjValue && formik.errors.harvestingObjValue ? formik.errors.harvestingObjValue : null}</span>
@@ -310,8 +317,8 @@ function CitizenObjectionEntryForm(props) {
                                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
                                         <select {...formik.getFieldProps('roadWidthObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         >
-                                            <option value="no" selected>No</option>
-                                            <option value="yes">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
                                         </select>
                                         <span className="text-red-600 absolute text-xs">{formik.touched.roadWidthObjValue && formik.errors.roadWidthObjValue ? formik.errors.roadWidthObjValue : null}</span>
                                     </div>
@@ -423,8 +430,8 @@ function CitizenObjectionEntryForm(props) {
                                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
                                         <select {...formik.getFieldProps('mobileTowerObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         >
-                                            <option value="no" selected>No</option>
-                                            <option value="yes">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
                                         </select>
                                         <span className="text-red-600 absolute text-xs">{formik.touched.mobileTowerObjValue && formik.errors.mobileTowerObjValue ? formik.errors.mobileTowerObjValue : null}</span>
                                     </div>
@@ -468,8 +475,8 @@ function CitizenObjectionEntryForm(props) {
                                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
                                         <select {...formik.getFieldProps('petrolPumpObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         >
-                                            <option value="no" selected>No</option>
-                                            <option value="yes">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
                                         </select>
                                         <span className="text-red-600 absolute text-xs">{formik.touched.petrolPumpObjValue && formik.errors.petrolPumpObjValue ? formik.errors.petrolPumpObjValue : null}</span>
                                     </div>
@@ -514,8 +521,8 @@ function CitizenObjectionEntryForm(props) {
                                         <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold"><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>As Per Applicant</label>
                                         <select {...formik.getFieldProps('hoardingObjValue')} type="text" className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"
                                         >
-                                            <option value="no" selected>No</option>
-                                            <option value="yes">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
                                         </select>
                                         <span className="text-red-600 absolute text-xs">{formik.touched.hoardingObjValue && formik.errors.hoardingObjValue ? formik.errors.hoardingObjValue : null}</span>
                                     </div>

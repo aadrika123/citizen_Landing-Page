@@ -1,4 +1,4 @@
- //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
 //    Date - 8 Aug 2022
@@ -9,7 +9,7 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import SectionOurDomain from '../Pages/Landing/SectionOurDomain'
 import SliderImage from '../Pages/Landing/SliderImage'
 import TopNavbar from '../Pages/Landing/TopNavbar'
@@ -20,6 +20,8 @@ import AboutJharkhand from '../Pages/Landing/AboutJharkhand'
 import LeadersGallery from '../Pages/Landing/LeadersGallery'
 import MarqueeComponent from './MarqueeComponent'
 import ImageGallery from '../Pages/Landing/ImageGallery'
+import Logo from './Logo'
+import VideoComponent from './VideoComponent'
 
 function LandingMainPage() {
 
@@ -34,16 +36,26 @@ function LandingMainPage() {
     //     .catch(function (error) {
     //         console.log(error);
     //     })
-    
+
     // }
     return (
-        <>    
+        <>
             <div>
-                <div > <TopNavbar /> </div>
+                {/* <div > <TopNavbar /> </div>
                 <div><LandingNav   /></div>
                 <div><MarqueeComponent /></div>
                 <div className=''><SliderImage /></div>
               <div><ImageGallery /></div>
+                <div><SectionOurDomain /></div>
+                <AboutJharkhand />
+                <div><LeadersGallery /></div>
+                <div><Footer /> </div> */}
+                <div className='fixed z-50 w-full'><LandingNav /></div>
+                <div className='fixed z-50 ml-6'><Logo /></div>
+                <VideoComponent />
+                {/* <div className=''><SliderImage /></div> */}
+
+                <div><MarqueeComponent /></div>
                 <div><SectionOurDomain /></div>
                 <AboutJharkhand />
                 <div><LeadersGallery /></div>

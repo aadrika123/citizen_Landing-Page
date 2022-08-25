@@ -1,4 +1,4 @@
- //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
 //    Date - 8 Aug 2022
@@ -23,14 +23,14 @@ function LandingNav() {
     return (
         <>
             <header>
-                <nav className="shadow-md bg-white border-b-2 h-22">
+                <nav className="opacity-75   bg-gray-800 h-22">
                     <div className="flex justify-between items-center py-1 px-2 container mx-auto ">
                         <div className='flex  '>
-                            <div className=' p-2'>
-                                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png' className='h-20' />
-                            </div>
-                            <div className=' ml-4 mt-6  '>
-                                <h1 className='text-center text-md  text-gray-600 font-semibold font-sans'>Jharkhand Urban Infrastructure <br /> Development Company</h1>
+                            {/* <div className=' p-1'>
+                                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png' className='h-16' />
+                            </div> */}
+                            <div className='  '>
+                                <h1 className='text-center text-md mt-0 ml-9  text-gray-100 font-normal font-sans'>Government of Jharkhand</h1>
                             </div>
                         </div>
                         <div>
@@ -39,44 +39,49 @@ function LandingNav() {
                                 <spnan className="h-1 rounded-full block w-8 mb-1 bg-gradient-to-tr from-indigo-600 to-green-600"></spnan>
                                 <spnan className="h-1 rounded-full block w-8 mb-1 bg-gradient-to-tr from-indigo-600 to-green-600"></spnan>
                             </div>
-                            <div className="flex items-center ml-6">
-                                <ul className="sm:flex hidden items-center ">
+
+                            <div className="flex items-center ">
+                                <div className="sm:mx-auto sm:max-w-lg sm:px-1  ">
+                                    <SearchBox />
+                                </div>
+
+                                <ul className="sm:flex hidden items-center h-10 ">
                                     <div>
                                         <div className="flex-col  ">
                                             <div className="flex w-60 justify-center space-x-0 ">
-                                                <button className="min-w-auto w-12 h-10 bg-white p-2 rounded-l-full hover:bg-blue-500  hover:text-white  text-blue-500  font-semibold  hover:flex-grow hover: will-change-contents transition-all duration-200 ease-in-out ">
+                                                <button className="min-w-auto w-12 h-9 bg-gray-800 p-2 rounded-l-full hover:bg-blue-500  hover:text-white  text-gray-200  font-semibold  hover:flex-grow hover: will-change-contents transition-all duration-200 ease-in-out ">
                                                     <div className='flex flex-row'>
                                                         <div>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                                                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                                                             </svg>
                                                         </div>
                                                         <div>
                                                             <Link to="/">
-                                                                <p className='ml-4 text-sm mt-1'>HOME</p>
+                                                                <p className='ml-4 text-sm mt-0'>HOME</p>
                                                             </Link>
                                                         </div>
                                                     </div>
                                                 </button>
-                                                <button className="min-w-auto w-12 h-10 bg-white p-2 rounded-none hover:hover:bg-blue-500 hover:text-white  text-blue-500  font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
+                                                <button className="min-w-auto w-12 h-9 bg-gray-800  p-2 rounded-none hover:hover:bg-blue-500 hover:text-white  text-gray-200 font-semibold  hover:flex-grow transition-all duration-200 ease-in-out">
                                                     <div className='flex flex-row'>
                                                         <div>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                                                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
                                                             </svg>
                                                         </div>
                                                         <div>
                                                             <Link to="/about">
-                                                                <p className='ml-4 text-sm mt-1'>ABOUT</p>
+                                                                <p className='ml-3 text-sm mt-0'>ABOUT</p>
                                                             </Link>
                                                         </div>
                                                     </div>
                                                 </button>
                                                 <div class="relative inline-block text-left z-10">
                                                     <div>
-                                                        <button className="min-w-auto w-12 h-10 bg-white p-2 rounded-r-full hover:bg-blue-500  hover:text-white   text-blue-500   font-semibold hover:flex-grow transition-all duration-200 ease-in-out inline-flex " id="menu-button" aria-expanded="true" aria-haspopup="true" type='button' onClick={menuOpen}>
+                                                        <button className="min-w-auto w-12 h-9 bg-gray-800  p-2 rounded-r-full hover:bg-blue-500  hover:text-white   text-gray-200   font-semibold hover:flex-grow transition-all duration-200 ease-in-out inline-flex " id="menu-button" aria-expanded="true" aria-haspopup="true" type='button' onClick={menuOpen}>
                                                             <div className='flex flex-row'>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                                                     <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                                                                 </svg>
                                                             </div>
@@ -95,8 +100,8 @@ function LandingNav() {
                                                             </div>
                                                             <div class="py-1" role="none">
                                                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4">Water</a>
-                                                               <Link to ="/citizenDashboard"> <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-5">Dashboard</a>
-                                                               </Link>
+                                                                <Link to="/citizenDashboard"> <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-5">Dashboard</a>
+                                                                </Link>
                                                             </div>
                                                             <div class="py-1" role="none">
                                                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Delete</a>
@@ -110,13 +115,35 @@ function LandingNav() {
                                         </div>
                                     </div>
                                 </ul>
+
+                                <div className='flex  mt-1 w-18'>
+                                    <div className='flex-1'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-200" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+                                        </svg>
+                                    </div>
+                                    <div className='flex-1'>
+                                        <Link to="/login">
+                                            <h2 class="   hover:cursor-pointer px-1 hover:text-gray-200 text-gray-200 text-sm">Login</h2>
+                                        </Link>
+                                    </div>
+                                </div>
+                                
+                                <div className=' flex mt-1 w-18 px-2'>
+                                    <div className='flex-1'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-200" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div className='flex-1'>
+                                        <Link to='/register'>
+                                            <h2 class=" hover:cursor-pointer px-1  hover:text-gray-200 text-gray-200  text-sm ">Signup</h2>
+                                        </Link>
+                                    </div>
+                                </div>
+
                                 <div>
 
-                                    <div className="relative  bg-white px-1 pt-1 pb-1    sm:mx-auto sm:max-w-lg sm:px-1">
-                                        <div >
-                                            <SearchBox />
-                                        </div>
-                                    </div>
 
                                 </div>
 
