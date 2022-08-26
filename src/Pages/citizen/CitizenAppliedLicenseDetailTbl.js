@@ -46,8 +46,10 @@ function CitizenAppliedLicenseDetailTbl() {
                     <table class="min-w-full">
                         <thead>
                             <tr>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">License For</th>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Applied Date</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Application For</th>
+
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Application No.</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Date</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Status</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider"></th>
                             </tr>
@@ -56,7 +58,11 @@ function CitizenAppliedLicenseDetailTbl() {
                             {appliedLicenseTable.map((items) => (
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                                        
                                         <div class="text-sm leading-5 text-blue-900">{items.licensedFor}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                                        <div class="text-sm leading-5 text-blue-900">SAF1023456789</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">{items.appliedDate}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">

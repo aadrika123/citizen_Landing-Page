@@ -9,7 +9,7 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import ApplySubList from '../Pages/citizen/ApplySubList'
 import CitizenContentArea from '../Pages/citizen/CitizenContentArea'
 import CitizenEntryPage from '../Pages/citizen/CitizenEntryPage'
@@ -17,6 +17,8 @@ import DashboardNavbar from '../Pages/citizen/DashboardNavbar'
 import SideNav from '../Pages/citizen/SideNav'
 import LandingNav from '../Pages/Landing/LandingNav'
 import axios from 'axios'
+import SidenavContent from './testDelete/SidenavContent'
+import TestComponent from './testDelete/TestComponent'
 
 
 function CitizenMainPage() {
@@ -29,39 +31,42 @@ function CitizenMainPage() {
 
   //function which fetch citizen profile data
   const getData = () => {
-     
-      axios({
-          method: "GET",
-          url: "http://192.168.0.166/api/my-profile-details",
-          headers: {
-              Authorization: `Bearer ${bearerTokenInit}`,
-              Accept: 'application/json',
-          }
-      })
-          .then(function (response) {
-              console.log("getdata DIRECT......", response.data);
-              setfetchCitizenData(response.data.data)
 
-          });
+    axios({
+      method: "GET",
+      url: "http://192.168.0.166/api/my-profile-details",
+      headers: {
+        Authorization: `Bearer ${bearerTokenInit}`,
+        Accept: 'application/json',
+      }
+    })
+      .then(function (response) {
+        console.log("getdata DIRECT......", response.data);
+        setfetchCitizenData(response.data.data)
+
+      });
   }
 
-  
+
   useEffect(() => {
-      getData()
+    getData()
   }, [])
 
   return (
     <>
-      <div className='flex flex-row'>
-        <div>
-          <SideNav citizenNameEmail={fetchCitizenData} />
-        </div>
-        <div>
-          <LandingNav />
-          <CitizenEntryPage citizenName={fetchCitizenData}/>
+
+      <div>
+        <div  className='fixed z-50 w-full'> <LandingNav /></div>
+
+        <div className=''>
+        <div className='absolute left-0 top-0'><SideNav citizenNameEmail={fetchCitizenData} /></div>
+          <CitizenEntryPage citizenName={fetchCitizenData} />
           <CitizenContentArea />
+
         </div>
       </div>
+
+
     </>
   )
 }

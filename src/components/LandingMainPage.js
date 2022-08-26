@@ -51,7 +51,7 @@ function LandingMainPage() {
                 <div><LeadersGallery /></div>
                 <div><Footer /> </div> */}
                 <div className='fixed z-50 w-full'><LandingNav /></div>
-                <div className='fixed z-50 ml-6'><Logo /></div>
+                {/* <div className='fixed z-50 ml-6'><Logo /></div> */}
                 <VideoComponent />
                 {/* <div className=''><SliderImage /></div> */}
 

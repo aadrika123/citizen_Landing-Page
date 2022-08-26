@@ -10,6 +10,7 @@
 
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Logo from '../../components/Logo'
 import SearchBox from './SearchBox'
 
 function LandingNav() {
@@ -26,9 +27,10 @@ function LandingNav() {
                 <nav className="opacity-75   bg-gray-800 h-22">
                     <div className="flex justify-between items-center py-1 px-2 container mx-auto ">
                         <div className='flex  '>
-                            {/* <div className=' p-1'>
-                                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png' className='h-16' />
-                            </div> */}
+                            <div  className='fixed -mt-3 -ml-5 '>
+                             
+                                <Logo />
+                            </div>
                             <div className='  '>
                                 <h1 className='text-center text-md mt-0 ml-9  text-gray-100 font-normal font-sans'>Government of Jharkhand</h1>
                             </div>
@@ -104,7 +106,9 @@ function LandingNav() {
                                                                 </Link>
                                                             </div>
                                                             <div class="py-1" role="none">
-                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Delete</a>
+                                                                <Link to = "/">
+                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Home</a>
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </div>

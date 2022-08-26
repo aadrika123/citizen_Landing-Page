@@ -458,7 +458,7 @@
   "licenseTable": [
     {
       "id": "1",
-      "licensedFor": "trade",
+      "licensedFor": "Re-Assignment",
       "appliedDate": "22/07/2022",
       "status": "Approved",
       "applicationNo": "A65283471930194",
@@ -468,7 +468,7 @@
     },
     {
       "id": "2",
-      "licensedFor": "water",
+      "licensedFor": "New-Assignment",
       "appliedDate": "22/07/2022",
       "status": "Approved",
       "applicationNo": "B65283471930194",
@@ -478,7 +478,7 @@
     },
     {
       "id": "3",
-      "licensedFor": "property",
+      "licensedFor": "New-Assignment",
       "appliedDate": "22/07/2022",
       "status": "Approved",
       "applicationNo": "C65283471930194",
@@ -488,7 +488,7 @@
     },
     {
       "id": "4",
-      "licensedFor": "water",
+      "licensedFor": "Mutation",
       "appliedDate": "22/07/2022",
       "status": "Approved",
       "applicationNo": "D65283471930194",

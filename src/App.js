@@ -38,6 +38,7 @@ import CitizenChatBot from './components/CitizenChatBot';
 import ResetPassword from './Pages/CitizenLogin/ResetPassword';
 import CitizenObjectionFormIndex from './Pages/CitizenPropertyEntryForm/CitizenObjectionEntryForm/CitizenObjectionFormIndex';
 import CitizenTaxCalculator from './Pages/CitizenPropertyEntryForm/TaxCalculator/CitizenTaxCalculator';
+import CitizenApplicationByModule from './Pages/citizen/CitizenApplicationByModule';
 
 function App() {
   // const [ulbId, setulbId] = useState(0);
@@ -173,6 +174,7 @@ function App() {
             <Route path="/test" element={<TestComponent />} />
             <Route path="/citizenDashboard/citizenAccountSetting" element={<CitizenDetailPage />} />
             <Route path="/download" element={<DownloadPage />} />
+            <Route path="/appliedApplicationByModule" element={<CitizenApplicationByModule/>} />
             <Route path="/appliedLicenseTbl" element={<CitizenAppliedLicenseDetailTbl />} />
             <Route path="/citizenProperty" element={<Protected Component={CitizenSafEntryScreen} />} />
             <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} />

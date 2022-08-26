@@ -20,6 +20,7 @@ import CitizenNotification from './CitizenNotification';
 import SideNav from './SideNav';
 import LandingNav from '../Landing/LandingNav';
 import CitizenAccountSetting from './CitizenAccountSetting';
+import CitizenApplicationByModule from './CitizenApplicationByModule';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,7 +68,7 @@ export default function CitizenDetailPage() {
 
       <div className='flex flex-row'>
         <div className='flex-1'>
-          <SideNav />
+          {/* <SideNav /> */}
         </div>
 
         {/* citizen Account tabs  */}
@@ -78,7 +79,7 @@ export default function CitizenDetailPage() {
             <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}>
               <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ backgroundColor: '#eee' }}>
                 <Tab label="Account" {...a11yProps(0)} />
-                <Tab label="Applied Licenses" {...a11yProps(1)} />
+                <Tab label="Applied Applications" {...a11yProps(1)} />
                 {/* <Tab label="Notification" {...a11yProps(2)} /> */}
               </Tabs>
             </Box>
@@ -86,7 +87,7 @@ export default function CitizenDetailPage() {
               <CitizenAccountSetting />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <CitizenAppliedLicenseDetailTbl />
+              <CitizenApplicationByModule />
             </TabPanel>
             {/* <TabPanel value={value} index={2}>
               <CitizenNotification />
