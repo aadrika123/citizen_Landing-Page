@@ -87,7 +87,7 @@ function NewStepper({ colorCode, currentStep }) {
 
     return (
         <>
-            <div class="mx-4 p-4">
+            <div class="mx-12 pt-2 pb-8">
                 <div class="flex items-center">
                     <div class="flex items-center text-gray-500 relative">
                         <div class={`${stepOneDone} ${currentPage1Border} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600 `}>

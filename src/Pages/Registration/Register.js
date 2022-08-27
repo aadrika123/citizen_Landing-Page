@@ -126,19 +126,21 @@ function Register() {
     <>
       <LandingNav />
       <div>
-        <div className='grid grid-cols-12'>
-          <div className='md:block hidden col-span-2 h-screen bg-white border-r-2'>
+        <div className='grid grid-cols-12 bg-gray-50'>
+          <div className='md:block hidden col-span-2 h-full bg-white border-r-2'>
             <RegistrationSidebar />
           </div>
           <div className='md:block hidden col-span-1 h-screen'></div>
-          <div className='md:col-span-8 col-span-12 md:h-screen md:m-5'>
-            <NewStepper colorCode={colorCode} currentStep={regCurrentStep}  />
-            <div className='mt-4'>
-              <div className=' border py-3 bg-sky-500 text-white text-center shadow-2xl'>
+          <div className='md:col-span-8 col-span-12 md:h-screen md:m-0 shadow-2xl'>
+            <div className='border-2 pb-10'>
+              <div className='py-3 bg-sky-500 text-white text-center '>
                 <h1 className='text-2xl font-semibold '>Citizen Registration Form</h1>
                 <h3 className='font-semibold'>{pageTitle}</h3>
               </div>
-             
+              <div className='border-b bg-sky-50'>
+                <NewStepper colorCode={colorCode} currentStep={regCurrentStep} />
+              </div>
+
               {<div className={registrationForm}> <RegistrationForm fun={regFormNxtBtn} regFormData={regFormSaveData} /> </div>}
               {<div className={docUploadForm}> <DocumentUploadForm fun1={docFormBackBtn} fun2={docsNextBtn} formData={regFormSavedData} updatedDocList={finalDocList} /> </div>}
               {<div className={regVerifyForm}> <RegistrationVerify backBtn={verifyBackBtn} regMsg={regMsg} nxtBtn={verifyFinalSubmitBtn} formData={regFormSavedData} docList={finalDocSavedList} />  </div>}

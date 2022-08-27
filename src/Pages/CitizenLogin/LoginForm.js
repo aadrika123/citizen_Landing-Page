@@ -90,8 +90,7 @@ const LoginForm = (props) => {
                                     <input
                                         type="text"
                                         name="email"
-                                        placeholder='Email Address'
-                                        className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                        className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-sm'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.email}
@@ -106,8 +105,7 @@ const LoginForm = (props) => {
                                     <input
                                         type="password"
                                         name="password"
-                                        placeholder='*******'
-                                        className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                        className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-sm'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.password}
@@ -128,7 +126,7 @@ const LoginForm = (props) => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-lg font-semibold'>
+                                        className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl h-10 w-72  rounded-md text-white text-lg font-semibold'>
                                         Login
                                     </button>
                                 </div>
