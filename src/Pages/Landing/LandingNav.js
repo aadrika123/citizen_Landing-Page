@@ -88,26 +88,26 @@ function LandingNav() {
                                                                 </svg>
                                                             </div>
                                                         </button>
-                                                        <div class={`${menuDropdown} origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                                        <div class={`${menuDropdown} origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                                             <div class="py-1" role="none">
                                                                 {/* <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> */}
                                                                 <Link to="/logout">
-                                                                    <p class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Logout</p>
+                                                                    <p class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800  " role="menuitem" tabindex="-1" id="menu-item-0">Logout</p>
                                                                 </Link>
-                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">About</a>
+                                                                <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800" role="menuitem" tabindex="-1" id="menu-item-1">About</a>
                                                             </div>
                                                             <div class="py-1" role="none">
-                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Property</a>
-                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Trade</a>
+                                                                <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800" role="menuitem" tabindex="-1" id="menu-item-2">Property</a>
+                                                                <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800" role="menuitem" tabindex="-1" id="menu-item-3">Trade</a>
                                                             </div>
                                                             <div class="py-1" role="none">
-                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4">Water</a>
-                                                                <Link to="/citizenDashboard"> <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-5">Dashboard</a>
+                                                                <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800" role="menuitem" tabindex="-1" id="menu-item-4">Water</a>
+                                                                <Link to="/citizenDashboard"> <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800" role="menuitem" tabindex="-1" id="menu-item-5">Dashboard</a>
                                                                 </Link>
                                                             </div>
                                                             <div class="py-1" role="none">
                                                                 <Link to = "/">
-                                                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Home</a>
+                                                                <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-white hover:text-gray-800" role="menuitem" tabindex="-1" id="menu-item-6">Home</a>
                                                                 </Link>
                                                             </div>
                                                         </div>
