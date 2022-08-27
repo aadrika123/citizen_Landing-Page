@@ -11,18 +11,19 @@ import React, { useState } from 'react'
 
 function DocumentUploadForm(props) {
 
+    const [isArmed, setIsArmed] = useState(0);
+    const [isSpeciallyAbled, setIsSpeciallyAbled] = useState(0);
+
+    console.log("Is Armed", isArmed, "Is Specially", isSpeciallyAbled)
 
     const handleFormBacktbtn = () => {
         props.fun1(1)
     }
-
- 
-
     const saveFileSelected = (e) => {
         console.log("Updated", e.target.files[0]);
         // setFileSelected(e.target.files[0]);
     };
-//  {console.log("isArmed",props.formData.isArmed)}
+    //  {console.log("isArmed",props.formData.isArmed)}
 
     const docList =
         [
@@ -31,21 +32,43 @@ function DocumentUploadForm(props) {
             { 'docid': 3, 'docName': 'Specially Abled Proof', 'docUrl': '/dd', 'docStatus': 'Uploaded' },
             { 'docid': 4, 'docName': 'Armed Force Document', 'docUrl': '/dd', 'docStatus': 'Not Uploaded' },
         ]
-        props.formData && props.formData.isSpecially === "No" && delete docList[2]
-        props.formData && props.formData.isArmed === "No" && delete docList[3]
+    props.formData && props.formData.isSpecially === "No" && delete docList[2]
+    props.formData && props.formData.isArmed === "No" && delete docList[3]
 
+    // console.log("New Doc List", docList)
 
-        // console.log("New Doc List", docList)
-
-        const handleUploadDocNxtBtn =()=>{
-            props.fun2(1)
-            props.updatedDocList(docList)
-        }
+    const handleUploadDocNxtBtn = () => {
+        props.fun2(1)
+        props.updatedDocList(docList)
+    }
 
     return (
         <>
             <div className='bg-white border border-t-0 shadow-md'>
-
+                <div className=''>
+                    <div className='p-5 border shadow-md'>
+                        <div className='flex '>
+                            <p>Are you belong to Armed Forces</p>
+                            <select
+                                onChange={(e) => setIsArmed(e.target.value)}
+                                className=' outline-blue-600 border border-gray-400 w-32 h-8 rounded-md shadow-md'
+                            >
+                                <option defaultValue value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                        <div className='flex' >
+                            <p>Are you Specially Abled ?</p>
+                            <select
+                                onChange={(e) => setIsSpeciallyAbled(e.target.value)}
+                                className=' outline-blue-600 border border-gray-400'
+                            >
+                                <option defaultValue value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div className="inline-block min-w-full overflow-hidden">
                     <table className="min-w-full leading-normal">
                         <thead className='bg-sky-100'>
@@ -72,11 +95,11 @@ function DocumentUploadForm(props) {
                         </thead>
                         <tbody>
                             {
-                                docList.map((e, i=1) => (
+                                docList.map((e, i = 1) => (
                                     <tr>
                                         <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                                             <p className="text-gray-900 whitespace-no-wrap">
-                                                {i+1}
+                                                {i + 1}
                                             </p>
                                         </td>
                                         <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
@@ -113,8 +136,8 @@ function DocumentUploadForm(props) {
 
                                         <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                                             <span className="cursor-pointer relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                                                <span aria-hidden="true" className="absolute inset-0 bg-sky-200 opacity-100 rounded-full"></span>
-                                                <span className="relative">                                                   
+                                                <span aria-hidden="true" className="absolute inset-0 bg-blue-400 rounded-md shadow-lg"></span>
+                                                <span className="relative">
                                                     <input
                                                         type="file"
                                                         accept="image/*"

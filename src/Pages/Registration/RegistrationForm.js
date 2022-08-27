@@ -73,7 +73,7 @@ const SignupSchema = Yup.object().shape({
 
 const RegistrationForm = (props) => {
 
-    
+
     const { isLoading, data, isError, error } = useQuery("registrationULBLIstFromAPI", () => {
         return axios.get('http://192.168.0.166/api/get-all-ulb');
     });
@@ -150,16 +150,15 @@ const RegistrationForm = (props) => {
                     handleSubmit,
                     isSubmitting,
                 }) => (
-                    <div className='border border-t-0 shadow-md bg-blue-50'>
+                    <div className='bg-blue-50'>
                         <form onSubmit={handleSubmit}>
                             <div className='grid md:grid-cols-2 grid-cols-1 bg-white px-10'>
                                 <div className='col-span-1 md:ml-5'>
                                     <div className='my-5 relative'>
                                         <div className='text-gray-600 static mb-1 font-semibold'>Select ULB<span className='text-red-500 font-bold'>*</span></div>
                                         <select
-                                            // type="select"
                                             name="ulb"
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.ulb}
@@ -170,11 +169,6 @@ const RegistrationForm = (props) => {
                                                     <option value={data.id}>{data.ulb_name}</option>
                                                 )) : ''
                                             }
-                                            {/* <option value="1">Ranchi</option>
-                                            <option value="2">Dhanbad</option>
-                                            <option value="3">Bokaro</option>
-                                            <option value="4">Jamsedpur</option>
-                                            <option value="99">Other</option> */}
                                         </select>
                                         {errors.ulb && touched.ulb ? (
                                             <div className='text-red-600 text-sm absolute'>{errors.ulb}</div>
@@ -187,7 +181,7 @@ const RegistrationForm = (props) => {
                                             type="text"
                                             name="guardian_name"
                                             placeholder='Guardian Name'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.guardian_name}
@@ -202,7 +196,7 @@ const RegistrationForm = (props) => {
                                             type="number"
                                             name="mobile_no"
                                             placeholder='Mobile No'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.mobile_no}
@@ -216,7 +210,7 @@ const RegistrationForm = (props) => {
                                         <input
                                             type="date"
                                             name="dob"
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.dob}
@@ -231,7 +225,7 @@ const RegistrationForm = (props) => {
                                             type="password"
                                             name="password"
                                             placeholder='*******'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.password}
@@ -258,7 +252,7 @@ const RegistrationForm = (props) => {
                                             type="text"
                                             name="full_name"
                                             placeholder='Applicant Name'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.full_name}
@@ -273,7 +267,7 @@ const RegistrationForm = (props) => {
                                             type="text"
                                             name="email"
                                             placeholder='Email Address'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.email}
@@ -288,7 +282,7 @@ const RegistrationForm = (props) => {
                                             type="number"
                                             name="aadhar"
                                             placeholder='Aadhar No'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.aadhar}
@@ -318,7 +312,7 @@ const RegistrationForm = (props) => {
                                         <select
                                             // type="select"
                                             name="gender"
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.gender}
@@ -338,7 +332,7 @@ const RegistrationForm = (props) => {
                                             type="password"
                                             name="confirmPassword"
                                             placeholder='*******'
-                                            className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
+                                            className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.confirmPassword}
@@ -361,26 +355,16 @@ const RegistrationForm = (props) => {
                                 </div>
                             </div>
 
-                            <div className='grid grid-cols-2 my-5 mx-10'>
-                                {/* <div className='col-span-1'><button className='bg-blue-600 cursor-not-allowed px-5 py-2 shadow-xl rounded-md text-white text-base opacity-50'>Back</button></div> */}
-                                <div className='col-span-2'>
+                            <div className='grid justify-center'>
+                                <div>
                                     <button
                                         type="submit"
-                                        // onClick={handleFormNextbtn}
                                         disabled={isSubmitting}
                                         className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-base float-right'>
                                         Save and Next
                                     </button>
                                 </div>
                             </div>
-                            {/* {errors.email && touched.email && errors.email} */}
-
-                            {/* <button
-                                type="submit"
-                                className='my-5 px-5 py-2 hover:img-src font-bold bg-green-600 hover:bg-blue-500 text-white rounded-md'
-                                disabled={isSubmitting}>
-                                Save Data
-                            </button> */}
 
                         </form>
                     </div>

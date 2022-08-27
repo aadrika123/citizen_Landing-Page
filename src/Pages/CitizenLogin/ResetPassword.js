@@ -13,6 +13,7 @@ import RegistrationSidebar from '../Registration/RegistrationSidebar'
 import LoginForm from './LoginForm'
 import { Link, useNavigate } from 'react-router-dom';
 import RzpTestPayment from '../Payment/RzpTestPayment';
+import TestFileUpload from './TestFileUpload';
 
 function ResetPassword() {
 
@@ -77,6 +78,7 @@ function ResetPassword() {
                 </button>
 
 <RzpTestPayment data={payData} />
+{/* <TestFileUpload /> */}
 
 
               </div>
