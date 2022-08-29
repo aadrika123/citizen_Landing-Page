@@ -52,7 +52,7 @@ function Register() {
     setDocUploadForm("hidden")
     setRegistrationForm("hidden")
     setcolorCode(2)
-    setPageTitle("Step 3 : Verify Details")
+    setPageTitle("Step 3 : Review Details")
     setRegCurrentStep(3)
   }
 
@@ -99,7 +99,7 @@ function Register() {
         "password": regFormSavedData.password,
         // "userType": "Citizeh",
         "ulb": regFormSavedData.ulb,
-        "role": "1",
+        // "role": "1",
         "description": "asdf",
         "workflowParticipant": "false"
 
@@ -125,31 +125,25 @@ function Register() {
   return (
     <>
       <LandingNav />
-      <div>
-        <div className='grid grid-cols-12 bg-gray-50'>
-          <div className='md:block hidden col-span-2 h-full bg-white border-r-2'>
-            <RegistrationSidebar />
-          </div>
-          <div className='md:block hidden col-span-1 h-screen'></div>
-          <div className='md:col-span-8 col-span-12 md:h-screen md:m-0 shadow-2xl'>
-            <div className='border-2 pb-10'>
-              <div className='py-3 bg-sky-500 text-white text-center '>
-                <h1 className='text-2xl font-semibold '>Citizen Registration Form</h1>
-                <h3 className='font-semibold'>{pageTitle}</h3>
-              </div>
-              <div className='border-b bg-sky-50'>
-                <NewStepper colorCode={colorCode} currentStep={regCurrentStep} />
-              </div>
-
-              {<div className={registrationForm}> <RegistrationForm fun={regFormNxtBtn} regFormData={regFormSaveData} /> </div>}
-              {<div className={docUploadForm}> <DocumentUploadForm fun1={docFormBackBtn} fun2={docsNextBtn} formData={regFormSavedData} updatedDocList={finalDocList} /> </div>}
-              {<div className={regVerifyForm}> <RegistrationVerify backBtn={verifyBackBtn} regMsg={regMsg} nxtBtn={verifyFinalSubmitBtn} formData={regFormSavedData} docList={finalDocSavedList} />  </div>}
-              {<div className={regSuccessPage}> <RegistrationSuccess />  </div>}
-
-            </div>
-          </div>
-          <div className='md:visible invisible md:col-span-1 md:h-screen md:m-5'></div>
+      <div className='grid grid-cols-12 bg-gray-50 mr-14'>
+        <div className='md:block hidden col-span-3 h-full bg-white border-r-2 mr-14'>
+          <RegistrationSidebar />
         </div>
+        {/* <div className='md:block hidden col-span-1 h-screen'></div> */}
+        <div className='md:col-span-9 col-span-12 md:h-screen md:m-0 pt-2'>
+          <div className='py-3 bg-sky-500 text-white text-center '>
+            <h1 className='text-2xl font-semibold '>Citizen Registration Form</h1>
+            <h3 className='font-semibold'>{pageTitle}</h3>
+          </div>
+          <div className='border-b bg-sky-50 shadow-xl'>
+            <NewStepper colorCode={colorCode} currentStep={regCurrentStep} />
+          </div>
+          {<div className={registrationForm}> <RegistrationForm fun={regFormNxtBtn} regFormData={regFormSaveData} /> </div>}
+          {<div className={docUploadForm}> <DocumentUploadForm fun1={docFormBackBtn} fun2={docsNextBtn} formData={regFormSavedData} updatedDocList={finalDocList} /> </div>}
+          {<div className={regVerifyForm}> <RegistrationVerify backBtn={verifyBackBtn} regMsg={regMsg} nxtBtn={verifyFinalSubmitBtn} formData={regFormSavedData} docList={finalDocSavedList} />  </div>}
+          {<div className={regSuccessPage}> <RegistrationSuccess />  </div>}
+        </div>
+        {/* <div className='md:visible invisible md:col-span-1 md:h-screen md:m-5'></div> */}
       </div>
     </>
   )

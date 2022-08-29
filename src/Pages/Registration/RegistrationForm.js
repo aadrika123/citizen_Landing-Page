@@ -150,12 +150,12 @@ const RegistrationForm = (props) => {
                     handleSubmit,
                     isSubmitting,
                 }) => (
-                    <div className='bg-blue-50'>
+                    <div>
                         <form onSubmit={handleSubmit}>
-                            <div className='grid md:grid-cols-2 grid-cols-1 bg-white px-10'>
+                            <div className='grid md:grid-cols-2 grid-cols-1 bg-white px-12 shadow-xl'>
                                 <div className='col-span-1 md:ml-5'>
                                     <div className='my-5 relative'>
-                                        <div className='text-gray-600 static mb-1 font-semibold'>Select ULB<span className='text-red-500 font-bold'>*</span></div>
+                                        <div className='text-gray-600 static mb-1 font-semibold'>Select ULB / Dept. / Panchayat <span className='text-red-500 font-bold'>*</span></div>
                                         <select
                                             name="ulb"
                                             className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-md'
@@ -234,7 +234,7 @@ const RegistrationForm = (props) => {
                                             <div className='text-red-600 text-sm absolute'>{errors.password}</div>
                                         ) : null}
                                     </div>
-                                    <div className='my-5 relative'>
+                                    {/* <div className='my-5 relative'>
                                         <div className='text-gray-600 static mb-1 font-semibold'>Is Armed forces ? <span className='text-red-500 font-bold'>*</span>
                                             <label className='ml-2'>
                                                 <Field type="radio" name="isArmed" value="Yes" /> Yes
@@ -243,7 +243,7 @@ const RegistrationForm = (props) => {
                                                 <Field type="radio" name="isArmed" value="No" /> No
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className='col-span-1'>
                                     <div className='my-5 relative'>
@@ -341,9 +341,8 @@ const RegistrationForm = (props) => {
                                             <div className='text-red-600 text-sm absolute'>{errors.confirmPassword}</div>
                                         ) : null}
                                     </div>
-                                    <div className='my-5 relative'>
+                                    {/* <div className='my-5 relative'>
                                         <div className='text-gray-600 static mb-1 font-semibold'>Is Specially Abled ? <span className='text-red-500 font-bold'>*</span>
-                                            {/* <input className='ml-2' type="radio" value="Yes" name="isSpecially" /> Yes */}
                                             <label className='ml-2'>
                                                 <Field type="radio" name="isSpecially" value="Yes" /> Yes
                                             </label>
@@ -351,18 +350,18 @@ const RegistrationForm = (props) => {
                                                 <Field type="radio" name="isSpecially" value="No" /> No
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
-                            </div>
 
-                            <div className='grid justify-center'>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-base float-right'>
-                                        Save and Next
-                                    </button>
+                                <div className='col-span-12 grid justify-right mb-5'>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-base float-right'>
+                                            Save and Next
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 

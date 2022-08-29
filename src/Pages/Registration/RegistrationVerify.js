@@ -31,89 +31,83 @@ function RegistrationVerify(props) {
 
     return (
         <>
-            <div className='bg-white border border-t-0 shadow-md'>
-                <div className="inline-block min-w-full rounded-lg overflow-hidden">
-                    <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-                        <div>
-                            <dl>
-                                <div className="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Full name</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.full_name}</dd>
-                                </div>
-
-                                <div className="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Guardian Name</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.guardian_name}</dd>
-                                </div>
-                                <div className="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.email}</dd>
-                                </div>
-                                <div className="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Phone</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.mobile_no}</dd>
-                                </div>
-                                <div className="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Aadhar No</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.aadhar}</dd>
-                                </div>
-                                {/* <div className="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">PAN No</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.pan_no}</dd>
-                                </div> */}
-                                <div className="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.dob}</dd>
-                                </div>
-                                <div className="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Gender</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.gender}</dd>
-                                </div>
-                                <div className="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Is Armed forces ?</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.isArmed}</dd>
-                                </div>
-                                <div className="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Is Specially Abled ?</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{props.formData && props.formData.isSpecially}</dd>
-                                </div>
-                                <div className="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Address</dt>
-                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Ranchi Jakhaed India</dd>
-                                </div>
-                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt className="text-sm font-medium text-gray-500">Documents</dt>
-                                    <dd className="mt-1 w-96 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <ul role="list" className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                                            {
-                                                props.docList && props.docList.map((e) => (
-                                                    <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                                                        <div className="w-0 flex-1 flex items-center">
-                                                            <BsPaperclip className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
-                                                            <span className="ml-2 flex-1 w-0 truncate">{e.docName}</span>
-                                                        </div>
-                                                        <div className="ml-4 flex-shrink-0">
-                                                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                                                                View
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </dd>
-                                </div>
-                                <div className='text-center mb-3'>
-                                    {props.regMsg && props.regMsg}
-                                </div>
-                            </dl>
+            <div className='bg-white shadow-xl'>
+                <div className='grid grid-cols-12 px-10 py-5'>
+                    <div className='col-span-6'>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Full Name</div>
+                            <div className='col-span-6'>{props.formData && props.formData.full_name}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Guardian Name</div>
+                            <div className='col-span-6'>{props.formData && props.formData.guardian_name}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Date of Birth</div>
+                            <div className='col-span-6'>{props.formData && props.formData.dob}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Aadhar No.</div>
+                            <div className='col-span-6'>{props.formData && props.formData.aadhar}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>PAN No.</div>
+                            <div className='col-span-6'>{props.formData && props.formData.pan}</div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-2 my-5 mx-10'>
-                        <div className='col-span-1'><button onClick={handleBacktBtn} className='bg-blue-600 hover:bg-blue-700 px-5 py-2 shadow-xl rounded-md text-white text-base'>Back</button></div>
-                        <div className='col-span-1'><button onClick={handleNxtBtn} className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-base float-right'>Submit</button></div>
+                    <div className='col-span-6'>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Email Address</div>
+                            <div className='col-span-6'>{props.formData && props.formData.email}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Mobile No.</div>
+                            <div className='col-span-6'>{props.formData && props.formData.mobile_no}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Gender</div>
+                            <div className='col-span-6'>{props.formData && props.formData.gender}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Is Armed forces ?</div>
+                            <div className='col-span-6'>{props.formData && props.formData.isArmed}</div>
+                        </div>
+                        <div className='grid grid-cols-12 my-2'>
+                            <div className='col-span-6 text-gray-500'>Is Specially Abled ?</div>
+                            <div className='col-span-6'>{props.formData && props.formData.isSpecially}</div>
+                        </div>
+                        {/* <div className='grid grid-cols-12'>Address :- Ranchi Jakhaed India</div> */}
                     </div>
                 </div>
+                <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div className="text-sm font-medium text-gray-500 ml-5">Uploaded Documents</div>
+                    <dd className="w-96 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                            {
+                                props.docList && props.docList.map((e) => (
+                                    <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                        <div className="w-0 flex-1 flex items-center">
+                                            <BsPaperclip className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
+                                            <span className="ml-2 flex-1 w-0 truncate">{e.docName}</span>
+                                        </div>
+                                        <div className="ml-4 flex-shrink-0">
+                                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                                View
+                                            </a>
+                                        </div>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </dd>
+                </div>
+                    <div className='text-center mb-3'>
+                        {props.regMsg && props.regMsg}
+                    </div>
+                    <div className='grid grid-cols-2 md:px-10 pb-10'>
+                        <div className='col-span-1'><button onClick={handleBacktBtn} className='bg-blue-600 hover:bg-blue-700 px-5 py-2 shadow-xl rounded-md text-white text-base float-left'>Back</button></div>
+                        <div className='col-span-1'><button onClick={handleNxtBtn} className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-base float-right'>Submit</button></div>
+                    </div>
             </div>
         </>
     )
