@@ -117,7 +117,7 @@ function NewStepper({ colorCode, currentStep }) {
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </div>
-                        <div className={` ${currentPage3} absolute top-0 -ml-10 text-center mt-14 w-32 text-xs uppercase text-teal-600`}>Verify</div>
+                        <div className={` ${currentPage3} absolute top-0 -ml-10 text-center mt-14 w-32 text-xs uppercase text-teal-600`}>Review</div>
                     </div>
                     <div class={`flex-auto border-t-2 transition duration-500 ease-in-out ${lineThree} `}></div>
                     <div class="flex items-center text-gray-500 relative">
