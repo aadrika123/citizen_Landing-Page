@@ -29,57 +29,57 @@ function ResetPassword() {
   //   }
   // });
 
-  const handleResetBtn = () =>{
+  const handleResetBtn = () => {
     console.log("Reset Email is -", resetEmail)
   }
   const payData = {
-    name : "Dipu Kumar",
-    phone : 9658745874,
-    email : "dsingh197@gmail.com",
-    amount : 101,
-    module : "property"
+    name: "Dipu Kumar",
+    phone: 9658745874,
+    email: "dsingh197@gmail.com",
+    amount: 101,
+    module: "property"
   }
 
   return (
     <>
-      {/* <LandingNav /> */}
-      <div>
-        <div className='md:grid md:grid-cols-1 m-2'>
-          {/* <div className='col-span-2 h-screen bg-white border-r-2'>
-            <RegistrationSidebar />
-          </div> */}
-          <div className='col-span-1 justify-self-center md:mt-20 mt-10 shadow-xl'>
-            <div className=' border py-3 bg-sky-500 text-white text-center shadow-2xl'>
-              <h1 className='text-2xl font-semibold '>Reset Password</h1>
-            </div>
-            <div className='grid bg-white px-10'>
-              <div className='mt-3'>
+      <div className='bg-gray-100'>
+        <div className='md:grid md:grid-cols-1 h-screen'>
+
+          <div className='justify-self-center'>
+            <div className='text-center font-semibold text-3xl text-gray-700 mt-10'>Reset Password</div>
+            <div className='grid bg-white px-10 mt-8 border shadow-2xl'>
+              <div className='flex justify-center mt-5'>
+                <img className='h-12' src="http://localhost:3001/static/media/logo1.5c4637e45ad69b06fad3.png" alt="" />
+              </div>
+              <h1 className='text-center text-xl font-semibold my-1 capitalize'>
+                Ranchi Municipal Corporation
+              </h1>
+              <div className='my-3'>
                 <div className='text-gray-600 static mb-1 font-semibold'>Email Address <span className='text-red-500 font-bold'>*</span></div>
                 <input
                   type="text"
                   name="email"
-                  placeholder='Email Address'
-                  className='border border-gray-400 outline-blue-500 text-base rounded-sm pl-2 h-10 w-72 shadow-sm'
-                  onChange={(e)=>setResetEmail(e.target.value)}
+                  // placeholder='Email Address'
+                  className='border border-gray-400 outline-blue-500 text-base rounded-md pl-2 h-10 w-72 shadow-sm'
+                  onChange={(e) => setResetEmail(e.target.value)}
                 />
               </div>
               <div className='relative justify-center'>
                 {/* <div className='text-red-600 text-sm font-semibold absolute '> <span className=''> Show Message</span></div> */}
               </div>
-              <div className='text-center mt-3'>
+              <div className='text-center my-5'>
                 <p><Link to="/login" className='text-blue-600 font-semibold'>Login Page </Link></p>
               </div>
-              <div className='my-3 self-center justify-self-center'>
+              <div className='mb-8 self-center justify-self-center'>
                 <button
                   type="submit"
-                  onClick={handleResetBtn}                  
+                  onClick={handleResetBtn}
                   className='bg-green-600 hover:bg-green-700 px-5 py-2 shadow-xl rounded-md text-white text-lg font-semibold'>
                   Reset Password
                 </button>
 
-<RzpTestPayment data={payData} />
-{/* <TestFileUpload /> */}
-
+                {/* <RzpTestPayment data={payData} /> */}
+                {/* <TestFileUpload /> */}
 
               </div>
             </div>
