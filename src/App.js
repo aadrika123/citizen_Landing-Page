@@ -39,6 +39,7 @@ import ResetPassword from './Pages/CitizenLogin/ResetPassword';
 import CitizenObjectionFormIndex from './Pages/CitizenPropertyEntryForm/CitizenObjectionEntryForm/CitizenObjectionFormIndex';
 import CitizenTaxCalculator from './Pages/CitizenPropertyEntryForm/TaxCalculator/CitizenTaxCalculator';
 import CitizenApplicationByModule from './Pages/citizen/CitizenApplicationByModule';
+import RegistrationStatus from './Pages/Registration/RegistrationStatus';
 
 function App() {
   
@@ -73,6 +74,7 @@ function App() {
             <Route path='/citizenobjection' element={<CitizenObjectionFormIndex />} />
             <Route path='/citizenTaxCal' element={<CitizenTaxCalculator />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/registrationStatus" element={<RegistrationStatus />} />
             <Route path="/login" element={<Login />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/logout" element={<Logout />} />
