@@ -39,7 +39,7 @@ import ResetPassword from './Pages/CitizenLogin/ResetPassword';
 import CitizenObjectionFormIndex from './Pages/CitizenPropertyEntryForm/CitizenObjectionEntryForm/CitizenObjectionFormIndex';
 import CitizenTaxCalculator from './Pages/CitizenPropertyEntryForm/TaxCalculator/CitizenTaxCalculator';
 import CitizenApplicationByModule from './Pages/citizen/CitizenApplicationByModule';
-import RegistrationStatus from './Pages/Registration/RegistrationStatus';
+import RegistrationStatus from './Pages/CitizenRegStatus/RegistrationStatus';
 
 function App() {
   
