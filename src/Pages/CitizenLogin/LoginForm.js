@@ -127,7 +127,8 @@ const LoginForm = (props) => {
                                 <div className='text-center mt-5'>
                                     <p> Don't have Account ? <Link to="/register" className='text-blue-600 font-semibold'> Create New </Link></p>
                                     <p><Link to="/reset-password" className='text-blue-600 font-semibold'>Reset Password </Link></p>
-                                </div>
+                                    <p><Link to="/registrationStatus" className='text-blue-600 font-semibold'>Check Registartion Status </Link></p>
+                                </div> 
 
                                 <div className='my-5 self-center justify-self-center'>
                                     <button
