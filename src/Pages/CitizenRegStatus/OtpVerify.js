@@ -6,22 +6,33 @@ function OtpVerify(props) {
     const [otp, setOtp] = useState([])
     const [msg, setMsg] = useState()
 
+    const [n1, setN1] = useState()
+    const [n2, setN2] = useState()
+    const [n3, setN3] = useState()
+    const [n4, setN4] = useState()
 
-    const OTPValue = (e) => {      
-        setOtp([...otp, e])
+    console.log("NS--",n1, n2,n3,n4)
 
-        if(otp.length >= 6){
-            console.log("OTP is ===", otp)
-        }
-    }
-    console.log("OTP", otp.join(''), otp.length)
+  
+    // setOtp([...otp, n1, n2,n3,n4])
+    // console.log("OTP", otp.join(''), otp.length)
 
     const submitOTP = () => {
-        console.log("OTP is ", otp)
-        setMsg("OTP Verified..")
-        setInterval(() => {
-            props.afterOPTSuccess()
-        }, 3000);
+        // setInterval(() => {
+        //     props.afterOPTSuccess()
+        // }, 3000);
+    }
+
+    const test =(a)=>{
+        console.log("this...",n1,n2)
+         setInterval(() => {
+             props.afterOPTSuccess()
+         }, 3000);
+    }
+
+    if(n4){
+        test("googd")
+        console.log("helere")
     }
 
     const chnageNumber = () => {
@@ -48,12 +59,12 @@ function OtpVerify(props) {
                                 <div className="flex flex-row justify-center font-semibold text-center px-2 mt-3">
                                     <form>
                                         {/* <input onChange={(e) => OTPValue(e.target.value)} onInput={submitOTP} onBlur={submitOTP} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="first" maxLength="1" /> */}
-                                        <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="first" maxLength="1" />
-                                        <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="second" maxLength="1" />
-                                        <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="third" maxLength="1" />
-                                        <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="fourth" maxLength="1" />
-                                        <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="fifth" maxLength="1" />
-                                        <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="sixth" maxLength="1" />
+                                        <input onChange={(e) => setN1(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="first" maxLength="1" />
+                                        <input onChange={(e) => setN2(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="second" maxLength="1" />
+                                        <input onChange={(e) => setN3(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="third" maxLength="1" />
+                                        <input onChange={(e) => setN4(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="fourth" maxLength="1" />
+                                        {/* <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="fifth" maxLength="1" /> */}
+                                        {/* <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="sixth" maxLength="1" /> */}
                                     </form>
                                 </div>
                                 <div>{msg}</div>
