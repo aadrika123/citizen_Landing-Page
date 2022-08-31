@@ -17,24 +17,25 @@ function OtpVerify(props) {
     // setOtp([...otp, n1, n2,n3,n4])
     // console.log("OTP", otp.join(''), otp.length)
 
-    const submitOTP = () => {
-        // setInterval(() => {
-        //     props.afterOPTSuccess()
-        // }, 3000);
-    }
-
     const test =(a)=>{
-        setMsg("OTP Verifying..")
-        console.log("this...",n1,n2)
+        setMsg("OTP Verifying..",a)
+        // console.log("this...",n1,n2)
          setInterval(() => {
              props.afterOPTSuccess()
          }, 3000);
     }
 
-    if(n4){
+    useEffect(() => {
         test("googd")
         console.log("helere")
-    }
+      
+    }, [n4])
+    
+
+    // if(n4){
+    //     test("googd")
+    //     console.log("helere")
+    // }
 
     const chnageNumber = () => {
         props.chnageNumber()
@@ -60,10 +61,10 @@ function OtpVerify(props) {
                                 <div className="flex flex-row justify-center font-semibold text-center px-2 mt-3">
                                     <form>
                                         {/* <input onChange={(e) => OTPValue(e.target.value)} onInput={submitOTP} onBlur={submitOTP} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="first" maxLength="1" /> */}
-                                        <input onChange={(e) => setN1(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="first" maxLength="1" />
-                                        <input onChange={(e) => setN2(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="second" maxLength="1" />
-                                        <input onChange={(e) => setN3(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="third" maxLength="1" />
-                                        <input onChange={(e) => setN4(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="fourth" maxLength="1" />
+                                        <input onChange={(e) => setN1(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" maxLength="1" autoComplete='off'/>
+                                        <input onChange={(e) => setN2(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" maxLength="1" autoComplete='off'/>
+                                        <input onChange={(e) => setN3(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" maxLength="1" autoComplete='off'/>
+                                        <input onChange={(e) => setN4(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" maxLength="1" autoComplete='off'/>
                                         {/* <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="fifth" maxLength="1" /> */}
                                         {/* <input onChange={(e) => OTPValue(e.target.value)} className="m-2 border h-10 w-10 text-center form-control rounded" type="tel" id="sixth" maxLength="1" /> */}
                                     </form>
