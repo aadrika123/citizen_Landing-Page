@@ -57,8 +57,8 @@ function DocumentUploadForm(props) {
                     <div className='p-3 ml-5'>
                         <div className='grid grid-cols-12'>
                             <div className='col-span-8'>
-                                <p className='mt-2'><span className='font-semibold px-3'>1.</span> Are you belong to Armed Forces ? <small className=''>( If 'Yes' you will get 5 % rebate. )</small> </p>
-                                <p className='mt-2'><span className='font-semibold px-3'>2.</span>Are you Specially Abled ? <small className=''>( If 'Yes' you will get 5 % rebate. )</small> </p>
+                                <p className='mt-2'><span className='font-semibold px-3'>1.</span> Do you belong to Armed Forces ? <small className=''>( If 'Yes' you will get 5 % rebate. )</small> </p>
+                                <p className='mt-2'><span className='font-semibold px-3'>2.</span>Do you belong Specially Abled category ? <small className=''>( If 'Yes' you will get 5 % rebate. )</small> </p>
                             </div>
                             <div className='col-span-4'>
                                 <div className='mt-2'>
