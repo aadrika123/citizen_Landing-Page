@@ -24,6 +24,7 @@ function OtpVerify(props) {
     }
 
     const test =(a)=>{
+        setMsg("OTP Verifying..")
         console.log("this...",n1,n2)
          setInterval(() => {
              props.afterOPTSuccess()
