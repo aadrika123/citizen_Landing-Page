@@ -40,6 +40,7 @@ import CitizenObjectionFormIndex from './Pages/CitizenPropertyEntryForm/CitizenO
 import CitizenTaxCalculator from './Pages/CitizenPropertyEntryForm/TaxCalculator/CitizenTaxCalculator';
 import CitizenApplicationByModule from './Pages/citizen/CitizenApplicationByModule';
 import RegistrationStatus from './Pages/CitizenRegStatus/RegistrationStatus';
+import WaterIndex from './Pages/water/WaterIndex';
 
 function App() {
   
@@ -72,6 +73,7 @@ function App() {
             <Route path="/citizenselfdetailform" element={<Protected Component={CitizenSelfAdvtDetailForm} />} />
             <Route path='/safform/:assType' element={<Protected Component={CitizenSafApplicationFormIndex} />} />
             <Route path='/citizenobjection' element={<CitizenObjectionFormIndex />} />
+            <Route path='/water' element={<WaterIndex />} />
             <Route path='/citizenTaxCal' element={<CitizenTaxCalculator />} />
             <Route path="/register" element={<Register />} />
             <Route path="/registrationStatus" element={<RegistrationStatus />} />
