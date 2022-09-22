@@ -13,18 +13,29 @@ import * as Yup from 'yup';
 import { SiAddthis } from 'react-icons/si';
 import { MdCancel } from 'react-icons/md';
 
-function WaterCitizenForm() {
+function WaterCitizenForm(props) {
     const [connectionThroughState, setConnectionThroughState] = useState()
+    const [propertyCols, setPropertyCols] = useState(8)
+    const [propertyNewCol, setPropertyNewCol] = useState(null)
 
     const selectPropertyType = (e) => {
-        console.log("Changed..", e)
+        // console.log("Changed..", e)
     }
+    // console.log("propertyNewCol", propertyNewCol)
 
-    const handleAddNewApplicant = () => {
-        console.log("handleAddNewApplicant")
+    const handleConnectionThroughState = (e) => {
+      e !=="" &&  setPropertyCols(10)
+        setPropertyNewCol(e)
+        setConnectionThroughState(e)
+
     }
 
     console.log("setConnectionThroughState", connectionThroughState)
+
+    const submitFormData = (formValue) => {
+        props.formValue(formValue)
+
+    }
 
     const goBack = () => {
         // props.handleBackBtn()
@@ -33,7 +44,7 @@ function WaterCitizenForm() {
     return (
         <>
             <Formik
-                initialValues={{ Applicant:{ ApplicantOwner:'', ApplicantGuardian:'' } , connectionType: '', propertyType: '', connectionThrough: '', ownerType: '' }}
+                initialValues={{ connectionType: '', propertyType: '', connectionThrough: '', ownerType: '' }}
                 validationSchema={Yup.object({
                     connectionType: Yup.string().required('Required'),
                     propertyType: Yup.string().required('Required.'),
@@ -42,8 +53,8 @@ function WaterCitizenForm() {
                 })}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        // submitFormData(values)
+                        // alert(JSON.stringify(values, null, 2));
+                        submitFormData(values)
                         setSubmitting(false);
                     }, 400);
                 }}
@@ -82,7 +93,8 @@ function WaterCitizenForm() {
                                         </div>
                                         <div className='m-3'>
                                             <label className='text-lg md:text-base md:font-medium font-normal'>Connection Through <span className='text-red-600'>*</span></label>
-                                            <Field onClick={(e) => setConnectionThroughState(e.target.value)} className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="connectionThrough">
+                                            {/* <Field onClick={(e) => setConnectionThroughState(e.target.value)} className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="connectionThrough"> */}
+                                            <Field onClick={(e) => handleConnectionThroughState(e.target.value)} className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="connectionThrough">
                                                 <option value="">-- Select Connection Through --</option>
                                                 <option value="holdingProof">Holding Proof</option>
                                                 <option value="saf">SAF</option>
@@ -103,102 +115,50 @@ function WaterCitizenForm() {
                                     </div>
                                 </div>
 
-                                <div className='border border-black m-5 pb-5 bg-white'>
-                                    <div className='flex bg-gray-600 text-white md:justify-start justify-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Details New <p className='mr-8 ml-auto'> <SiAddthis size={25} onClick={handleAddNewApplicant} className="cursor-pointer" /> </p></div>
-
-                                    <FieldArray
-                                        name="ApplicantOwner"
-                                        render={arrayHelpers => (
-                                            <div className='md:flex'>
-                                                {values.ApplicantOwner && values.ApplicantOwner.length > 0 ? (
-                                                    values.ApplicantOwner.map((friend, index) => (
-                                                        <div key={index}>
-                                                            {/* <Field name={`ApplicantOwner.${index}`} /> */}
-                                                            <div className='m-3'>
-                                                                <label className='text-lg md:text-base md:font-medium font-normal'>Owner Name </label>
-                                                                <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name={`Applicant.ApplicantOwner.${index}`} />
-                                                                <p className='text-red-600 text-sm absolute'><ErrorMessage name={`Applicant.ApplicantOwner.${index}`} /></p>
-                                                            </div>
-                                                            <div className='m-3'>
-                                                                <label className='text-lg md:text-base md:font-medium font-normal'>Guardian Name </label>
-                                                                <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name={`Applicant.ApplicantGuardian.${index}`} />
-                                                                <p className='text-red-600 text-sm absolute'><ErrorMessage name={`Applicant.ApplicantGuardian.${index}`} /></p>
-                                                            </div>
-                                                            {/* <button type="button" onClick={() => arrayHelpers.remove(index)} >-</button> */}
-                                                            {/* <button type="button" onClick={() => arrayHelpers.insert(index, '')}>+</button> */}
-                                                            <div className='flex'>
-                                                                <p className='mr-8 ml-auto'> <SiAddthis size={20} onClick={() => arrayHelpers.insert(index, '')} className="cursor-pointer" /> </p>
-                                                                <p className='mr-8 ml-auto'> <MdCancel color='red' size={25} onClick={() => arrayHelpers.remove(index, '')} className="cursor-pointer" /> </p>
-                                                            </div>
-                                                        </div>
-                                                    ))
-                                                ) : (
-                                                    <button type="button" onClick={() => arrayHelpers.push('')}>Add a friend</button>
-                                                )}
-                                                {/* <div><button type="submit">Submit</button></div> */}
-                                            </div>
-                                        )}
-                                    />
-
-                                </div>
 
                                 <div className='border border-black m-5 pb-5 bg-white'>
                                     <div className='bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Property Details</div>
                                     <div className='md:flex'>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Ward No </label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="WardNo">
-                                                <option value="">-- Select connectin Type --</option>
-                                                <option value="NewConnection">New Connection</option>
-                                                <option value="Regularization">Regularization</option>
-                                            </Field>
-                                            <p className='text-red-600 text-sm absolute'><ErrorMessage name="WardNo" /></p>
-                                        </div>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Total Area(in Sq. Ft) <span className='text-red-600'>*</span> </label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="TotalArea" />
-                                            <p className='text-red-600 text-sm absolute'><ErrorMessage name="TotalArea" /></p>
-                                        </div>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Landmark<span className='text-red-600'>*</span></label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="Landmark"></Field>
-                                            <p className='text-red-600 text-sm absolute'><ErrorMessage name="Landmark" /></p>
-                                        </div>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>PIN Code</label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="PINCode"></Field>
-                                            <p className='text-red-600 text-sm  absolute'><ErrorMessage name="PINCode" /></p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div className='border border-black m-5 pb-5 bg-white'>
-                                    <div className='flex bg-gray-600 text-white md:justify-start justify-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Details <p className='mr-8 ml-auto'> <SiAddthis size={25} onClick={handleAddNewApplicant} className="cursor-pointer" /> </p></div>
-                                    <div className='md:flex'>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Owner Name </label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="KhataNo" />
-                                            <p className='text-red-600 text-sm absolute'><ErrorMessage name="KhataNo" /></p>
-                                        </div>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Guardian Name<span className='text-red-600'>*</span> </label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="BindBookNo" />
-                                            <p className='text-red-600 text-sm absolute'><ErrorMessage name="BindBookNo" /></p>
-                                        </div>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Mobile No    <span className='text-red-600'>*</span></label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="AccountNo"></Field>
-                                            <p className='text-red-600 text-sm absolute'><ErrorMessage name="AccountNo" /></p>
-                                        </div>
-                                        <div className='m-3'>
-                                            <label className='text-lg md:text-base md:font-medium font-normal'>Email ID</label>
-                                            <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="AccountNo"></Field>
-                                            <p className='text-red-600 text-sm  absolute'><ErrorMessage name="ElectricityCategoryType" /></p>
+                                        <div className={`grid grid-cols-${propertyCols}`}>
+                                            {propertyNewCol && <div className='m-3 col-span-2'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>{propertyNewCol +" "+ "No"}</label>
+                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name={propertyNewCol}></Field>
+                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name={propertyNewCol} /></p>
+                                            </div>}
+                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>Ward No </label>
+                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="WardNo">
+                                                    <option value="">-- Select Ward No --</option>
+                                                    <option value="1">1</option>
+                                                    <option value="1A">1A</option>
+                                                    <option value="2">2</option>
+                                                    <option value="2A">2A</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </Field>
+                                                <p className='text-red-600 text-sm absolute'><ErrorMessage name="WardNo" /></p>
+                                            </div>
+                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>Total Area(in Sq. Ft) <span className='text-red-600'>*</span> </label>
+                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="TotalArea" />
+                                                <p className='text-red-600 text-sm absolute'><ErrorMessage name="TotalArea" /></p>
+                                            </div>
+                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>Landmark<span className='text-red-600'>*</span></label>
+                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="Landmark"></Field>
+                                                <p className='text-red-600 text-sm absolute'><ErrorMessage name="Landmark" /></p>
+                                            </div>
+                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                                <p className='text-lg md:text-base md:font-medium font-normal'>PIN Code</p>
+                                                <Field className="px-2 my-1 border w-80 md:w-44 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="PINCode"></Field>
+                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name="PINCode" /></p>
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
+
+
                                 <div className='border border-black m-5 pb-5 bg-white'>
                                     <div className='bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Electricity Details</div>
                                     <div className='md:flex'>
@@ -236,8 +196,8 @@ function WaterCitizenForm() {
 
                                 <div className='grid col-span-12 justify-items-center'>
                                     <div>
-                                        <button className='bg-green-500 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Submit</button>
-                                        <button onClick={goBack} className='bg-red-500 px-4 py-1 mx-2 rounded-sm hover:shadow-2xl hover:bg-red-600 shadow-lg'>Cancel</button>
+                                        <button className='bg-green-500 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Save and Next</button>
+                                        {/* <button onClick={goBack} className='bg-red-500 px-4 py-1 mx-2 rounded-sm hover:shadow-2xl hover:bg-red-600 shadow-lg'>Back</button> */}
                                     </div>
                                 </div>
                             </div>
