@@ -21,6 +21,7 @@ function WaterIndex() {
     const [form2, setform2] = useState("hidden")
     const [reviewData, setReviewData] = useState("hidden")
     const [afterFormSubmitted, setAfterFormSubmitted] = useState("hidden")
+    const [fakeUsersData, setfakeUsersData] = useState()
 
     console.log("Form 1 Data : ", form1ValueState)
     console.log("Form 2 Data : ", form2ValueState)
@@ -70,6 +71,10 @@ function WaterIndex() {
 
     }
 
+    const fakeUserData=(fakeData)=>{
+        setfakeUsersData(fakeData)
+    }
+
     // console.log("form1, form2", form1, form2)
 
     return (
@@ -79,9 +84,9 @@ function WaterIndex() {
                     sidebar
                 </div>
                 <div className='md:col-span-10 col-span-12'>
-                    <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} /></p>
-                    <p className={form2}> <WaterApplicant formValue={handleForm2Data} back={backFrom2} /> </p>
-                    <p className={reviewData}> <WaterFormReview formValue={handleForm2Data} back={backFromReview} form1={form1ValueState} form2={form2ValueState} finalSubmit={finalSubmit} handleBackBtn={backFromReview} /> </p>
+                    <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} /></p>
+                    <p className={form2}> <WaterApplicant formValue={handleForm2Data} back={backFrom2} fakeUsersData={fakeUsersData} /> </p>
+                    <p className={reviewData}> <WaterFormReview fakeUsersData={fakeUsersData} formValue={handleForm2Data} back={backFromReview} form1={form1ValueState} form2={form2ValueState} finalSubmit={finalSubmit} handleBackBtn={backFromReview} /> </p>
                     <p className={afterFormSubmitted}> <WaterAfterFormSubmit  /></p>
                 </div>
             </div>

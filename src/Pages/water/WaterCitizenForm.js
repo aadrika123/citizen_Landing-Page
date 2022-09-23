@@ -12,30 +12,103 @@ import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 import { SiAddthis } from 'react-icons/si';
 import { MdCancel } from 'react-icons/md';
+import axios from 'axios';
 
 function WaterCitizenForm(props) {
     const [connectionThroughState, setConnectionThroughState] = useState()
-    const [propertyCols, setPropertyCols] = useState(8)
     const [propertyNewCol, setPropertyNewCol] = useState(null)
+    const [propertyType, setPropertyType] = useState(false)
+    const [applicantPropertyDetailsWidth, setApplicantPropertyDetailsWid] = useState(true)
+    const [isSaf, setIsSaf] = useState(false)
+    const [isholdingProof, setIsholdingProof] = useState(false)
+    // const [fakeUserData, setFakeUserData] = useState()
 
     const selectPropertyType = (e) => {
-        // console.log("Changed..", e)
+        if (e === "Residencial") {
+            setPropertyType(true)
+        } else {
+            setPropertyType(false)
+        }
+
     }
-    // console.log("propertyNewCol", propertyNewCol)
+
 
     const handleConnectionThroughState = (e) => {
-      e !=="" &&  setPropertyCols(10)
         setPropertyNewCol(e)
         setConnectionThroughState(e)
-
+        if (e === "") {
+            props.fakeUserData(null)
+            setApplicantPropertyDetailsWid(true)
+            setIsSaf(false)
+            setIsholdingProof(false)
+        } else if (e === "saf") {
+            // Formik.setFieldValue("connectionThrough", "")
+            setApplicantPropertyDetailsWid(false)
+            setIsSaf(true)
+            setIsholdingProof(false)
+        } else if (e === "idProof") {
+            props.fakeUserData(null)
+            setPropertyNewCol(false)
+            setApplicantPropertyDetailsWid(true)
+            setIsSaf(false)
+            setIsholdingProof(false)
+        } else if (e === "holdingProof") {
+            props.fakeUserData(null)
+            setApplicantPropertyDetailsWid(false)
+            setIsholdingProof(true)
+            setIsSaf(false)
+        } else {
+            props.fakeUserData(null)
+            setApplicantPropertyDetailsWid(false)
+            setIsSaf(false)
+            setIsholdingProof(false)
+        }
     }
 
-    console.log("setConnectionThroughState", connectionThroughState)
+
+    const handleSafField = (value) => {
+        if (value == 5) {
+            alert(`Valid SAF No. ${value}`)
+
+            axios.get('https://dummyjson.com/users/5')
+                .then((e) => {
+                    let fakeUserData = {
+                        "Name": e.data.firstName + e.data.lastName,
+                        "FatherName": e.data.maidenName + e.data.lastName,
+                        "Email": e.data.email,
+                        "Mobile": e.data.phone,
+                    }
+                    props.fakeUserData(fakeUserData)
+                })
+        } else {
+            alert(`Wrong SAF No. ${value}`)
+        }
+    }
+
+    const handleHoldingField = (value) => {
+        if (value == 6) {
+            alert(`Valid Holding No. ${value}`)
+
+            axios.get('https://dummyjson.com/users/6')
+                .then((e) => {
+                    let fakeUserData = {
+                        "Name": e.data.firstName + e.data.lastName,
+                        "FatherName": e.data.maidenName + e.data.lastName,
+                        "Email": e.data.email,
+                        "Mobile": e.data.phone,
+                    }
+                    props.fakeUserData(fakeUserData)
+                })
+        } else {
+            alert(`Wrong Holding No. ${value}`)
+        }
+    }
 
     const submitFormData = (formValue) => {
         props.formValue(formValue)
 
     }
+
 
     const goBack = () => {
         // props.handleBackBtn()
@@ -59,7 +132,7 @@ function WaterCitizenForm(props) {
                     }, 400);
                 }}
 
-                render={({ values }) => (
+                render={({ values, setFieldValue }) => (
                     <Form>
                         <div className=''>
                             <div className=' bg-red-50 py-2 border border-red-200 rounded-sm shadow-2xl pb-10'>
@@ -111,23 +184,54 @@ function WaterCitizenForm(props) {
                                             </Field>
                                             <p className='text-red-600 text-sm  absolute'><ErrorMessage name="ownerType" /></p>
                                         </div>
-
                                     </div>
+                                    {propertyType &&
+                                        <div className='md:flex'>
+                                            <div className='m-3'>
+                                                <p className='text-lg md:text-base md:font-medium font-normal'>Category Type</p>
+                                                <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="CategoryType">
+                                                    <option value="">-- Category Type --</option>
+                                                    <option value="apl">APL</option>
+                                                    <option value="bpl">BPL</option>
+                                                </Field>
+                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name="CategoryType" /></p>
+                                            </div>
+                                            <div className='m-3 ml-4'>
+                                                <p className='text-lg md:text-base md:font-medium font-normal'>Pipeline Type</p>
+                                                <Field className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="PipelineType">
+                                                    <option value="">-- Pipeline Type --</option>
+                                                    <option value="NewPipeline">New Pipeline</option>
+                                                    <option value="OldPipeline">Old Pipeline</option>
+                                                </Field>
+                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name="PipelineType" /></p>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
 
 
                                 <div className='border border-black m-5 pb-5 bg-white'>
                                     <div className='bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Property Details</div>
                                     <div className='md:flex'>
-                                        <div className={`grid grid-cols-${propertyCols}`}>
-                                            {propertyNewCol && <div className='m-3 col-span-2'>
-                                                <label className='text-lg md:text-base md:font-medium font-normal'>{propertyNewCol +" "+ "No"}</label>
-                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name={propertyNewCol}></Field>
+                                        <div className={`grid grid-cols-${applicantPropertyDetailsWidth ? 12 : 10}`}>
+                                            {/* {propertyNewCol && <div className='m-3 col-span-2'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>{propertyNewCol + " " + "No"}</label>
+                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name={propertyNewCol}></Field>
                                                 <p className='text-red-600 text-sm  absolute'><ErrorMessage name={propertyNewCol} /></p>
+                                            </div>} */}
+                                            {isSaf && <div className='m-3 col-span-2'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>SAF No</label>
+                                                <Field onBlur={(e) => handleSafField(e.target.value)} className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="SAFNo"></Field>
+                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name="SAFNo" /></p>
                                             </div>}
-                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                            {isholdingProof && <div className='m-3 col-span-2'>
+                                                <label className='text-lg md:text-base md:font-medium font-normal'>Holding No</label>
+                                                <Field onBlur={(e) => handleHoldingField(e.target.value)} className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="hodlingNo"></Field>
+                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name="hodlingNo" /></p>
+                                            </div>}
+                                            <div className={`m-3 md:col-span-${propertyNewCol ? 2 : 3} col-span-12`}>
                                                 <label className='text-lg md:text-base md:font-medium font-normal'>Ward No </label>
-                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="WardNo">
+                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} as="select" name="WardNo">
                                                     <option value="">-- Select Ward No --</option>
                                                     <option value="1">1</option>
                                                     <option value="1A">1A</option>
@@ -138,23 +242,27 @@ function WaterCitizenForm(props) {
                                                 </Field>
                                                 <p className='text-red-600 text-sm absolute'><ErrorMessage name="WardNo" /></p>
                                             </div>
-                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                            <div className={`m-3 md:col-span-${propertyNewCol ? 2 : 3} col-span-12`}>
                                                 <label className='text-lg md:text-base md:font-medium font-normal'>Total Area(in Sq. Ft) <span className='text-red-600'>*</span> </label>
-                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="TotalArea" />
+                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="TotalArea" />
                                                 <p className='text-red-600 text-sm absolute'><ErrorMessage name="TotalArea" /></p>
                                             </div>
-                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                            <div className={`m-3 md:col-span-${propertyNewCol ? 2 : 3} col-span-12`}>
                                                 <label className='text-lg md:text-base md:font-medium font-normal'>Landmark<span className='text-red-600'>*</span></label>
-                                                <Field className="px-2 my-1 border w-80 md:w-52 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="Landmark"></Field>
+                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="Landmark"></Field>
                                                 <p className='text-red-600 text-sm absolute'><ErrorMessage name="Landmark" /></p>
                                             </div>
-                                            <div className='m-3 md:col-span-2 col-span-12'>
+                                            <div className={`m-3 md:col-span-${propertyNewCol ? 2 : 3} col-span-12`}>
                                                 <p className='text-lg md:text-base md:font-medium font-normal'>PIN Code</p>
-                                                <Field className="px-2 my-1 border w-80 md:w-44 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" type="text" name="PINCode"></Field>
+                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 44} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="PINCode"></Field>
                                                 <p className='text-red-600 text-sm  absolute'><ErrorMessage name="PINCode" /></p>
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div className={`mx-3 md:col-span-12 col-span-12`}>
+                                        <p className='text-lg md:text-base md:font-medium font-normal'>Address</p>
+                                        <Field component="textarea" rows="2" className='p-2 my-1 border w-full outline-blue-600 border-black rounded-sm shadow-xl' name="address"></Field>
+                                        <p className='text-red-600 text-sm  absolute'><ErrorMessage name="address" /></p>
                                     </div>
                                 </div>
 
