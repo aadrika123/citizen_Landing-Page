@@ -11,19 +11,20 @@ import React, { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 import { SiAddthis } from 'react-icons/si';
-import { MdCancel } from 'react-icons/md';
+import { FaHandHoldingWater } from 'react-icons/fa';
+import { BiBuildingHouse } from 'react-icons/bi';
+import { GiElectric } from 'react-icons/gi';
 import axios from 'axios';
 
 function WaterCitizenForm(props) {
     const [connectionThroughState, setConnectionThroughState] = useState()
-    const [propertyNewCol, setPropertyNewCol] = useState(null)
-    const [propertyType, setPropertyType] = useState(false)
-    const [applicantPropertyDetailsWidth, setApplicantPropertyDetailsWid] = useState(true)
-    const [isSaf, setIsSaf] = useState(false)
-    const [isholdingProof, setIsholdingProof] = useState(false)
-    // const [fakeUserData, setFakeUserData] = useState()
+    const [propertyNewCol, setPropertyNewCol] = useState(null) // uses for manage -> md:col-span-${propertyNewCol ? 2 : 3 }
+    const [propertyType, setPropertyType] = useState(false) // used for show extra fileds,If Residencial
+    const [applicantPropertyDetailsWidth, setApplicantPropertyDetailsWid] = useState(true) // used for resize filed width
+    const [isSaf, setIsSaf] = useState(false) // used for if user is choosen to SAF
+    const [isholdingProof, setIsholdingProof] = useState(false)// used for if user is choosen to Holding Proof
 
-    const selectPropertyType = (e) => {
+    const selectPropertyType = (e) => { //// used for show extra fileds,If Residencial
         if (e === "Residencial") {
             setPropertyType(true)
         } else {
@@ -42,7 +43,6 @@ function WaterCitizenForm(props) {
             setIsSaf(false)
             setIsholdingProof(false)
         } else if (e === "saf") {
-            // Formik.setFieldValue("connectionThrough", "")
             setApplicantPropertyDetailsWid(false)
             setIsSaf(true)
             setIsholdingProof(false)
@@ -66,7 +66,7 @@ function WaterCitizenForm(props) {
     }
 
 
-    const handleSafField = (value) => {
+    const handleSafField = (value) => { // this is used for check and get fetch the data of saf number
         if (value == 5) {
             alert(`Valid SAF No. ${value}`)
 
@@ -85,7 +85,7 @@ function WaterCitizenForm(props) {
         }
     }
 
-    const handleHoldingField = (value) => {
+    const handleHoldingField = (value) => { // this is used for check and get fetch the data of Holding filed
         if (value == 6) {
             alert(`Valid Holding No. ${value}`)
 
@@ -110,10 +110,6 @@ function WaterCitizenForm(props) {
     }
 
 
-    const goBack = () => {
-        // props.handleBackBtn()
-    }
-
     return (
         <>
             <Formik
@@ -135,11 +131,9 @@ function WaterCitizenForm(props) {
                 render={({ values, setFieldValue }) => (
                     <Form>
                         <div className=''>
-                            <div className=' bg-red-50 py-2 border border-red-200 rounded-sm shadow-2xl pb-10'>
-                                <span className='flex justify-center text-xl'> Apply Water Connection Form</span>
-
-                                <div className='border border-black m-5 pb-5 bg-white'>
-                                    <div className='bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Apply Water Connection Form</div>
+                            <div className=' bg-white pb-10'>
+                                <div className='bg-white'>
+                                    <div className='flex bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'><FaHandHoldingWater className='mr-2 mt-1' />Apply Water Connection Form</div>
                                     <div className='md:flex'>
                                         <div className='m-3'>
                                             <label className='text-lg md:text-base md:font-medium font-normal'>Type of Connection </label>
@@ -166,7 +160,7 @@ function WaterCitizenForm(props) {
                                         </div>
                                         <div className='m-3'>
                                             <label className='text-lg md:text-base md:font-medium font-normal'>Connection Through <span className='text-red-600'>*</span></label>
-                                            {/* <Field onClick={(e) => setConnectionThroughState(e.target.value)} className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="connectionThrough"> */}
+
                                             <Field onClick={(e) => handleConnectionThroughState(e.target.value)} className="px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl" as="select" name="connectionThrough">
                                                 <option value="">-- Select Connection Through --</option>
                                                 <option value="holdingProof">Holding Proof</option>
@@ -209,16 +203,10 @@ function WaterCitizenForm(props) {
                                     }
                                 </div>
 
-
-                                <div className='border border-black m-5 pb-5 bg-white'>
-                                    <div className='bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Property Details</div>
+                                <div className='bg-white'>
+                                    <div className='flex bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'><BiBuildingHouse className='mr-2 mt-1' />Applicant Property Details</div>
                                     <div className='md:flex'>
                                         <div className={`grid grid-cols-${applicantPropertyDetailsWidth ? 12 : 10}`}>
-                                            {/* {propertyNewCol && <div className='m-3 col-span-2'>
-                                                <label className='text-lg md:text-base md:font-medium font-normal'>{propertyNewCol + " " + "No"}</label>
-                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name={propertyNewCol}></Field>
-                                                <p className='text-red-600 text-sm  absolute'><ErrorMessage name={propertyNewCol} /></p>
-                                            </div>} */}
                                             {isSaf && <div className='m-3 col-span-2'>
                                                 <label className='text-lg md:text-base md:font-medium font-normal'>SAF No</label>
                                                 <Field onBlur={(e) => handleSafField(e.target.value)} className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="SAFNo"></Field>
@@ -254,7 +242,7 @@ function WaterCitizenForm(props) {
                                             </div>
                                             <div className={`m-3 md:col-span-${propertyNewCol ? 2 : 3} col-span-12`}>
                                                 <p className='text-lg md:text-base md:font-medium font-normal'>PIN Code</p>
-                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 44} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="PINCode"></Field>
+                                                <Field className={`px-2 my-1 border w-80 md:w-${applicantPropertyDetailsWidth ? 60 : 52} h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl`} type="text" name="PINCode"></Field>
                                                 <p className='text-red-600 text-sm  absolute'><ErrorMessage name="PINCode" /></p>
                                             </div>
                                         </div>
@@ -266,9 +254,8 @@ function WaterCitizenForm(props) {
                                     </div>
                                 </div>
 
-
-                                <div className='border border-black m-5 pb-5 bg-white'>
-                                    <div className='bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Electricity Details</div>
+                                <div className='bg-white'>
+                                    <div className='flex bg-gray-600 text-white md:text-left text-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'><GiElectric className='mt-1 mr-2' />Applicant Electricity Details</div>
                                     <div className='md:flex'>
                                         <div className='m-3'>
                                             <label className='text-lg md:text-base md:font-medium font-normal'>Khata No </label>
@@ -304,8 +291,7 @@ function WaterCitizenForm(props) {
 
                                 <div className='grid col-span-12 justify-items-center'>
                                     <div>
-                                        <button className='bg-green-500 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Save and Next</button>
-                                        {/* <button onClick={goBack} className='bg-red-500 px-4 py-1 mx-2 rounded-sm hover:shadow-2xl hover:bg-red-600 shadow-lg'>Back</button> */}
+                                        <button className='bg-green-500 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Save and Next</button>                                        
                                     </div>
                                 </div>
                             </div>

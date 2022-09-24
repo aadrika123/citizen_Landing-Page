@@ -8,61 +8,65 @@
 //    DESCRIPTION - 
 //////////////////////////////////////////////////////////////////////////////////////
 import React, { useState } from 'react'
+import LandingNav from '../Landing/LandingNav'
 import WaterAfterFormSubmit from './WaterAfterFormSubmit'
 import WaterApplicant from './WaterApplicant'
 import WaterCitizenForm from './WaterCitizenForm'
 import WaterFormReview from './WaterFormReview'
+import { FaHome } from 'react-icons/fa';
+import Stepper from './Stepper'
+import WaterApplySidebar from './WaterApplySidebar'
 
 function WaterIndex() {
 
-    const [form1ValueState, setform1ValueState] = useState()
-    const [form2ValueState, setform2ValueState] = useState()
-    const [form1, setform1] = useState("block")
-    const [form2, setform2] = useState("hidden")
-    const [reviewData, setReviewData] = useState("hidden")
-    const [afterFormSubmitted, setAfterFormSubmitted] = useState("hidden")
-    const [fakeUsersData, setfakeUsersData] = useState()
+    const [form1ValueState, setform1ValueState] = useState()  // This will store the data of first form
+    const [form2ValueState, setform2ValueState] = useState() // this will store data of secound form
+    const [form1, setform1] = useState("block")  // show hide form 1 when next and back button is clicked.
+    const [form2, setform2] = useState("hidden") //show hide form 2 (Applicant Detais) when next and back button is clicked.
+    const [reviewData, setReviewData] = useState("hidden") //show hide Review Page when next and back button is clicked.
+    const [afterFormSubmitted, setAfterFormSubmitted] = useState("hidden") // If this is set to block than Final screen will shown
+    const [fakeUsersData, setfakeUsersData] = useState() // this state used for set data
 
     console.log("Form 1 Data : ", form1ValueState)
     console.log("Form 2 Data : ", form2ValueState)
 
-    const handleForm1Data = (data) => {
+    const handleForm1Data = (data) => {  // it handles insitial form data
         setform1ValueState(data)
         setform1("hidden")
         setform2("block")
         setReviewData("hidden")
-        setAfterFormSubmitted("hidden")        
+        setAfterFormSubmitted("hidden")
     }
-    const handleForm2Data = (data) => {
+    const handleForm2Data = (data) => { // it handles form 2 (Applicant Details Data)
         setform2ValueState(data)
         setform1("hidden")
         setform2("hidden")
         setReviewData("block")
         setAfterFormSubmitted("hidden")
     }
-    const backFrom2 = () => {
+    const backFrom2 = () => { // handle form 2 (Applicant Details Data) Back Button
         setform1("block")
         setform2("hidden")
         setReviewData("hidden")
         setAfterFormSubmitted("hidden")
     }
-    const backFromReview = () => {
+    const backFromReview = () => { // call when user click on back buttin form Review Screen
         setform1("hidden")
         setform2("block")
         setReviewData("hidden")
         setAfterFormSubmitted("hidden")
     }
 
-    const finalSubmit=()=>{
-        const finalData = {
-            "TypeofConnection": form1ValueState.connectionType,
-            "PropertyType" : form1ValueState.propertyType,
-            "ConnectionThrough" : form1ValueState.connectionThrough,
-            "ownerType": form1ValueState.ownerType,
-            "applicantDetails": form2ValueState
-        }
+    const finalSubmit = () => { // This is called when Final submit button is clicked on review page.
 
-        console.log("Final Data is - ",finalData)
+        const finalData = { // This is array to store all the data at same place.
+            "TypeofConnection": form1ValueState.connectionType,
+            "PropertyType": form1ValueState.propertyType,
+            "ConnectionThrough": form1ValueState.connectionThrough,
+            "ownerType": form1ValueState.ownerType,
+            "applicantDetails": form2ValueState   // this is array data of form 2 (Applicant Details)
+        }
+        console.log("Final Data is - ", finalData)
 
         setform1("hidden")
         setform2("hidden")
@@ -71,7 +75,7 @@ function WaterIndex() {
 
     }
 
-    const fakeUserData=(fakeData)=>{
+    const fakeUserData = (fakeData) => { // Get this data when user enters SAF No/ Holding No.
         setfakeUsersData(fakeData)
     }
 
@@ -79,15 +83,20 @@ function WaterIndex() {
 
     return (
         <>
-            <div className='grid grid-cols-12'>
-                <div className='col-span-2 bg-sky-300 md:block hidden'>
-                    sidebar
+            <LandingNav />
+            <div className='grid md:grid-cols-10 rid-cols-12'>
+                <div className='col-span-2 bg-white md:block hidden'>
+                    <WaterApplySidebar />
                 </div>
-                <div className='md:col-span-10 col-span-12'>
-                    <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} /></p>
-                    <p className={form2}> <WaterApplicant formValue={handleForm2Data} back={backFrom2} fakeUsersData={fakeUsersData} /> </p>
-                    <p className={reviewData}> <WaterFormReview fakeUsersData={fakeUsersData} formValue={handleForm2Data} back={backFromReview} form1={form1ValueState} form2={form2ValueState} finalSubmit={finalSubmit} handleBackBtn={backFromReview} /> </p>
-                    <p className={afterFormSubmitted}> <WaterAfterFormSubmit  /></p>
+                <div className='md:col-span-8 col-span-12 '>
+                    <Stepper />
+                    <h1 className='ml-5 mt-3 font-sans font-bold absolute text-gray-600'><FaHome className="inline mr-2" />Water Connection Application Form</h1>
+                    <div className='m-5 my-12 border border-gray-300 rounded-md shadow-lg'>
+                        <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} /></p>
+                        <p className={form2}> <WaterApplicant formValue={handleForm2Data} back={backFrom2} fakeUsersData={fakeUsersData} /> </p>
+                        <p className={reviewData}> <WaterFormReview fakeUsersData={fakeUsersData} formValue={handleForm2Data} back={backFromReview} form1={form1ValueState} form2={form2ValueState} finalSubmit={finalSubmit} handleBackBtn={backFromReview} /> </p>
+                        <p className={afterFormSubmitted}> <WaterAfterFormSubmit /></p>
+                    </div>
                 </div>
             </div>
         </>
