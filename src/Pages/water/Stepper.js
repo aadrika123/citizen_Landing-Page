@@ -1,3 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Dipu Singh
+//    Version - 1.0
+//    Date - 25 Sep 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - WaterIndex.js
+//    DESCRIPTION - 
+//////////////////////////////////////////////////////////////////////////////////////
 import React from 'react'
 
 function Stepper() {
@@ -20,3 +29,8 @@ function Stepper() {
 }
 
 export default Stepper
+
+/*
+Exported to -
+1. WaterIndex.js
+*/

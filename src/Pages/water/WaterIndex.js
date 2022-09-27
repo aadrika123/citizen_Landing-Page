@@ -60,9 +60,22 @@ function WaterIndex() {
     const finalSubmit = () => { // This is called when Final submit button is clicked on review page.
 
         const finalData = { // This is array to store all the data at same place.
-            "TypeofConnection": form1ValueState.connectionType,
-            "PropertyType": form1ValueState.propertyType,
-            "ConnectionThrough": form1ValueState.connectionThrough,
+            "categoryType" :form1ValueState.categoryType,
+            "pipelineType" :form1ValueState.pipelineType,
+            "SAFNo" :form1ValueState.SAFNo,
+            "holdingNo" :form1ValueState.holdingNo,
+            "wardNo" :form1ValueState.wardNo,
+            "totalArea" :form1ValueState.totalArea,
+            "landmark" :form1ValueState.landmark,
+            "PINCode" :form1ValueState.PINCode,
+            "address" :form1ValueState.address,
+            "khataNo" :form1ValueState.khataNo,
+            "bindBookNo" :form1ValueState.bindBookNo,
+            "accountNo" :form1ValueState.accountNo,
+            "electricityCategoryType" :form1ValueState.electricityCategoryType,
+            "typeofConnection": form1ValueState.connectionType,
+            "propertyType": form1ValueState.propertyType,
+            "connectionThrough": form1ValueState.connectionThrough,
             "ownerType": form1ValueState.ownerType,
             "applicantDetails": form2ValueState   // this is array data of form 2 (Applicant Details)
         }
@@ -71,7 +84,7 @@ function WaterIndex() {
         setform1("hidden")
         setform2("hidden")
         setReviewData("hidden")
-        setAfterFormSubmitted("block")
+        setAfterFormSubmitted("block")  // After final form summition success screen will be visible
 
     }
 
@@ -89,7 +102,7 @@ function WaterIndex() {
                     <WaterApplySidebar />
                 </div>
                 <div className='md:col-span-8 col-span-12 '>
-                    <Stepper />
+                    {/* <Stepper /> */}
                     <h1 className='ml-5 mt-3 font-sans font-bold absolute text-gray-600'><FaHome className="inline mr-2" />Water Connection Application Form</h1>
                     <div className='m-5 my-12 border border-gray-300 rounded-md shadow-lg'>
                         <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} /></p>

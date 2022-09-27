@@ -65,11 +65,11 @@ const WaterApplicant = (props) => {
                                     </div>
                                     {values.applicant.length > 0 &&
                                         values.applicant.map((friend, index) => (
-                                            <div className="md:flex md:mx-5" key={index}>
+                                            <div className="md:flex md:mx-5 mx-2" key={index}>
                                                 <div className="m-1">
-                                                    <p className='text-lg md:text-base md:font-medium font-normal' htmlFor={`applicant.${index}.ApplicantName`}>Name</p>
+                                                    <p className='text-lg md:text-base md:font-medium font-normal' htmlFor={`applicant.${index}.ApplicantName`}>Name<span className='text-red-500 font-semibold'> * </span></p>
                                                     <Field
-                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl"
+                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
                                                         name={`applicant.${index}.ApplicantName`}
                                                         type="text"
                                                         disabled={safData}
@@ -79,9 +79,9 @@ const WaterApplicant = (props) => {
                                                     <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.ApplicantName`} /></p>
                                                 </div>
                                                 <div className='m-1'>
-                                                    <label className='text-lg md:text-base md:font-medium font-normal'>Guardian Name </label>
+                                                    <label className='text-lg md:text-base md:font-medium font-normal'>Guardian Name<span className='text-red-500 font-semibold'> * </span> </label>
                                                     <Field
-                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl"
+                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
                                                         type="text"
                                                         name={`applicant.${index}.GuardianName`}
                                                         disabled={safData}
@@ -92,9 +92,9 @@ const WaterApplicant = (props) => {
                                                 </div>
 
                                                 <div className='m-1'>
-                                                    <label className='text-lg md:text-base md:font-medium font-normal'>Mobile No </label>
+                                                    <label className='text-lg md:text-base md:font-medium font-normal'>Mobile No<span className='text-red-500 font-semibold'> * </span> </label>
                                                     <Field
-                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl"
+                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
                                                         type="text"
                                                         name={`applicant.${index}.phone`}
                                                         disabled={safData}
@@ -105,9 +105,9 @@ const WaterApplicant = (props) => {
                                                 </div>
 
                                                 <div className="m-1">
-                                                    <p className='text-lg md:text-base md:font-medium font-normal'>Email</p>
+                                                    <p className='text-lg md:text-base md:font-medium font-normal'>Email<span className='text-red-500 font-semibold'> * </span></p>
                                                     <Field
-                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-black rounded-sm shadow-xl"
+                                                        className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
                                                         name={`applicant.${index}.email`}
                                                         type="email"
                                                         disabled={safData}
