@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaQuestion } from 'react-icons/fa';
 
-function WaterApplySidebar() {
+function WaterApplySidebar(props) {
     const faqs = [
         {
             id: 1,
@@ -42,6 +42,9 @@ function WaterApplySidebar() {
                     <div className="border bg-red-100 py-1">
                         <h2 className="text-2xl font-semibold flex justify-center">FAQ <FaQuestion size={18} className="mt-2 ml-2" /></h2>
                     </div>
+                    <div className='flex justify-center my-5'>
+                        <button className='bg-blue-400 px-4 py-1 text-lg' onClick={()=>props.dash()}>Water Dashboard</button>
+                    </div>
                     <p className=" my-4 text-gray-600 text-center"> Water Form Reladed Query </p>
                     <div className="space-y-4 p-2">
                         {faqs.map((item, i) => (
@@ -59,3 +62,8 @@ function WaterApplySidebar() {
 }
 
 export default WaterApplySidebar
+
+/*
+Exported to -
+1. WaterIndex.js
+*/
