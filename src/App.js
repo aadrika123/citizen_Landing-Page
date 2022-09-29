@@ -41,6 +41,7 @@ import CitizenTaxCalculator from './Pages/CitizenPropertyEntryForm/TaxCalculator
 import CitizenApplicationByModule from './Pages/citizen/CitizenApplicationByModule';
 import RegistrationStatus from './Pages/CitizenRegStatus/RegistrationStatus';
 import WaterIndex from './Pages/water/WaterIndex';
+import TestNav from './components/testDelete/TestNav';
 
 function App() {
   
@@ -50,8 +51,10 @@ function App() {
 
   return (
     <>
+   
       <contextVar.Provider value={{ ulbdatafun: setulbData, ulbdata: ulbData }}>
         <div className={`sm:w-full transition-all  `}>
+      
           <CitizenChatBot />
           <Routes>
             <Route path="/" element={<LandingMainPage />} />

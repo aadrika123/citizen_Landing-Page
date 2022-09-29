@@ -55,7 +55,7 @@ function SearchBox() {
     return (
         <>
             <div>
-                <div className=' relative inline-block text-left z-50'>
+                <div className=' relative inline-block text-left z-50 '>
                     {/* <button >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white ">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -63,16 +63,16 @@ function SearchBox() {
                     </button> */}
 
 
-                    <div class={` flex w-80`} >
+                    <div class={` flex lg: w-80 h-8`} >
                         <select class="flex-shrink-0  inline-flex items-center py-1 px-0 text-sm font-medium text-center text-gray-600 bg-gray-100 border border-gray-300 rounded-l-full hover:bg-gray-100  dark:bg-gray-500 dark:hover:bg-gray-100  dark:text-white dark:border-gray-600 " onChange={handleChange} >
                             <option value={0}>Jharkhand</option>
                             {selectUlb.map((items) => (
                                 <option value={items.id}>{items.header}</option>
                             ))}
-                        </select>
+                        </select> 
                         <div class="relative w-full">
-                            <input onBlur={()=>handleSearch} type="search" id="search-dropdown" class=" p-1.5 w-full  text-sm text-gray-900 bg-gray-50 rounded-r-full border-l-gray-50 border-l-1 border border-gray-300 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-600 dark:text-white " placeholder="Search ..." required />
-                            <button type="submit" class="absolute top-0 right-0 p-1.5 text-sm font-medium text-black bg-gray-50  rounded-r-full border border-bg-gray-50  hover:bg-gray-50  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-gray-50  dark:hover:bg-gray-50  dark:focus:bg-gray-50 ">
+                            <input onBlur={()=>handleSearch} type="search" id="search-dropdown" class=" p-1.5 w-full  text-sm text-gray-900 bg-gray-50 rounded-r-full border-l-gray-50 border-l-1 border border-gray-300 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-600 dark:text-white h-8" placeholder="Search ..." required />
+                            <button type="submit" class="absolute top-0 right-0 p-1.5 h-8 text-sm font-medium text-black bg-gray-50  rounded-r-full border border-bg-gray-50  hover:bg-gray-50  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-gray-50  dark:hover:bg-gray-50  dark:focus:bg-gray-50 ">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <span class="sr-only">Search</span>
                             </button>
