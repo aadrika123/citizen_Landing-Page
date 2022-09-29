@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FiUpload } from 'react-icons/fi';
+import { MdCloudUpload } from 'react-icons/md';
 
 function DocUploadFormIndex(props) {
 
@@ -23,7 +24,7 @@ function DocUploadFormIndex(props) {
     return (
         <>
 
-            <div className='bg-white shadow-xl m-5'>
+            <div className='bg-white shadow-xl md:m-5'>
                 {/* <div className=''>
                 <div className='p-3 ml-5'>
                     <div className='grid grid-cols-12'>
@@ -149,17 +150,23 @@ function DocUploadFormIndex(props) {
                     </div>
                 </div>
             </div>
-
             {/* Document Upload for Mobile*/}
-            <div className='md:hidden mx-2 '>
-                <div className='flex items-stretch'>
+            <div className='md:hidden'>
+                <p className='mx-2 my-3 font-semibold flex'>< MdCloudUpload size={25} className='mx-2'/>Water Connection Document Upload</p>
+                <div className='text-center bg-sky-200 py-1 font-semibold'>
+                    <span className='mr-3'>#</span>
+                    <span className='mx-2'>Document Name</span>
+                    <span className='mx-2'>Document Type</span>
+                    <span className='mx-2'>Action</span>
+                </div>
+                <div className='mx-2'>
                     {docList.map((e, i = 1) => (
-                        <div>
-                            <div className='flex'>
-                                <div>{i + 1}</div>
-                                <div className='mx-2'>Address Proof</div>
+                        <div className='my-3 border-b-2 py-2'>
+                            <div className='flex align-middle'>
+                                <div className='mx-2'>{i + 1}</div>
+                                <div className='mx-2 text-center'>{e.docName}</div>
                                 <div className='mx-5'>
-                                    <select className='border border-black rounded-sm' name="" id="">
+                                    <select className='py-1 border border-black rounded-sm text-sm' name="" id="">
                                         <option >Select</option>
                                         <option value="Aadhar">Aadhar Card</option>
                                         <option value="pan">PAN Card</option>
@@ -172,6 +179,10 @@ function DocUploadFormIndex(props) {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className='flex justify-center'>
+                    <button onClick={() => { props.back() }} className='bg-red-500 mx-2 text-white px-2 py-1 text-xl w-32 rounded-md shadow-lg'>Back</button>
+                    <button className='bg-indigo-500 mx-2 text-white px-5 py-1 text-xl w-32 rounded-md shadow-lg'>Submit</button>
                 </div>
             </div>
         </>

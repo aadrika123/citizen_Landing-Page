@@ -73,7 +73,7 @@ function WaterIndex() {
                             </div>
                         </div>
                     }
-                    {applyWater && <WaterFormIndex />}
+                    {applyWater && <WaterFormIndex back={waterDashboard}/>}
                     {docUpload && <DocUploadFormIndex back={waterDashboard} />}
                     {makePayment && <PaymentFormIndex back={waterDashboard} />}
                 </div>
