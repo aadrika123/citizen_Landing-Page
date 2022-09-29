@@ -93,9 +93,6 @@ function WaterFormIndex() {
             .catch((err) => {
                 console.log("Error", err)
             })
-
-
-
     }
 
     const fakeUserData = (fakeData) => { // Get this data when user enters SAF No/ Holding No.
