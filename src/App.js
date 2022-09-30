@@ -85,8 +85,6 @@ function App() {
             <Route path='/water/uploadDocs' element={<DocUploadFormIndex />} />
             <Route path='/water/payment' element={<PaymentFormIndex />} />
             <Route path='/water/status' element={<WaterApplicationStatus />} />
-
-
             <Route path='/citizenTaxCal' element={<CitizenTaxCalculator />} />
             <Route path="/register" element={<Register />} />
             <Route path="/registrationStatus" element={<RegistrationStatus />} />
