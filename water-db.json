@@ -1,0 +1,208 @@
+{
+  "waterApplications": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2
+    },
+    {
+      "categoryType": "",
+      "pipelineType": "",
+      "SAFNo": "",
+      "holdingNo": "",
+      "wardNo": "2A",
+      "totalArea": "Non sed sed velit o",
+      "landmark": "Vitae magna nulla re",
+      "PINCode": "Lorem nobis tempora ",
+      "address": "Exercitationem ullam",
+      "khataNo": "Et aut ullamco obcae",
+      "bindBookNo": "Et quia quisquam ass",
+      "accountNo": "Assumenda aut velit ",
+      "electricityCategoryType": "HTS",
+      "typeofConnection": "Regularization",
+      "propertyType": "Residencial",
+      "connectionThrough": "saf",
+      "ownerType": "owner",
+      "applicantDetails": {
+        "applicant": [
+          {
+            "ApplicantName": "Olga Gibson",
+            "GuardianName": "Hiram Hayden",
+            "phone": "+1 (552) 996-1497",
+            "email": "zufaqerun@mailinator.com"
+          },
+          {
+            "ApplicantName": "Lane Cain",
+            "GuardianName": "Bo Hull",
+            "phone": "+1 (137) 486-4298",
+            "email": "temeceqiko@mailinator.com"
+          }
+        ]
+      },
+      "id": 3
+    },
+    {
+      "categoryType": "",
+      "pipelineType": "",
+      "SAFNo": "",
+      "holdingNo": "",
+      "wardNo": "4",
+      "totalArea": "Magni hic id sed pl",
+      "landmark": "Ullam omnis proident",
+      "PINCode": "In sint mollit eum ",
+      "address": "Aspernatur est solut",
+      "khataNo": "Ea vero sint perfer",
+      "bindBookNo": "Et qui commodo cillu",
+      "accountNo": "Dolorem ducimus sim",
+      "electricityCategoryType": "DS",
+      "typeofConnection": "NewConnection",
+      "propertyType": "Appartment",
+      "connectionThrough": "idProof",
+      "ownerType": "owner",
+      "applicantDetails": {
+        "applicant": [
+          {
+            "ApplicantName": "Uriel Hayes",
+            "GuardianName": "Josiah Dennis",
+            "phone": "+1 (576) 792-5322",
+            "email": "lixagiqa@mailinator.com"
+          },
+          {
+            "ApplicantName": "Dylan Hess",
+            "GuardianName": "Rana Jacobs",
+            "phone": "+1 (512) 818-9728",
+            "email": "wavyh@mailinator.com"
+          }
+        ]
+      },
+      "id": 4
+    },
+    {
+      "categoryType": "",
+      "pipelineType": "",
+      "SAFNo": "5",
+      "holdingNo": "6",
+      "wardNo": "1A",
+      "totalArea": "",
+      "landmark": "",
+      "PINCode": "",
+      "address": "",
+      "khataNo": "",
+      "bindBookNo": "",
+      "accountNo": "",
+      "electricityCategoryType": "",
+      "typeofConnection": "Regularization",
+      "propertyType": "Commercial",
+      "connectionThrough": "idProof",
+      "ownerType": "owner",
+      "applicantDetails": {
+        "applicant": [
+          {
+            "ApplicantName": "Macon Atkinson",
+            "GuardianName": "Alexis Craft",
+            "phone": "+1 (112) 316-1476",
+            "email": "zyvyfada@mailinator.com"
+          },
+          {
+            "ApplicantName": "Aidan Ayers",
+            "GuardianName": "Shoshana Richard",
+            "phone": "+1 (151) 326-8763",
+            "email": "tekicu@mailinator.com"
+          },
+          {
+            "ApplicantName": "Jasmine Blevins",
+            "GuardianName": "Cole Harmon",
+            "phone": "+1 (321) 159-3509",
+            "email": "dulonutar@mailinator.com"
+          }
+        ]
+      },
+      "id": 5
+    },
+    {
+      "categoryType": "",
+      "pipelineType": "",
+      "SAFNo": "",
+      "holdingNo": "",
+      "wardNo": "4",
+      "totalArea": "Esse in commodo magn",
+      "landmark": "Asperiores deserunt ",
+      "PINCode": "Pariatur Amet quid",
+      "address": "Et consectetur aliq",
+      "khataNo": "Explicabo Suscipit ",
+      "bindBookNo": "Velit natus dolor et",
+      "accountNo": "Voluptatem rem exerc",
+      "electricityCategoryType": "HTS",
+      "typeofConnection": "Regularization",
+      "propertyType": "Industrial",
+      "connectionThrough": "idProof",
+      "ownerType": "tenant",
+      "applicantDetails": {
+        "applicant": [
+          {
+            "ApplicantName": "Zia Foley",
+            "GuardianName": "Barry Fleming",
+            "phone": "+1 (554) 136-1753",
+            "email": "porewelifa@mailinator.com"
+          },
+          {
+            "ApplicantName": "Kevyn Knapp",
+            "GuardianName": "Carly Phillips",
+            "phone": "+1 (803) 456-1927",
+            "email": "joxyw@mailinator.com"
+          },
+          {
+            "ApplicantName": "Maia Turner",
+            "GuardianName": "Clinton Hopkins",
+            "phone": "+1 (702) 785-5014",
+            "email": "wulagaq@mailinator.com"
+          }
+        ]
+      },
+      "id": 6
+    },
+    {
+      "categoryType": "",
+      "pipelineType": "",
+      "SAFNo": "",
+      "holdingNo": "",
+      "wardNo": "1",
+      "totalArea": "Molestiae quaerat ci",
+      "landmark": "Et deserunt et repel",
+      "PINCode": "Est ducimus in sed",
+      "address": "Aspernatur obcaecati",
+      "khataNo": "Eum alias dolor illu",
+      "bindBookNo": "Error reiciendis qua",
+      "accountNo": "Voluptatem aliquam e",
+      "electricityCategoryType": "HTS",
+      "typeofConnection": "NewConnection",
+      "propertyType": "Institutinal",
+      "connectionThrough": "saf",
+      "ownerType": "tenant",
+      "applicantDetails": {
+        "applicant": [
+          {
+            "ApplicantName": "",
+            "GuardianName": "",
+            "phone": "",
+            "email": ""
+          }
+        ]
+      },
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
