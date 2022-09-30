@@ -43,6 +43,9 @@ import RegistrationStatus from './Pages/CitizenRegStatus/RegistrationStatus';
 import WaterIndex from './Pages/water/WaterIndex';
 import TestNav from './components/testDelete/TestNav';
 import CitizenApplyApplication from './Pages/citizen/CitizenApplyApplication';
+import PaymentFormIndex from './Pages/water/PaymentForm/PaymentFormIndex';
+import WaterApplicationStatus from './Pages/water/Status/WaterApplicationStatus';
+import DocUploadFormIndex from './Pages/water/DocUploadForm/DocUploadFormIndex';
 
 function App() {
   
@@ -78,6 +81,12 @@ function App() {
             <Route path='/safform/:assType' element={<Protected Component={CitizenSafApplicationFormIndex} />} />
             <Route path='/citizenobjection' element={<CitizenObjectionFormIndex />} />
             <Route path='/water' element={<WaterIndex />} />
+            <Route path='/water/apply' element={<WaterIndex />} />
+            <Route path='/water/uploadDocs' element={<DocUploadFormIndex />} />
+            <Route path='/water/payment' element={<PaymentFormIndex />} />
+            <Route path='/water/status' element={<WaterApplicationStatus />} />
+
+
             <Route path='/citizenTaxCal' element={<CitizenTaxCalculator />} />
             <Route path="/register" element={<Register />} />
             <Route path="/registrationStatus" element={<RegistrationStatus />} />
