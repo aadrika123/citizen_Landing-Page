@@ -35,9 +35,9 @@ function SideNav(props) {
     return (
         <>
 
-            <button className='opacity-75  bg-gray-800 float-right shadow-xl px-2 py-1 mt-12 inline ' onClick={toggleNav}>
+            <button className='opacity-75  bg-gray-800 float-right shadow-xl px-2 py-1 mt-12 inline  text-white' onClick={toggleNav}>
            { menuIcon ? <KeyboardDoubleArrowLeftIcon className='text-white' /> :  <KeyboardDoubleArrowRightIcon className='text-white ml-2' />}
-                
+                click
             </button>
 
             <div className={`${navWidth} h-screen mt-12 transition-all duration-500 bg-gray-700 z-20 opacity-80 relative overflow-hidden`} >

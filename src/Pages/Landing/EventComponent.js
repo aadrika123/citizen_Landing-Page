@@ -1,4 +1,4 @@
- //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
 //    Date - 8 Aug 2022
@@ -22,7 +22,7 @@ function EventComponent() {
 
     return (
         <>
-            <div class="max-w-xl mx-auto">
+            {/* <div class="max-w-xl mx-auto">
 
                 <div class="sm:p-2 dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex justify-between items-center  border mb-6">
@@ -61,7 +61,27 @@ function EventComponent() {
                     </div>
                 </div>
 
+            </div> */}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
+                {vals.ulbdata?.events.map((item) => (
+                    <div className='flex'>
+                        <div className=' w-28 md:h-auto md:w-28 mt-2'>
+                            <img class="object-cover" src="https://cdn.siasat.com/wp-content/uploads/2019/11/events-in-hyderabad.jpg" alt="" />
+                        </div>
+                        <div className='flex-1 p-2 text-xs'>
+                            {item.header}
+                        </div>
+                    </div>
+                ))}
+
+                <div class=" text-base font-semibold text-gray-900 dark:text-white">
+                    <p class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 float-right">
+                        View all
+                    </p>
+                </div>
             </div>
+
         </>
     )
 }

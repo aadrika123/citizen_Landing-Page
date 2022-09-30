@@ -17,7 +17,7 @@ import CitizenDetailPage from './Pages/citizen/CitizenDetailPage';
 import CitizenAppliedLicenseDetailTbl from './Pages/citizen/CitizenAppliedLicenseDetailTbl';
 import TestComponent from './components/testDelete/TestComponent';
 import ComplainGrivanceMainPage from './components/ComplainGrivanceMainPage'
-import CitizenWelcome from './Pages/citizen/CitizenWelcome';
+import CitizenWelcome from './Pages/citizen/CitizenApplyApplication';
 import DownloadPage from './components/DownloadPage';
 import { contextVar } from './components/ContextVar';
 import CitizenLicenseFullDetail from './Pages/citizen/CitizenLicenseFullDetail';
@@ -42,6 +42,7 @@ import CitizenApplicationByModule from './Pages/citizen/CitizenApplicationByModu
 import RegistrationStatus from './Pages/CitizenRegStatus/RegistrationStatus';
 import WaterIndex from './Pages/water/WaterIndex';
 import TestNav from './components/testDelete/TestNav';
+import CitizenApplyApplication from './Pages/citizen/CitizenApplyApplication';
 
 function App() {
   
@@ -60,7 +61,7 @@ function App() {
             <Route path="/" element={<LandingMainPage />} />
             <Route path="/about" element={<About />} />
             {/* <Route path="/downloads" element={<Downloads />} /> */}
-            <Route path="/apply" element={<Protected Component={CitizenWelcome} />} />
+            <Route path="/apply" element={<Protected Component={CitizenApplyApplication} />} />
             {/* <Route path="/signup" element={<Protected Component={CitizenRegistrationForm} />} /> */}
             <Route path="/grivancePage" element={<Protected Component={ComplainGrivanceMainPage} />} />
             <Route path="appliedLicenseDetail" element={<Protected Component={CitizenAppliedLicenseDetailTbl} />} />

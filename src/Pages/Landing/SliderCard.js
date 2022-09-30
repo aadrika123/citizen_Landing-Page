@@ -87,7 +87,7 @@ function SliderCard() {
   };
 
   return (
-    <div className=' w-full h-[29rem] mt-2  bg-white drop-shadow-md rounded-lg'>
+    <div className=' w-96 h-[29rem] mt-2  bg-white '>
       <Box sx={{ maxWidth: 300, flexGrow: 1, height: 40 }}>
         <Paper
           square
@@ -95,21 +95,15 @@ function SliderCard() {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            height: 60,
-            pl: 2,
+            height: 40,
+            pl: 3,
+            pt:3,
             bgcolor: 'background.default',
           }}
         >
-          <div className='pb-2 px-8 ml-16 mb-2 '>
-            <span class="flex h-2 w-3">
-              {/* <span class="animate-ping absolute inline-flex h-6 w-32 mt-2 rounded-xl bg-red-500 opacity-75"></span> */}
-              {/* <span class="relative inline-flex rounded-full h-2 w-2  bg-red-400"></span> */}
-              
-                
-          
-            </span>
+          <div className='pb-2 px-8 ml-16 mb-2 '>            
             <span className="text-center inline-block animate-pulse drop-shadow-lg p-1.5 px-2 rounded-lg text-black text-sm">
-            <Typography style={{ color: 'red', fontSize: 18, }}>{notice[activeStep].heading}</Typography>
+              <Typography style={{ color: 'red', fontSize: 18, }}>{notice[activeStep].heading}</Typography>
             </span>
           </div>
         </Paper>
@@ -123,7 +117,7 @@ function SliderCard() {
           {notice.map((step, index) => (
             <div key={step.heading}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <Box sx={{ height: 255, maxWidth: 400, p: 1 }}>
+                <Box sx={{ height: 255, maxWidth: 400, p: 0, }}>
                   {notice[activeStep].content}
                 </Box>
               ) : null}

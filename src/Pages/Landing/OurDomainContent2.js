@@ -12,13 +12,14 @@
 import { useState } from 'react'
 import prop_img from './prop.jpg'
 import bm from './bm.jpg'
+import ModuleImgSlider from './ModuleImgSlider'
 
 function OurDomainContent2() {
     const [contentStyle, setcontentStyle] = useState('-left-40')
     return (
         <>
 
-            <div className="grid grid-cols-12">
+            {/* <div className="grid grid-cols-12">
                 <div className="p-2 col-span-4 h-40">
 
                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-lg relative cursor-pointer hover:scale-110 transition-all duration-200" onMouseEnter={() => setcontentStyle('left-10')} onMouseLeave={() => setcontentStyle('-left-40')}>
@@ -29,7 +30,6 @@ function OurDomainContent2() {
                             <h1 className="title-font text-sm font-medium text-gray-800">Property</h1>
                         </div>
 
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
 
                     </div>
                 </div>
@@ -43,7 +43,7 @@ function OurDomainContent2() {
                             <div className="flex items-center flex-wrap ">
                             </div>
                         </div>
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
+
                     </div>
                 </div>
                 <div className="p-2 col-span-4 h-40">
@@ -56,7 +56,7 @@ function OurDomainContent2() {
                             <div className="flex items-center flex-wrap ">
                             </div>
                         </div>
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
+
                     </div>
                 </div>
                 <div className="p-2 col-span-4 h-40">
@@ -69,7 +69,7 @@ function OurDomainContent2() {
                             <div className="flex items-center flex-wrap ">
                             </div>
                         </div>
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
+
                     </div>
                 </div>
                 <div className="p-2 col-span-4 h-40">
@@ -82,7 +82,7 @@ function OurDomainContent2() {
                             <div className="flex items-center flex-wrap ">
                             </div>
                         </div>
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
+
                     </div>
                 </div>
                 <div className="p-2 col-span-4 h-40">
@@ -95,7 +95,7 @@ function OurDomainContent2() {
                             <div className="flex items-center flex-wrap ">
                             </div>
                         </div>
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
+
                     </div>
                 </div>
                 <div className="p-2 col-span-12 h-40">
@@ -108,8 +108,41 @@ function OurDomainContent2() {
                             <div className="flex items-center flex-wrap ">
                             </div>
                         </div>
-                        {/* <div className={`absolute ${contentStyle} bg-gray-300  py-4 text-xs w-3/5 text-center  top-10 text-white duration-75`}>More About Advertisement</div> */}
+
                     </div>
+                </div>
+            </div> */}
+            <div className='mt-2'>
+                <div className="grid grid-cols-6 md:grid-cols-6 lg:grid-cols-6  divide-x divide-sky-200 border-2 border-gray-200 bg-white">
+                    <div className='' >
+                        <img src='https://cdn-icons-png.flaticon.com/512/1256/1256276.png?w=740&t=st=1664455364~exp=1664455964~hmac=e718e3b23f9c52dc996f4bc11d53ea50b420ae924ac3c26075d9391ed07bacac' className='h-12 w-12 mx-auto p-1   rounded-lg text-gray-400 s' title='property' />
+                        {/* <p className='text-xs text-center text-gray-500'>Property</p> */}
+                    </div>
+                    <div className=''>
+                        <img src='https://cdn-icons-png.flaticon.com/512/1255/1255711.png?w=740&t=st=1664455415~exp=1664456015~hmac=91dcdef5332be61c327d8ddc800c32f2a1f44f53ffc785fdf2ced9f9c5eca87f' className='h-12 w-12 mx-auto p-1 rounded-lg' title='water' />
+                        {/* <p className='text-xs text-center text-gray-500'>Water</p> */}
+                    </div>
+                    <div className=''>
+                        <img src='https://cdn-icons-png.flaticon.com/512/1191/1191643.png?w=740&t=st=1664455734~exp=1664456334~hmac=18d39167c71310448d83350e8a350b7ba0b10aff368ab0b40d14c5dc29f1b46f' className='h-12 w-12 mx-auto p-1  rounded-lg' title='Trade' />
+                        {/* <p className='text-xs text-center text-gray-500'>Trade</p> */}
+                    </div>
+                    <div className=''>
+                        <img src='https://cdn-icons-png.flaticon.com/512/1073/1073159.png?w=740&t=st=1664455570~exp=1664456170~hmac=70d855c083007d3f70583834f0fc4172f0465a7182849573032f8e0847d06d96' className='h-12 w-12 mx-auto p-1 rounded-lg ' title='Advertisement' />
+                        {/* <p className='text-xs text-center text-gray-500'>Advertisement</p> */}
+                    </div>
+                    <div className=''>
+                        <img src='https://cdn-icons-png.flaticon.com/128/864/864034.png?uid=R75839436&ga=GA1.2.679888497.1658218961' className='h-12 w-12 mx-auto p-1   rounded-lg' title='Building Plans' />
+                        {/* <p className='text-xs text-center text-gray-500'>Building Plans</p> */}
+                    </div>
+                    <div className=''>
+                        <img src='https://cdn-icons-png.flaticon.com/512/1256/1256486.png?w=740&t=st=1664455859~exp=1664456459~hmac=cc4d84bf9496901ad94aa7a1699410e420de70d51feef84093a8ca6d30ac1e6d' className='h-12 w-12 mx-auto p-1 rounded-lg' title='Birth&Death Certificate' />
+                        {/* <p className='text-xs text-center text-gray-500'>Birth&Death Certificate</p> */}
+                    </div>
+
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1  p-2 ">
+                    <div className='  rounded-lg'><ModuleImgSlider /></div>
                 </div>
             </div>
 

@@ -23,8 +23,8 @@ code {
   animation: spin 3s linear infinite;
 }
 @keyframes spin {
-  0% { content: "JUIDCO"; }
-  12% {content:"Jharkhand Urban Infrastructure Development Company"; }
+  5% { content: "JUIDCO"; }
+  20% {content:"Jharkhand Urban Infrastructure Development Company"; }
   /* 40% {content:"engineering"; }
   60% {content:"crypto"; }
   80% {content:"consulting"; }

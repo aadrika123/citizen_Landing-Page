@@ -15,6 +15,7 @@ import { Formik } from 'formik';
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup';
 import axios from 'axios';
+import TestNav from '../../components/testDelete/TestNav';
 
 function CitizenAccountSetting() {
 
@@ -50,7 +51,7 @@ function CitizenAccountSetting() {
 
     //method  to get loged citizen data
     const getData = () => {
-       
+
         axios({
             method: "GET",
             url: "http://192.168.0.166/api/my-profile-details",
@@ -77,7 +78,7 @@ function CitizenAccountSetting() {
         axios({
             method: "PUT",
             url: "http://192.168.0.166/api/edit-my-profile",
-            data: values ,
+            data: values,
             headers: {
                 Authorization: `Bearer ${bearerTokenInit}`,
                 Accept: 'application/json',
@@ -85,7 +86,7 @@ function CitizenAccountSetting() {
         })
             .then(function (response) {
                 console.log(" Submitted......", response);
-              
+
             })
             .catch(function (response) {
 
@@ -99,6 +100,7 @@ function CitizenAccountSetting() {
 
     return (
         <>
+        <TestNav/>
             <Formik
                 initialValues={{ ulb_name: '', mobile: '', name: '', guardian_name: '', email: '', armed_force: '', specially_abled: '' }}
                 onSubmit={(values, { setSubmitting }) => {
@@ -184,7 +186,7 @@ function CitizenAccountSetting() {
                                                             value={values.mobile}
 
                                                         />
-                                                        <label for=""  className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
+                                                        <label for="" className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
 
                                                     </div>
                                                 </div>
@@ -205,7 +207,7 @@ function CitizenAccountSetting() {
                                                             value={values.name}
 
                                                         />
-                                                        <label for=""  className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
+                                                        <label for="" className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
 
                                                     </div>
                                                 </div>
@@ -226,7 +228,7 @@ function CitizenAccountSetting() {
                                                             value={values.email}
 
                                                         />
-                                                        <label for=""  className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
+                                                        <label for="" className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
 
                                                     </div>
                                                 </div>
@@ -278,7 +280,7 @@ function CitizenAccountSetting() {
                                                             onBlur={handleBlur}
                                                             value={values.dob}
                                                         />
-                                                        <label for=""  className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
+                                                        <label for="" className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
 
                                                     </div>
                                                 </div>
@@ -309,7 +311,7 @@ function CitizenAccountSetting() {
                                                             onBlur={handleBlur}
                                                             value={values.armed_force}
                                                         />
-                                                        <label for=""  className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
+                                                        <label for="" className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
 
                                                     </div>
                                                 </div>
@@ -340,7 +342,7 @@ function CitizenAccountSetting() {
                                                             onBlur={handleBlur}
                                                             value={values.specially_abled}
                                                         />
-                                                        <label for=""  className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
+                                                        <label for="" className="absolute text-xs text-blue-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1  origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Update</label>
 
                                                     </div>
                                                 </div>
@@ -371,6 +373,7 @@ function CitizenAccountSetting() {
                     </form>
                 )}
             </Formik>
+            
         </>
     )
 }

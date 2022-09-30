@@ -43,14 +43,15 @@ function LandingMainPage() {
         <>
             <div>
            
-                <div className='fixed z-50 w-full'><LandingNav /></div>
+                <div className='fixed w-full z-50'><LandingNav /></div>
                 {/* <div className='fixed z-50 ml-6'><Logo /></div> */}
                 <VideoComponent />
                 {/* <div className=''><SliderImage /></div> */}
 
-                <div><MarqueeComponent /></div>
+                <div className=''><MarqueeComponent /></div>
                 <div><SectionOurDomain /></div>
-                <AboutJharkhand />
+                {/* <div> <AboutJharkhand /></div> */}
+               
                 <div><LeadersGallery /></div>
                 <div><Footer /> </div>
             </div>

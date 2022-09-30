@@ -1,4 +1,4 @@
- //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
 //    Date - 8 Aug 2022
@@ -70,7 +70,7 @@ export default function KnowledageTab() {
 
         </div>
         <div>
-          <div className=' w-80 h-[29rem] mt-2  bg-white drop-shadow-md rounded-lg'>
+          <div className=' w-96 h-[29rem] mt-2  bg-white '>
             <Box sx={{ width: '100%', height: '100%' }}>
               <Box sx={{}}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

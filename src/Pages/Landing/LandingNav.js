@@ -46,10 +46,9 @@ function LandingNav() {
                                     <div className=''>
                                         <SearchBox />
                                     </div>
-
                                 </li>
                                 <li>
-                                    <div className='flex flex-row -ml-6 mt-2'>
+                                    <div className='flex flex-row -ml-4 mt-2'>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 text-gray-200 " viewBox="0 0 20 20" fill="currentColor">
                                                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -63,7 +62,7 @@ function LandingNav() {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className='flex flex-row -ml-6 mt-2'>
+                                    <div className='flex flex-row -ml-4 mt-2'>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 text-gray-200 " viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
@@ -77,14 +76,14 @@ function LandingNav() {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className='flex flex-row -ml-6 mt-2' onClick={openDropdown}>
+                                    <div className='flex flex-row -ml-4 mt-2' onClick={openDropdown}>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 text-gray-200" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                                             </svg>
                                         </div>
                                         <div>
-                                            <p className=' text-gray-200  text-xs '>Menu</p>
+                                            <p className=' text-gray-200  text-xs '>More</p>
                                         </div>
                                     </div>
                                     <div class={`${menuDropdown} origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
@@ -113,33 +112,35 @@ function LandingNav() {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className='flex flex-row -ml-6 mt-2'>
-                                        <div className='flex-1'>
+                                    <div className='flex flex-row -ml-4 mt-2'>
+                                        <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-200" viewBox="0 0 20 20" fill="currentColor">
                                                 <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
                                             </svg>
                                         </div>
-                                        <div className='flex-1'>
+                                        <div>
                                             <Link to="/login">
-                                                <h2 class="   hover:cursor-pointer  hover:text-gray-200 text-gray-200 text-xs">Login</h2>
+                                                <p className=' text-gray-200  text-xs '>Login</p>
                                             </Link>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div className='flex flex-row -ml-4 mt-2'>
-                                        <div className='flex-1'>
+                                        <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-200" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
                                             </svg>
                                         </div>
-                                        <div className='flex-1'>
-                                            <Link to='/register'>
-                                                <h2 class=" hover:cursor-pointer hover:text-gray-200 text-gray-200  text-xs ">Signup</h2>
+                                        <div>
+                                            <Link to="/register">
+                                                <p className=' text-gray-200  text-xs '>Signup</p>
                                             </Link>
                                         </div>
                                     </div>
                                 </li>
+
+
                             </ul>
                         </div>
                     </div>
