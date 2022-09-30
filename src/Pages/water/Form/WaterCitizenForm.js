@@ -33,7 +33,6 @@ function WaterCitizenForm(props) {
 
     }
 
-
     const handleConnectionThroughState = (e) => {
         setPropertyNewCol(e)
         setConnectionThroughState(e)
@@ -113,8 +112,8 @@ function WaterCitizenForm(props) {
     return (
         <>
             <Formik
-                initialValues={{ connectionType: '', propertyType: '', connectionThrough: '', ownerType: '', categoryType : '', pipelineType : '', SAFNo : '', holdingNo : '', wardNo : '', totalArea : '', landmark : '', PINCode : '', address : '', khataNo : '', bindBookNo : '', accountNo : '', electricityCategoryType : '' }}
-                
+                initialValues={{ connectionType: '', propertyType: '', connectionThrough: '', ownerType: '', categoryType: '', pipelineType: '', SAFNo: '', holdingNo: '', wardNo: '', totalArea: '', landmark: '', PINCode: '', address: '', khataNo: '', bindBookNo: '', accountNo: '', electricityCategoryType: '' }}
+
                 validationSchema={Yup.object({
                     connectionType: Yup.string().required('Required'),
                     propertyType: Yup.string().required('Required.'),
@@ -292,7 +291,8 @@ function WaterCitizenForm(props) {
 
                                 <div className='grid col-span-12 justify-items-center'>
                                     <div>
-                                        <button className='bg-green-500 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Save and Next</button>                                        
+                                        <button onClick={() => props.backToWaterDash()} className='bg-red-500 mx-2 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-red-400' type="submit">Cancel</button>
+                                        <button className='bg-green-500 mx-2 px-4 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400'>Save and Next</button>
                                     </div>
                                 </div>
                             </div>
@@ -311,5 +311,5 @@ export default WaterCitizenForm
 
 /*
 Exported to -
-1. WaterIndex.js
+1. WaterFormIndex.js
 */

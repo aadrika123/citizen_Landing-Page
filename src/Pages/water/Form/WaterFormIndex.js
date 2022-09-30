@@ -18,7 +18,7 @@ import Stepper from './Stepper'
 import WaterApplySidebar from '../WaterApplySidebar'
 import axios from 'axios'
 
-function WaterFormIndex() {
+function WaterFormIndex(props) {
 
     const [form1ValueState, setform1ValueState] = useState()  // This will store the data of first form
     const [form2ValueState, setform2ValueState] = useState() // this will store data of secound form
@@ -30,6 +30,10 @@ function WaterFormIndex() {
 
     console.log("Form 1 Data : ", form1ValueState)
     console.log("Form 2 Data : ", form2ValueState)
+
+    const backToWaterDash=()=>{
+        props.back();
+    }
 
     const handleForm1Data = (data) => {  // it handles insitial form data
         setform1ValueState(data)
@@ -103,22 +107,13 @@ function WaterFormIndex() {
 
     return (
         <>
-            {/* <LandingNav /> */}
-            {/* <div className='grid md:grid-cols-10 rid-cols-12'> */}
-            {/* <div className='col-span-2 bg-white md:block hidden'> */}
-            {/* <WaterApplySidebar /> */}
-            {/* </div> */}
-            {/* <div className='md:col-span-8 col-span-12 '> */}
-            {/* <Stepper /> */}
-            <h1 className='ml-5 mt-3 font-sans font-bold absolute text-gray-600'><FaHome className="inline mr-2" />Water Connection Application Form</h1>
+            <h1 className='ml-5 -mt-8 font-sans font-bold absolute text-gray-600'><FaHome className="inline mr-2" />Water Connection Application Form</h1>
             <div className='m-5 my-12 border border-gray-300 rounded-md shadow-lg'>
-                <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} /></p>
+                <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} backToWaterDash={backToWaterDash}/></p>
                 <p className={form2}> <WaterApplicant formValue={handleForm2Data} back={backFrom2} fakeUsersData={fakeUsersData} /> </p>
                 <p className={reviewData}> <WaterFormReview fakeUsersData={fakeUsersData} formValue={handleForm2Data} back={backFromReview} form1={form1ValueState} form2={form2ValueState} finalSubmit={finalSubmit} handleBackBtn={backFromReview} /> </p>
                 <p className={afterFormSubmitted}> <WaterAfterFormSubmit /></p>
             </div>
-            {/* </div> */}
-            {/* </div> */}
         </>
     )
 }
@@ -127,5 +122,5 @@ export default WaterFormIndex
 
 /*
 Exported to -
-1. WaterIndex.js
+1. WaterApplyListBlocks.js
 */
