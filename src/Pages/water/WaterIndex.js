@@ -1,81 +1,79 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Dipu Singh
+//    Version - 1.0
+//    Date - 20 Sep 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - WaterIndex.js
+//    DESCRIPTION - This is Main Index Component of water module.
+//////////////////////////////////////////////////////////////////////////////////////
 import React, { useState } from 'react'
 import WaterFormIndex from './Form/WaterFormIndex'
 import LandingNav from '../Landing/LandingNav'
 import WaterApplySidebar from './WaterApplySidebar'
-import regimg from './Assets/regimg.png'
-import uploadpic from './Assets/uploadpic.png'
-import paymentImg from './Assets/credit-card.png'
+
 import DocUploadFormIndex from './DocUploadForm/DocUploadFormIndex'
 import PaymentFormIndex from './PaymentForm/PaymentFormIndex'
+import { AiOutlineMenuFold } from 'react-icons/ai';
+import WaterMobileMenu from './Components/WaterMobileMenu'
+import WaterDashMainBlocks from './Components/WaterDashMainBlocks'
+import WaterBreadcrumb from './Components/WaterBreadcrumb'
 
 function WaterIndex() {
-    const [blocks, setBlocks] = useState(true)
-    const [applyWater, setApplyWater] = useState(false)
-    const [docUpload, setDocUpload] = useState(false)
-    const [makePayment, setMakePayment] = useState(false)
+    const [blocks, setBlocks] = useState(true) // This is used for show/hide blocks(dash menus)
+    const [applyWater, setApplyWater] = useState(false) //This will show/hide water application form
+    const [docUpload, setDocUpload] = useState(false) //This will show/hide Docment upload screen
+    const [makePayment, setMakePayment] = useState(false) //This will show/hide Payment Screen 
+    const [mobileSideMenu, setMobileSideMenu] = useState(false) // used for show hide mobile menu
 
-    const waterDashboard = () => {
+    const waterDashboard = () => { // used for show blocks and hide all the form components
+        console.log("this is water dash calling..")
         setBlocks(true)
         setApplyWater(false)
         setDocUpload(false)
         setMakePayment(false)
     }
 
-    const handleApplyNew = () => {
+    const handleApplyNew = () => {  // this will hide blocks and show water application form
         setBlocks(false)
         setApplyWater(true)
     }
 
-    const handleDocUpload = () => {
+    const handleDocUpload = () => { // this will hide blocks and show Document Screen
         setBlocks(false)
         setDocUpload(true)
     }
 
-    const handlePayment = () => {
+    const handlePayment = () => { // This will hide blocks and show Payment Screen
         setBlocks(false)
         setMakePayment(true)
     }
 
 
+    const handleMobileMenu = () => {  // This is action for mobile menu open/close
+        console.log("Cliked mobile menu..")
+        setMobileSideMenu(!mobileSideMenu)
+    }
+
+
     return (
         <>
-            <LandingNav />
-            <div className='grid md:grid-cols-10 rid-cols-12'>
+            <LandingNav />  {/* show main nagivation menu*/}
+            <div className='grid md:grid-cols-10 grid-cols-12 select-none'>
                 <div className='col-span-2 bg-white md:block hidden'>
-                    <WaterApplySidebar dash={waterDashboard} />
+                    <WaterApplySidebar dash={waterDashboard} />  {/* Show water Sidebar on desktop*/}
                 </div>
-                <div className='md:col-span-8 col-span-12 '>
-                    {blocks &&
-                        <div className='md:flex m-5'>
-                            <div onClick={handleApplyNew} className='m-3'>
-                                <div className='bg-indigo-300 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-green-400 transition duration-500 hover:scale-105'>
-                                    <div className='flex justify-center p-3'>
-                                        <img src={regimg} className="h-14 opacity-60" alt="" />
-                                    </div>
-                                    <p className='font-bold text-gray-800 text-center md:text-lg text-2xl'>Apply New Connection</p>
-                                </div>
-                            </div>
-                            <div onClick={handleDocUpload} className='m-3'>
-                                <div className='bg-red-200 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-red-300 transition duration-500 hover:scale-105'>
-                                    <div className='flex justify-center p-3'>
-                                        <img src={uploadpic} className="h-14 opacity-60" alt="" />
-                                    </div>
-                                    <p className='font-bold text-gray-800 text-center md:text-lg text-2xl'>Documet Upload</p>
-                                </div>
-                            </div>
-                            <div onClick={handlePayment} className='m-3'>
-                                <div className='bg-green-300 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-green-400 transition duration-500 hover:scale-105'>
-                                    <div className='flex justify-center p-3'>
-                                        <img src={paymentImg} className="h-14 opacity-60" alt="" />
-                                    </div>
-                                    <p className='font-bold text-gray-800 text-center md:text-lg text-2xl'>Make Payment</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    {applyWater && <WaterFormIndex back={waterDashboard}/>}
-                    {docUpload && <DocUploadFormIndex back={waterDashboard} />}
-                    {makePayment && <PaymentFormIndex back={waterDashboard} />}
+                <div className='md:col-span-8 col-span-12 relative'>
+                    <div className='bg-sky-300 w-full h-8 md:hidden'>
+                        <AiOutlineMenuFold onClick={handleMobileMenu} className='absolute ml-2 cursor-pointer' size={30} /> {/* This icon will shown on mobile only -- used for show/hide sub menu */}
+                        <p className='text-center font-semibold text-xl '>Water Releted Services</p>
+                    </div>
+                    <WaterBreadcrumb />  {/* WaterBreadcrumb used for navigate the page*/}
+                    {mobileSideMenu && <WaterMobileMenu />} {/* Show hide mobile side menu*/}
+                    {blocks && <WaterDashMainBlocks handleApplyNew={handleApplyNew} handleDocUpload={handleDocUpload} handlePayment={handlePayment} />} {/* Show/Hide Water Dashboard Main blocks*/}
+                    {applyWater && <WaterFormIndex back={waterDashboard} />} {/*Show Water Application form */}
+                    {docUpload && <DocUploadFormIndex back={waterDashboard} />} {/* Show doument upload form*/}
+                    {makePayment && <PaymentFormIndex back={waterDashboard} />} {/* Show payment Page*/}
                 </div>
             </div>
         </>

@@ -107,7 +107,7 @@ function WaterFormIndex(props) {
 
     return (
         <>
-            <h1 className='ml-5 mt-3 font-sans font-bold absolute text-gray-600'><FaHome className="inline mr-2" />Water Connection Application Form</h1>
+            <h1 className='ml-5 -mt-8 font-sans font-bold absolute text-gray-600'><FaHome className="inline mr-2" />Water Connection Application Form</h1>
             <div className='m-5 my-12 border border-gray-300 rounded-md shadow-lg'>
                 <p className={form1}> <WaterCitizenForm formValue={handleForm1Data} fakeUserData={fakeUserData} backToWaterDash={backToWaterDash}/></p>
                 <p className={form2}> <WaterApplicant formValue={handleForm2Data} back={backFrom2} fakeUsersData={fakeUsersData} /> </p>
@@ -122,5 +122,5 @@ export default WaterFormIndex
 
 /*
 Exported to -
-1. WaterIndex.js
+1. WaterApplyListBlocks.js
 */
