@@ -66,7 +66,7 @@ function EventComponent() {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
                 {vals.ulbdata?.events.map((item) => (
                     <div className='flex'>
-                        <div className=' w-28 md:h-auto md:w-28 mt-2'>
+                        <div className=' w-24 md:h-auto md:w-24 mt-2'>
                             <img class="object-cover" src="https://cdn.siasat.com/wp-content/uploads/2019/11/events-in-hyderabad.jpg" alt="" />
                         </div>
                         <div className='flex-1 p-2 text-xs'>

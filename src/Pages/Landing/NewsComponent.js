@@ -81,7 +81,7 @@ function NewsComponent() {
                 </div>
                 {vals.ulbdata?.news.map((item) => (
                     <div className='flex'>
-                        <div className=' w-28 md:h-auto md:w-28 mt-2'>
+                        <div className=' w-24 md:h-auto md:w-24 mt-2'>
                             <img class="object-cover" src="https://image.shutterstock.com/image-vector/breaking-news-background-world-global-260nw-720038230.jpg" alt="" />
                         </div>
                         <div className='flex-1 p-2 text-xs'>

@@ -1,4 +1,4 @@
- //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
 //    Date - 8 Aug 2022
@@ -21,6 +21,7 @@ import SideNav from './SideNav';
 import LandingNav from '../Landing/LandingNav';
 import CitizenAccountSetting from './CitizenAccountSetting';
 import CitizenApplicationByModule from './CitizenApplicationByModule';
+import { border } from '@mui/system';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -66,33 +67,35 @@ export default function CitizenDetailPage() {
     <>
       <LandingNav />
 
-      <div className='flex flex-row'>
-        <div className='flex-1'>
+      <div className=''>
+        <div className=''>
           {/* <SideNav /> */}
         </div>
 
         {/* citizen Account tabs  */}
 
 
-        <div className='flex-4 border bg-white w-full'>
-          <Box sx={{}}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}>
-              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ backgroundColor: '#eee' }}>
-                <Tab label="Account" {...a11yProps(0)} />
-                <Tab label="Applied Applications" {...a11yProps(1)} />
-                {/* <Tab label="Notification" {...a11yProps(2)} /> */}
-              </Tabs>
+        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 p-4 '>
+          <div className='mt-24'>
+          <img src='https://img.freepik.com/free-vector/app-development-concept-illustration_114360-5164.jpg?w=740&t=st=1664544018~exp=1664544618~hmac=51668f4b12e09769de5bc0e454876b1f9e103159e52b93fc5cc40b70fbd109ad'/>
+          </div>
+          <div className='col-span-3 border'>
+            <Box sx={{ width: 'full', margin: 'auto', }}>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}>
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ backgroundColor: '#eee' }}>
+                  <Tab label="Account" {...a11yProps(0)} />
+                  <Tab label="Applied Applications" {...a11yProps(1)} />
+                </Tabs>
+              </Box>
+              <TabPanel value={value} index={0}>
+                <CitizenAccountSetting />
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <CitizenApplicationByModule />
+              </TabPanel>
+
             </Box>
-            <TabPanel value={value} index={0}>
-              <CitizenAccountSetting />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <CitizenApplicationByModule />
-            </TabPanel>
-            {/* <TabPanel value={value} index={2}>
-              <CitizenNotification />
-            </TabPanel> */}
-          </Box>
+          </div>
         </div>
       </div>
     </>

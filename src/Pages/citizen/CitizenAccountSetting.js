@@ -100,20 +100,20 @@ function CitizenAccountSetting() {
 
     return (
         <>
-        <TestNav/>
-            <Formik
+            <TestNav />
+            {/* <Formik
                 initialValues={{ ulb_name: '', mobile: '', name: '', guardian_name: '', email: '', armed_force: '', specially_abled: '' }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                        // alert(JSON.stringify(values, null, 2));
+             
                         modifyData(values)
                         setSubmitting(false);
-                        // console.log("Data values :- ",values)
+                    
 
                     }, 100);
                 }}
             >
-                {/* citizen profile detail */}
+              
                 {({
                     values,
                     errors,
@@ -372,8 +372,8 @@ function CitizenAccountSetting() {
                         </div>
                     </form>
                 )}
-            </Formik>
-            
+            </Formik> */}
+
         </>
     )
 }
