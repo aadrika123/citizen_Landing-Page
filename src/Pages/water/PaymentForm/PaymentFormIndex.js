@@ -5,6 +5,51 @@ function PaymentFormIndex(props) {
     return (
         <>
             <div>
+
+                <div className='m-5'>
+                    <table>
+                        <thead className='bg-sky-300 px-5'>
+                            <tr className='tracking-wide'>
+                                <td className='px-5'>#</td>
+                                <td className='px-5'>Applicaion No</td>
+                                <td className='px-5'>Service Name</td>
+                                <td className='px-5'>Status</td>
+                                <td className='px-5'>Expiry Date</td>
+                                <td className='px-5'>Payment</td>
+                                <td className='px-5'>Receipt</td>
+                            </tr>
+                        </thead>
+                        <tbody className='my-5'>
+                            <tr className='p-8'>
+                                <td className='px-5'>1</td>
+                                <td className='px-5'>96875874874</td>
+                                <td className='px-5'>Apply Water Connection</td>
+                                <td className='px-5'>Document Pending</td>
+                                <td className='px-5'>17-Sep-2022</td>
+                                <td className='px-5'>Complated</td>
+                                <td className='flex justify-center'>
+                                    <button className='px-2 bg-indigo-500 text-white rounded-sm shadow-lg'>Print</button>
+                                </td>
+                            </tr>
+                            <tr className=''>
+                                <td className='px-5'>2</td>
+                                <td className='px-5'>9698748574</td>
+                                <td className='px-5'>Tanker Booking</td>
+                                <td className='px-5'>Payment Pending</td>
+                                <td className='px-5'>17-Sep-2022</td>
+                                <td className='px-5'>
+                                    <button className='px-2 bg-green-500 text-white rounded-sm shadow-lg'>Pay Now</button>
+                                </td>
+                                <td className='px-5'>
+                                    <button className='px-2 bg-indigo-500 text-white rounded-sm shadow-lg'>Print</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
                 <div className='bg-red-200 m-3 md:h-72 h-96 md:w-2/3 md:m-auto shadow-lg rounded-sm md:mt-10'>
                     <div className='bg-indigo-200 border-b-2 py-1 pl-3 font-semibold border-red-400 shadow-md flex'><HiCurrencyRupee size={20} className='mt-1 mr-1' /> Payment</div>
                     <div className='grid grid-cols-12 px-8 py-3 leading-8'>

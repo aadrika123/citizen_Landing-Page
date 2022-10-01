@@ -13,8 +13,11 @@ import uploadpic from '../Assets/uploadpic.png'
 import progress from '../Assets/progress.png'
 import paymentImg from '../Assets/credit-card.png'
 import WaterApplyListBlocks from './WaterApplyListBlocks'
+import { useNavigate } from 'react-router-dom'
 
 function WaterDashMainBlocks(props) {
+
+    let navigate = useNavigate();
 
     const [showApplyListBlock, setShowApplyListBlock] = useState(false)
     const [hideCurrentBlock, setHideCurrentBlock] = useState(true)
@@ -27,6 +30,10 @@ function WaterDashMainBlocks(props) {
     const showDash=()=>{
         setShowApplyListBlock(false)
         setHideCurrentBlock(true)
+    }
+
+    const handleViewApplicationStatus=()=>{ // Route to new screen /water/status (Water Application Status)
+        navigate('/water/status')
     }
 
     return (
@@ -45,7 +52,7 @@ function WaterDashMainBlocks(props) {
                             </div>
                         </div>
                         <div className='m-3'>
-                            <div className='bg-yellow-300 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-yellow-400 transition duration-500 hover:scale-105'>
+                            <div onClick={handleViewApplicationStatus} className='bg-yellow-300 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-yellow-400 transition duration-500 hover:scale-105'>
                                 <div className='flex justify-center p-3'>
                                     <img src={progress} className="h-14 opacity-80" alt="" />
                                 </div>
