@@ -79,10 +79,10 @@ export default function CitizenDetailPage() {
           <div className='mt-24'>
           <img src='https://img.freepik.com/free-vector/app-development-concept-illustration_114360-5164.jpg?w=740&t=st=1664544018~exp=1664544618~hmac=51668f4b12e09769de5bc0e454876b1f9e103159e52b93fc5cc40b70fbd109ad'/>
           </div>
-          <div className='col-span-3 border'>
+          <div className='col-span-3 '>
             <Box sx={{ width: 'full', margin: 'auto', }}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ backgroundColor: '#eee' }}>
+              <Box sx={{   width: '100%' }}>
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" >
                   <Tab label="Account" {...a11yProps(0)} />
                   <Tab label="Applied Applications" {...a11yProps(1)} />
                 </Tabs>

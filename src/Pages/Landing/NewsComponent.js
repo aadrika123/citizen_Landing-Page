@@ -71,9 +71,9 @@ function NewsComponent() {
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
                 <div class="flex justify-between items-center  -mt-6">
-                    <h3 class="text-xl font-bold leading-none text-gray-600 ">Jharkhand Headlines</h3>
+                    <h3 class="text-md font-bold  text-gray-600 ">Jharkhand Headlines</h3>
                     <span class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 ml-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class=" h-8   inline-block mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class=" h-6  w-5 md:h-auto md:w-5 inline-block mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
                             <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
                         </svg>

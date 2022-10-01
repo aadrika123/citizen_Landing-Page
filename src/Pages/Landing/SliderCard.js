@@ -55,10 +55,10 @@ const notice = [
     heading: 'IMPORTANT',
     content: <NoticeComponent />,
   },
-  // {
-  //   heading: 'NOTICE',
-  //   content: <NoticeComponent />,
-  // },
+  {
+    heading: 'NOTICE',
+    content: <NoticeComponent />,
+  },
   //   {
   //     heading:'Newss' ,
   //     content: <SectionOurDomain/>,

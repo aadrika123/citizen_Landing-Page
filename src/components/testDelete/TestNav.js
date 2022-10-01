@@ -134,7 +134,7 @@ function TestNav() {
 
                                             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 p-4'>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">ULB :-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">ULB :-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1"> {fetchData?.ulb_name}</span>
@@ -153,7 +153,7 @@ function TestNav() {
                                                     </div>
                                                 </div>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">MOBILE NO :-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">MOBILE NO :-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1"> {fetchData?.mobile} </span>
@@ -176,7 +176,7 @@ function TestNav() {
                                             </div>
                                             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 p-4'>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">GUARDIAN NAME :-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">GUARDIAN NAME :-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1">{fetchData?.name}</span>
@@ -196,7 +196,7 @@ function TestNav() {
                                                     </div>
                                                 </div>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">EMAIL :-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">EMAIL :-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1">{fetchData?.email}</span>
@@ -220,7 +220,7 @@ function TestNav() {
                                             </div>
                                             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 p-4'>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">FULL NAME:-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">FULL NAME:-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1">{fetchData?.name}</span>
@@ -241,7 +241,7 @@ function TestNav() {
                                                     </div>
                                                 </div>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">DATE-OF-BIRTH :-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">DATE-OF-BIRTH :-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1">16-08-2022</span>
@@ -274,7 +274,7 @@ function TestNav() {
                                             </div>
                                             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 p-4'>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">ARMED-FORCE:-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">ARMED-FORCE:-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span className="text-gray-600 font-normal text-md leading-4 my-1">YES</span>
@@ -306,7 +306,7 @@ function TestNav() {
 
                                                 </div>
                                                 <div className=''>
-                                                    <label for="" className="block text-sm font-medium text-gray-700">SPECIALLY- ABLED :-</label>
+                                                    <label for="" className="block text-xs font-medium text-gray-700">SPECIALLY- ABLED :-</label>
                                                 </div>
                                                 <div className=''>
                                                     <span classNameName="text-gray-600 font-normal text-md leading-4 my-1">YES</span>
