@@ -46,6 +46,8 @@ import CitizenApplyApplication from './Pages/citizen/CitizenApplyApplication';
 import PaymentFormIndex from './Pages/water/PaymentForm/PaymentFormIndex';
 import WaterApplicationStatus from './Pages/water/Status/WaterApplicationStatus';
 import DocUploadFormIndex from './Pages/water/DocUploadForm/DocUploadFormIndex';
+import CitizenSafEntryScreenForm from './Pages/CitizenSafForm/CitizenSafEntryScreenForm';
+import CitizenPropSafApplicationFormIndex from './Pages/CitizenSafForm/CitizenPropSafApplicationFormIndex';
 
 function App() {
   
@@ -75,10 +77,11 @@ function App() {
             <Route path="/download" element={<DownloadPage />} />
             <Route path="/appliedApplicationByModule" element={<CitizenApplicationByModule/>} />
             <Route path="/appliedLicenseTbl" element={<CitizenAppliedLicenseDetailTbl />} />
-            <Route path="/citizenProperty" element={<Protected Component={CitizenSafEntryScreen} />} />
-            <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} />
+            {/* <Route path="/citizenProperty" element={<Protected Component={CitizenSafEntryScreen} />} /> */}
+            <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenForm} />} />
+            {/* <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} /> */}
             <Route path="/citizenselfdetailform" element={<Protected Component={CitizenSelfAdvtDetailForm} />} />
-            <Route path='/safform/:assType' element={<Protected Component={CitizenSafApplicationFormIndex} />} />
+            <Route path='/safform/:assType' element={<Protected Component={CitizenPropSafApplicationFormIndex} />} />
             <Route path='/citizenobjection' element={<CitizenObjectionFormIndex />} />
             <Route path='/water' element={<WaterIndex />} />
             <Route path='/water/apply' element={<WaterIndex />} />
