@@ -1,3 +1,14 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - CitizenPropPropertyAddressDetails
+// >DESCRIPTION - CitizenPropPropertyAddressDetails Component
+//////////////////{*****}//////////////////////////////////////////
+
+
 import { useState } from 'react'
 import { RiBuilding2Fill } from 'react-icons/ri'
 import { useFormik } from 'formik'

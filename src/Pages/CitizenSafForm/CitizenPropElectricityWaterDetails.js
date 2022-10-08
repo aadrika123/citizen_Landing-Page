@@ -1,3 +1,13 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - CitizenPropElectricityWaterDetails
+// >DESCRIPTION - CitizenPropElectricityWaterDetails Component
+//////////////////{*****}//////////////////////////////////////////
+
 import { useState } from 'react'
 import { RiBuilding2Fill } from 'react-icons/ri'
 import { GiWaterTank } from 'react-icons/gi'

@@ -6,7 +6,9 @@ export default function CitizenApplyApiList() {
         //2
         api_getSafDetailsById: `${baseUrl}/api/saf/details`,
         //3
-        api_getMasterData: `${baseUrl}/api/saf/apply`
+        api_getMasterData: `${baseUrl}/api/saf/apply`,
+        //4
+        api_postNewAssissment: `${baseUrl}/api/saf/apply`
     }
 
     return apiList

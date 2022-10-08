@@ -193,6 +193,42 @@
         ]
       },
       "id": 7
+    },
+    {
+      "categoryType": "",
+      "pipelineType": "",
+      "SAFNo": "",
+      "holdingNo": "",
+      "wardNo": "1A",
+      "totalArea": "Nam at consequatur ",
+      "landmark": "Enim ut debitis opti",
+      "PINCode": "Illum sed vel quide",
+      "address": "Nisi magni ea ipsum ",
+      "khataNo": "Est aliquam qui fug",
+      "bindBookNo": "Quae sint irure dolo",
+      "accountNo": "Id voluptate ut saep",
+      "electricityCategoryType": "IS",
+      "typeofConnection": "NewConnection",
+      "propertyType": "Appartment",
+      "connectionThrough": "saf",
+      "ownerType": "owner",
+      "applicantDetails": {
+        "applicant": [
+          {
+            "ApplicantName": "Barry Sears",
+            "GuardianName": "Mira Mason",
+            "phone": "+1 (941) 935-6327",
+            "email": "suwaxubewu@mailinator.com"
+          },
+          {
+            "ApplicantName": "Sloane Quinn",
+            "GuardianName": "Steel Allen",
+            "phone": "+1 (139) 495-6625",
+            "email": "fyrowo@mailinator.com"
+          }
+        ]
+      },
+      "id": 8
     }
   ],
   "comments": [

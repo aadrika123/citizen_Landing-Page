@@ -34,7 +34,8 @@ function ApplySubList() {
 
 
             <div className='container mx-auto p-12'>
-                <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-14'>
+              <h1 className='text-center font-semibold text-xl text-gray-500'>APPLY APPLICATION</h1>
+                <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-6'>
                     <div className=' '>
                         <Link to="/citizenselfdetailform">
                             <div class=" p-4 ">

@@ -1,3 +1,13 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - CitizenPropBasicDetail
+// >DESCRIPTION - CitizenPropBasicDetail Component
+//////////////////{*****}//////////////////////////////////////////
+
 import { useState, useEffect } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
@@ -14,7 +24,7 @@ function CitizenPropBasicDetail(props) {
     const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
     const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false)
 
-console.log("passing master data to basic detail form" , props.preFormData)
+    console.log("passing master data to basic detail form", props.preFormData)
 
     // const commonInputStyle = `form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none shadow-md`
     // const inputContainerStyle = `form-group col-span-4 md:col-span-1 mb-6 md:px-4`
@@ -119,7 +129,7 @@ console.log("passing master data to basic detail form" , props.preFormData)
                                         <option value="" disabled selected>select ward</option>
 
                                         {
-                                            props?.preFormData?.ward_master.map((data) => (
+                                            props.preFormData?.ward_master.map((data) => (
                                                 <option value={data.id}>{data.ward_name}</option>
                                             ))
                                         }

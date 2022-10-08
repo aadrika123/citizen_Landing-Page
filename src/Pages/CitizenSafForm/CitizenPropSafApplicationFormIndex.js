@@ -1,3 +1,14 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - CitizenPropSafApplicationFormIndex
+// >DESCRIPTION - CitizenPropSafApplicationFormIndex Component
+//////////////////{*****}//////////////////////////////////////////
+
+
 import { useState, useEffect, useContext } from 'react'
 import CitizenPropBasicDetail from './CitizenPropBasicDetail'
 import CitizenPropFormStatusTimeline from './CitizenPropFormStatusTimeline'
@@ -23,38 +34,52 @@ import CitizenApplyApiList from '../../components/CitizenApplyApiList'
 
 function CitizenPropSafApplicationFormIndex() {
 
-    const { api_getMasterData } = CitizenApplyApiList()
+    const { api_getMasterData, api_postNewAssissment } = CitizenApplyApiList()
 
     const navigate = useNavigate()
-    //✅ formindex specifies type of form like basicdetails at index 1 ...
+
+    //////////////////{***✅ formindex specifies type of form like basicdetails at index 1 ...***}//////////////////////////////
     const [formIndex, setFormIndex] = useState(1)
-    // slide animation control state for BasicDetails form
+
+    //////////////////{***slide animation control state for BasicDetails form***}//////////////////////////////
     const [animateform1, setAnimateform1] = useState('translate-x-0 mb-40')
-    //> slide animation control state for PropertyAddressDetails form
+
+    //////////////////{***slide animation control state for PropertyAddressDetails form***}//////////////////////////////
     const [animateform2, setAnimateform2] = useState('pl-20 translate-x-full')
-    //> slide animation control state for ElectricityWaterDetails form
+
+    //////////////////{***slide animation control state for ElectricityWaterDetails form***}//////////////////////////////
     const [animateform3, setAnimateform3] = useState('pl-20 translate-x-full')
-    //> slide animation control state for OwnerDetails form
+
+    //////////////////{*** slide animation control state for OwnerDetails form***}//////////////////////////////
     const [animateform4, setAnimateform4] = useState('pl-20 translate-x-full')
-    //> slide animation control state for FloorDetails form
+
+    //////////////////{*** slide animation control state for FloorDetails form***}//////////////////////////////
     const [animateform5, setAnimateform5] = useState('pl-20 translate-x-full')
-    //> slide animation control state for reviewForm page
+
+    //////////////////{***slide animation control state for reviewForm page***}//////////////////////////////
     const [animateform6, setAnimateform6] = useState('pl-20 translate-x-full')
-    //> slide animation control state for formDemand page
+
+    //////////////////{*** slide animation control state for formDemand page***}//////////////////////////////
     const [animateform7, setAnimateform7] = useState('pl-20 translate-x-full')
-    //> slide animation control state for payment page
+
+    //////////////////{***slide animation control state for payment page***}//////////////////////////////
     const [animateform8, setAnimateform8] = useState('pl-20 translate-x-full')
-    //> checking full form filled status to toggle final submit button
+
+    //////////////////{*** checking full form filled status to toggle final submit button***}//////////////////////////////
     const [submitStatus, setSubmitStatus] = useState(false)
     const [allFormData, setAllFormData] = useState({})
     const [responseScreenStatus, setResponseScreenStatus] = useState('')
-    //> assessment type
+
+    //////////////////{*** assessment type***}//////////////////////////////
     const [assTypeText, setAssTypeText] = useState()
-    //> state variable to hold all form required data
+
+    //////////////////{***state variable to hold all form required data***}//////////////////////////////
     const [preFormData, setPreFormData] = useState()
-    //> state variable to hold response data after submitting the saf form
+
+    //////////////////{***state variable to hold response data after submitting the saf form***}//////////////////////////////
     const [safSubmitResponse, setsafSubmitResponse] = useState()
-    //> state variable to control loader
+
+    //////////////////{***slide animation control state for BasicDetails form***}//////////////////////////////
     const [loader, setloader] = useState(false)
 
     //> useEffect to extract assessment type from url and set in state
@@ -175,7 +200,8 @@ function CitizenPropSafApplicationFormIndex() {
     const submitSafForm = () => {
         //> activating loader
         setloader(true)
-        let token = JSON.parse(window.localStorage.getItem('token'))
+        // let token = JSON.parse(window.localStorage.getItem('token'))
+        let token = '881|LwPWS8TEMCncOw1Jsgrok5LoNVgB3S3qdWWap0Ol'
         console.log('token at basic details is ...', token)
         const header = {
             headers:
@@ -239,10 +265,9 @@ function CitizenPropSafApplicationFormIndex() {
         console.log('form request body....', requestBody)
 
         // return
-        axios.post(`${api_getMasterData}/NewAssessment`, requestBody, header)
+        axios.post(`${api_postNewAssissment}/NewAssessment`, requestBody, header)
             .then(function (response) {
                 setloader(false)
-
                 console.log('response after pushing saf data', response)
                 setsafSubmitResponse(response.data)
                 notify(`Saf form submitted successfully with application no ${response?.data?.data?.safNo}`, 'success')
@@ -267,27 +292,28 @@ function CitizenPropSafApplicationFormIndex() {
 
     // let assesmentType = 'New Assessment'
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     let token = window.localStorage.getItem('token')
-    //     console.log('token at basic details is ...', token)
-    //     const header = {
-    //         headers:
-    //         {
-    //             Authorization: `Bearer ${token}`,
-    //             Accept: 'application/json',
-    //         }
-    //     }
+        // let token = window.localStorage.getItem('token')
+        let token = '881|LwPWS8TEMCncOw1Jsgrok5LoNVgB3S3qdWWap0Ol'
+        console.log('token at basic details is ...', token)
+        const header = {
+            headers:
+            {
+                Authorization: `Bearer ${token}`,
+                Accept: 'application/json',
+            }
+        }
 
-    //     axios.get(`${api_getMasterData}/NewAssessment`, header)
-    //         .then(function (response) {
-    //             console.log('saf master data ....', response.data)
-    //             setPreFormData(response.data)
-    //         })
-    //         .catch(function (error) {
-    //             console.log('errorrr.... ', error);
-    //         })
-    // }, [])
+        axios.get(`${api_getMasterData}/NewAssessment`, header)
+            .then(function (response) {
+                console.log('saf master data ....', response.data.data)
+                setPreFormData(response.data.data)
+            })
+            .catch(function (error) {
+                console.log('errorrr.... ', error);
+            })
+    }, [])
 
     if (responseScreenStatus == 'success') {
         return (
@@ -298,10 +324,29 @@ function CitizenPropSafApplicationFormIndex() {
     }
     return (
         <>
-            <div className='grid grid-cols-1 md:grid-cols-8 lg:grid-cols-8'>
-                <div className='col-span-2'>
-                <img src='https://img.freepik.com/free-vector/faceless-man-checking-giant-check-list-background_23-2148089257.jpg?w=740&t=st=1661164383~exp=1661164983~hmac=3e0093a5d88720d2cae158f60e5778c9ce7848b1dd63787701cf5408e33258fd'  />
+            {/* <div className='container grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 mx-auto'>
+                <div className='col-span-6 bg-red-400'>
+              
+                    <img src='https://img.freepik.com/free-vector/faceless-man-checking-giant-check-list-background_23-2148089257.jpg?w=740&t=st=1661164383~exp=1661164983~hmac=3e0093a5d88720d2cae158f60e5778c9ce7848b1dd63787701cf5408e33258fd' clas />
+                
                 </div>
+                <div className='col-span-6 bg-red-200'>
+                    1
+                </div>
+            </div> */}
+            <div className='grid grid-cols-1 md:grid-cols-8 lg:grid-cols-8   '>
+                <div className='col-span-2 p-4 mt-10 '>
+                    {formIndex < 7 && <div className="flex flex-col mt-0">
+
+                        <CitizenPropFormStatusTimeline active={formIndex == 1 && true} index="1" level="Basic Details" verificationStatus={formIndex >= 2 && true} last={false} />
+                        <CitizenPropFormStatusTimeline active={formIndex == 2 && true} index="2" level="Property Details" verificationStatus={formIndex >= 3 && true} last={false} />
+                        <CitizenPropFormStatusTimeline active={formIndex == 3 && true} index="3" level="Electricity & Water" verificationStatus={formIndex >= 4 && true} last={false} />
+                        <CitizenPropFormStatusTimeline active={formIndex == 4 && true} index="4" level="Owner Details" verificationStatus={formIndex >= 5 && true} last={false} />
+                        <CitizenPropFormStatusTimeline active={formIndex == 5 && true} index="5" level="Floor Details" verificationStatus={formIndex >= 6 && true} last={true} />
+                    </div>}
+
+                </div>
+
                 <div className='col-span-6 '>
                     {/* {loader && <RoundLoader />} */}
                     <ToastContainer position="top-right"
@@ -316,13 +361,14 @@ function CitizenPropSafApplicationFormIndex() {
                             <span className='bg-sky-100 border-l border-b border-white text-black col-span-12 sm:col-span-2 sm:col-start-11 pl-4 rounded-l shadow-lg font-semibold pr-4'><TbWebhook className='inline' /> {assTypeText}</span>
                         </div></div>
                     </div>
-                    {formIndex < 7 && <div className="flex mt-0">
+                    {/* {formIndex < 7 && <div className="flex flex-col mt-0">
+                      
                         <CitizenPropFormStatusTimeline active={formIndex == 1 && true} index="1" level="Basic Details" verificationStatus={formIndex >= 2 && true} last={false} />
                         <CitizenPropFormStatusTimeline active={formIndex == 2 && true} index="2" level="Property Details" verificationStatus={formIndex >= 3 && true} last={false} />
                         <CitizenPropFormStatusTimeline active={formIndex == 3 && true} index="3" level="Electricity & Water" verificationStatus={formIndex >= 4 && true} last={false} />
                         <CitizenPropFormStatusTimeline active={formIndex == 4 && true} index="4" level="Owner Details" verificationStatus={formIndex >= 5 && true} last={false} />
                         <CitizenPropFormStatusTimeline active={formIndex == 5 && true} index="5" level="Floor Details" verificationStatus={formIndex >= 6 && true} last={true} />
-                    </div>}
+                    </div>} */}
 
 
                     {formIndex < 7 && <>
@@ -345,6 +391,7 @@ function CitizenPropSafApplicationFormIndex() {
                     {formIndex == 8 && <div className={`${animateform8} transition-all relative`}><SafFormPayment backFun={backFun} safSubmitResponse={safSubmitResponse} /></div>}
                 </div>
             </div>
+
         </>
     )
 }

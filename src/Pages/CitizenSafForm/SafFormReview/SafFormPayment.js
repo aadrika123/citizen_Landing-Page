@@ -1,3 +1,13 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - SafFormPayment
+// >DESCRIPTION - SafFormPayment Component
+//////////////////{*****}//////////////////////////////////////////
+
 import React from 'react'
 // import folder from 'Components/Media/folders.png'
 import { useState } from 'react'
@@ -52,8 +62,8 @@ function SafFormPayment(props) {
 
     onSubmit: (values, resetForm) => {
       console.log('electricity ', values)
-      props.collectFormDataFun('electricityWaterDetails', values) //sending ElectricityWaterDetails data to parent to store all form data at one container
-      props.nextFun(1) //forwarding to next form level
+      props.collectFormDataFun('electricityWaterDetails', values) /////////{***sending ElectricityWaterDetails data to parent to store all form data at one container***}//////////
+      props.nextFun(1) //////////////////{***forwarding to next form level***}//////////////////////////////
     }
     , validationSchema
   })

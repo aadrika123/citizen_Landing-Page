@@ -1,3 +1,13 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - SafFormDemand
+// >DESCRIPTION - SafFormDemand Component
+//////////////////{*****}//////////////////////////////////////////
+
 import { useState } from 'react'
 import folder from '../../../components/Media/folders.png'
 import rupee from '../../../components/Media/rupee.png'

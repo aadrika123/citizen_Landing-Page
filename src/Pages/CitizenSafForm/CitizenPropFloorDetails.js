@@ -1,3 +1,15 @@
+//////////////////{*****}//////////////////////////////////////////
+// >Author - swati sharma
+// >Version - 1.0
+// >Date - 7 oct 2022
+// >Revision - 1
+// >Project - JUIDCO
+// >Component  - CitizenPropFloorDetails
+// >DESCRIPTION - CitizenPropFloorDetails Component
+//////////////////{*****}//////////////////////////////////////////
+
+
+
 import { useState, useEffect, useContext } from 'react'
 import { FaUserNurse } from 'react-icons/fa'
 import { BiAddToQueue } from 'react-icons/bi'
