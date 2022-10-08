@@ -126,9 +126,9 @@ function WaterFormReview(props) {
                                             form2?.applicant.map((e, i) => (
                                                 <tr>
                                                     <td className="px-2 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">{i + 1}</td>
-                                                    <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap">{e.ApplicantName}  </td>
-                                                    <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap">{e.GuardianName}</td>
-                                                    <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap"> {e.email} </td>
+                                                    <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap">{e.ownerName}  </td>
+                                                    <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap">{e.guardianName}</td>
+                                                    <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap"> {e.mobileNo} </td>
                                                     <td className="px-2 py-2 text-sm text-gray-800 whitespace-nowrap"> {e.phone}</td>
                                                 </tr>
                                             ))

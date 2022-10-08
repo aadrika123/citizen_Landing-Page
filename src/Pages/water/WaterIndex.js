@@ -68,12 +68,12 @@ function WaterIndex() {
                         <AiOutlineMenuFold onClick={handleMobileMenu} className='absolute ml-2 cursor-pointer' size={30} /> {/* This icon will shown on mobile only -- used for show/hide sub menu */}
                         <p className='text-center font-semibold text-xl '>Water Releted Services</p>
                     </div>
-                    <WaterBreadcrumb />  {/* WaterBreadcrumb used for navigate the page*/}
+                 {/*    <WaterBreadcrumb /> */} {/* WaterBreadcrumb used for navigate the page*/}
                     {mobileSideMenu && <WaterMobileMenu />} {/* Show hide mobile side menu*/}
                     {blocks && <WaterDashMainBlocks handleApplyNew={handleApplyNew} handleDocUpload={handleDocUpload} handlePayment={handlePayment} />} {/* Show/Hide Water Dashboard Main blocks*/}
                     {applyWater && <WaterFormIndex back={waterDashboard} />} {/*Show Water Application form */}
-                    {docUpload && <DocUploadFormIndex back={waterDashboard} />} {/* Show doument upload form*/}
-                    {makePayment && <PaymentFormIndex back={waterDashboard} />} {/* Show payment Page*/}
+                   {/* {docUpload && <DocUploadFormIndex back={waterDashboard} />}  Show doument upload form*/}
+                   {/*  {makePayment && <PaymentFormIndex back={waterDashboard} />} Show payment Page*/}
                 </div>
             </div>
         </>

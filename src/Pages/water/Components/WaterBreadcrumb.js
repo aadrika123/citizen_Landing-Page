@@ -43,7 +43,7 @@ function WaterBreadcrumb(props) {
                             <path d="M32 30.031h-32l16-28.061z"></path>
                         </svg>
                         <a rel="noopener noreferrer" href="#" className="flex items-center px-1 capitalize hover:underline hover:no-underline cursor-default">Current</a>
-                    </li>
+                    </li> 
                 </ol>
             </nav>
 

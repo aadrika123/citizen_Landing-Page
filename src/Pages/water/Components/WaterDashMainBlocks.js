@@ -22,6 +22,14 @@ function WaterDashMainBlocks(props) {
     const [showApplyListBlock, setShowApplyListBlock] = useState(false)
     const [hideCurrentBlock, setHideCurrentBlock] = useState(true)
 
+const handlePaymentBox=()=>{
+    navigate('/water/payment')
+}
+
+const handleDocUploadBox=()=>{
+    navigate('/water/uploadDocs')
+}
+
     const applyNewService = () => {
         setShowApplyListBlock(true)
         setHideCurrentBlock(false)
@@ -59,7 +67,8 @@ function WaterDashMainBlocks(props) {
                                 <p className='font-bold text-gray-800 text-center md:text-lg text-2xl'>View Application Status</p>
                             </div>
                         </div>
-                        <div onClick={props.handleDocUpload} className='m-3'>
+                        {/* <div onClick={props.handleDocUpload} className='m-3'> */}
+                        <div onClick={handleDocUploadBox} className='m-3'>
                             <div className='bg-red-200 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-red-300 transition duration-500 hover:scale-105'>
                                 <div className='flex justify-center p-3'>
                                     <img src={uploadpic} className="h-14 opacity-80" alt="" />
@@ -67,7 +76,8 @@ function WaterDashMainBlocks(props) {
                                 <p className='font-bold text-gray-800 text-center md:text-lg text-2xl'>Documet Upload</p>
                             </div>
                         </div>
-                        <div onClick={props.handlePayment} className='m-3'>
+                        {/* <div onClick={props.handlePayment} className='m-3'> */}
+                        <div onClick={handlePaymentBox} className='m-3'>
                             <div className='bg-green-300 md:h-32 md:w-56 h-36 w-full rounded-sm shadow-lg cursor-pointer hover:bg-green-400 transition duration-500 hover:scale-105'>
                                 <div className='flex justify-center p-3'>
                                     <img src={paymentImg} className="h-14 opacity-80" alt="" />

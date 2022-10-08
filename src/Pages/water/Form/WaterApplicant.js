@@ -16,9 +16,9 @@ const initialValues = {
 
     applicant: [
         {
-            ApplicantName: '',
-            GuardianName: '',
-            phone: '',
+            ownerName: '',
+            guardianName: '',
+            mobileNo: '',
             email: '',
         },
     ],
@@ -61,34 +61,34 @@ const WaterApplicant = (props) => {
                             {({ insert, remove, push }) => (
                                 <div className='pb-5'>
                                     <div className='flex bg-gray-600 text-white md:justify-start justify-center md:pl-5 pl-2 py-2 font-semibold text-lg md:text-base border-b-2 border-red-300 shadow-lg'>Applicant Details
-                                        {!safData && <p className='mr-8 ml-auto'> <SiAddthis size={25} onClick={() => push({ ApplicantName: '', GuardianName: '', phone: '', email: '', })} className="cursor-pointer" /> </p>}
+                                        {!safData && <p className='mr-8 ml-auto'> <SiAddthis size={25} onClick={() => push({ ownerName: '', guardianName: '', mobileNo: '', email: '', })} className="cursor-pointer" /> </p>}
                                     </div>
                                     {values.applicant.length > 0 &&
                                         values.applicant.map((friend, index) => (
                                             <div className="md:flex md:mx-5 mx-2" key={index}>
                                                 <div className="m-1">
-                                                    <p className='text-lg md:text-base md:font-medium font-normal' htmlFor={`applicant.${index}.ApplicantName`}>Name<span className='text-red-500 font-semibold'> * </span></p>
+                                                    <p className='text-lg md:text-base md:font-medium font-normal' htmlFor={`applicant.${index}.ownerName`}>Name<span className='text-red-500 font-semibold'> * </span></p>
                                                     <Field
                                                         className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
-                                                        name={`applicant.${index}.ApplicantName`}
+                                                        name={`applicant.${index}.ownerName`}
                                                         type="text"
                                                         disabled={safData}
                                                         // placeholder={safData?.Name}
                                                         value={safData?.Name}
                                                     />
-                                                    <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.ApplicantName`} /></p>
+                                                    <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.ownerName`} /></p>
                                                 </div>
                                                 <div className='m-1'>
                                                     <label className='text-lg md:text-base md:font-medium font-normal'>Guardian Name<span className='text-red-500 font-semibold'> * </span> </label>
                                                     <Field
                                                         className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
                                                         type="text"
-                                                        name={`applicant.${index}.GuardianName`}
+                                                        name={`applicant.${index}.guardianName`}
                                                         disabled={safData}
                                                         // placeholder={safData?.FatherName}
                                                         value={safData?.FatherName}
                                                     />
-                                                    <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.GuardianName`} /></p>
+                                                    <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.guardianName`} /></p>
                                                 </div>
 
                                                 <div className='m-1'>
@@ -96,12 +96,12 @@ const WaterApplicant = (props) => {
                                                     <Field
                                                         className="placeholder:text-black px-2 my-1 border w-80 md:w-60 h-10 md:h-8 outline-blue-600 border-gray-400 rounded-sm shadow-xl"
                                                         type="text"
-                                                        name={`applicant.${index}.phone`}
+                                                        name={`applicant.${index}.mobileNo`}
                                                         disabled={safData}
                                                         // placeholder={safData?.Mobile}
                                                         value={safData?.Mobile}
                                                     />
-                                                    <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.phone`} /></p>
+                                                    <p className='text-red-600 text-sm absolute'><ErrorMessage name={`applicant.${index}.mobileNo`} /></p>
                                                 </div>
 
                                                 <div className="m-1">
@@ -125,7 +125,7 @@ const WaterApplicant = (props) => {
                                                 }
                                             </div>
                                         ))}
-                                    {/* <button type="button" className="bg-green-500 p-1 mx-2 shadow-lg" onClick={() => push({ ApplicantName: '', GuardianName: '', phone: '', email: '', })} >Add New </button> */}
+                                    {/* <button type="button" className="bg-green-500 p-1 mx-2 shadow-lg" onClick={() => push({ ownerName: '', guardianName: '', mobileNo: '', email: '', })} >Add New </button> */}
                                 </div>
                             )}
                         </FieldArray>
