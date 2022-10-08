@@ -69,7 +69,7 @@ function ApplySubList() {
                         </div>
                     </div>
                     <div className=''>
-                        <Link to="/citizenProperty">
+                        <Link to="/citizenPropertyApply">
                             <div class=" p-4 ">
                                 <h1 className='text-sm  font-semibold font-serif text-gray-500'>Property
                                 </h1>

@@ -23,6 +23,7 @@ import ImageGallery from '../Pages/Landing/ImageGallery'
 import Logo from './Logo'
 import VideoComponent from './VideoComponent'
 import TestNav from './testDelete/TestNav'
+import SmallScreenMenu from '../Pages/Landing/SmallScreenMenu'
 
 function LandingMainPage() {
 
@@ -42,16 +43,16 @@ function LandingMainPage() {
     return (
         <>
             <div>
-           
+
                 <div className='fixed w-full z-50'><LandingNav /></div>
                 {/* <div className='fixed z-50 ml-6'><Logo /></div> */}
                 <VideoComponent />
                 {/* <div className=''><SliderImage /></div> */}
-
-                <div className=''><MarqueeComponent /></div>
+                <div><SmallScreenMenu/></div>
+                {/* <div className=''><MarqueeComponent /></div> */}
                 <div><SectionOurDomain /></div>
                 {/* <div> <AboutJharkhand /></div> */}
-               
+
                 <div><LeadersGallery /></div>
                 <div><Footer /> </div>
             </div>

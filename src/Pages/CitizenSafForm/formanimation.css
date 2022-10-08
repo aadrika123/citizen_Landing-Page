@@ -1,0 +1,13 @@
+.animate-slide-in{
+    position: relative;
+    margin: auto 0 auto 0;
+    animation: animate 0.5s linear;
+}
+@keyframes animate {
+    0%{
+        left:120vw;
+    }
+    100%{
+        left:0vw;
+    }
+}

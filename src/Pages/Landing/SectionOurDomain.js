@@ -57,14 +57,14 @@ function SectionOurDomain(props) {
                 </div>
             </div> */}
 
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 container mx-auto py-4">
-                <div className=' mx-auto  border  p-2  hover:scale-105 transition-all transform duration-500'>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 container mx-auto py-4 ">
+                <div className=' mx-auto  border  p-2  '>
                     <KnowledageTab newsData={props.newsData} />
                 </div>
-                <div className=' mx-auto  border  p-2  hover:scale-105 transition-all transform duration-500'>
+                <div className=' mx-auto  border  p-2   '>
                     <OurDomainContent2 />
                 </div>
-                <div className='mx-auto  border  p-2  hover:scale-105 transition-all transform duration-500' >
+                <div className='mx-auto  border  p-2 ' >
                     <SliderCard />
                 </div>
             </div>

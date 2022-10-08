@@ -14,7 +14,7 @@ import citizenLog from '../../assets/citizenLog.svg'
 function CitizenEntryPage(props) {
 
 
-
+console.log("citizenName in dashboard" ,props.citizenName )
 
     const [citizenName, setcitizenName] = useState();
     useEffect(() => {
