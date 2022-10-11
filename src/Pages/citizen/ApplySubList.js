@@ -26,15 +26,10 @@ function ApplySubList() {
 
                     {/* Apply category  in  citizen dashboard    */}
 
-
-
                 </div>
             </div>
-
-
-
-            <div className='container mx-auto p-12'>
-              <h1 className='text-center font-semibold text-xl text-gray-500'>APPLY APPLICATION</h1>
+            {/* <div className='container mx-auto p-12'>
+                <h1 className='text-center font-semibold text-xl text-gray-500'>APPLY APPLICATION</h1>
                 <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-6'>
                     <div className=' '>
                         <Link to="/citizenselfdetailform">
@@ -51,6 +46,7 @@ function ApplySubList() {
                                     </div>
                                 </div>
                             </div>
+
                         </Link>
                     </div>
                     <div className=''>
@@ -68,6 +64,7 @@ function ApplySubList() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div className=''>
                         <Link to="/citizenPropertyApply">
@@ -84,6 +81,7 @@ function ApplySubList() {
                                     </div>
                                 </div>
                             </div>
+
                         </Link>
                     </div>
                     <div className=''>
@@ -100,6 +98,7 @@ function ApplySubList() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -113,7 +112,7 @@ function ApplySubList() {
                             </h1>
                             <div class="flex relative shadow-lg" >
                                 <img alt="gallery" class="absolute inset-0 w-58 h-36 object-cover object-center drop-shadow-sm rounded-md opacity-75" src="https://img.freepik.com/free-vector/successful-partnership-negotiation-partners-handshaking_335657-2453.jpg?w=740&t=st=1659593504~exp=1659594104~hmac=6242bdcc25cd27e6b5368c09ea84aee84da3653dc98d1cf4510569b9fc971eb6" />
-                                {/* <button class="dark:bg-gray-800  focus:ring-gray-400 bottom-0 absolute  font-medium leading-none text-gray-800 py-1  bg-slate-50 w-full text-sm">Trade</button> */}
+
                                 <div class="px-4 py-6 relative  w-58  bg-white opacity-0 hover:opacity-100">
 
                                     <h1 class=" text-md  font-sans text-gray-700 mb-3">Trade</h1>
@@ -121,6 +120,7 @@ function ApplySubList() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div className=''>
 
@@ -129,7 +129,7 @@ function ApplySubList() {
                             </h1>
                             <div class="flex relative shadow-lg " >
                                 <img alt="gallery" class="absolute inset-0 w-60 h-36 object-cover object-center drop-shadow-sm rounded-md opacity-75" src="https://img.freepik.com/free-vector/building-concept-illustration_114360-4469.jpg?w=740&t=st=1659600603~exp=1659601203~hmac=73157c68dcc27ee3db479dcbe336ccb090081c43f9f6d0dabb4122c730c323d2" />
-                                {/* <button class="dark:bg-gray-800  focus:ring-gray-400 bottom-0 absolute  font-medium leading-none text-gray-800 py-1  bg-slate-50 w-full text-sm">Building Plan Approval</button> */}
+
                                 <div class="px-4 py-6 relative  w-58  bg-white opacity-0 hover:opacity-100 ">
 
                                     <h1 class=" text-md  font-sans text-gray-700 mb-3">Building Plan Approval</h1>
@@ -137,6 +137,7 @@ function ApplySubList() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div className=''>
                         <div class="  p-4 ">
@@ -144,7 +145,7 @@ function ApplySubList() {
                             </h1>
                             <div class="flex relative shadow-lg  " >
                                 <img alt="gallery" class="absolute inset-0 w-58 h-36 object-cover object-center drop-shadow-sm rounded-md opacity-75" src="https://img.freepik.com/free-vector/isolated-trash-container-white-background_1308-23989.jpg?w=740&t=st=1659600835~exp=1659601435~hmac=34813b99a98211e6a30d4c2d661ee66f92e5f5f85cc54fb8e4af9ec0b3b82e1c" />
-                                {/* <button class="dark:bg-gray-800  focus:ring-gray-400 bottom-0 absolute  font-medium leading-none text-gray-800 py-1  bg-slate-50 w-full text-sm">Solid Waste Management</button> */}
+
                                 <div class="px-4 py-6 relative  w-58  bg-white opacity-0 hover:opacity-100  ">
 
                                     <h1 class=" text-md  font-sans text-gray-700 mb-3">Solid Waste Management</h1>
@@ -152,11 +153,156 @@ function ApplySubList() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
-            </div>
 
+            </div> */}
+
+
+            <div className='container mx-auto pt-12 '>
+                <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2  container mt-2'>
+                    <div className=''>
+                        <img src='https://cdn-icons-png.flaticon.com/512/8062/8062163.png' className='h-12   float-right' />
+                    </div>
+                    <div className=''>
+                        <h1 className='ml-2 text-2xl font-semibold text-gray-600 font-serif  '>
+                            SERVICES
+                        </h1>
+                    </div>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4   p-4'>
+                    <div className=' mx-auto'>
+                        <Link to="/citizenselfdetailform">
+                            <div class="shadow-lg rounded-2xl lg:w-64 w-96   p-2 py-2 mb-2 bg-purple-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                <div class="flex flex-col items-center justify-center">
+                                    <div class="w-20 h-20 relative ">
+                                        <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className=' h-16  opacity-85' />
+                                    </div>
+                                    <p class="text-gray-800 text-md font-medium mb-1">
+                                        ADVERTISEMENT
+                                    </p>
+                                    <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                        You Can Get License To Advertise Your Business Name On Your Shop
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className=' mx-auto'>
+                        <Link to="/citizenPropertyApply">
+                            <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-blue-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                <div class="flex flex-col items-center justify-center">
+                                    <div class="w-20 h-20  mx-auto relative">
+                                        <img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' className=' h-16  opacity-85' />
+                                    </div>
+                                    <p class="text-gray-800 text-md font-medium mb-1 ">
+                                        PROPERTY
+                                    </p>
+                                    <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                        You Can Get License To Advertise Your Business Name On Your Shop
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className=' mx-auto'>
+                        <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-cyan-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="w-20 h-20   relative ">
+                                    <img src='https://cdn-icons-png.flaticon.com/512/3105/3105807.png' className=' h-16  opacity-85' />
+                                </div>
+                                <p class="text-gray-800 text-md font-medium mb-1">
+                                    WATER
+                                </p>
+                                <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                    You Can Get License To Advertise Your Business Name On Your Shop
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=' mx-auto'>
+                        <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-blue-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="w-20 h-20   relative  ">
+                                    <img src='https://cdn-icons-png.flaticon.com/512/3309/3309991.png' className=' h-16  opacity-85' />
+                                </div>
+                                <p class="text-gray-800 text-md font-medium mb-1">
+                                    TRADE
+                                </p>
+                                <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                    You Can Get License To Advertise Your Business Name On Your Shop
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 p-4 -mt-7'>
+                    <div className=' mx-auto'>
+                        <Link to="/citizenselfdetailform">
+                            <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-teal-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                <div class="flex flex-col items-center justify-center">
+                                    <div class="w-20 h-20   relative  ">
+                                        <img src='https://cdn-icons-png.flaticon.com/512/602/602182.png' className=' h-16  opacity-85' />
+                                    </div>
+                                    <p class="text-gray-800 text-md font-medium mb-1">
+                                        BUILDING PLAN
+                                    </p>
+                                    <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                        You Can Get License To Advertise Your Business Name On Your Shop
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className=' mx-auto'>
+                        <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-orange-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="w-20 h-20  relative ">
+                                    <img src='https://cdn-icons-png.flaticon.com/512/2587/2587883.png' className=' h-16  opacity-85' />
+                                </div>
+                                <p class="text-gray-800 text-md font-medium mb-1">
+                                    SOLID WASTE MANAGEMENT
+                                </p>
+                                <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                    You Can Get License To Advertise Your Business Name On Your Shop
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=' mx-auto'>
+                        <div class="shadow-lg rounded-2xl lg:w-64 w-96 p-2 py-2 mb-2 bg-yellow-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="w-20 h-20   relative">
+                                    <img src='https://cdn-icons-png.flaticon.com/512/3617/3617064.png' className=' h-16  opacity-85' />
+                                </div>
+                                <p class="text-gray-800 text-md font-medium mb-1">
+                                    BIRTH & DEATH CERTIFICATE
+                                </p>
+                                <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                    You Can Get License To Advertise Your Business Name On Your Shop
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className=' mx-auto'>
+                        <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-teal-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="w-20 h-20   relative ">
+                                    <img src='https://img.freepik.com/free-vector/profile-interface-concept-illustration_114360-2850.jpg?w=740&t=st=1664274233~exp=1664274833~hmac=522e5bcf3834f2bc492b270610878ccef08f7fa09de3f086006b8055760a1833' className=' h-16  opacity-85' />
+                                </div>
+                                <p class="text-gray-800 text-md font-medium mb-1">
+                                    TRADE
+                                </p>
+                                <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                You Can Get License To Advertise Your Business Name On Your Shop
+                                </p>
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
+            </div>
 
         </>
     )

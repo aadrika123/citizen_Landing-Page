@@ -201,7 +201,7 @@ function CitizenPropSafApplicationFormIndex() {
         //> activating loader
         setloader(true)
         // let token = JSON.parse(window.localStorage.getItem('token'))
-        let token = '881|LwPWS8TEMCncOw1Jsgrok5LoNVgB3S3qdWWap0Ol'
+        let token = '905|BuD1uGp6HK7G9nTFYa557IFj6U6A1AB86uc4ODzB'
         console.log('token at basic details is ...', token)
         const header = {
             headers:
@@ -270,7 +270,7 @@ function CitizenPropSafApplicationFormIndex() {
                 setloader(false)
                 console.log('response after pushing saf data', response)
                 setsafSubmitResponse(response.data)
-                notify(`Saf form submitted successfully with application no ${response?.data?.data?.safNo}`, 'success')
+                // notify(`Saf form submitted successfully with application no ${response?.data?.data?.safNo}`, 'success')
                 nextFun(6)
 
             })
@@ -295,7 +295,7 @@ function CitizenPropSafApplicationFormIndex() {
     useEffect(() => {
 
         // let token = window.localStorage.getItem('token')
-        let token = '881|LwPWS8TEMCncOw1Jsgrok5LoNVgB3S3qdWWap0Ol'
+        let token = '905|BuD1uGp6HK7G9nTFYa557IFj6U6A1AB86uc4ODzB'
         console.log('token at basic details is ...', token)
         const header = {
             headers:
@@ -324,18 +324,18 @@ function CitizenPropSafApplicationFormIndex() {
     }
     return (
         <>
-            {/* <div className='container grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 mx-auto'>
-                <div className='col-span-6 bg-red-400'>
+            <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 mx-auto container lg:px-[29rem] md:px-24 p-1'>
+         
+                    <img src='https://cdn-icons-png.flaticon.com/512/4115/4115893.png' className='h-8 lg:h-9 md:h-8' />
+                    <h1 className='text-xl lg:text-3xl md:text-xl ml-12 -mt-8  font-semibold text-gray-700'>
+                        {assTypeText}
+                    </h1>
               
-                    <img src='https://img.freepik.com/free-vector/faceless-man-checking-giant-check-list-background_23-2148089257.jpg?w=740&t=st=1661164383~exp=1661164983~hmac=3e0093a5d88720d2cae158f60e5778c9ce7848b1dd63787701cf5408e33258fd' clas />
-                
-                </div>
-                <div className='col-span-6 bg-red-200'>
-                    1
-                </div>
-            </div> */}
-            <div className='grid grid-cols-1 md:grid-cols-8 lg:grid-cols-8   '>
-                <div className='col-span-2 p-4 mt-10 '>
+
+            </div>
+
+            <div className='grid grid-cols-1 md:grid-cols-8 lg:grid-cols-8 gap-8  p-4 -mt-9  '>
+                <div className='col-span-1 mt-12  '>
                     {formIndex < 7 && <div className="flex flex-col mt-0">
 
                         <CitizenPropFormStatusTimeline active={formIndex == 1 && true} index="1" level="Basic Details" verificationStatus={formIndex >= 2 && true} last={false} />
@@ -347,30 +347,10 @@ function CitizenPropSafApplicationFormIndex() {
 
                 </div>
 
-                <div className='col-span-6 '>
+                <div className='col-span-7 '>
                     {/* {loader && <RoundLoader />} */}
                     <ToastContainer position="top-right"
                         autoClose={2000} />
-                    <div className="grid grid-cols-2">
-                        <div>
-                            {/* <div className='text-left relative top-0'>
-                    <span className='bg-sky-100 border-l border-b border-white text-black col-span-12 sm:col-span-2 sm:col-start-11 pl-4 rounded-l shadow-lg font-semibold pr-4'>prev-holding : A0101010101010101</span>
-                </div> */}
-                        </div>
-                        <div><div className='text-right relative top-0 animate__animated animate__fadeInDown'>
-                            <span className='bg-sky-100 border-l border-b border-white text-black col-span-12 sm:col-span-2 sm:col-start-11 pl-4 rounded-l shadow-lg font-semibold pr-4'><TbWebhook className='inline' /> {assTypeText}</span>
-                        </div></div>
-                    </div>
-                    {/* {formIndex < 7 && <div className="flex flex-col mt-0">
-                      
-                        <CitizenPropFormStatusTimeline active={formIndex == 1 && true} index="1" level="Basic Details" verificationStatus={formIndex >= 2 && true} last={false} />
-                        <CitizenPropFormStatusTimeline active={formIndex == 2 && true} index="2" level="Property Details" verificationStatus={formIndex >= 3 && true} last={false} />
-                        <CitizenPropFormStatusTimeline active={formIndex == 3 && true} index="3" level="Electricity & Water" verificationStatus={formIndex >= 4 && true} last={false} />
-                        <CitizenPropFormStatusTimeline active={formIndex == 4 && true} index="4" level="Owner Details" verificationStatus={formIndex >= 5 && true} last={false} />
-                        <CitizenPropFormStatusTimeline active={formIndex == 5 && true} index="5" level="Floor Details" verificationStatus={formIndex >= 6 && true} last={true} />
-                    </div>} */}
-
-
                     {formIndex < 7 && <>
                         <div className={`${animateform1} transition-all relative`}><CitizenPropBasicDetail preFormData={preFormData} collectFormDataFun={collectAllFormData} toastFun={notify} backFun={backFun} nextFun={nextFun} /></div>
                         {/*//> collectDataFun to receive form data on every save&next */}

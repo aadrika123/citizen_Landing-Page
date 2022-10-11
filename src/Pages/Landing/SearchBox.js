@@ -26,7 +26,7 @@ function SearchBox() {
     const [selectUlb, setselectUlb] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3333/Select')
+        axios.get('http://192.168.0.166/api/get-all-ulb')
             .then(function (response) {
                 // handle success
                 console.log("ulbid ", response.data);
@@ -64,10 +64,10 @@ function SearchBox() {
 
 
                     <div class={` flex lg: w-80 h-8`} >
-                        <select class="flex-shrink-0  inline-flex items-center py-1 px-0 text-sm font-medium text-center text-gray-600 bg-gray-100 border border-gray-300 rounded-l-full hover:bg-gray-100  dark:bg-gray-500 dark:hover:bg-gray-100  dark:text-white dark:border-gray-600 " onChange={handleChange} >
-                            <option value={0}>Jharkhand</option>
+                        <select class="flex-shrink-0  inline-flex items-center py-1 px-0 text-sm font-medium  text-gray-600 bg-gray-100 border border-gray-300 rounded-l-full hover:bg-gray-100  dark:bg-gray-500 dark:hover:bg-gray-100  dark:text-white dark:border-gray-600 w-28" onChange={handleChange} >
+                            <option >select ulb</option>
                             {selectUlb.map((items) => (
-                                <option value={items.id}>{items.header}</option>
+                                <option value={items.id}>{items.ulb_name}</option>
                             ))}
                         </select> 
                         <div class="relative w-full">
