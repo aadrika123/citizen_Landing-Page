@@ -4,9 +4,12 @@ import { HiCurrencyRupee } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 import LandingNav from '../../Landing/LandingNav';
 import WaterApplySidebar from '../WaterApplySidebar';
+import WaterPaymentModel from './WaterPaymentModel';
 
 function PaymentFormIndex(props) {
     const [ApplicationData, setApplicationData] = useState()
+    const [openModel, setOpenModel] = useState(0)
+    const [appIdModel, setAppIdModel] = useState(0)
 
     const navigate = useNavigate()
 
@@ -22,6 +25,10 @@ function PaymentFormIndex(props) {
         navigate("/water")
     }
 
+    const handlePayBtn = (appId) => {
+        setAppIdModel(appId)
+        setOpenModel(openModel + 1)
+    }
 
 
     const fetchApplication = () => {
@@ -54,68 +61,56 @@ function PaymentFormIndex(props) {
                     <div className='border shadow-xl'>
                         <div className='text-center my-5 font-semibold text-2xl'>Pending Payments List</div>
                     </div>
-
-                    <div className='m-5'>
-                        <table>
-                            <thead className='bg-sky-300 px-5'>
+                    <WaterPaymentModel openModel={openModel} appIdModel={appIdModel} fetchApplication={fetchApplication} />
+                    <div className='m-5 shadow-md'>
+                        <table className='w-full '>
+                            <thead className='bg-sky-300'>
                                 <tr className='tracking-wide'>
                                     <td className='px-5'>#</td>
                                     <td className='px-5'>Applicaion No</td>
                                     <td className='px-5'>Amount</td>
                                     <td className='px-5'>Paid Status</td>
                                     <td className='px-5'>Penalty</td>
-                                    <td className='px-5'>conn_fee</td>
+                                    <td className='px-5'>Connection Fee</td>
                                     <td className='px-5'>Action</td>
                                 </tr>
                             </thead>
-                            <tbody className='my-5'>
-                                <tr className='p-8'>
-                                    <td className='px-5'>1</td>
-                                    <td className='px-5'>96875874874</td>
-                                    <td className='px-5'>Apply Water Connection</td>
-                                    <td className='px-5'>Document Pending</td>
-                                    <td className='px-5'>17-Sep-2022</td>
-                                    <td className='px-5'>Complated</td>
-                                    <td className='flex justify-center'>
-                                        <button className='px-2 bg-indigo-500 text-white rounded-sm shadow-lg'>Print</button>
-                                    </td>
-                                </tr>
+                            <tbody className=''>
+
                                 {
-                                    ApplicationData?.map((e) => (
-                                        <tr className='p-8'>
-                                            <td className='px-5'>1</td>
-                                            <td className='px-5'>{e.application_no}</td>
-                                            <td className='px-5'>{e.amount}</td>
-                                            <td className='px-5'>{e.paid_status}</td>
-                                            <td className='px-5'>{e.penalty}</td>
-                                            <td className='px-5'>{e.conn_fee}</td>
-                                            <td className='flex justify-center'>
-                                                <button className='px-2 bg-indigo-500 text-white rounded-sm shadow-lg'>Pay Now</button>
+                                    ApplicationData?.map((e, i) => (
+                                        <tr>
+                                            <td className='px-5 py-2 font-semibold'>{i + 1}</td>
+                                            {/* <td className='px-5 py-2'>{e.application_id}</td> */}
+                                            <td className='px-5 py-2'>{e.application_no}</td>
+                                            <td className='px-5 py-2'>{e.amount}</td>
+                                            <td className='px-5 py-2'>
+                                                {e.paid_status && <p className='bg-green-300 px-5 rounded-md w-fit'>Paid</p>}
+                                                {!e.paid_status && <p className='bg-red-300 px-5 rounded-md w-fit'>UnPaid</p>}
+                                            </td>
+                                            <td className='px-5 py-2'>{e.penalty}</td>
+                                            <td className='px-5 py-2'>{e.conn_fee}</td>
+                                            <td className='flex justify-center py-2'>
+                                                {e.paid_status && <button className='px-2 bg-indigo-500 text-white rounded-sm shadow-lg'>Receipt</button>}
+                                                {!e.paid_status && <button onClick={() => handlePayBtn(e.application_id)} className='px-2 bg-green-500 text-white rounded-sm shadow-lg'>Pay Now</button>}
+                                                {/* {!e.paid_status && <button onClick={openModelOnClick} className='px-2 bg-green-800 text-white rounded-sm shadow-lg'>Pay OPEN</button>} */}
                                             </td>
                                         </tr>
                                     ))
                                 }
-                               
-                                <tr className=''>
-                                    <td className='px-5'>2</td>
-                                    <td className='px-5'>9698748574</td>
-                                    <td className='px-5'>Tanker Booking</td>
-                                    <td className='px-5'>Payment Pending</td>
-                                    <td className='px-5'>17-Sep-2022</td>
-                                    <td className='px-5'>
-                                        <button onClick={fetchApplication} className='px-2 bg-green-500 text-white rounded-sm shadow-lg'>Pay Now</button>
-                                    </td>
-                                    <td className='px-5'>
-                                        <button className='px-2 bg-indigo-500 text-white rounded-sm shadow-lg'>Print</button>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
+                    </div>
+                    <div className='flex justify-center my-10'>
+                        <button onClick={handleBackBtn} className='mx-2 bg-red-600 hover:bg-red-700 transition duration-200 hover:scale-105 font-normal text-white px-6 py-1 text-lg  rounded-sm shadow-xl'>Back</button>
+                        {/* <button onClick={() => { props.back() }} className='mx-2 bg-red-600 hover:bg-red-700 transition duration-200 hover:scale-105 font-normal text-white px-6 py-1 text-lg  rounded-sm shadow-xl'>Back</button> */}
+                        {/* <button onClick={fetchApplication} className='mx-2 bg-indigo-600 hover:bg-indigo-700 transition duration-200 hover:scale-105 font-normal text-white px-3 py-1 text-lg  rounded-sm shadow-xl'>Pay Now</button> */}
                     </div>
 
 
 
-                    <div className='bg-red-200 m-3 md:h-72 h-96 md:w-2/3 md:m-auto shadow-lg rounded-sm md:mt-10'>
+                    {/* <div className='bg-red-200 m-3 md:h-72 h-96 md:w-2/3 md:m-auto shadow-lg rounded-sm md:mt-10'>
                         <div className='bg-indigo-200 border-b-2 py-1 pl-3 font-semibold border-red-400 shadow-md flex'><HiCurrencyRupee size={20} className='mt-1 mr-1' /> Payment</div>
                         <div className='grid grid-cols-12 px-8 py-3 leading-8'>
                             <div className='md:col-span-6 col-span-12'>
@@ -151,12 +146,12 @@ function PaymentFormIndex(props) {
                             <div className='col-span-12 md:mt-4 mt-10'>
                                 <div className='flex justify-center'>
                                     <button onClick={handleBackBtn} className='mx-2 bg-red-600 hover:bg-red-700 transition duration-200 hover:scale-105 font-normal text-white px-6 py-1 text-lg  rounded-sm shadow-xl'>Back</button>
-                                    {/* <button onClick={() => { props.back() }} className='mx-2 bg-red-600 hover:bg-red-700 transition duration-200 hover:scale-105 font-normal text-white px-6 py-1 text-lg  rounded-sm shadow-xl'>Back</button> */}
                                     <button onClick={fetchApplication} className='mx-2 bg-indigo-600 hover:bg-indigo-700 transition duration-200 hover:scale-105 font-normal text-white px-3 py-1 text-lg  rounded-sm shadow-xl'>Pay Now</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
+
                 </div>
             </div>
         </>

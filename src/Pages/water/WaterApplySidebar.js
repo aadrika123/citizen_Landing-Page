@@ -1,7 +1,14 @@
 import React from 'react'
 import { FaQuestion } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 function WaterApplySidebar(props) {
+    const navigate = useNavigate()
+
+    const waterDash = () => {
+        navigate("/water")
+    }
+
     const faqs = [
         {
             id: 1,
@@ -43,7 +50,7 @@ function WaterApplySidebar(props) {
                         <h2 className="text-2xl font-semibold flex justify-center">FAQ <FaQuestion size={18} className="mt-2 ml-2" /></h2>
                     </div>
                     <div className='flex justify-center my-5'>
-                        <button className='bg-blue-400 px-4 py-1 text-lg' onClick={()=>props.dash()}>Water Dashboard</button>
+                        <button className='bg-blue-400 px-4 py-1 text-lg' onClick={waterDash}>Water Dashboard</button>
                     </div>
                     <p className=" my-4 text-gray-600 text-center"> Water Form Reladed Query </p>
                     <div className="space-y-4 p-2">
