@@ -48,6 +48,9 @@ import WaterApplicationStatus from './Pages/water/Status/WaterApplicationStatus'
 import DocUploadFormIndex from './Pages/water/DocUploadForm/DocUploadFormIndex';
 import CitizenSafEntryScreenForm from './Pages/CitizenSafForm/CitizenSafEntryScreenForm';
 import CitizenPropSafApplicationFormIndex from './Pages/CitizenSafForm/CitizenPropSafApplicationFormIndex';
+import CitizenSafEntryScreenTest from './components/CitizenDashboard/CitizenSafEntryScreenTest';
+import ViewApplicationDetailById from './components/CitizenDashboard/ViewApplicationDetailById';
+
 
 function App() {
   
@@ -60,7 +63,7 @@ function App() {
    
       <contextVar.Provider value={{ ulbdatafun: setulbData, ulbdata: ulbData }}>
         <div className={`sm:w-full transition-all  `}>
-      
+
           <CitizenChatBot />
           <Routes>
             <Route path="/" element={<LandingMainPage />} />
@@ -78,10 +81,12 @@ function App() {
             <Route path="/appliedApplicationByModule" element={<CitizenApplicationByModule/>} />
             <Route path="/appliedLicenseTbl" element={<CitizenAppliedLicenseDetailTbl />} />
             {/* <Route path="/citizenProperty" element={<Protected Component={CitizenSafEntryScreen} />} /> */}
-            <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenForm} />} />
+            {/* <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenForm} />} /> */}
+            <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenTest} />} />
             {/* <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} /> */}
             <Route path="/citizenselfdetailform" element={<Protected Component={CitizenSelfAdvtDetailForm} />} />
             <Route path='/safform/:assType' element={<Protected Component={CitizenPropSafApplicationFormIndex} />} />
+            <Route path='/viewApplicationDetail' element={<Protected Component={ViewApplicationDetailById} />} />
             <Route path='/citizenobjection' element={<CitizenObjectionFormIndex />} />
             <Route path='/water' element={<WaterIndex />} />
             <Route path='/water/apply' element={<WaterIndex />} />
