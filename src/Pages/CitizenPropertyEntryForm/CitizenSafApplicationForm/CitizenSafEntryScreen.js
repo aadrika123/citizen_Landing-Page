@@ -284,32 +284,6 @@ function CitizenSafEntryScreen() {
                                             </div>
                                         </div>
                                     </div>
-
-
-
-                                    {/* <div className={` ${mutationStatus} p-4 ml-5 md:p-10 `} onClick={() => assStatus('mu')}>
-            <div className="w-full flex items-center justify-center bg-transparent ">
-                <div className="relative w-48 md:w-52 h-14 sm:h-14 md:h-16 bg-blue-200 rounded-br-full pt-4 pb-8 px-4 shadow-md hover:shadow-lg transition flex flex-col items-center">
-                    <div className="absolute rounded-full bg-transparent w-16 md:w-20 md:h-20 md:p-2 z-10 -top-2 md:-top-4 -left-12 md:-left-14 transition ">
-                        <div className="rounded-full w-16 sm:w-18 md:w-20 overflow-auto">
-                            <span className="flex h-0 w-3">
-                                <span className="animate-ping absolute inline-flex h-14 w-14 ml-3 mt-3 rounded-full bg-blue-500 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2  bg-red-400"></span>
-                            </span>
-                            <img src="https://img.freepik.com/free-vector/giant-check-list_23-2148087771.jpg?w=740&t=st=1659778834~exp=1659779434~hmac=5198b204d78b6707eafcb79c86b615dcc2619319896b1ea90f14ebcad1c8e81d" className="" />
-                        </div>
-                    </div>
-                    <div className="flex flex-col space-y-2 md:space-y-4">
-                        <label className="absolute font-semibold text-gray-500 text-sm text-start top-3 left-9 sm:left-10">
-                            MODIFICATION
-                        </label>
-                        <p className="absolute text-gray-500 text-sm mt-1 leading-relaxed left-10  sm:left-10">
-                            Apply
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div> */}
                                 </div>
                             </div>
 
@@ -333,7 +307,7 @@ function CitizenSafEntryScreen() {
 
 
                                             <div className='flex-1 mx-auto -mt-3' >
-                                                <img src='https://img.freepik.com/free-vector/recruit-agent-analyzing-candidates_74855-4565.jpg?w=826&t=st=1659784290~exp=1659784890~hmac=ebdaac857732a1bae2aa343b76514f5a34cd662dc447907ccdade20efbfe5bab' className='h-32 ml-32 mt-6'/>
+                                                <img src='https://img.freepik.com/free-vector/recruit-agent-analyzing-candidates_74855-4565.jpg?w=826&t=st=1659784290~exp=1659784890~hmac=ebdaac857732a1bae2aa343b76514f5a34cd662dc447907ccdade20efbfe5bab' className='h-32 ml-32 mt-6' />
 
                                             </div>
                                             <div>

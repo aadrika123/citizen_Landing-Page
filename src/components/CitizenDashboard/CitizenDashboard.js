@@ -3,6 +3,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import citizenLog from '../../assets/citizenLog.svg'
 import { Link } from 'react-router-dom'
 import CitizenNotification from '../../Pages/citizen/CitizenNotification';
+import Processguide from './Processguide';
 
 function CitizenDashboard(props) {
 
@@ -49,17 +50,27 @@ function CitizenDashboard(props) {
             </div> */}
 
             <div className='container mx-auto  '>
+                <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 '>
+                    <h1 className='text-3xl text-center font-bold mt-12 text-gray-700'>WELCOME USER TO YOUR DASHBOARD</h1>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 -mt-4'>
+                    <div className='col-span-9 p-6'>
+                        <Processguide />
+                    </div>
+                    <div className=' col-span-3 bg-blue-00'>
+                        <h1 className='text-3xl font-bold p-12 text-gray-600'> HOW TO APPLY FOR ANY SERVICE ?</h1>
+                        <img src='https://img.freepik.com/free-vector/thoughtful-woman-with-laptop-looking-big-question-mark_1150-39362.jpg?w=740&t=st=1665668008~exp=1665668608~hmac=11bf70324869ece22bc34dcdb9cbd5e8dafd4abba76054822143d0f1d8e7951e' className='-mt-12' />
+                    </div>
+                </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12'>
 
                     <div className='col-span-8 mt-12'>
-                        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2  container mt-2'>
+                        <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1  p-2  container mt-2'>
+
                             <div className=''>
-                                <img src='https://cdn-icons-png.flaticon.com/512/8062/8062163.png' className='h-12   float-right' />
-                            </div>
-                            <div className=''>
-                                <h1 className='ml-2 text-2xl font-semibold text-gray-600 font-serif  '>
-                                    SERVICES
+                                <h1 className=' text-2xl font-semibold text-gray-600 font-sans text-center '>
+                                    SERVICES WE OFFER
                                 </h1>
                             </div>
                         </div>
@@ -71,12 +82,14 @@ function CitizenDashboard(props) {
                                             <div class="w-20 h-20 relative ">
                                                 <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className=' h-16  opacity-85' />
                                             </div>
-                                            <p class="text-gray-800 text-md font-medium mb-1">
+
+                                            <p class="text-gray-800 text-center text-md font-medium mb-1 ">
                                                 ADVERTISEMENT
                                             </p>
                                             <p class="text-gray-700 text-center text-xs px-1 mb-2">
                                                 You Can Get License To Advertise Your Business Name On Your Shop
                                             </p>
+
                                         </div>
                                     </div>
                                 </Link>
@@ -94,6 +107,7 @@ function CitizenDashboard(props) {
                                             <p class="text-gray-700 text-center text-xs px-1 mb-2">
                                                 You Can Get License To Advertise Your Business Name On Your Shop
                                             </p>
+                                           <p>How to apply</p>
                                         </div>
                                     </div>
                                 </Link>
@@ -202,11 +216,11 @@ function CitizenDashboard(props) {
 
                     </div>
                     <div className='col-span-4 mt-12'>
-                    <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2  container mt-2'>
-                            
+                        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2  container mt-2'>
+
                             <div className='text-center'>
-                                <h1 className='ml-2 text-2xl font-semibold text-gray-600 font-serif  '>
-                                  NOTIFICATION
+                                <h1 className='ml-2 text-2xl font-semibold text-gray-600 font-sans  '>
+                                    NOTIFICATION
                                 </h1>
                             </div>
                         </div>

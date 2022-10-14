@@ -279,13 +279,9 @@ function CitizenSafApplicationFormIndex() {
                     <ToastContainer position="top-right"
                         autoClose={2000} />
                     <div className="grid grid-cols-2">
-                        <div>
-                            {/* <div className='text-left relative top-0'>
-                    <span className='bg-sky-100 border-l border-b border-white text-black col-span-12 sm:col-span-2 sm:col-start-11 pl-4 rounded-l shadow-lg font-semibold pr-4'>prev-holding : A0101010101010101</span>
-                </div> */}
-                        </div>
+               
                         <div><div className='text-right relative top-0'>
-                            <span className='bg-sky-100 border-l border-b border-white text-black col-span-12 sm:col-span-2 sm:col-start-11 pl-4 rounded-l shadow-lg font-semibold pr-4'><TbWebhook className='inline' /> {assTypeText}</span>
+                            <span className='bg-sky-100 border-l border-b border-white text-black col-span-12 sm:col-span-2 sm:col-start-11 pl-4 rounded-l shadow-lg font-semibold pr-4'><TbWebhook className='inline' /> {assTypeText} Apply</span>
                         </div></div>
                     </div>
                     <div className="flex mt-0">

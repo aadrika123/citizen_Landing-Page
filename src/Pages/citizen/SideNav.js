@@ -16,6 +16,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
+
 function SideNav(props) {
     const [navWidth, setNavWidth] = useState('w-0')
     const [menuIcon, setmenuIcon] = useState(false)
@@ -36,8 +37,8 @@ function SideNav(props) {
         <>
 
             <button className='opacity-75  bg-gray-800 float-right shadow-xl px-2 py-1 mt-12 inline  text-white' onClick={toggleNav}>
-           { menuIcon ? <KeyboardDoubleArrowLeftIcon className='text-white' /> :  <KeyboardDoubleArrowRightIcon className='text-white ml-2' />}
-                click
+           { menuIcon ? <KeyboardDoubleArrowLeftIcon className='text-white' /> :  <MenuIcon className='text-white ml-2' />}
+       
             </button>
 
             <div className={`${navWidth} h-screen mt-12 transition-all duration-500 bg-gray-700 z-20 opacity-80 relative overflow-hidden`} >

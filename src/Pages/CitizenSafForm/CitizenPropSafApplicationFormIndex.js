@@ -30,6 +30,8 @@ import SafFormDemand from '../CitizenSafForm/SafFormReview/SafFormDemand'
 import SafFormPayment from '../CitizenSafForm/SafFormReview/SafFormPayment'
 // import api_getPostSafFormData from 'Components/ApiList/api_getPostSafFormData'
 import CitizenApplyApiList from '../../components/CitizenApplyApiList'
+import LandingNav from '../Landing/LandingNav'
+import CitizenNavbar from '../../components/CitizenDashboard/CitizenNavbar'
 // import RoundLoader from 'Components/TestDelete/RoundLoader'
 
 function CitizenPropSafApplicationFormIndex() {
@@ -201,7 +203,7 @@ function CitizenPropSafApplicationFormIndex() {
         //> activating loader
         setloader(true)
         // let token = JSON.parse(window.localStorage.getItem('token'))
-        let token = '940|WaS1iyoncZJBVxp4fZv6Usdsq1emjxr3Yv1CzaPT'
+        let token = '984|KgobrW9nTKo4HvBO0TY5pM92fbuij1j1JCwmjm66'
         console.log('token at basic details is ...', token)
         const header = {
             headers:
@@ -295,7 +297,7 @@ function CitizenPropSafApplicationFormIndex() {
     useEffect(() => {
 
         // let token = window.localStorage.getItem('token')
-        let token = '940|WaS1iyoncZJBVxp4fZv6Usdsq1emjxr3Yv1CzaPT'
+        let token = '984|KgobrW9nTKo4HvBO0TY5pM92fbuij1j1JCwmjm66'
         console.log('token at basic details is ...', token)
         const header = {
             headers:
@@ -324,13 +326,16 @@ function CitizenPropSafApplicationFormIndex() {
     }
     return (
         <>
+            <div>
+               <CitizenNavbar/>
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 mx-auto container lg:px-[29rem] md:px-24 p-1'>
-         
-                    <img src='https://cdn-icons-png.flaticon.com/512/4115/4115893.png' className='h-8 lg:h-9 md:h-8' />
-                    <h1 className='text-xl lg:text-3xl md:text-xl ml-12 -mt-8  font-semibold text-gray-700'>
-                        {assTypeText}
-                    </h1>
-              
+
+                <img src='https://cdn-icons-png.flaticon.com/512/8062/8062163.png' className='h-8 lg:h-8 md:h-8' />
+                <h1 className='text-xl lg:text-3xl md:text-xl ml-12 -mt-8  font-semibold text-gray-700'>
+                    {assTypeText}
+                </h1>
+
 
             </div>
 

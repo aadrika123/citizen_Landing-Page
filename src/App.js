@@ -50,6 +50,7 @@ import CitizenSafEntryScreenForm from './Pages/CitizenSafForm/CitizenSafEntryScr
 import CitizenPropSafApplicationFormIndex from './Pages/CitizenSafForm/CitizenPropSafApplicationFormIndex';
 import CitizenSafEntryScreenTest from './components/CitizenDashboard/CitizenSafEntryScreenTest';
 import ViewApplicationDetailById from './components/CitizenDashboard/ViewApplicationDetailById';
+import CitizenPropApplyRe from './components/CitizenDashboard/CitizenPropApplyRe';
 
 
 function App() {
@@ -82,7 +83,12 @@ function App() {
             <Route path="/appliedLicenseTbl" element={<CitizenAppliedLicenseDetailTbl />} />
             {/* <Route path="/citizenProperty" element={<Protected Component={CitizenSafEntryScreen} />} /> */}
             {/* <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenForm} />} /> */}
+
+
+            {/* <Route path="/viewApplicationDetail/CitizenPropEntry" element={<Protected Component={CitizenPropApplyRe} />} /> */}
             <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenTest} />} />
+
+
             {/* <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} /> */}
             <Route path="/citizenselfdetailform" element={<Protected Component={CitizenSelfAdvtDetailForm} />} />
             <Route path='/safform/:assType' element={<Protected Component={CitizenPropSafApplicationFormIndex} />} />

@@ -15,9 +15,13 @@ function ApplicationListCard() {
                 <div className='flex-1 '>
                     <h1 className='font-bold text-2xl text-gray-600 float-left'>PROPERTY APPLIED APPLICATIONS</h1>
                 </div>
-                {/* <div className='flex-1 '>
-                    <h1 className='font-bold text-2xl text-amber-400 float-right'><img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' className='h-8'/></h1>
-                </div> */}
+                <div className='flex-1 '>
+                    <Link to='/safform/new'>
+                    <button className='float-right bg-amber-200 py-1 px-2 text-sm font-semibold rounded-md shadow-lg'>
+                       APPLY NEW-ASSESSMENT
+                    </button>
+                    </Link>
+                </div>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 '>

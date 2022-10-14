@@ -20,6 +20,7 @@ import axios from 'axios'
 import SidenavContent from './testDelete/SidenavContent'
 import TestComponent from './testDelete/TestComponent'
 import CitizenDashboard from './CitizenDashboard/CitizenDashboard'
+import CitizenNavbar from './CitizenDashboard/CitizenNavbar'
 
 
 function CitizenMainPage() {
@@ -57,10 +58,10 @@ function CitizenMainPage() {
     <>
 
       <div>
-        <div className='fixed z-50 w-full'> <LandingNav /></div>
+        <div className='fixed z-50 w-full'> <CitizenNavbar /></div>
 
         <div className=''>
-          <div className='absolute left-0 top-0'><SideNav citizenNameEmail={fetchCitizenData} /></div>
+          {/* <div className='absolute left-0 top-0'><SideNav citizenNameEmail={fetchCitizenData} /></div> */}
           {/* <CitizenEntryPage citizenName={fetchCitizenData} />
           <CitizenContentArea /> */}
           <CitizenDashboard />

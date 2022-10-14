@@ -11,7 +11,7 @@
 
 
 import React, { useState, useEffect } from 'react'
-import { Formik } from 'formik';
+import { Formik, useFormik } from 'formik';
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -19,11 +19,32 @@ import TestNav from '../../components/testDelete/TestNav';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import SyncIcon from '@mui/icons-material/Sync';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
+import id from 'date-fns/esm/locale/id/index.js';
 
 function CitizenAccountSetting() {
 
-    let rowTitleStyle = "lg:p-1 p-0 md:p-0 text-gray-500 text-sm"
-    let rowInputStye = "lg:p-1 p-0 md:p-0 text-gray-600 text-sm font-semibold"
+
+
+    const formik = useFormik({
+        initialValues: {
+            ulb_name: '',
+            mobile: '',
+            name: '',
+            guardian_name: '',
+            email: '',
+            armed_force: '',
+            specially_abled: ''
+
+        },
+        onSubmit: (values) => {
+            setTimeout(() => {
+                alert("submitted")
+                modifyData(values)
+            }, 100);
+
+
+        },
+    });
 
     const updateDataSchema = Yup.object().shape({
         full_name: Yup.string()
@@ -42,15 +63,19 @@ function CitizenAccountSetting() {
 
     });
 
+    const [CloseForm, setCloseForm] = useState('')
+    const handleCloseForm = () => {
+        setCloseForm('hidden')
+    }
+
     const [fetchData, setfetchData] = useState()
 
     // state where update input field is hidden  
     const [updateLbl, setupdateLbl] = useState('hidden')
-
-
     //onclick it shows the input field for updation 
     const handleShowLabel = () => {
         (updateLbl == 'hidden') ? setupdateLbl('') : setupdateLbl('hidden');
+        
     }
     const bearerTokenInit = localStorage.getItem('token');
 
@@ -106,7 +131,8 @@ function CitizenAccountSetting() {
 
     return (
         <>
-            {/* <TestNav /> */}
+            {/************VIEW AND UPDATE ACCOUNT DETAIL****************/}
+
             {/* <Formik
                 initialValues={{ ulb_name: '', mobile: '', name: '', guardian_name: '', email: '', armed_force: '', specially_abled: '' }}
                 onSubmit={(values, { setSubmitting }) => {
@@ -379,13 +405,12 @@ function CitizenAccountSetting() {
                     </form>
                 )}
             </Formik> */}
-            <div >
 
+
+            {/************TO BE DELETED****************/}
+            {/* <div >
                 <div className=''>
-                    {/* <div className='flex border-b-2 border-b-blue-400 bg-[#828ed6] px-1 py-0  shadow-lg'>
-        <img className='mx-3 ' alt="" width="40vw" />
-        <h1 className='text-blue-400 text-lg  px-2 mt-1'>INFORMATION</h1>
-    </div> */}
+
 
                     <div className=' bg-blue-50 my-6 border-r-2 border-blue-700 rounded-md shadow-lg '>
                         <h1 className='text-md text-gray-800 font-semibold px-2 py-0 shadow-md shadow-blue-300'><span className='px-2 '><InventoryOutlinedIcon fontSize='medium' />
@@ -394,7 +419,7 @@ function CitizenAccountSetting() {
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  px-10 py-1 mt-4 pb-1 rounded-md  '>
 
 
-                            {/* <div className='grid grid-cols-2 md:w-[auto] lg:w-[30vw] sm:w-auto'> */}
+
                             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3'>
                                 <div className={`${rowTitleStyle}`}>ULB :-  </div>
                                 <div className={`${rowInputStye}`}>{fetchData?.ulb_name}</div>
@@ -423,7 +448,7 @@ function CitizenAccountSetting() {
                             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 '>
                                 <div className={`${rowTitleStyle}`}>DATE-OF-BIRTH :-</div>
                                 <div className={`${rowInputStye}`}>
-                                16-08-2022
+                                    16-08-2022
                                 </div>
                             </div>
 
@@ -444,9 +469,243 @@ function CitizenAccountSetting() {
 
 
                 </div>
+            </div> */}
 
+            {/************VIEW  ACCOUNT DETAIL CHANGED DESIGN****************/}
+            <div>
+                <h1 className='px-1 font-semibold font-serif text-xs'><img src='https://cdn-icons-png.flaticon.com/512/6592/6592963.png' alt="pin" className='w-5 inline' />  Details</h1>
+                <span>
+                    <button type="button" className='bg-green-500 rounded-md shadow-lg px-6 py-1 text-sm text-white font-semibold float-right' onClick={handleShowLabel}>
+                        Update
+                    </button>
+                </span>
+
+                <div className='bg-green-50 rounded-lg shadow-lg py-6'>
+                    <div className="flex space-x-5 pl-4 ">
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>ULB</div>
+                            <div className='font-bold text-sm'>{fetchData?.ulb_name}</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>FULL NAME</div>
+                            <div className='font-semibold text-sm'>{fetchData?.name}</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>GUARDIAN NAME</div>
+                            <div className='font-semibold text-sm'>{fetchData?.name}</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>MOBILE NO</div>
+                            <div className='font-bold text-sm'>{fetchData?.mobile}</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>EMAIL</div>
+                            <div className='font-bold text-sm'>{fetchData?.email}</div>
+                        </div>
+                    </div>
+
+                    <div className="flex space-x-10  pl-4 mt-4">
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>DATE-OF-BIRTH</div>
+                            <div className='font-bold text-sm'>yes</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>Armed Force</div>
+                            <div className='font-semibold text-sm'>yes</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+                            <div className='text-gray-500'>Specially Abled</div>
+                            <div className='font-semibold text-sm'>yes</div>
+                        </div>
+                        <div className='flex-1 text-xs'>
+
+                        </div>
+                        <div className='flex-1 text-xs'>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
+
+            {/************ UPDATE ACCOUNT DETAIL CHANGED DESIGN****************/}
+            <div id= "updateForm" className={` ${updateLbl}`}>
+
+                <form onSubmit={formik.handleSubmit}>
+                    <div>
+                        <h1 className='px-1 font-semibold font-serif text-xs'><img src='https://cdn-icons-png.flaticon.com/512/8690/8690260.png' alt="pin" className='w-5 inline' /> Update Details</h1>
+                        <span>
+                            <button type="button" className=' rounded-full p-1  float-right' onClick={handleCloseForm}>
+                                <img src='https://cdn-icons-png.flaticon.com/512/753/753345.png' className='h-6' />
+                            </button>
+                        </span>
+                        <div className='bg-green-50 rounded-lg shadow-lg py-6'>
+                            <div className="flex space-x-5 pl-4 ">
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>ULB</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        <input
+                                            className="bg-white px-12 py-1 rounded-md shadow-md"
+                                            type="text"
+                                            name="ulb_name"
+                                            placeholder=''
+                                            onChange={formik.handleChange}
+                                            value={formik.values.ulb_name}
+                                        />
+
+                                    </div>
+                                </div>
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>FULL NAME</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        <input
+                                            className="bg-white px-12 py-1 rounded-md shadow-md"
+                                            type="text"
+                                            name="name"
+                                            placeholder=''
+                                            onChange={formik.handleChange}
+                                            value={formik.values.name}
+                                        />
+
+                                    </div>
+                                </div>
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>GUARDIAN NAME</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        <input
+                                            className="bg-white px-12 py-1 rounded-md shadow-md"
+                                            type="text"
+                                            name="guardian_name"
+                                            placeholder=''
+                                            onChange={formik.handleChange}
+                                            value={formik.values.guardian_name}
+                                        />
+
+                                    </div>
+                                </div>
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>MOBILE NO</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        <input
+                                            className="bg-white px-12 py-1 rounded-md shadow-md"
+                                            type="text"
+                                            name="mobile"
+                                            placeholder=''
+                                            onChange={formik.handleChange}
+                                            value={formik.values.mobile}
+                                        />
+
+                                    </div>
+                                </div>
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>EMAIL</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        <input
+                                            className="bg-white px-12 py-1 rounded-md shadow-md"
+                                            type="text"
+                                            name="email"
+                                            placeholder=''
+                                            onChange={formik.handleChange}
+                                            value={formik.values.email}
+                                        />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex space-x-10  pl-4 mt-4">
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>DATE-OF-BIRTH</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        <input
+                                            className="bg-white px-12 py-1 rounded-md shadow-md"
+                                            type="text"
+                                            name="dob"
+                                            placeholder=''
+                                            onChange={formik.handleChange}
+                                            value={formik.values.dob}
+                                        />
+
+
+                                    </div>
+                                </div>
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>Armed Force</div>
+                                    <div className={` relative z-0 mb-1`}>
+                                        {/* <input
+                                                    className="bg-white px-12 py-1 rounded-md shadow-md"
+                                                    type="text"
+                                                    name="specially_abled"
+                                                    placeholder=''
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.armed_force}
+                                                /> */}
+                                        <select className="bg-white px-12 py-1 rounded-md shadow-md" {...formik.getFieldProps('armed_force')}>
+                                            <option>yes</option>
+                                            <option>No</option>
+                                        </select>
+
+                                    </div>
+                                    <div className="flex col-span-6 sm:col-span-3">
+
+                                        <div className='flex-1 mt-7 mr-9'>
+                                            <label for="file-upload" className={` relative cursor-pointer bg-white font-medium text-indigo-600 hover:text-indigo-500  `}>
+                                                <input type="file" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='flex-1 text-xs'>
+                                    <div className='text-gray-500'>Specially Abled</div>
+                                    {/* <input
+                                                className="bg-white px-12 py-1 rounded-md shadow-md"
+                                                type="text"
+                                                name="specially_abled"
+                                                placeholder=''
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.specially_abled}
+                                            /> */}
+                                    <select className="bg-white px-12 py-1 rounded-md shadow-md" {...formik.getFieldProps('specially_abled')}>
+                                        <option>yes</option>
+                                        <option>No</option>
+                                    </select>
+
+
+                                </div>
+                                <div className="flex col-span-6 sm:col-span-3">
+                                    <div className='flex-1 mt-7 mr-9'>
+                                        <label for="file-upload" className={` relative cursor-pointer bg-white font-medium text-indigo-600 hover:text-indigo-500  `}>
+                                            <input type="file" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex-1 text-xs'>
+
+                            </div>
+                            <div className='flex-1 text-xs'>
+
+                            </div>
+
+                            <div className='p-2'>
+                                <button type='submit' className={`text-sm float-right min-w-auto px-6 py-1 bg-green-500   rounded-lg hover:bg-green-600 text-white font-semibold transition-transform hover:-translate-y-2 ease-in-out`}>
+                                    submit
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+
         </>
     )
 }

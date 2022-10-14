@@ -22,6 +22,7 @@ import LandingNav from '../Landing/LandingNav';
 import CitizenAccountSetting from './CitizenAccountSetting';
 import CitizenApplicationByModule from './CitizenApplicationByModule';
 import { border } from '@mui/system';
+import CitizenNavbar from '../../components/CitizenDashboard/CitizenNavbar';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,11 +66,11 @@ export default function CitizenDetailPage() {
 
   return (
     <>
-      <LandingNav />
+    <CitizenNavbar/>
 
       <div className=''>
         <div className=''>
-          {/* <SideNav /> */}
+         
         </div>
 
         {/* citizen Account tabs  */}
@@ -84,15 +85,15 @@ export default function CitizenDetailPage() {
               <Box sx={{   width: '100%' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" >
                   <Tab label="Account" {...a11yProps(0)} />
-                  <Tab label="Applied Applications" {...a11yProps(1)} />
+                  {/* <Tab label="Applied Applications" {...a11yProps(1)} /> */}
                 </Tabs>
               </Box>
               <TabPanel value={value} index={0}>
                 <CitizenAccountSetting />
               </TabPanel>
-              <TabPanel value={value} index={1}>
+              {/* <TabPanel value={value} index={1}>
                 <CitizenApplicationByModule />
-              </TabPanel>
+              </TabPanel> */}
 
             </Box>
           {/* </div>
