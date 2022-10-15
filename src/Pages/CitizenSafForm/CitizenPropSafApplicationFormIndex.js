@@ -203,7 +203,7 @@ function CitizenPropSafApplicationFormIndex() {
         //> activating loader
         setloader(true)
         // let token = JSON.parse(window.localStorage.getItem('token'))
-        let token = '984|KgobrW9nTKo4HvBO0TY5pM92fbuij1j1JCwmjm66'
+        let token = '1036|ScXmavQPcfCOLqcNYgMT8ginGDGQBUGuyGDfFji8'
         console.log('token at basic details is ...', token)
         const header = {
             headers:
@@ -297,7 +297,7 @@ function CitizenPropSafApplicationFormIndex() {
     useEffect(() => {
 
         // let token = window.localStorage.getItem('token')
-        let token = '984|KgobrW9nTKo4HvBO0TY5pM92fbuij1j1JCwmjm66'
+        let token = '1036|ScXmavQPcfCOLqcNYgMT8ginGDGQBUGuyGDfFji8'
         console.log('token at basic details is ...', token)
         const header = {
             headers:

@@ -90,21 +90,47 @@ function CitizenLicenseFullDetail() {
 
     return (
         <>
-        <CitizenNavbar/>
+            <CitizenNavbar />
 
             {/* displaying particular selected license full detail table */}
 
             <div class=" grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5  gap-5 bg-white">
                 <div class=" bg-white mt-2 ml-2 col-span-1 ">
-                    <img src='https://img.freepik.com/free-vector/realty-agent-holding-keys-standing-near-building-isolated-flat-vector-illustration-cartoon-woman-house-sale_74855-8548.jpg?w=740&t=st=1665657219~exp=1665657819~hmac=11498cb70d0eb017f5ee66cbaf57fc5f31e4af1fb27aa59196c008bf88ffdbf7' />
-
+                    {/* <img src='https://img.freepik.com/free-vector/realty-agent-holding-keys-standing-near-building-isolated-flat-vector-illustration-cartoon-woman-house-sale_74855-8548.jpg?w=740&t=st=1665657219~exp=1665657819~hmac=11498cb70d0eb017f5ee66cbaf57fc5f31e4af1fb27aa59196c008bf88ffdbf7' /> */}
+                    <h1 className='text-center font-semibold text-gray-700  mt-9'>VIEW MORE</h1>
                     <div className=''>
                         <div className={`p-4  md:p-5 `} >
-                            <div class="hover:shadow-xl hover:bg-green-500  rounded-lg sm:w-full w-full h-30 p-2 bg-green-300 relative overflow-hidden">
-                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/128/4205/4205906.png" class="absolute -right-2 -bottom-6 h-12 w-12 mb-4 " />
+                            <div class="hover:shadow-xl hover:bg-green-300 shadow-md  sm:w-full w-full h-30 p-2 bg-green-200 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/3641/3641163.png" class="absolute -right-0  h-8 w-8 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-sm text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
                                         STATUS : APPROVED
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=''>
+                        <div className={`p-4  md:p-5 -mt-8`} >
+                            <div class="hover:shadow-xl hover:bg-teal-300 shadow-md  sm:w-full w-full h-30 p-2 bg-sky-200 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/4108/4108042.png" class="absolute -right-0  h-8 w-8  " />
+                                <div class="w-4/6">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                        PAYMENT
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=''>
+                        <div className={`p-4  md:p-5 -mt-8`} >
+                            <div class="hover:shadow-xl hover:bg-teal-300 shadow-md   sm:w-full w-full h-30 p-2 bg-teal-200 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/1651/1651965.png" class="absolute -right-0  h-8 w-8 " />
+                                <div class="w-4/6">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                        TRANSCATION
                                     </p>
 
                                 </div>
@@ -114,42 +140,58 @@ function CitizenLicenseFullDetail() {
                     <div className=''>
                         <div className={`${(asstypeStatus == 're' || asstypeStatus == 'both')}p-4  md:p-5 -mt-8`} onClick={() => navigate('/safform/re')}>
 
-                            <div class="hover:shadow-xl hover:bg-emerald-600  rounded-lg sm:w-full w-full h-30 p-2 bg-emerald-500 relative overflow-hidden">
-                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/128/4205/4205906.png" class="absolute -right-2 -bottom-6 h-12 w-12 mb-4 " />
+                            <div class="hover:shadow-xl hover:bg-emerald-300 shadow-md   sm:w-full w-full h-30 p-2 bg-emerald-200 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-sm text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
                                         RE-ASSIGNMENT
                                     </p>
                                     <p class="text-gray-800 text-xs">
-                                        Apply for re-assignment
+                                        Apply  re-assignment
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className=''>
-                        <div className={`${(asstypeStatus == 'mu' || asstypeStatus == 'both')}p-4 md:p-5 -mt-8 `} onClick={() => navigate('/safform/mu')}>
-                            <div class="hover:shadow-xl hover:bg-amber-500  rounded-lg sm:w-full w-full p-2 bg-amber-400 relative overflow-hidden">
-                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/128/4205/4205906.png" class="absolute -right-2 -bottom-6 h-12 w-12 mb-4  " />
-                                <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-sm text-start top-3 left-9 sm:left-10">
-                                        MUTATION
-                                    </p>
-                                    <p class="text-gray-800 text-xs">
-                                        Apply for mutation
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div className=''>
 
                         <div className={`${(asstypeStatus == 'obj' || asstypeStatus == 'both')}p-4 md:p-5 -mt-8`} onClick={() => navigate('/citizenobjection')}>
-                            <div class="hover:shadow-xl hover:bg-purple-600 rounded-lg sm:w-full w-full p-2 bg-purple-500 relative overflow-hidden">
-                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/128/4205/4205906.png" class="absolute -right-2 -bottom-6 h-12 w-12 mb-4 " />
+                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-purple-300 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-sm text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
                                         OBJECTION
+                                    </p>
+                                    <p class="text-gray-800 text-xs">
+                                        Apply for objection
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=''>
+                        <div className={`p-4 md:p-5 -mt-8`} onClick={() => navigate('/citizenobjection')}>
+                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-sky-200 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
+                                <div class="w-4/6">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                        WATER HARVESTING
+                                    </p>
+                                    <p class="text-gray-800 text-xs">
+                                        Apply for objection
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=''>
+                        <div className={`p-4 md:p-5 -mt-8`} onClick={() => navigate('/citizenobjection')}>
+                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-yellow-200 relative overflow-hidden">
+                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
+                                <div class="w-4/6">
+                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                        CONCESSION
                                     </p>
                                     <p class="text-gray-800 text-xs">
                                         Apply for objection
@@ -171,14 +213,14 @@ function CitizenLicenseFullDetail() {
                             <Link to='/citizenPropertyApply'>
                                 <BackComponent />
                             </Link>
-                           
+
                         </div>
                     </div>
                     <div className=' p-2 flex'>
                         <div>
                             <h1 className='flex-1  text-gray-600 font-semibold text-xl'>   <span className='text-green-500'>SAF NO:- SAP12345678987634567</span></h1>
                         </div>
-                       
+
                         <div >
 
                         </div>

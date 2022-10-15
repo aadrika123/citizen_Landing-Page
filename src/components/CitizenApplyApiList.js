@@ -8,7 +8,7 @@ export default function CitizenApplyApiList() {
         //3
         api_getMasterData: `${baseUrl}/api/property/saf/apply`,
         //4
-        api_postNewAssissment: `${baseUrl}/api/property/saf/apply/`
+        api_postNewAssissment: `${baseUrl}/api/property/saf/apply`
     }
 
     return apiList

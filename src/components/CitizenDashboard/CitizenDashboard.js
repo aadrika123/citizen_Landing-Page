@@ -107,7 +107,7 @@ function CitizenDashboard(props) {
                                             <p class="text-gray-700 text-center text-xs px-1 mb-2">
                                                 You Can Get License To Advertise Your Business Name On Your Shop
                                             </p>
-                                           <p>How to apply</p>
+                                           <p>How to apply?</p>
                                         </div>
                                     </div>
                                 </Link>

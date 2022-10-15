@@ -1,5 +1,7 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FindHoldingModal from './FindHoldingModal';
+
 
 
 
@@ -7,22 +9,45 @@ function ApplicationListCard() {
     let titleStyle = "text-xs p-1 text-gray-600";
     let inputStyle = "text-sm font-semibold text-gray-800";
 
+
     let ApplicationList = [1, 2, 3];
+
+
+    const [findHolding, setfindHolding] = useState(false)
+
+    const popUpFindHolding = () => {
+       
+        findHolding ? setfindHolding(false) : setfindHolding(true)
+    }
 
     return (
         <>
             <div className='flex mb-8  px-4'>
                 <div className='flex-1 '>
-                    <h1 className='font-bold text-2xl text-gray-600 float-left'>PROPERTY APPLIED APPLICATIONS</h1>
+                    <h1 className='font-bold text-2xl text-gray-600 float-left'>MY PROPERTIES LIST</h1>
                 </div>
-                <div className='flex-1 '>
-                    <Link to='/safform/new'>
-                    <button className='float-right bg-amber-200 py-1 px-2 text-sm font-semibold rounded-md shadow-lg'>
-                       APPLY NEW-ASSESSMENT
+                <div className=' '>
+
+                    <button className='float-right bg-amber-200 py-1 px-2 text-sm font-semibold rounded-md shadow-lg' type='button' onClick={popUpFindHolding}>
+                        MUTATION
                     </button>
+
+                </div>
+                <div className=' '>
+                    <Link to='/safform/new'>
+                        <button className='float-left bg-amber-200 py-1 px-2 ml-2 text-sm font-semibold rounded-md shadow-lg'>
+                            APPLY NEW-ASSESSMENT
+                        </button>
                     </Link>
                 </div>
             </div>
+
+
+            {/******************** POPUP MODAL FOR FINDING HOLDING FOR MUTATION ******************************/}
+            <div>
+                {findHolding ? <FindHoldingModal fun={setfindHolding} />: '' }
+            </div>
+
 
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 '>
                 {/*  card listing */}
@@ -79,13 +104,13 @@ function ApplicationListCard() {
                                         </div>
                                     </div> */}
                                         <div className=''>
-                                            <div className='bg-sky-400 rounded-md text-center text-xs py-2'>
+                                            <div className='bg-sky-400 hover:bg-sky-600 rounded-md text-center text-xs py-2 shadow-lg'>
                                                 PAYMENT
                                             </div>
                                         </div>
                                         <Link to='/viewApplicationDetail'>
                                             <div className=''>
-                                                <div className='bg-teal-400 rounded-md text-center text-xs py-2'>
+                                                <div className='bg-teal-400 hover:bg-teal-600 rounded-md text-center text-xs py-2 shadow-lg'>
 
                                                     VIEW
                                                 </div>
