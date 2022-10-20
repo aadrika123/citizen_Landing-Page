@@ -18,8 +18,13 @@ import RegistrationVerify from './RegistrationVerify'
 import axios from "axios";
 import NewStepper from './Components/NewStepper'
 import RegistrationSuccess from './RegistrationSuccess'
+import CitizenApplyApiList from '../../components/CitizenApplyApiList'
 
 function Register() {
+
+
+  const { api_citizenRegister} = CitizenApplyApiList()
+
   const [registrationForm, setRegistrationForm] = useState(true)
   const [docUploadForm, setDocUploadForm] = useState("hidden")
   const [regVerifyForm, setRegVerifyForm] = useState("hidden")
@@ -90,8 +95,7 @@ function Register() {
     //Registration Data using AXIOS POST
     axios({
       method: "post",
-      url: "http://192.168.0.166/api/citizen-register",
-      // url: "http://192.168.0.166/api/register",
+      url: api_citizenRegister,
       data: {
         "name": regFormSavedData.full_name,
         "mobile": regFormSavedData.mobile_no,

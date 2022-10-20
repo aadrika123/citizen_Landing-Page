@@ -17,6 +17,7 @@ import "yup-phone";
 import Tooltip from "@material-ui/core/Tooltip";
 import axios from 'axios';
 import { useQuery } from 'react-query'
+import CitizenApplyApiList from '../../components/CitizenApplyApiList';
 
 // const panRegEx = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
 
@@ -73,9 +74,11 @@ const SignupSchema = Yup.object().shape({
 
 const RegistrationForm = (props) => {
 
+    const { api_getAllUlb} = CitizenApplyApiList()
+
 
     const { isLoading, data, isError, error } = useQuery("registrationULBLIstFromAPI", () => {
-        return axios.get('http://192.168.0.166/api/get-all-ulb');
+        return axios.get(api_getAllUlb);
     });
 
 

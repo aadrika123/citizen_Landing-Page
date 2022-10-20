@@ -1,63 +1,41 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
-//    Date - 20 oct 2022
+//    Date - 8 Aug 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ApplicationListCard
-//    DESCRIPTION - ApplicationListCard Component
+//    Component  - WaterApplicationListCard
+//    DESCRIPTION - WaterApplicationListCard Component for displaying list of application for water
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import FindHoldingModal from './FindHoldingModal';
 
+function WaterApplicationListCard() {
 
-
-
-function ApplicationListCard() {
     let titleStyle = "text-xs p-1 text-gray-600";
     let inputStyle = "text-sm font-semibold text-gray-800";
 
-
     let ApplicationList = [1, 2, 3];
-
-
-    const [findHolding, setfindHolding] = useState(false)
-
-    const popUpFindHolding = () => {
-       
-        findHolding ? setfindHolding(false) : setfindHolding(true)
-    }
 
     return (
         <>
-            <div className='flex mb-8  px-4'>
+           <div className='flex mb-8  px-4'>
                 <div className='flex-1 '>
-                    <h1 className='font-bold text-2xl text-gray-600 float-left'>MY PROPERTIES LIST</h1>
+                    <h1 className='font-bold text-2xl text-gray-600 float-left'>MY WATER CONNECTION LIST</h1>
                 </div>
                 <div className=' '>
 
-                    <button className='float-right bg-amber-200 py-1 px-2 text-sm font-semibold rounded-md shadow-lg' type='button' onClick={popUpFindHolding}>
-                        MUTATION
-                    </button>
 
                 </div>
                 <div className=' '>
-                    <Link to='/safform/new'>
+                    <Link to=''>
                         <button className='float-left bg-amber-200 py-1 px-2 ml-2 text-sm font-semibold rounded-md shadow-lg'>
-                            APPLY NEW-ASSESSMENT
+                            APPLY NEW
                         </button>
                     </Link>
                 </div>
             </div>
-
-
-            {/******************** POPUP MODAL FOR FINDING HOLDING FOR MUTATION ******************************/}
-            <div>
-                {findHolding ? <FindHoldingModal fun={setfindHolding} />: '' }
-            </div>
-
 
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 '>
                 {/*  card listing */}
@@ -68,7 +46,7 @@ function ApplicationListCard() {
                                 <div className='border  w-80  p-4 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all transform duration-500 mx-auto'>
                                     <div className='flex px-4'>
                                         <div className='flex-1 '>
-                                            <img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' className='h-6' />
+                                            <img src='https://cdn-icons-png.flaticon.com/512/3105/3105807.png' className='h-6' />
                                         </div>
                                         <div className='flex-1 '>
                                             <h1 className='font-bold text-md text-amber-400 float-right'>APPROVED</h1>
@@ -132,11 +110,9 @@ function ApplicationListCard() {
                         </>
                     ))
                 }
-
-
             </div>
         </>
     )
 }
 
-export default ApplicationListCard
+export default WaterApplicationListCard

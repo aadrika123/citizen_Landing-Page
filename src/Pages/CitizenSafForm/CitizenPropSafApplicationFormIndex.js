@@ -40,48 +40,45 @@ function CitizenPropSafApplicationFormIndex() {
 
     const navigate = useNavigate()
 
-    //////////////////{***✅ formindex specifies type of form like basicdetails at index 1 ...***}//////////////////////////////
+    /////////{***✅ formindex specifies type of form like basicdetails at index 1 ...***}///////
     const [formIndex, setFormIndex] = useState(1)
 
-    //////////////////{***slide animation control state for BasicDetails form***}//////////////////////////////
+    ////////////{***slide animation control state for BasicDetails form***}/////////////
     const [animateform1, setAnimateform1] = useState('translate-x-0 mb-40')
 
-    //////////////////{***slide animation control state for PropertyAddressDetails form***}//////////////////////////////
+    /////////{***slide animation control state for PropertyAddressDetails form***}//////////
     const [animateform2, setAnimateform2] = useState('pl-20 translate-x-full')
 
-    //////////////////{***slide animation control state for ElectricityWaterDetails form***}//////////////////////////////
+    ///////////{***slide animation control state for ElectricityWaterDetails form***}///////
     const [animateform3, setAnimateform3] = useState('pl-20 translate-x-full')
-
-    //////////////////{*** slide animation control state for OwnerDetails form***}//////////////////////////////
+    ////////////{*** slide animation control state for OwnerDetails form***}////////
     const [animateform4, setAnimateform4] = useState('pl-20 translate-x-full')
-
-    //////////////////{*** slide animation control state for FloorDetails form***}//////////////////////////////
+    ////////////{*** slide animation control state for FloorDetails form***}//////////
     const [animateform5, setAnimateform5] = useState('pl-20 translate-x-full')
-
-    //////////////////{***slide animation control state for reviewForm page***}//////////////////////////////
+    ///////////{***slide animation control state for reviewForm page***}/////////
     const [animateform6, setAnimateform6] = useState('pl-20 translate-x-full')
 
-    //////////////////{*** slide animation control state for formDemand page***}//////////////////////////////
+    /////////{*** slide animation control state for formDemand page***}/////////
     const [animateform7, setAnimateform7] = useState('pl-20 translate-x-full')
 
-    //////////////////{***slide animation control state for payment page***}//////////////////////////////
+    //////////{***slide animation control state for payment page***}/////////
     const [animateform8, setAnimateform8] = useState('pl-20 translate-x-full')
 
-    //////////////////{*** checking full form filled status to toggle final submit button***}//////////////////////////////
+    //////////{*** checking full form filled status to toggle final submit button***}////////
     const [submitStatus, setSubmitStatus] = useState(false)
     const [allFormData, setAllFormData] = useState({})
     const [responseScreenStatus, setResponseScreenStatus] = useState('')
 
-    //////////////////{*** assessment type***}//////////////////////////////
+    ///////////{*** assessment type***}///////////
     const [assTypeText, setAssTypeText] = useState()
 
-    //////////////////{***state variable to hold all form required data***}//////////////////////////////
+    ///////////{***state variable to hold all form required data***}///////////
     const [preFormData, setPreFormData] = useState()
 
-    //////////////////{***state variable to hold response data after submitting the saf form***}//////////////////////////////
+    ///////////{***state variable to hold response data after submitting the saf form***}/////////
     const [safSubmitResponse, setsafSubmitResponse] = useState()
 
-    //////////////////{***slide animation control state for BasicDetails form***}//////////////////////////////
+    ///////////{***slide animation control state for BasicDetails form***}//////////
     const [loader, setloader] = useState(false)
 
     //> useEffect to extract assessment type from url and set in state
@@ -203,8 +200,9 @@ function CitizenPropSafApplicationFormIndex() {
         //> activating loader
         setloader(true)
         // let token = JSON.parse(window.localStorage.getItem('token'))
-        let token = '1036|ScXmavQPcfCOLqcNYgMT8ginGDGQBUGuyGDfFji8'
-        console.log('token at basic details is ...', token)
+        let token = window.localStorage.getItem('token')
+        // let token = '1174|kfo4o1NYJ1lu8xXSetVC4yU5Nu5RlLxHOEQugI3L'
+        console.log('token at basic details is post method...', token)
         const header = {
             headers:
             {
@@ -296,9 +294,10 @@ function CitizenPropSafApplicationFormIndex() {
 
     useEffect(() => {
 
-        // let token = window.localStorage.getItem('token')
-        let token = '1036|ScXmavQPcfCOLqcNYgMT8ginGDGQBUGuyGDfFji8'
-        console.log('token at basic details is ...', token)
+        let token = window.localStorage.getItem('token')
+        // let token = '1174|kfo4o1NYJ1lu8xXSetVC4yU5Nu5RlLxHOEQugI3L'
+       
+        console.log('token at basic details is  get method...', token)
         const header = {
             headers:
             {
@@ -327,7 +326,7 @@ function CitizenPropSafApplicationFormIndex() {
     return (
         <>
             <div>
-               <CitizenNavbar/>
+                <CitizenNavbar />
             </div>
             <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 mx-auto container lg:px-[29rem] md:px-24 p-1'>
 

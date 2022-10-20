@@ -86,7 +86,7 @@ function App() {
 
 
             {/* <Route path="/viewApplicationDetail/CitizenPropEntry" element={<Protected Component={CitizenPropApplyRe} />} /> */}
-            <Route path="/citizenPropertyApply" element={<Protected Component={CitizenSafEntryScreenTest} />} />
+            <Route path="/citizenApplication/:module" element={<Protected Component={CitizenSafEntryScreenTest} />} />
 
 
             {/* <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} /> */}

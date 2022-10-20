@@ -1,21 +1,30 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Swati Sharma
+//    Version - 1.0
+//    Date - 20 oct 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - CitizenSafEntryScreenTest
+//    DESCRIPTION - CitizenSafEntryScreenTest Component contain application list card of all component
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+
 import { useState } from 'react'
-// import newSvg from './new.svg'
-// import re from './re.svg'
-// import mu from './mu.svg'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { TiArrowBack } from 'react-icons/ti'
 import { TbSearch } from 'react-icons/tb'
 import { FcHome } from 'react-icons/fc'
 import axios from 'axios'
-
 import LandingNav from '../../Pages/Landing/LandingNav'
 import SideNav from '../../Pages/citizen/SideNav'
 import ApplicationListTable from './ApplicationListCard'
 import ApplicationListCard from './ApplicationListCard'
 import BackComponent from './BackComponent'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import CitizenNavbar from './CitizenNavbar'
+import WaterApplicationListCard from './WaterApplicationListCard'
 
 function CitizenSafEntryScreenTest() {
 
@@ -136,6 +145,9 @@ function CitizenSafEntryScreenTest() {
             .then(function () {
             });
     }
+
+    let module = useParams();
+    console.log("useParam .... ", module.module)
     return (
         <>
             <div>
@@ -150,16 +162,20 @@ function CitizenSafEntryScreenTest() {
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12  '>
                 <div className='col-span-9 mt-20 p-6'>
                     <div className=''>
-                        <Link to='/citizenDashboard'>
+                        <Link to='/citizenDashboard/'>
                             <BackComponent />
                         </Link>
                     </div>
-                    <ApplicationListCard />
+                    {/************* Property List *****************/}
+                    {module.module == 'property' && <ApplicationListCard />}
+
+                    {/************* Water List ************/}
+                    {module.module == 'water' && <WaterApplicationListCard />}
 
                 </div>
 
 
-                            {/******************** FAQ ******************************/}
+                {/******************** FAQ ******************************/}
 
                 <div className='col-span-3 mt-20'>
                     <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1'>

@@ -11,19 +11,14 @@
 
 
 import React, { useState, useEffect } from 'react'
-import { Formik, useFormik } from 'formik';
-import { Link } from 'react-router-dom'
+import {  useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import TestNav from '../../components/testDelete/TestNav';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import SyncIcon from '@mui/icons-material/Sync';
-import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
-import id from 'date-fns/esm/locale/id/index.js';
+import CitizenApplyApiList from '../../components/CitizenApplyApiList';
 
 function CitizenAccountSetting() {
 
-
+    const { api_getProfileDetails, api_EditMyProfile } = CitizenApplyApiList()
 
     const formik = useFormik({
         initialValues: {
@@ -85,7 +80,7 @@ function CitizenAccountSetting() {
 
         axios({
             method: "GET",
-            url: "http://192.168.0.166/api/my-profile-details",
+            url: api_getProfileDetails,
             headers: {
                 Authorization: `Bearer ${bearerTokenInit}`,
                 Accept: 'application/json',
@@ -108,7 +103,7 @@ function CitizenAccountSetting() {
     const modifyData = (values) => {
         axios({
             method: "PUT",
-            url: "http://192.168.0.166/api/edit-my-profile",
+            url: api_EditMyProfile,
             data: values,
             headers: {
                 Authorization: `Bearer ${bearerTokenInit}`,
@@ -529,7 +524,7 @@ function CitizenAccountSetting() {
             </div>
 
             {/************ UPDATE ACCOUNT DETAIL CHANGED DESIGN****************/}
-            <div id= "updateForm" className={` ${updateLbl}`}>
+            <div id= "updateForm" className={`${updateLbl}`}>
 
                 <form onSubmit={formik.handleSubmit}>
                     <div>

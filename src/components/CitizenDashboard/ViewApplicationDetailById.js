@@ -4,8 +4,8 @@
 //    Date - 8 Aug 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - CitizenLicenseFullDetail
-//    DESCRIPTION - CitizenLicenseFullDetail Component is displaying particular selected license full detail table
+//    Component  - ViewApplicationDetailById
+//    DESCRIPTION - ViewApplicationDetailById Component is displaying particular selected application full detail table
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { useState, useEffect } from 'react'
@@ -18,7 +18,7 @@ import LandingNav from '../../Pages/Landing/LandingNav';
 import BackComponent from './BackComponent';
 import CitizenNavbar from './CitizenNavbar';
 
-function CitizenLicenseFullDetail() {
+function ViewApplicationDetailById() {
 
     let rowTitleStyle = "lg:p-1 p-0 md:p-0 text-gray-500 text-sm"
     let rowInputStye = "lg:p-1 p-0 md:p-0 text-gray-600 text-sm font-semibold"
@@ -513,4 +513,4 @@ function CitizenLicenseFullDetail() {
     )
 }
 
-export default CitizenLicenseFullDetail
+export default ViewApplicationDetailById

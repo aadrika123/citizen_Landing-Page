@@ -12,9 +12,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { contextVar } from '../../components/ContextVar'
+import CitizenApplyApiList from '../../components/CitizenApplyApiList'
 
 
 function SearchBox() {
+
+    const { api_getAllUlb} = CitizenApplyApiList()
 
     // const [searchOpen, setsearchOpen] = useState('hidden')
 
@@ -26,7 +29,7 @@ function SearchBox() {
     const [selectUlb, setselectUlb] = useState([])
 
     useEffect(() => {
-        axios.get('http://192.168.0.166/api/get-all-ulb')
+        axios.get(api_getAllUlb)
             .then(function (response) {
                 // handle success
                 console.log("ulbid ", response.data);

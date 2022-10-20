@@ -1,3 +1,14 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Swati Sharma
+//    Version - 1.0
+//    Date - 20 oct 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - CitizenPropApplyRe
+//    DESCRIPTION - CitizenPropApplyRe Component TO BE REMOVE COMPONENTNO FURTHER USE( DISCARD COMPONENT)
+//////////////////////////////////////////////////////////////////////////////////////
+
+
 import { useState } from 'react'
 // import newSvg from './new.svg'
 // import re from './re.svg'

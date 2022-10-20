@@ -1,27 +1,19 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Swati Sharma
+//    Version - 1.0
+//    Date - 20 oct 2022
+//    Revision - 1
+//    Project - JUIDCO
+//    Component  - CitizenNavbar
+//    DESCRIPTION - CitizenNavbar Component
+//////////////////////////////////////////////////////////////////////////////////////
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 function CitizenNavbar() {
     return (
         <>
-            {/************TO BE DELETED****************/}
-            {/* <div>
-        //     <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between  px-6 shadow sm:items-baseline w-full bg-gray-800 opacity-75">
-        //         <div class="mb-2 p-1  sm:mb-0 ">
-        //             <span class="flex items-center">
-        //                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png" class="mr-3 h-6 sm:h-10" alt="" />
-        //                     <span class="self-center  text-sm  whitespace-nowrap dark:text-white text-gray-100 font-normal font-sans">Government of Jharkhand</span>
-        //                 </span>
-        //         </div>
-        //         <div className=' '>
-        //             <span href="/one" class="text-sm no-underline text-grey-darkest hover:text-blue-dark ml-2  text-white">One</span>
-        //             <span href="/two" class="text-sm no-underline text-grey-darkest hover:text-blue-dark ml-2 text-white">Two</span>
-        //             <span href="/three" class="text-sm no-underline text-grey-darkest hover:text-blue-dark ml-2 text-white">Three</span>
-        //         </div>
-        //     </nav>
-         </div> */}
-
-
             {/************CITIZEN NAVBAR****************/}
             <div class=''>
                 <div class="flex items-center justify-between border-b bg-gray-800 opacity-75 p-1">

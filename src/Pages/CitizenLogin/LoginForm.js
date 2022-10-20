@@ -15,6 +15,7 @@ import "yup-phone";
 import Tooltip from "@material-ui/core/Tooltip";
 import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
+import CitizenApplyApiList from '../../components/CitizenApplyApiList';
 
 const SignupSchema = Yup.object().shape({
 
@@ -30,13 +31,15 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = (props) => {
 
+    const { api_citizenLogin} = CitizenApplyApiList()
+
     const navigate = useNavigate();
     const [showMsg, setShowMsg] = useState()
 
 
     const handleLogin = (values) => {
         axios
-            .post("http://192.168.0.166/api/login", {
+            .post(api_citizenLogin, {
                 email: values.email,
                 password: values.password
             })
@@ -44,8 +47,6 @@ const LoginForm = (props) => {
                 localStorage.setItem("token", res.data.data)
 
                 navigate("/citizenDashboard")
-                // changeLogin(1)
-                // console.log(res.data.status)
                 console.log(res)
                 setShowMsg(res.data.status)
 
