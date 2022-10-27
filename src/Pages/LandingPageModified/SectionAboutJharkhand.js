@@ -18,8 +18,8 @@ function SectionAboutJharkhand() {
 
                     </div>
                     <div className='col-span-7 '>
-                        <div className='bg-[#37517e] p-1 shadow-md'>
-                            <h1 className='text-white text-center text-xl'>
+                        <div className='bg-white p-1 shadow-md rounded-lg'>
+                            <h1 className='text-center font-bold font-sans text-2xl text-[#37517e] -mt-6'>
                                 RANCHI AT A GLANCE
                             </h1>
                         </div>

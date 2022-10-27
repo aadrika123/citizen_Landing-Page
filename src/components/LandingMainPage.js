@@ -57,7 +57,7 @@ function LandingMainPage() {
                  */}
                            <SectionService/>
                            <SectionAboutJharkhand/>
-                           {/* <Gallery/> */}
+                           <Gallery/>
                 {/* <div> <AboutJharkhand /></div> */}
 
                 <div><LeadersGallery /></div>
