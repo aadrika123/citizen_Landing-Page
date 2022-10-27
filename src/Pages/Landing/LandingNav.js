@@ -30,7 +30,7 @@ function LandingNav() {
     return (
         <>
             <div className='w-full'>
-                <nav class=" bg-gray-800 h-12 w-full px-2 sm:px-4 py-1  opacity-75">
+                <nav class=" bg-[#37517e] h-12 w-full px-2 sm:px-4 py-1  opacity-75">
                     <div class="container flex flex-wrap justify-between items-center mx-auto">
                         <span class="flex items-center">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png" class="mr-3 h-6  sm:h-10" alt="" />
@@ -53,7 +53,7 @@ function LandingNav() {
                             </ul>
                         </div>
 
-                        <div class={`hidden bg-gray-800 w-full md:block md:w-auto text-center z-20  `} >
+                        <div class={`hidden bg-[#37517e] w-full md:block md:w-auto text-center z-20  `} >
                             <div className=''>
                                 <ul class="flex flex-col mt-4  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  ">
                                     <li  >

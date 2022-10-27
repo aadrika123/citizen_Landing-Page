@@ -51,6 +51,10 @@ import CitizenPropSafApplicationFormIndex from './Pages/CitizenSafForm/CitizenPr
 import CitizenSafEntryScreenTest from './components/CitizenDashboard/CitizenSafEntryScreenTest';
 import ViewApplicationDetailById from './components/CitizenDashboard/ViewApplicationDetailById';
 import CitizenPropApplyRe from './components/CitizenDashboard/CitizenPropApplyRe';
+import { TramRounded } from '@mui/icons-material';
+import Trade from './Pages/Trade/Trade'
+
+
 
 
 function App() {
@@ -107,7 +111,12 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/demo" element={<Protected Component={Demo} />} />
             <Route path="*" element={<NotFound />} />
+
+            <Route path="/citizenTrade" element={<Trade/>} />
             {/* <Route path="*" element={<Protected />} /> */}
+
+
+
           </Routes>
         </div>
       </contextVar.Provider >

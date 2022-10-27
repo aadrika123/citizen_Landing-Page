@@ -1,7 +1,98 @@
+// //////////////////////////////////////////////////////////////////////////////////////
+// //    Author - Swati Sharma
+// //    Version - 1.0
+// //    Date - 8 Aug 2022
+// //    Revision - 1
+// //    Project - JUIDCO
+// //    Component  - SearchBox
+// //    DESCRIPTION - SearchBox Component is for selecting ulb 
+// //////////////////////////////////////////////////////////////////////////////////////
+
+
+// import React, { useState, useEffect, useContext } from 'react'
+// import axios from 'axios'
+// import { contextVar } from '../../components/ContextVar'
+// import CitizenApplyApiList from '../../components/CitizenApplyApiList'
+
+
+// function SearchBox() {
+
+//     const { api_getAllUlb} = CitizenApplyApiList()
+
+//     // const [searchOpen, setsearchOpen] = useState('hidden')
+
+//     // const searchToggle = () => {
+//     //     searchOpen == 'hidden' ? setsearchOpen('') : setsearchOpen('hidden')
+//     // }
+//     const vals = useContext(contextVar)
+
+//     const [selectUlb, setselectUlb] = useState([])
+
+//     useEffect(() => {
+//         axios.get(api_getAllUlb)
+//             .then(function (response) {
+//                 // handle success
+//                 console.log("ulbid ", response.data);
+//                 setselectUlb(response.data)
+//             })
+
+//     }, [])
+
+//     const handleChange = (e) => {
+
+//         let ulbids = e.target.value;
+//         console.log('ulbids : ', ulbids);
+//         axios.get('http://localhost:3333/Select/' + ulbids)
+//             .then(function (response) {
+//                 // handle success
+//                 console.log("ulbidnews ", response.data.news);
+//                 vals.ulbdatafun(response.data)
+//             })
+//         e.preventDefault()
+//     }
+
+//     const handleSearch = (e) =>{
+//         alert('you searched for',e.target.value)
+//     }
+
+//     return (
+//         <>
+//             <div>
+//                 <div className=' relative inline-block text-left z-50 '>
+//                     {/* <button >
+//                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white ">
+//                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+//                         </svg>
+//                     </button> */}
+
+
+//                     <div class={` flex lg: w-80 h-8`} >
+//                         <select class="flex-shrink-0  inline-flex items-center py-1 px-0 text-sm font-medium  text-gray-600 bg-gray-100 border border-gray-300 rounded-l-full hover:bg-gray-100  dark:bg-gray-500 dark:hover:bg-gray-100  dark:text-white dark:border-gray-600 w-28" onChange={handleChange} >
+//                             <option >select ulb</option>
+//                             {selectUlb.map((items) => (
+//                                 <option value={items.id}>{items.ulb_name}</option>
+//                             ))}
+//                         </select> 
+//                         <div class="relative w-full">
+//                             <input onBlur={()=>handleSearch} type="search" id="search-dropdown" class=" p-1.5 w-full  text-sm text-gray-900 bg-gray-50 rounded-r-full border-l-gray-50 border-l-1 border border-gray-300 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-600 dark:text-white h-8" placeholder="Search ..." required />
+//                             <button type="submit" class="absolute top-0 right-0 p-1.5 h-8 text-sm font-medium text-black bg-gray-50  rounded-r-full border border-bg-gray-50  hover:bg-gray-50  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-gray-50  dark:hover:bg-gray-50  dark:focus:bg-gray-50 ">
+//                                 <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+//                                 <span class="sr-only">Search</span>
+//                             </button>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
+
+// export default SearchBox
+
 //////////////////////////////////////////////////////////////////////////////////////
-//    Author - Swati Sharma
+//    Author - Swati Sharma || R U Bharti
 //    Version - 1.0
-//    Date - 8 Aug 2022
+//    Date - 8 Aug 2022 || 27 Oct 2022
 //    Revision - 1
 //    Project - JUIDCO
 //    Component  - SearchBox
@@ -13,9 +104,13 @@ import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { contextVar } from '../../components/ContextVar'
 import CitizenApplyApiList from '../../components/CitizenApplyApiList'
+import { useNavigate } from 'react-router-dom'
 
 
 function SearchBox() {
+
+    const navigate = useNavigate()
+
 
     const { api_getAllUlb} = CitizenApplyApiList()
 
@@ -24,6 +119,15 @@ function SearchBox() {
     // const searchToggle = () => {
     //     searchOpen == 'hidden' ? setsearchOpen('') : setsearchOpen('hidden')
     // }
+
+    const [search, setSearch ] = useState('')
+    const [ filterSuggestion, setFilterSuggestion] = useState([])
+
+    const suggestions = ['property', 'trade', 'water', 'property1', 'trade1']
+
+    const [suggest, setSuggest] = useState(false)
+    const [refresh, setRefresh] = useState(0)
+
     const vals = useContext(contextVar)
 
     const [selectUlb, setselectUlb] = useState([])
@@ -35,6 +139,7 @@ function SearchBox() {
                 console.log("ulbid ", response.data);
                 setselectUlb(response.data)
             })
+
 
     }, [])
 
@@ -55,15 +160,32 @@ function SearchBox() {
         alert('you searched for',e.target.value)
     }
 
+    const handleSearchList = (e) => {
+        if(search != ''){  
+        setRefresh(refresh+1)
+        setSuggest(true) 
+        }
+        else{
+            setSuggest(false)
+        }
+        
+    }
+
+    useEffect(() => {
+        
+        const result = suggestions.filter(datalist => {
+            return ((datalist.toLowerCase().match(search.toLocaleLowerCase())))
+        })
+        setFilterSuggestion(result)
+      },[refresh])
+
+
     return (
         <>
             <div>
                 <div className=' relative inline-block text-left z-50 '>
-                    {/* <button >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white ">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>
-                    </button> */}
+                 
+                    
 
 
                     <div class={` flex lg: w-80 h-8`} >
@@ -74,7 +196,27 @@ function SearchBox() {
                             ))}
                         </select> 
                         <div class="relative w-full">
-                            <input onBlur={()=>handleSearch} type="search" id="search-dropdown" class=" p-1.5 w-full  text-sm text-gray-900 bg-gray-50 rounded-r-full border-l-gray-50 border-l-1 border border-gray-300 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-600 dark:text-white h-8" placeholder="Search ..." required />
+
+                            <div>
+                            <input type="search" id="search-dropdown" class=" p-1.5 w-full  text-sm text-gray-900 bg-gray-50 rounded-r-full border-l-gray-50 border-l-1 border border-gray-300 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-600 dark:text-white h-8" 
+                            name='search'
+                            placeholder="Search ..." required onKeyUp={handleSearchList} onChange={(e) => {
+                            setSearch(e.target.value)
+                            console.log("search => ", search)
+                            }}
+                            value={search} />
+                            </div>
+                            <div>
+                            <ul className={suggest ? `bg-gray-50 rounded-md px-4 text-sm py-2 flex flex-col space-y-2 cursor-pointer` : null}>
+                                     {
+                            filterSuggestion.map((elem) => <>
+                                    <li className={(suggest ? `visible` : `hidden`) + ` uppercase`} onClick={() => navigate(`/${elem}`)}>
+                                      {elem} 
+                                    </li>
+                            </>)
+                        }
+                                </ul>
+                            </div>
                             <button type="submit" class="absolute top-0 right-0 p-1.5 h-8 text-sm font-medium text-black bg-gray-50  rounded-r-full border border-bg-gray-50  hover:bg-gray-50  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-gray-50  dark:hover:bg-gray-50  dark:focus:bg-gray-50 ">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <span class="sr-only">Search</span>
@@ -88,3 +230,6 @@ function SearchBox() {
 }
 
 export default SearchBox
+
+///////////////////////////////////
+// Export to: LandingMainPage

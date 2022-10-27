@@ -116,19 +116,21 @@ function CitizenDashboard(props) {
                         </div>
                         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 p-2 -mt-3'>
                             <div className=' mx-auto'>
-                                <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-blue-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                    <div class="flex flex-col items-center justify-center">
-                                        <div class="w-20 h-20   relative  ">
-                                            <img src='https://cdn-icons-png.flaticon.com/512/3309/3309991.png' className=' h-16  opacity-85' />
+                                <Link to="/citizenTrade">
+                                    <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-blue-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <div class="w-20 h-20   relative  ">
+                                                <img src='https://cdn-icons-png.flaticon.com/512/3309/3309991.png' className=' h-16  opacity-85' />
+                                            </div>
+                                            <p class="text-gray-800 text-md font-medium mb-1">
+                                                TRADE
+                                            </p>
+                                            <p class="text-gray-700 text-center text-xs px-1 mb-2">
+                                                You Can Get License To Advertise Your Business Name On Your Shop
+                                            </p>
                                         </div>
-                                        <p class="text-gray-800 text-md font-medium mb-1">
-                                            TRADE
-                                        </p>
-                                        <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                            You Can Get License To Advertise Your Business Name On Your Shop
-                                        </p>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                             <div className=' mx-auto'>
                                 <Link to="">

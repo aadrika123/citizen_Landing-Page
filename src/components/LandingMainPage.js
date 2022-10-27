@@ -24,6 +24,9 @@ import Logo from './Logo'
 import VideoComponent from './VideoComponent'
 import TestNav from './testDelete/TestNav'
 import SmallScreenMenu from '../Pages/Landing/SmallScreenMenu'
+import SectionService from '../Pages/LandingPageModified/SectionService'
+import SectionAboutJharkhand from '../Pages/LandingPageModified/SectionAboutJharkhand'
+import Gallery from '../Pages/LandingPageModified/Gallery'
 
 function LandingMainPage() {
 
@@ -50,7 +53,11 @@ function LandingMainPage() {
                 {/* <div className=''><SliderImage /></div> */}
                 <div><SmallScreenMenu/></div>
                 {/* <div className=''><MarqueeComponent /></div> */}
-                <div><SectionOurDomain /></div>
+                {/* <div><SectionOurDomain /></div>
+                 */}
+                           <SectionService/>
+                           <SectionAboutJharkhand/>
+                           {/* <Gallery/> */}
                 {/* <div> <AboutJharkhand /></div> */}
 
                 <div><LeadersGallery /></div>
