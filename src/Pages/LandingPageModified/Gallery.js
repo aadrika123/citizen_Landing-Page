@@ -16,7 +16,7 @@ const Gallery = () => {
         <>
 
             {/* Container */}
-            <div className="flex flex-wrap flex-col justify-center items-center p-4">
+            <div className="flex flex-wrap flex-col justify-center items-center p-4 ">
 
                 {/* Content */}
                 <div className=' text-center mb-4 w-max flex flex-col '>

@@ -53,6 +53,7 @@ import ViewApplicationDetailById from './components/CitizenDashboard/ViewApplica
 import CitizenPropApplyRe from './components/CitizenDashboard/CitizenPropApplyRe';
 import { TramRounded } from '@mui/icons-material';
 import Trade from './Pages/Trade/Trade'
+import CitizenApplyByModule from './components/CitizenApplyByModule';
 
 
 
@@ -90,7 +91,7 @@ function App() {
 
 
             {/* <Route path="/viewApplicationDetail/CitizenPropEntry" element={<Protected Component={CitizenPropApplyRe} />} /> */}
-            <Route path="/citizenApplication/:module" element={<Protected Component={CitizenSafEntryScreenTest} />} />
+            <Route path="/citizenApplication/:module" element={<Protected Component={CitizenApplyByModule} />} />
 
 
             {/* <Route path="/citizenProperty/citizenSafApply" element={<CitizenSafEntryScreen />} /> */}

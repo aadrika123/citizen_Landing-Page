@@ -26,11 +26,11 @@ navigate("/")
         <>
             {/************CITIZEN NAVBAR****************/}
             <div class=''>
-                <div class="flex items-center justify-between border-b bg-gray-800 opacity-75 p-1">
+                <div class="flex items-center justify-between border-b bg-[#37517e] opacity-75 p-1">
                     <div class="flex items-center ">
                         <span class="flex items-center">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jharkhand_Rajakiya_Chihna.svg/1200px-Jharkhand_Rajakiya_Chihna.svg.png" class="mr-1 h-6 sm:h-10" alt="" />
-                            <span class="self-center text-xs lg:text-lg md:text-md   whitespace-nowrap dark:text-white text-gray-100 font-normal font-sans">Government of Jharkhand</span>
+                            <span class="self-center text-md lg:text-md md:text-md   whitespace-nowrap dark:text-white text-gray-100 font-normal font-sans">Government of Jharkhand</span>
                         </span>
                     </div>
 

@@ -1,64 +1,52 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //    Author - Swati Sharma
 //    Version - 1.0
-//    Date - 20 oct 2022
+//    Date - 8 Aug 2022
 //    Revision - 1
 //    Project - JUIDCO
-//    Component  - ApplicationListCard
-//    DESCRIPTION - ApplicationListCard Component
+//    Component  - WaterApplicationListCard
+//    DESCRIPTION - WaterApplicationListCard Component for displaying list of application for water
 //////////////////////////////////////////////////////////////////////////////////////
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import FindHoldingModal from './FindHoldingModal';
 
+function TradeApplicationListCard() {
 
-
-
-function ApplicationListCard() {
     let titleStyle = "text-xs p-1 text-[#37517e]";
     let inputStyle = "text-sm font-semibold text-[#37517e]";
-
+    const [tabNum, settabNum] = useState(1);
 
     let ApplicationList = [1, 2, 3];
 
+    const handleTabs = () => {
 
-    const [findHolding, setfindHolding] = useState(false)
-
-    const popUpFindHolding = () => {
-       
-        findHolding ? setfindHolding(false) : setfindHolding(true)
     }
 
     return (
         <>
             <div className='flex mb-8  px-4'>
                 <div className='flex-1 '>
-                    <h1 className='font-bold text-2xl text-[#37517e]  float-left'>MY PROPERTIES LIST</h1>
+                    <h1 className='font-bold text-2xl text-gray-600 float-left'>MY TRADE  LIST</h1>
                 </div>
+
                 <div className=' '>
 
-                    <button className='float-right  py-1 px-2 text-sm font-semibold rounded-md shadow-lg text-white bg-[#37517e] hover:bg-[#ff583d]' type='button' onClick={popUpFindHolding}>
-                        MUTATION
-                    </button>
+                    {/* <button className='float-left bg-[#37517e] py-1 px-2 ml-2 text-sm font-semibold rounded-md shadow-lg text-white hover:bg-[#ff583d]'>
+                        APPLY NEW APPLICATION
+                    </button> */}
 
                 </div>
-                <div className=' '>
-                    <Link to='/safform/new'>
-                        <button className='float-left bg-[#37517e] py-1 px-2 ml-2 text-sm font-semibold rounded-md shadow-lg text-white hover:bg-[#ff583d]'>
-                            APPLY NEW-ASSESSMENT
-                        </button>
-                    </Link>
+            </div>
+            <div className='mx-auto w-full flex justify-evenly m-4 font-mono text-xl'>
+                <div className='h-[4rem] w-[16rem]  hover:bg-blue-100 rounded-xl flex justify-evenly' onClick={handleTabs}>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3554/3554009.png" alt="" className='h-8 h-8' /> Application List
+                </div>
+
+                <div className='h-[4rem] w-[16rem]  hover:bg-blue-100 rounded-xl flex justify-evenly' onClick={handleTabs} >
+                    <img src="https://cdn-icons-png.flaticon.com/512/3554/3554009.png" alt="" className='h-8 h-8' /><Link to='/citizenTrade'> Services</Link>
                 </div>
             </div>
-
-
-            {/******************** POPUP MODAL FOR FINDING HOLDING FOR MUTATION ******************************/}
-            <div>
-                {findHolding ? <FindHoldingModal fun={setfindHolding} />: '' }
-            </div>
-
-
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 '>
                 {/*  card listing */}
                 {
@@ -68,7 +56,7 @@ function ApplicationListCard() {
                                 <div className='border  w-80  p-4 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all transform duration-500 mx-auto'>
                                     <div className='flex px-4'>
                                         <div className='flex-1 '>
-                                            <img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' className='h-6' />
+                                            <img src='https://cdn-icons-png.flaticon.com/512/3554/3554009.png' className='h-6' />
                                         </div>
                                         <div className='flex-1 '>
                                             <h1 className='font-bold text-md text-amber-400 float-right'>APPROVED</h1>
@@ -120,7 +108,7 @@ function ApplicationListCard() {
                                         </div>
                                         <Link to='/viewApplicationDetail'>
                                             <div className=''>
-                                                <div className='bg-[#37517e] hover:bg-[#ff583d]  text-white rounded-md text-center text-xs py-2 shadow-lg'>
+                                                <div className='bg-[#37517e] hover:bg-[#ff583d] text-white rounded-md text-center text-xs py-2 shadow-lg'>
 
                                                     VIEW
                                                 </div>
@@ -132,11 +120,9 @@ function ApplicationListCard() {
                         </>
                     ))
                 }
-
-
             </div>
         </>
     )
 }
 
-export default ApplicationListCard
+export default TradeApplicationListCard

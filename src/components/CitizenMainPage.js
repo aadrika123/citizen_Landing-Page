@@ -58,7 +58,7 @@ function CitizenMainPage() {
     <>
 
       <div>
-        <div className='fixed z-50 w-full'> <CitizenNavbar /></div>
+        <div className=' z-50 w-full'> <CitizenNavbar /></div>
 
         <div className=''>
           {/* <div className='absolute left-0 top-0'><SideNav citizenNameEmail={fetchCitizenData} /></div> */}

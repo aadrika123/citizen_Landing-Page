@@ -100,10 +100,10 @@ function ViewApplicationDetailById() {
                     <h1 className='text-center font-semibold text-gray-700  mt-9'>VIEW MORE</h1>
                     <div className=''>
                         <div className={`p-4  md:p-5 `} >
-                            <div class="hover:shadow-xl hover:bg-green-300 shadow-md  sm:w-full w-full h-30 p-2 bg-green-200 relative overflow-hidden">
+                            <div class="hover:shadow-xl shadow-md  sm:w-full w-full h-30 p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
                                 <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/3641/3641163.png" class="absolute -right-0  h-8 w-8 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         STATUS : APPROVED
                                     </p>
 
@@ -113,10 +113,10 @@ function ViewApplicationDetailById() {
                     </div>
                     <div className=''>
                         <div className={`p-4  md:p-5 -mt-8`} >
-                            <div class="hover:shadow-xl hover:bg-teal-300 shadow-md  sm:w-full w-full h-30 p-2 bg-sky-200 relative overflow-hidden">
+                            <div class="hover:shadow-xl hover:bg-teal-300 shadow-md  sm:w-full w-full h-30 p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
                                 <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/4108/4108042.png" class="absolute -right-0  h-8 w-8  " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         PAYMENT
                                     </p>
 
@@ -126,10 +126,10 @@ function ViewApplicationDetailById() {
                     </div>
                     <div className=''>
                         <div className={`p-4  md:p-5 -mt-8`} >
-                            <div class="hover:shadow-xl hover:bg-teal-300 shadow-md   sm:w-full w-full h-30 p-2 bg-teal-200 relative overflow-hidden">
+                            <div class="hover:shadow-xl hover:bg-teal-300 shadow-md   sm:w-full w-full h-30 p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
                                 <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/1651/1651965.png" class="absolute -right-0  h-8 w-8 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         TRANSCATION
                                     </p>
 
@@ -140,13 +140,13 @@ function ViewApplicationDetailById() {
                     <div className=''>
                         <div className={`${(asstypeStatus == 're' || asstypeStatus == 'both')}p-4  md:p-5 -mt-8`} onClick={() => navigate('/safform/re')}>
 
-                            <div class="hover:shadow-xl hover:bg-emerald-300 shadow-md   sm:w-full w-full h-30 p-2 bg-emerald-200 relative overflow-hidden">
+                            <div class="hover:shadow-xl hover:bg-emerald-300 shadow-md   sm:w-full w-full h-30 p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
                                 <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         RE-ASSIGNMENT
                                     </p>
-                                    <p class="text-gray-800 text-xs">
+                                    <p class="text-white text-xs">
                                         Apply  re-assignment
                                     </p>
                                 </div>
@@ -157,13 +157,13 @@ function ViewApplicationDetailById() {
                     <div className=''>
 
                         <div className={`${(asstypeStatus == 'obj' || asstypeStatus == 'both')}p-4 md:p-5 -mt-8`} onClick={() => navigate('/citizenobjection')}>
-                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-purple-300 relative overflow-hidden">
+                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
                                 <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         OBJECTION
                                     </p>
-                                    <p class="text-gray-800 text-xs">
+                                    <p class="text-white text-xs">
                                         Apply for objection
                                     </p>
                                 </div>
@@ -172,13 +172,13 @@ function ViewApplicationDetailById() {
                     </div>
                     <div className=''>
                         <div className={`p-4 md:p-5 -mt-8`} onClick={() => navigate('/citizenobjection')}>
-                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-sky-200 relative overflow-hidden">
-                                <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
+                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
+                            <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         WATER HARVESTING
                                     </p>
-                                    <p class="text-gray-800 text-xs">
+                                    <p class="text-white text-xs">
                                         Apply for objection
                                     </p>
                                 </div>
@@ -187,13 +187,13 @@ function ViewApplicationDetailById() {
                     </div>
                     <div className=''>
                         <div className={`p-4 md:p-5 -mt-8`} onClick={() => navigate('/citizenobjection')}>
-                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-yellow-200 relative overflow-hidden">
+                            <div class="hover:shadow-xl hover:bg-purple-300 shadow-md  sm:w-full w-full p-2 bg-[#37517e] hover:bg-[#ff583d] relative overflow-hidden">
                                 <img alt="moto" src="https://cdn-icons-png.flaticon.com/512/6728/6728425.png" class="absolute -right-0 -bottom-4 h-10 w-10 mb-4 " />
                                 <div class="w-4/6">
-                                    <p class=" font-bold mb-2   text-gray-800 text-xs text-start top-3 left-9 sm:left-10">
+                                    <p class=" font-bold mb-2   text-white text-xs text-start top-3 left-9 sm:left-10">
                                         CONCESSION
                                     </p>
-                                    <p class="text-gray-800 text-xs">
+                                    <p class="text-white text-xs">
                                         Apply for objection
                                     </p>
                                 </div>
@@ -229,47 +229,47 @@ function ViewApplicationDetailById() {
 
                     {/* Basic  details */}
                     <div>
-                        <h1 className='px-1 font-semibold font-serif text-xs'><img src='https://cdn-icons-png.flaticon.com/512/6592/6592963.png' alt="pin" className='w-5 inline' /> Basic Details</h1>
-                        <div className='bg-green-50 rounded-lg shadow-lg py-6'>
+                        <h1 className='px-1 font-semibold font-serif text-xs  text-[#37517e] '><img src='https://cdn-icons-png.flaticon.com/512/6592/6592963.png' alt="pin" className='w-5 inline' /> Basic Details</h1>
+                        <div className=' rounded-lg shadow-lg py-6 border-l-2 border-r-2 border-[#37517e] '>
                             <div className="flex space-x-5 pl-4 ">
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Ward No.</div>
-                                    <div className='font-bold text-sm'>Ward No.</div>
+                                    <div className='text-[#37517e]'>Ward No.</div>
+                                    <div className='font-bold text-sm text-[#37517e]'>Ward No.</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>New Ward No</div>
-                                    <div className='font-semibold text-sm'>Ward No.</div>
+                                    <div className='text-[#37517e]'>New Ward No</div>
+                                    <div className='font-semibold text-sm text-[#37517e]'>Ward No.</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Ownership Type</div>
-                                    <div className='font-semibold text-sm'>Ward No.</div>
+                                    <div className='text-[#37517e]'>Ownership Type</div>
+                                    <div className='font-semibold text-sm text-[#37517e]'>Ward No.</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Property Type</div>
-                                    <div className='font-bold text-sm'>BUILDING</div>
+                                    <div className='text-[#37517e]'>Property Type</div>
+                                    <div className='font-bold text-sm text-[#37517e]'>BUILDING</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Property Type</div>
-                                    <div className='font-bold text-sm'>Ward No.</div>
+                                    <div className='text-[#37517e]'>Property Type</div>
+                                    <div className='font-bold text-sm text-[#37517e]'>Ward No.</div>
                                 </div>
                             </div>
 
                             <div className="flex space-x-10  pl-4 mt-4">
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Property has Mobile Tower(s) ?</div>
-                                    <div className='font-bold text-sm'>yes</div>
+                                    <div className='text-[#37517e]'>Property has Mobile Tower(s) ?</div>
+                                    <div className='font-bold text-sm text-[#37517e]'>yes</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Property has Hoarding Board(s) ?</div>
-                                    <div className='font-semibold text-sm'>yes</div>
+                                    <div className='text-[#37517e]'>Property has Hoarding Board(s) ?</div>
+                                    <div className='font-semibold text-sm text-[#37517e]'>yes</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Is property a Petrol Pump ?</div>
-                                    <div className='font-semibold text-sm'>yes</div>
+                                    <div className='text-[#37517e]'>Is property a Petrol Pump ?</div>
+                                    <div className='font-semibold text-sm text-[#37517e]'>yes</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
-                                    <div className='text-gray-500'>Rainwater harvesting provision ?</div>
-                                    <div className='font-bold text-sm'>yes</div>
+                                    <div className='text-[#37517e]'>Rainwater harvesting provision ?</div>
+                                    <div className='font-bold text-sm text-[#37517e]' >yes</div>
                                 </div>
                                 <div className='flex-1 text-xs'>
 
@@ -280,52 +280,52 @@ function ViewApplicationDetailById() {
                     </div>
 
                     {/* Property  details */}
-                    <h1 className='px-1 font-semibold font-serif text-xs mt-6'><img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' alt="pin" className='w-5 inline' /> Property Address & Details</h1>
-                    <div className='bg-green-50 rounded-lg shadow-lg py-6'>
+                    <h1 className='px-1 font-semibold font-serif text-xs mt-6 text-[#37517e]'><img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' alt="pin" className='w-5 inline text-[#37517e]' /> Property Address & Details</h1>
+                    <div className='border-l-2 border-r-2 border-[#37517e] rounded-lg shadow-lg py-6'>
                         <div className="flex space-x-10 pl-4 ">
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Khata No.</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Khata No.</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Plot No</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Plot No</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Village/Mauja Name</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Village/Mauja Name</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Area of Plot</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Area of Plot</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Road Width</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Road Width</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                         </div>
 
                         <div className="flex space-x-10  pl-4 mt-4">
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>City</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>City</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>District</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>District</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>State</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>State</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Pin</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Pin</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Locality</div>
+                                <div className='text-[#37517e]'>Locality</div>
                                 {/* <div className='font-bold text-sm'>N{props?.formReviewData?.propertyAddressDetails?.locality}o</div> */}
-                                <div className='font-bold text-sm'>No</div>
+                                <div className='font-bold text-sm text-[#37517e]'>No</div>
                             </div>
                         </div>
 
@@ -339,24 +339,24 @@ function ViewApplicationDetailById() {
 
                         <div className="flex space-x-10  pl-4 mt-4">
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>City</div>
-                                <div className='font-bold text-sm'>Yes</div>
+                                <div className='text-[#37517e]'>City</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Yes</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>District</div>
-                                <div className='font-semibold text-sm'></div>
+                                <div className='text-[#37517e]'>District</div>
+                                <div className='font-semibold text-sm text-[#37517e]'></div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>State</div>
-                                <div className='font-semibold text-sm'></div>
+                                <div className='text-[#37517e]'>State</div>
+                                <div className='font-semibold text-sm text-[#37517e]'></div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Pin</div>
-                                <div className='font-bold text-sm'></div>
+                                <div className='text-[#37517e]'>Pin</div>
+                                <div className='font-bold text-sm text-[#37517e]'></div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Locality</div>
-                                <div className='font-bold text-sm'></div>
+                                <div className='text-[#37517e]'>Locality</div>
+                                <div className='font-bold text-sm text-[#37517e]'></div>
                             </div>
                         </div>
                     </div>
@@ -366,24 +366,24 @@ function ViewApplicationDetailById() {
                     {/* electricity details */}
 
 
-                    <h1 className='px-1 font-semibold font-serif text-xs mt-6'><img src='https://cdn-icons-png.flaticon.com/512/616/616494.png' alt="pin" className='w-5 inline' /> Electricity & Water Details</h1>
-                    <div className='bg-green-50 rounded-lg shadow-lg py-6'>
+                    <h1 className='px-1 font-semibold font-serif text-xs mt-6 text-[#37517e]'><img src='https://cdn-icons-png.flaticon.com/512/616/616494.png' alt="pin" className='w-5 inline text-[#37517e]' /> Electricity & Water Details</h1>
+                    <div className='border-l-2 border-r-2 border-[#37517e] rounded-lg shadow-lg py-6'>
                         <div className="flex space-x-10 pl-4 ">
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Electricity K. No</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Electricity K. No</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>ACC No.</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>ACC No.</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>BIND/BOOK No.</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>BIND/BOOK No.</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Electricity Consumer Category</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Electricity Consumer Category</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
 
@@ -393,20 +393,20 @@ function ViewApplicationDetailById() {
 
                         <div className="flex space-x-10  pl-4 mt-4">
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Building Plan Approval No.</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Building Plan Approval No.</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Building Plan Approval Date</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Building Plan Approval Date</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Water Consumer No.</div>
-                                <div className='font-semibold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Water Consumer No.</div>
+                                <div className='font-semibold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
-                                <div className='text-gray-500'>Water Connection Date</div>
-                                <div className='font-bold text-sm'>Demo</div>
+                                <div className='text-[#37517e]'>Water Connection Date</div>
+                                <div className='font-bold text-sm text-[#37517e]'>Demo</div>
                             </div>
                             <div className='flex-1 text-xs'>
 
@@ -417,10 +417,10 @@ function ViewApplicationDetailById() {
 
                     {/* owner details */}
                     <div className='mt-8'>
-                        <h1 className='px-1 font-semibold font-serif text-xs'><img src='https://cdn-icons-png.flaticon.com/512/2029/2029957.png' alt="pin" className='w-5 inline' /> Owner Details</h1>
+                        <h1 className='px-1 font-semibold font-serif text-xs text-[#37517e]'><img src='https://cdn-icons-png.flaticon.com/512/2029/2029957.png' alt="pin" className='w-5 inline text-[#37517e]' /> Owner Details</h1>
 
                         <table className='min-w-full leading-normal mt-2'>
-                            <thead className='font-bold text-left text-sm bg-green-50 text-gray-600'>
+                            <thead className='font-bold text-left text-sm border-l-2 border-r-2 border-[#37517e] text-[#37517e]'>
                                 <tr>
                                     <th className="px-2 py-3 border-b border-gray-200  text-left text-xs uppercase text-left">#</th>
                                     <th className="px-2 py-3 border-b border-gray-200  text-left text-xs uppercase text-left">Owner Name</th>
@@ -442,18 +442,18 @@ function ViewApplicationDetailById() {
                                 {/* {props?.formReviewData?.ownerDetails?.map((owner, index) => ( */}
                                 <>
                                     <tr className="bg-white shadow-lg border-b border-gray-200">
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
 
                                     </tr>
                                 </>
@@ -466,10 +466,10 @@ function ViewApplicationDetailById() {
 
                     {/* floor details */}
                     <div className='mt-8'>
-                        <h1 className='px-1 font-semibold font-serif text-xs'><img src='https://cdn-icons-png.flaticon.com/512/7699/7699994.png' alt="building image" className='inline w-4' /> Floor Details</h1>
+                        <h1 className='px-1 font-semibold font-serif text-xs text-[#37517e]'><img src='https://cdn-icons-png.flaticon.com/512/7699/7699994.png' alt="building image" className='inline w-4 text-[#37517e]' /> Floor Details</h1>
 
                         <table className='min-w-full leading-normal mt-2'>
-                            <thead className='font-bold text-left text-sm bg-green-50 text-gray-600'>
+                            <thead className='font-bold text-left text-sm border-l-2 border-r-2 border-[#37517e] text-[#37517e]'>
                                 <tr>
                                     <th className="px-2 py-3 border-b border-gray-200  text-left text-xs uppercase text-left">#</th>
                                     <th className="px-2 py-3 border-b border-gray-200  text-left text-xs uppercase text-left">Floor </th>
@@ -487,14 +487,14 @@ function ViewApplicationDetailById() {
                                 {/* {props?.formReviewData?.floorDetails.map((floor, index) => ( */}
                                 <>
                                     <tr className="bg-white shadow-lg border-b border-gray-200">
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
-                                        <td className="px-2 py-2 text-sm text-left">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
+                                        <td className="px-2 py-2 text-sm text-left text-[#37517e]">Demo</td>
 
                                     </tr>
                                 </>

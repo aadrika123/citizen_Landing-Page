@@ -18,14 +18,14 @@ function SectionAboutJharkhand() {
 
                     </div>
                     <div className='col-span-7 '>
-                        <div className='bg-white p-1 shadow-md rounded-lg'>
-                            <h1 className='text-center font-bold font-sans text-2xl text-[#37517e] -mt-6'>
+                        <div className='bg-white p-1 shadow-md '>
+                            <h1 className='text-center font-bold font-sans text-2xl text-[#37517e] '>
                                 RANCHI AT A GLANCE
                             </h1>
                         </div>
                         <div className='grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 container mx-auto mt-4' >
                             <div className=' p-3 bg-white shadow-md'>
-                                <h1 className='text-sm  text-[#7580a7]'>District:- 24 </h1>
+                               
                                 <h1 className='text-sm  text-[#7580a7]'>Total Area:- 175 km  </h1>
                                 <h1 className='text-sm  text-[#7580a7]'>Population:-13 lakh (1.3 million)</h1>
                                 <h1 className='text-sm  text-[#7580a7]'>Male Population:- 6.70 lakh</h1>

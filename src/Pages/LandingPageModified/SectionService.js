@@ -8,7 +8,8 @@ import NoticeComponent from '../Landing/NoticeComponent'
 function SectionService() {
     return (
         <>
-            <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 container mx-auto '>
+        <section>
+            <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 container mx-auto p-2'>
                 <div className='col-span-9 '>
                     <div className='bg-[#f3f5fa]'>
                         <h1 className='text-center font-bold font-sans text-3xl text-[#37517e]'>
@@ -124,7 +125,7 @@ function SectionService() {
                                         <div class="flex relative shadow-md bg-white rounded-md cursor-pointer ">
                                             <div className=' mx-auto py-8'>
 
-                                                <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className='opacity-95 h-20 w-16 ' />
+                                                <img src='https://cdn-icons-png.flaticon.com/512/3405/3405768.png' className='opacity-95 h-20 w-20 ' />
                                                 <h1 className='text-[#37517e] font-semibold mt-4'>ADVERTISEMENT</h1>
                                             </div>
                                             <div class="px-8 py-10 absolute z-10 h-full w-full shadow-md rounded-md bg-white opacity-0 hover:opacity-100">
@@ -240,7 +241,7 @@ function SectionService() {
                                         <div class="flex relative shadow-md bg-white rounded-md cursor-pointer ">
                                             <div className=' mx-auto py-8'>
 
-                                                <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className='opacity-95 h-20 w-16 ' />
+                                                <img src='https://cdn-icons-png.flaticon.com/512/3405/3405768.png' className='opacity-95 h-20 w-16 ' />
                                                 <h1 className='text-[#37517e] font-semibold mt-4'>ADVERTISEMENT</h1>
                                             </div>
                                             <div class="px-8 py-10 absolute z-10 h-full w-full shadow-md rounded-md bg-white opacity-0 hover:opacity-100">
@@ -358,7 +359,7 @@ function SectionService() {
                                         <div class="flex relative shadow-md bg-white rounded-md cursor-pointer ">
                                             <div className=' mx-auto py-8'>
 
-                                                <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className='opacity-95 h-20 w-16 ' />
+                                                <img src='https://cdn-icons-png.flaticon.com/512/3405/3405768.png' className='opacity-95 h-20 w-16 ' />
                                                 <h1 className='text-[#37517e] font-semibold mt-4'>ADVERTISEMENT</h1>
                                             </div>
                                             <div class="px-8 py-10 absolute z-10 h-full w-full shadow-md rounded-md bg-white opacity-0 hover:opacity-100">
@@ -538,7 +539,7 @@ function SectionService() {
                                         <div class="flex relative shadow-md bg-white rounded-md cursor-pointer ">
                                             <div className=' mx-auto py-8'>
 
-                                                <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className='opacity-95 h-20 w-16 ' />
+                                                <img src='https://cdn-icons-png.flaticon.com/512/3405/3405768.png' className='opacity-95 h-20 w-16 ' />
                                                 <h1 className='text-[#37517e] font-semibold mt-4'>ADVERTISEMENT</h1>
                                             </div>
                                             <div class="px-8 py-10 absolute z-10 h-full w-full shadow-md rounded-md bg-white opacity-0 hover:opacity-100">
@@ -615,6 +616,7 @@ function SectionService() {
                 </div>
 
             </div>
+            </section>
         </>
     )
 }

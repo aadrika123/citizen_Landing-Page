@@ -8,7 +8,7 @@
 //    DESCRIPTION - CitizenSafEntryScreenTest Component contain application list card of all component
 //////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////THIS COMPONENT HAS TO BE DELETED///////////////////////////////////////////////////
+
 
 import { useState } from 'react'
 import { useFormik } from 'formik'
@@ -17,16 +17,15 @@ import { TiArrowBack } from 'react-icons/ti'
 import { TbSearch } from 'react-icons/tb'
 import { FcHome } from 'react-icons/fc'
 import axios from 'axios'
-import LandingNav from '../../Pages/Landing/LandingNav'
-import SideNav from '../../Pages/citizen/SideNav'
-import ApplicationListTable from './ApplicationListCard'
-import ApplicationListCard from './ApplicationListCard'
-import BackComponent from './BackComponent'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import CitizenNavbar from './CitizenNavbar'
-import WaterApplicationListCard from './WaterApplicationListCard'
+import WaterApplicationListCard from './CitizenDashboard/WaterApplicationListCard'
+import CitizenNavbar from './CitizenDashboard/CitizenNavbar'
+import BackComponent from './CitizenDashboard/BackComponent'
+import ApplicationListCard from './CitizenDashboard/ApplicationListCard'
+import TradeApplicationListCard from './CitizenDashboard/TradeApplicationListCard'
+import FaqComponent from './FaqComponent'
 
-function CitizenSafEntryScreenTest() {
+function CitizenApplyByModule() {
 
     const faqs = [
         {
@@ -148,98 +147,38 @@ function CitizenSafEntryScreenTest() {
 
     let module = useParams();
     console.log("useParam .... ", module.module)
+
+
     return (
         <>
             <div>
-
-
-                <div className='fixed z-50 w-full'><CitizenNavbar /></div>
-                <div >
-
-
+                <div className='fixed z-50 w-full'>
+                    <CitizenNavbar />
                 </div>
+
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12  '>
+
+            <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12'>
                 <div className='col-span-9 mt-20 p-6'>
                     <div className=''>
-                        <Link to='/citizenDashboard/'>
-                            <BackComponent />
-                        </Link>
+                        <Link to='/citizenDashboard/'> <BackComponent /> </Link>
                     </div>
-                    {/************* Property List *****************/}
+
+
                     {module.module == 'property' && <ApplicationListCard />}
-
-                    {/************* Water List ************/}
                     {module.module == 'water' && <WaterApplicationListCard />}
+                    {module.module == 'trade' && <TradeApplicationListCard />}
 
                 </div>
 
+                {/* /////////////////////////////////////// */}
+                <FaqComponent faqs={faqs} />
 
-                {/******************** FAQ ******************************/}
-
-                <div className='col-span-3 mt-20'>
-                    <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1'>
-                        <div className=''>
-                            <div className="space-y-2 p-4">
-                                <h1 className='text-center -mt-4 font-semibold bg-teal-500 p-0 text-lg'>FAQ ?</h1>
-                                {faqs.map((item, i) => (
-                                    <div>{i}</div>,
-                                    <details className="rounded-lg  shadow-lg bg-white">
-                                        <summary className="px-3 py-1 cursor-pointer font-semibold bg-sky-200 h-8 rounded-lg text-gray-700 text-sm">{item.title}</summary>
-                                        <p className="px-4 py-6 pt-4 ml-4 -mt-4 text-gray-500 text-xs">{item.body}</p>
-                                    </details>
-                                ))}
-                            </div>
-
-                        </div>
-
-
-                        {/*  notify card*/}
-                        <div className='p-2 mt-4'>
-                            <h1 className='text-center -mt-4 font-semibold bg-teal-500 text-lg'>NOTIFICATION</h1>
-                            <div className=''>
-                                <div className="space-y-2 p-4">
-                                    <div class="bg-green-500 text-white  border-green-800   border-l-8  rounded-md shadow hover:shadow-xl max-w-sm mx-auto transform hover:-translate-y-[0.125rem] transition duration-100 ease-linear h-12 p-2">
-                                        <div class="flex items-center rounded-lg  cursor-pointer">
-                                            <div class="ml-3.5">
-                                                <span class="text-sm leading-none  text-white">you have successfully registered for saf </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='-mt-6'>
-                                <div className="space-y-2 p-4">
-                                    <div class="bg-teal-500 text-white  border-teal-800   border-l-8  rounded-md shadow hover:shadow-xl max-w-sm mx-auto transform hover:-translate-y-[0.125rem] transition duration-100 ease-linear h-12 p-2">
-                                        <div class="flex items-center rounded-lg  cursor-pointer">
-                                            <div class="ml-3.5">
-                                                <span class="text-sm leading-none  text-white">you have successfully registered for saf </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='-mt-6'>
-                                <div className="space-y-2 p-4">
-                                    <div class="bg-cyan-500 text-white  border-cyan-800   border-l-8  rounded-md shadow hover:shadow-xl max-w-sm mx-auto transform hover:-translate-y-[0.125rem] transition duration-100 ease-linear h-12 p-2">
-                                        <div class="flex items-center rounded-lg  cursor-pointer">
-                                            <div class="ml-3.5">
-                                                <span class="text-sm leading-none  text-white">you have successfully registered for saf </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/* //////////////////////////////////////// */}
 
             </div>
         </>
     )
 }
 
-export default CitizenSafEntryScreenTest
+export default CitizenApplyByModule
