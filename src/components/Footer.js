@@ -124,7 +124,7 @@ function Footer() {
         </div>
       </footer> */}
 
-<footer class="text-gray-600 body-font  bg-slate-100 border pt-4 pb-4">
+<footer class="text-[#37517e] body-font  border pt-4 pb-4">
 
 <div class="container px-5 py-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 
@@ -134,7 +134,7 @@ function Footer() {
     {/* Address */}
     {/* <div class="lg:w-1/4 md:w-1/2 w-full px-4"> */}
     <div class="w-full px-8">
-      <h2 class="title-font text-gray-900 tracking-widest text-md border-b-2 text-center font-bold mb-3">ADDRESS</h2>
+      <h2 class="title-font text-[#37517e] tracking-widest text-md border-b-2 text-center font-bold mb-3">ADDRESS</h2>
       <p className='text-sm'>
         JUIDCO Building,
         Line Tank Road, Kutchery Chowk,
@@ -145,7 +145,7 @@ function Footer() {
     {/* Contact */}
     {/* <div class="lg:w-1/4 md:w-1/2 w-full px-4"> */}
     <div class="w-full px-8">
-      <h2 class="title-font text-gray-900 tracking-widest text-md font-bold mb-3 border-b-2 text-center">CONTACT US</h2>
+      <h2 class="title-font text-[#37517e] tracking-widest text-md font-bold mb-3 border-b-2 text-center">CONTACT US</h2>
       <nav class="list-none mb-10 text-sm text-center">
         <li>
           <a className='flex space-x-2 pl-6 pb-2' href="tel:+">
@@ -165,7 +165,7 @@ function Footer() {
     {/* Suggestion */}
     {/* <div class="lg:w-1/4 md:w-1/2 w-full px-4 row-span-2"> */}
     <div class="w-full px-8 row-span-2 mb-4">
-      <h2 class="title-font text-gray-900 tracking-widest text-md font-bold mb-3 border-b-2 text-center">SUGGESTION</h2>
+      <h2 class="title-font text-[#37517e] tracking-widest text-md font-bold mb-3 border-b-2 text-center">SUGGESTION</h2>
       <form>
         <div className='flex space-x-2 '>
           <label htmlFor="" className='text-2xl'><BsFillPersonFill fontSize='' /></label>
@@ -180,7 +180,7 @@ function Footer() {
           <textarea name="message" id="" cols="30" rows="4" placeholder=' Your Message' className='focus:outline-none rounded-md shadow-md px-4 text-sm py-1.5 mb-2 w-full' />
         </div>
         <div className='ml-8'>
-          <button type="submit" className='text-sm bg-[#58D0E7] rounded-md px-4 py-1.5 text-white text-center hover:bg-[#50bed4] shadow-md flex space-x-2 justify-center w-full'> <span className='text-xl'><FaTelegramPlane /></span><span>Send Message</span></button>
+          <button type="submit" className='text-sm bg-[#37517e] rounded-md px-4 py-1.5 text-white text-center hover:bg-[#37517e] shadow-md flex space-x-2 justify-center w-full'> <span className='text-xl'><FaTelegramPlane /></span><span>Send Message</span></button>
         </div>
       </form>
     </div>

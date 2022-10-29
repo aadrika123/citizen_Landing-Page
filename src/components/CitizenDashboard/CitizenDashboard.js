@@ -22,7 +22,7 @@ import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOu
 import CorporateFareOutlinedIcon from '@mui/icons-material/CorporateFareOutlined';
 import CardMembershipOutlinedIcon from '@mui/icons-material/CardMembershipOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
-// import "animate.css";
+import 'animate.css'
 import { BsLink45Deg, BsQuestionLg, BsFillPersonFill, BsArrowBarRight, BsArrowClockwise } from 'react-icons/bs'
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import { BiBell } from 'react-icons/bi'
@@ -32,6 +32,8 @@ import { FaAmazonPay } from 'react-icons/fa'
 import { MdOutlinePending, MdMiscellaneousServices } from 'react-icons/md'
 import { TbHandClick } from 'react-icons/tb'
 import { AiOutlineNotification, AiOutlineTransaction } from 'react-icons/ai'
+import CitizenSidebarDash from './CitizenComponent/CitizenSidebarDash';
+import FaqComponent from '../FaqComponent';
 
 function CitizenDashboard(props) {
 
@@ -80,184 +82,19 @@ function CitizenDashboard(props) {
 
     let headerStyle = ' w-full bg-[#37517e] text-white py-1.3 px-4 rounded-md shadow-md flex space-x-2 items-center mb-3'
 
+   
+
     return (
         <>
 
-            {/* <div className='container mx-auto  '>
-                <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 '>
-                    <h1 className='text-3xl text-center font-bold mt-12 text-gray-700'>WELCOME USER TO YOUR DASHBOARD</h1>
-                </div>
+
+            <section className='bg-gray-50'>
 
 
-                <div>
-                    {showProcessGuide ? <Processguide fun={setshowProcessGuide} /> : ''}
-                </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12'>
-
-                    <div className='col-span-8 mt-12'>
-                        <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1  p-2  container mt-2'>
-
-                            <div className=''>
-                                <h1 className=' text-2xl font-semibold text-gray-600 font-sans text-center '>
-                                    SERVICES WE OFFER
-                                </h1>
-                            </div>
-                        </div>
-                        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3  p-2'>
-                            <div className=' mx-auto'>
-                                <Link to="/citizenselfdetailform">
-                                    <div class="shadow-lg rounded-2xl lg:w-64 w-96   p-2 py-2 mb-2 bg-purple-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                        <div class="flex flex-col items-center justify-center">
-                                            <div class="w-20 h-20 relative ">
-                                                <img src='https://cdn-icons-png.flaticon.com/512/1055/1055664.png' className=' h-16  opacity-85' />
-                                            </div>
-
-                                            <p class="text-gray-800 text-center text-md font-medium mb-1 ">
-                                                ADVERTISEMENT
-                                            </p>
-                                            <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                                You Can Get License To Advertise Your Business Name On Your Shop
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-                            <div className=' mx-auto'>
-                                <Link to="/citizenApplication/property">
-                                    <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-blue-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                        <div class="flex flex-col items-center justify-center">
-                                            <div class="w-20 h-20  mx-auto relative">
-                                                <img src='https://cdn-icons-png.flaticon.com/512/609/609803.png' className=' h-16  opacity-85' />
-                                            </div>
-                                            <p class="text-gray-800 text-md font-medium mb-1 ">
-                                                PROPERTY
-                                            </p>
-                                            <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                                You Can Get License To Advertise Your Business Name On Your Shop
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </Link>
-
-
-                            </div>
-                            <div className=' mx-auto'>
-                                <Link to="/citizenApplication/water">
-                                    <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-cyan-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                        <div class="flex flex-col items-center justify-center">
-                                            <div class="w-20 h-20   relative ">
-                                                <img src='https://cdn-icons-png.flaticon.com/512/3105/3105807.png' className=' h-16  opacity-85' />
-                                            </div>
-                                            <p class="text-gray-800 text-md font-medium mb-1">
-                                                WATER
-                                            </p>
-                                            <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                                You Can Get License To Advertise Your Business Name On Your Shop
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-
-                        </div>
-                        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 p-2 -mt-3'>
-                            <div className=' mx-auto'>
-                                <Link to="/citizenTrade">
-                                    <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-blue-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                        <div class="flex flex-col items-center justify-center">
-                                            <div class="w-20 h-20   relative  ">
-                                                <img src='https://cdn-icons-png.flaticon.com/512/3309/3309991.png' className=' h-16  opacity-85' />
-                                            </div>
-                                            <p class="text-gray-800 text-md font-medium mb-1">
-                                                TRADE
-                                            </p>
-                                            <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                                You Can Get License To Advertise Your Business Name On Your Shop
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-                            <div className=' mx-auto'>
-                                <Link to="">
-                                    <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-teal-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                        <div class="flex flex-col items-center justify-center">
-                                            <div class="w-20 h-20   relative  ">
-                                                <img src='https://cdn-icons-png.flaticon.com/512/602/602182.png' className=' h-16  opacity-85' />
-                                            </div>
-                                            <p class="text-gray-800 text-md font-medium mb-1">
-                                                BUILDING PLAN
-                                            </p>
-                                            <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                                You Can Get License To Advertise Your Business Name On Your Shop
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-                            <div className=' mx-auto'>
-                                <div class="shadow-lg rounded-2xl lg:w-64 w-96  p-2 py-2 mb-2 bg-orange-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                    <div class="flex flex-col items-center justify-center">
-                                        <div class="w-20 h-20  relative ">
-                                            <img src='https://cdn-icons-png.flaticon.com/512/2587/2587883.png' className=' h-16  opacity-85' />
-                                        </div>
-                                        <p class="text-gray-800 text-md font-medium mb-1">
-                                            SOLID WASTE MANAGEMENT
-                                        </p>
-                                        <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                            You Can Get License To Advertise Your Business Name On Your Shop
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 p-2-mt-7'>
-
-                            <div className=' mx-auto'>
-                                <div class="shadow-lg rounded-2xl lg:w-64 w-96 p-2 py-2 mb-2 bg-yellow-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                    <div class="flex flex-col items-center justify-center">
-                                        <div class="w-20 h-20   relative">
-                                            <img src='https://cdn-icons-png.flaticon.com/512/3617/3617064.png' className=' h-16  opacity-85' />
-                                        </div>
-                                        <p class="text-gray-800 text-md font-medium mb-1">
-                                            BIRTH & DEATH CERTIFICATE
-                                        </p>
-                                        <p class="text-gray-700 text-center text-xs px-1 mb-2">
-                                            You Can Get License To Advertise Your Business Name On Your Shop
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className='col-span-4 mt-12'>
-                        <button type='button' onClick={handleHelp}>
-                            <p className='text-blue-500 font-bold text-lg ml-6'>How to apply?</p>
-                        </button>
-                        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2  container mt-2'>
-                            <div className='text-center'>
-                                <h1 className='ml-2 text-2xl font-semibold text-gray-600 font-sans  '>
-                                    NOTIFICATION
-                                </h1>
-                            </div>
-                        </div>
-                        <CitizenNotification />
-                    </div>
-                </div>
-            </div> */}
-            <section className='bg-[#f3f5fa]'>
-                <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-4 container mx-auto'>
-
-                    {/************CITIZEN NAVBAR****************/}
-
-                    <div className='col-span-3  py-2 space-y-3 px-4'>
-                        {/* Left First */}
+                <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-1 container mx-auto'>
+                    {/* <div className='col-span-3  py-2 space-y-3 px-4'>
+                        Left First
                         <div className={`${boxStyle}` + ` animate__fadeInLeft`}>
                             <div className='w-full bg-[#37517e] text-white py-1.3 px-4 rounded-md shadow-md flex space-x-2 items-center'>
                                 <span className="font-bold text-xl"><BsFillPersonFill /></span>
@@ -266,7 +103,7 @@ function CitizenDashboard(props) {
 
                         </div>
 
-                        {/* Left Second */}
+                        Left Second
                         <div className={`${boxStyle}` + ` animate__fadeInLeft`}>
                             <div className={`${headerStyle}`}>
                                 <span className="font-bold text-xl text-white"><MdMiscellaneousServices /></span>
@@ -282,7 +119,7 @@ function CitizenDashboard(props) {
 
                         </div>
 
-                        {/* Left Third */}
+                        Left Third
                         <div className={`${boxStyle}` + ` animate__fadeInLeft`}>
                             <div className={`${headerStyle}`}>
                                 <span className="font-bold text-xl"><FaAmazonPay /></span>
@@ -298,7 +135,7 @@ function CitizenDashboard(props) {
 
                         </div>
 
-                        {/* Left Fourth */}
+                        Left Fourth
                         <div className={`${boxStyle}` + ` animate__fadeInLeft`}>
                             <div className={`${headerStyle}`}>
                                 <span className="font-bold text-xl"><MdOutlinePending /></span>
@@ -313,17 +150,38 @@ function CitizenDashboard(props) {
                             </div>
 
                         </div>
+                    </div> */}
+                    <div className='col-span-3 w-full h-screen bg-white shadow-lg overflow-y-scroll'>
+                        {/* <div className={`${boxStyle}` + ` animate__fadeInLeft`}>
+                            <div className={`${headerStyle}`}>
+                                <span className="font-bold text-xl text-white"><MdMiscellaneousServices /></span>
+                                <span>MY ACTIVITY</span>
+                            </div>
+
+                            <div className="text-sm flex flex-col space-y-2">
+                                <div className={`${notificationStyle}`}><span><BsArrowBarRight /></span> <span>Active Services 1</span>  </div>
+                                <div className={`${notificationStyle}`}><span><BsArrowBarRight /></span> <span>Active Services 2</span>  </div>
+                                <div className={`${notificationStyle}`}><span><BsArrowBarRight /></span> <span>Active Services 3</span>  </div>
+                                <div className={`${notificationStyle}`}><span><BsArrowBarRight /></span> <span>Active Services 4</span>  </div>
+                            </div>
+
+                        </div> */}
+                        <FaqComponent />
+                        <CitizenSidebarDash />
                     </div>
 
                     {/************APPLY FOR SERVICES****************/}
 
-                    <div className='col-span-6 loading '>
-                        <h1 className='text-center font-bold font-sans text-2xl text-[#37517e] p-2 '>APPLY FOR THE SERVICES</h1>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  container mx-auto'>
+                    <div className='col-span-9 loading '>
+                        <div className='container mx-auto  py-3 bg-gray-50 hover:bg-gray-100 '>
+                            <h1 className='text-2xl font-mono  px-2'>WELCOME TO DASHBOARD !</h1>
+                        </div>
+                        <h1 className='text-center font-bold font-sans text-2xl text-[#37517e] p-2 '>VISIT SERVICES</h1>
+                        <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 container m-4'>
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenselfdetailform">
-                                        <div class="rounded-b-3xl rounded-l-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-b-3xl rounded-l-3xl h-56   mx-auto bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <FeaturedVideoOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -343,7 +201,7 @@ function CitizenDashboard(props) {
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenApplication/property">
-                                        <div class="rounded-t-3xl rounded-r-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-t-3xl rounded-r-3xl h-56 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <HomeOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -360,14 +218,10 @@ function CitizenDashboard(props) {
                                     </Link>
                                 </div>
                             </div>
-
-                        </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  container mx-auto'>
-
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenApplication/trade">
-                                        <div class="rounded-t-3xl rounded-r-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-t-3xl rounded-r-3xl h-56  bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <BusinessCenterOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -384,10 +238,15 @@ function CitizenDashboard(props) {
                                     </Link>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 container m-4 '>
+
+
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenApplication/water">
-                                        <div class="rounded-b-3xl rounded-l-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-b-3xl rounded-l-3xl  h-56 bg-white   mx-auto  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <OpacityOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -404,14 +263,10 @@ function CitizenDashboard(props) {
                                     </Link>
                                 </div>
                             </div>
-
-
-                        </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  container mx-auto'>
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenTrade">
-                                        <div class="rounded-b-3xl rounded-l-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-b-3xl rounded-l-3xl h-56   mx-auto  bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <CleaningServicesOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -431,7 +286,7 @@ function CitizenDashboard(props) {
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenApplication/property">
-                                        <div class="rounded-t-3xl rounded-r-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-t-3xl rounded-r-3xl h-56   mx-auto  bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <CorporateFareOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -448,15 +303,10 @@ function CitizenDashboard(props) {
                                     </Link>
                                 </div>
                             </div>
-
-
-
-                        </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  container mx-auto'>
                             <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenTrade">
-                                        <div class="rounded-b-3xl rounded-l-3xl lg:w-64 w-64 lg:h-56 h-72   mx-auto  p-2 py-2 mb-2 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
+                                        <div class="rounded-b-3xl rounded-l-3xl h-56 mx-auto  bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 hover:shadow-lg shadow-lg duration-300 opacity-95">
                                             <div class="flex flex-col items-center justify-center">
                                                 <div class="w-20 h-20 relative ">
                                                     <CardMembershipOutlinedIcon sx={{ fontSize: 70, color: "#ff583d", }} />
@@ -473,6 +323,16 @@ function CitizenDashboard(props) {
                                     </Link>
                                 </div>
                             </div>
+                        </div>
+                        <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4  container mx-auto'>
+
+
+
+
+
+                        </div>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  container mx-auto'>
+
                             {/* <div className=''>
                                 <div className=' mx-auto'>
                                     <Link to="/citizenApplication/property">
@@ -498,15 +358,15 @@ function CitizenDashboard(props) {
 
                         </div>
                     </div>
- 
 
-                    {/************CITIZEN NAVBAR****************/}
 
-                    <div className='col-span-3  border'>
-                        {/* Right */}
+                    {/* ***********RIGHT***************
+
+                    <div className='col-span-3 '>
+                        Right
                         <div className=" col-span-3 py-2 space-y-3 flex flex-col items-end pr-4">
 
-                            {/* Right First */}
+                            Right First
                             <div className={`${boxStyle}` + ` animate__fadeInRight`}>
                                 <div className='w-full bg-[#37517e] text-white py-1.3 px-4 rounded-md shadow-md flex space-x-2 items-center'>
                                     <span className="font-bold text-xl"><IoIosBook /></span>
@@ -515,7 +375,7 @@ function CitizenDashboard(props) {
                                 </div>
                             </div>
 
-                            {/* Right Second */}
+                            Right Second
                             <div className={`${boxStyle}` + ` animate__fadeInRight`}>
 
                                 <div className={`${headerStyle}`}>
@@ -532,7 +392,7 @@ function CitizenDashboard(props) {
                                 </div>
                             </div>
 
-                            {/* Right Third */}
+                            Right Third
                             <div className={`${boxStyle}` + ` animate__fadeInRight`}>
                                 <div className={`${headerStyle}`}>
                                     <span className="font-bold"><BsQuestionLg /></span>
@@ -541,7 +401,7 @@ function CitizenDashboard(props) {
 
                                 <div className="text-sm flex flex-col space-y-2">
 
-                                    {/* FAQ 1 */}
+                                    FAQ 1
                                     <div className="cursor-pointer" onClick={funToggle}>
                                         <div className={(!toggle ? `border-l-2 rounded-md border-r-2 hover:shadow-md hover:scale-105` : `border-t-4 rounded-t-md`) + ` ${faqsStyle}`}><span>{(toggle == true) ? <FaArrowDown /> : <FaArrowRight />}</span> <span>How to apply ?</span> </div>
 
@@ -550,7 +410,7 @@ function CitizenDashboard(props) {
                                         </div>
                                     </div>
 
-                                    {/* FAQ 2 */}
+                                    FAQ 2
                                     <div className="cursor-pointer" onClick={funToggle2}>
                                         <div className={(!toggle2 ? `border-l-2 rounded-md border-r-2 hover:shadow-md hover:scale-105` : `border-t-4 rounded-t-md`) + ` ${faqsStyle}`}><span>{(toggle2 == true) ? <FaArrowDown /> : <FaArrowRight />}</span> <span>How to apply ?</span> </div>
 
@@ -559,7 +419,7 @@ function CitizenDashboard(props) {
                                         </div>
                                     </div>
 
-                                    {/* FAQ 3 */}
+                                    FAQ 3
                                     <div className="cursor-pointer" onClick={funToggle3}>
                                         <div className={(!toggle3 ? `border-l-2 rounded-md border-r-2 hover:shadow-md hover:scale-105` : `border-t-4 rounded-t-md`) + ` ${faqsStyle}`}><span>{(toggle3 == true) ? <FaArrowDown /> : <FaArrowRight />}</span> <span>How to apply ?</span> </div>
 
@@ -568,7 +428,7 @@ function CitizenDashboard(props) {
                                         </div>
                                     </div>
 
-                                    {/* FAQ 4 */}
+                                    FAQ 4
                                     <div className="cursor-pointer" onClick={funToggle4}>
                                         <div className={(!toggle4 ? `border-l-2 rounded-md border-r-2 hover:shadow-md hover:scale-105` : `border-t-4 rounded-t-md`) + ` ${faqsStyle}`}><span>{(toggle4 == true) ? <FaArrowDown /> : <FaArrowRight />}</span> <span>How to apply ?</span> </div>
 
@@ -581,7 +441,7 @@ function CitizenDashboard(props) {
 
                             </div>
 
-                            {/* Right Fourth */}
+                            Right Fourth
                             <div className={`${boxStyle}` + ` animate__fadeInRight`}>
                                 <div className={`${headerStyle}`}>
                                     <span className="font-bold text-xl"><BsLink45Deg /></span>
@@ -598,7 +458,9 @@ function CitizenDashboard(props) {
                             </div>
 
                         </div>
-                    </div>
+                    </div> */}
+
+
                 </div>
             </section>
 

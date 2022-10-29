@@ -21,7 +21,7 @@ const Gallery = () => {
                 {/* Content */}
                 <div className=' text-center mb-4 w-max flex flex-col '>
 
-                    <span className='text-center font-bold font-sans text-3xl text-[#37517e]'> GALLERY </span>
+                    <span className='text-center font-semibold text-3xl text-[#37517e]'> GALLERY </span>
 
 
                 </div>

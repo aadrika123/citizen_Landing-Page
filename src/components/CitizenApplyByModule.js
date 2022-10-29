@@ -24,41 +24,11 @@ import BackComponent from './CitizenDashboard/BackComponent'
 import ApplicationListCard from './CitizenDashboard/ApplicationListCard'
 import TradeApplicationListCard from './CitizenDashboard/TradeApplicationListCard'
 import FaqComponent from './FaqComponent'
+import CitizenSidebarDash from './CitizenDashboard/CitizenComponent/CitizenSidebarDash'
 
 function CitizenApplyByModule() {
 
-    const faqs = [
-        {
-            id: 1,
-            title: 'How to Apply ?',
-            body: 'Step 1. Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br /> Step 2. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 2,
-            title: 'How  avail Armed Forces ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 3,
-            title: 'Who is Specially Abled ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 4,
-            title: 'This is heading for this ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 5,
-            title: 'This is heading for this ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 6,
-            title: 'This is heading for this ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        }
-    ]
+   
 
     const [newStatus, setnewStatus] = useState('col-span-12 md:col-span-4 py-6')// to maintain the hide show state of new-assessment
     const [reStatus, setreStatus] = useState('col-span-12 md:col-span-4 py-6')// to maintain the hide show state of re-assessment
@@ -152,14 +122,18 @@ function CitizenApplyByModule() {
     return (
         <>
             <div>
-                <div className='fixed z-50 w-full'>
+                <div className='relative w-full'>
                     <CitizenNavbar />
                 </div>
 
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12'>
-                <div className='col-span-9 mt-20 p-6'>
+                <div className='col-span-3 overflow-y-scroll h-screen bg-white'>
+                    <FaqComponent  />
+                    <CitizenSidebarDash />
+                </div>
+                <div className='col-span-9 p-6'>
                     <div className=''>
                         <Link to='/citizenDashboard/'> <BackComponent /> </Link>
                     </div>
@@ -172,7 +146,7 @@ function CitizenApplyByModule() {
                 </div>
 
                 {/* /////////////////////////////////////// */}
-                <FaqComponent faqs={faqs} />
+
 
                 {/* //////////////////////////////////////// */}
 

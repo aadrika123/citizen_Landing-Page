@@ -23,6 +23,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 import TradeLoader from './tradeComponent/TradeLoader';
 import { convertApplicationTypeToString } from './tradeComponent/UsefulFunctions';
 import FaqComponent from '../../components/FaqComponent';
+import CitizenSidebarDash from '../../components/CitizenDashboard/CitizenComponent/CitizenSidebarDash';
 function TradeRelatedMenus() {
     const [tabIndex, settabIndex] = useState(0)     //state to store current tab index
     const [idApi, setidApi] = useState(0)
@@ -173,12 +174,14 @@ function TradeRelatedMenus() {
         <>
 
             <TradeLoader show={show} />
-            <h1 className='font-bold text-blue-800 text-2xl m-3 text-center underline'>TRADE MENU LIST</h1>
+
             <div className='flex'>
-                <div className='bg-white w-[20rem]'>
+                <div className='bg-white w-[24rem] h-screen overflow-y-scroll'>
                     <FaqComponent faqs={faqs} />
+                    <CitizenSidebarDash />
                 </div>
                 <div className=' w-full border '>
+                    {/* <h1 className='font-bold text-blue-800 text-2xl m-3 text-center underline'>TRADE MENU LIST</h1> */}
                     <div className='grid grid-cols-4'>
                         <MailboxSidebar tabs={tabs} fun={tabSwitch} />
                     </div>

@@ -21,6 +21,7 @@ import SidenavContent from './testDelete/SidenavContent'
 import TestComponent from './testDelete/TestComponent'
 import CitizenDashboard from './CitizenDashboard/CitizenDashboard'
 import CitizenNavbar from './CitizenDashboard/CitizenNavbar'
+import Footer from './Footer'
 
 
 function CitizenMainPage() {
@@ -58,13 +59,11 @@ function CitizenMainPage() {
     <>
 
       <div>
-        <div className=' z-50 w-full'> <CitizenNavbar /></div>
+        <div className='w-full'> <CitizenNavbar /></div>
 
-        <div className=''>
-          {/* <div className='absolute left-0 top-0'><SideNav citizenNameEmail={fetchCitizenData} /></div> */}
-          {/* <CitizenEntryPage citizenName={fetchCitizenData} />
-          <CitizenContentArea /> */}
+        <div className='w-full bg-gray-50'>
           <CitizenDashboard />
+          {/* <Footer /> */}
         </div>
       </div>
 

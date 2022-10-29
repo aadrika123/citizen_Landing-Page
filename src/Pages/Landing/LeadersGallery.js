@@ -14,8 +14,9 @@ function LeadersGallery() {
     return (
         <>
             <section className='bg-[#f3f5fa]'>
-                <div className=" ">
-                    <h1 className='text-center font-bold font-sans text-3xl text-[#37517e] '>LEADERS</h1>
+                <div className="">
+                    <h1 className='font-semibold text-center text-3xl text-[#37517e] '>LEADERS</h1>
+              
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-4  container mx-auto ">
                     <div class="container px-2 py-1 mx-auto ">

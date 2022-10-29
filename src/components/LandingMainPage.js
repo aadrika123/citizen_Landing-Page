@@ -25,8 +25,9 @@ import VideoComponent from './VideoComponent'
 import TestNav from './testDelete/TestNav'
 import SmallScreenMenu from '../Pages/Landing/SmallScreenMenu'
 import SectionService from '../Pages/LandingPageModified/SectionService'
-import SectionAboutJharkhand from '../Pages/LandingPageModified/SectionAboutJharkhand'
+import SectionAboutJharkhand from '../Pages/LandingPageModified/SectionLeaderJharkhand'
 import Gallery from '../Pages/LandingPageModified/Gallery'
+import SectionLeaderJharkhand from '../Pages/LandingPageModified/SectionLeaderJharkhand'
 
 function LandingMainPage() {
 
@@ -48,20 +49,13 @@ function LandingMainPage() {
             <div>
 
                 <div className='fixed w-full z-50'><LandingNav /></div>
-                {/* <div className='fixed z-50 ml-6'><Logo /></div> */}
                 <VideoComponent />
-                {/* <div className=''><SliderImage /></div> */}
-                <div><SmallScreenMenu/></div>
-                {/* <div className=''><MarqueeComponent /></div> */}
-                {/* <div><SectionOurDomain /></div>
-                 */}
-                           <SectionService/>
-                           <SectionAboutJharkhand/>
-                           <Gallery/>
-                {/* <div> <AboutJharkhand /></div> */}
-
-                <div><LeadersGallery /></div>
-                <div><Footer /> </div>
+                <SmallScreenMenu />
+                <SectionService />
+                <AboutJharkhand />
+                <Gallery />
+                <SectionLeaderJharkhand />
+                <Footer /> 
             </div>
         </>
     )

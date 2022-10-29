@@ -39,12 +39,17 @@ function TradeApplicationListCard() {
                 </div>
             </div>
             <div className='mx-auto w-full flex justify-evenly m-4 font-mono text-xl'>
-                <div className='h-[4rem] w-[16rem]  hover:bg-blue-100 rounded-xl flex justify-evenly' onClick={handleTabs}>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3554/3554009.png" alt="" className='h-8 h-8' /> Application List
+                <div className='h-[4rem] w-[16rem]  bg-blue-100 hover:bg-blue-200 rounded-xl flex justify-evenly' onClick={handleTabs}>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3554/3554009.png" alt="" className='h-8 h-8 mt-3' />
+                    <span className='mt-3'> Application List </span>
                 </div>
 
-                <div className='h-[4rem] w-[16rem]  hover:bg-blue-100 rounded-xl flex justify-evenly' onClick={handleTabs} >
-                    <img src="https://cdn-icons-png.flaticon.com/512/3554/3554009.png" alt="" className='h-8 h-8' /><Link to='/citizenTrade'> Services</Link>
+                <div className='h-[4rem] w-[16rem]  bg-blue-100 hover:bg-blue-200  rounded-xl flex justify-evenly' onClick={handleTabs} >
+                <img src="https://cdn-icons-png.flaticon.com/512/3554/3554009.png" alt="" className='h-8 h-8 mt-3' />
+                    <Link to='/citizenTrade'>
+                        
+                        <span className='mt-3'> Services </span>
+                    </Link>
                 </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 '>

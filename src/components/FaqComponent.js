@@ -1,16 +1,49 @@
 import React from 'react'
 
 function FaqComponent(props) {
+    const faqs = [
+        {
+            id: 1,
+            title: 'How to Apply ?',
+            body: 'Step 1. Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br /> Step 2. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
+        },
+        {
+            id: 2,
+            title: 'How  avail Armed Forces ?',
+            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
+        },
+        {
+            id: 3,
+            title: 'Who is Specially Abled ?',
+            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
+        },
+        {
+            id: 4,
+            title: 'This is heading for this ?',
+            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
+        },
+        {
+            id: 5,
+            title: 'This is heading for this ?',
+            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
+        },
+        {
+            id: 6,
+            title: 'This is heading for this ?',
+            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
+        }
+    ]
+
     return (
         <div className='col-span-3'>
             <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1'>
-                <div className='bg-white shadow-lg'>
+                <div className='bg-[#e6fafb] '>
                     <div className="space-y-2 p-4">
-                        <h1 className='text-center -mt-4 font-semibold bg-[#37517e] text-white p-0 text-lg'>FAQ ?</h1>
-                        {props.faqs.map((item, i) => (
+                        <h1 className='text-center py-1 rounded-lg font-mono bg-teal-300 hover:bg-amber-400 text-white p-0 text-md'>FAQ ?</h1>
+                        {faqs.map((item, i) => (
                             <div>{i}</div>,
-                            <details className="rounded-lg  shadow-lg bg-white">
-                                <summary className="px-3 py-1 cursor-pointer font-semibold  text-[#37517e] h-8 rounded-lg text-sm">{item.title}</summary>
+                            <details className="rounded-lg  shadow-lg bg-white hover:bg-gray-100">
+                                <summary className="px-3  py-1 cursor-pointer font-mono  text-[#37517e] h-8 rounded-lg text-sm">{item.title}</summary>
                                 <p className="px-4 py-6 pt-4 ml-4 -mt-4 text-[#37517e] text-xs">{item.body}</p>
                             </details>
                         ))}
@@ -20,7 +53,7 @@ function FaqComponent(props) {
 
 
                 {/*  notify card*/}
-                <div className='p-2 mt-4  shadow-lg'>
+                {/* <div className='p-2 mt-4  shadow-lg'>
                     <h1 className='text-center -mt-4 font-semibold bg-[#37517e] text-white text-lg'>NOTIFICATION</h1>
                     <div className=''>
                         <div className="space-y-2 p-4">
@@ -58,7 +91,7 @@ function FaqComponent(props) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
