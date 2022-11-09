@@ -23,7 +23,7 @@ function DisplayFindings(props) {
         dialogText: "Do you want to proceed with the Surrender?  Your License will be invalid after the approval.",
         callbackFun: gotoRenewalPage
     }
-    console.log("props.licenseData?.status",props.licenseData);
+    console.log("props.licenseData?.status", props.licenseData);
 
     return (
 
@@ -43,10 +43,19 @@ function DisplayFindings(props) {
                     </td>
 
                 </tr>
-            ) : <tr className='font-semibold text-cyan-500'>
-                <br />
-                <td className='border-teal-800 py-2 '>{props.licenseData?.message}... </td>
-            </tr>}
+            ) :
+                <>
+                    <br />
+                    <tr className='font-semibold text-cyan-500  text-center'>
+                        <td className=' py-2' colSpan={5}>
+                            {props.licenseData?.message}...
+                        </td>
+                        {/* <p className='text-center'> {props.licenseData?.message}...</p> */}
+
+                        {/* <td className='border-teal-800 py-2 '>{props.licenseData?.message}... </td> */}
+                    </tr>
+                </>
+            }
 
 
         </>

@@ -8,7 +8,7 @@
 //    DESCRIPTION - Related Menus for userPermission | Includes - Horizontal Tabs
 //////////////////////////////////////////////////////////////////////////////////////
 import { useState, useEffect } from 'react'
-import MailboxSidebar from './MailboxComponent/MailboxSidebar';
+import MailboxSidebar from './MailboxComponent/MailboxSidebar'
 import NewApplication from './NewApplication/NewApplication';
 // import { contextVar } from '.././../Components/Context/Context';
 import axios from 'axios';
@@ -22,8 +22,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ThreeCircles } from 'react-loader-spinner';
 import TradeLoader from './tradeComponent/TradeLoader';
 import { convertApplicationTypeToString } from './tradeComponent/UsefulFunctions';
-import FaqComponent from '../../components/FaqComponent';
-import CitizenSidebarDash from '../../components/CitizenDashboard/CitizenComponent/CitizenSidebarDash';
 function TradeRelatedMenus() {
     const [tabIndex, settabIndex] = useState(0)     //state to store current tab index
     const [idApi, setidApi] = useState(0)
@@ -69,11 +67,11 @@ function TradeRelatedMenus() {
     }
 
     const tabs = [
-        { title: "New ", tabIndex: 0 },
+        { title: "New Application", tabIndex: 0 },
         { title: "Renewal", tabIndex: 1 },
         { title: "Surrender", tabIndex: 2 },
         { title: "Amendment", tabIndex: 3 },
-        // loginType == 0 && { title: "Application List", tabIndex: 4 },
+        { title: "Application List", tabIndex: 4 },
     ]
     const tabSwitch = (index) => {
         //tabSwitch function receive tabIndex to switch between tabs called from Sidebar menu
@@ -102,7 +100,7 @@ function TradeRelatedMenus() {
     // function to get master data for select fields in New Trade application form
     const getSelectFieldDataFun = () => {
         showLoader(true)
-        console.log("api url", HEADER)
+        console.log("api url",HEADER)
         axios.get(TRADE.MASTER_DATA_API + convertApplicationTypeToString(applicationType), HEADER)
             .then(function (response) {
 
@@ -137,78 +135,34 @@ function TradeRelatedMenus() {
         licenseDetailsFun: setLicenseDataForRasFun,
         licenseData: licenseDataForRAS
     }
-    const faqs = [
-        {
-            id: 1,
-            title: 'How to Apply ?',
-            body: 'Step 1. Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br /> Step 2. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 2,
-            title: 'How  avail Armed Forces ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 3,
-            title: 'Who is Specially Abled ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 4,
-            title: 'This is heading for this ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 5,
-            title: 'This is heading for this ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        },
-        {
-            id: 6,
-            title: 'This is heading for this ?',
-            body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, quas dolore fugit laborum consequatur ducimus harum blanditiis est incidunt laudantium.'
-        }
-    ]
 
     return (
         <>
 
             <TradeLoader show={show} />
-
-            <div className='flex'>
-                <div className='bg-white w-[24rem] h-screen overflow-y-scroll'>
-                    <FaqComponent faqs={faqs} />
-                    <CitizenSidebarDash />
+            <div className={` grid grid-cols-12 rounded-lg mt-4 shadow-xl broder-2 -ml-10 border-sky-200 bg-gray-200`}>
+                <div className='col-span-12 lg:col-span-2 md:col-span-12'>
+                    <MailboxSidebar tabs={tabs} fun={tabSwitch} />
                 </div>
-                <div className=' w-full border '>
-                    {/* <h1 className='font-bold text-blue-800 text-2xl m-3 text-center underline'>TRADE MENU LIST</h1> */}
-                    <div className='grid grid-cols-4'>
-                        <MailboxSidebar tabs={tabs} fun={tabSwitch} />
-                    </div>
-                    <div className={` grid grid-cols-12 rounded-lg mt-4 shadow-xl broder-2  border-sky-200 bg-gray-200`}>
+                <div className={`bg-white col-span-12 lg:col-span-10 md:col-span-10`}>
+                    {/**component to show New License Application Screen */}
+                    {tabIndex == 0 && <div className='  overflow-y-scroll' style={{ 'height': '90vh' }}> <NewApplication fieldData={getSelectFieldData} showLoader={showLoader} applicationType="1" title="NewApplication" /> </div>}
 
-                        <div className={`bg-white col-span-12 lg:col-span-12 md:col-span-12`}>
-                            {/**component to show New License Application Screen */}
-                            {tabIndex == 0 && <div className='  overflow-y-scroll' style={{ 'height': '90vh' }}> <NewApplication fieldData={getSelectFieldData} showLoader={showLoader} applicationType="1" title="NewApplication" /> </div>}
+                    {/** component to show Renewal Screen fieldData={getSelectFieldData} */}
+                    {tabIndex == 1 && <div className='col-span-12 sm:col-span-10 shadow-lg overflow-y-scroll' style={{ 'height': '90vh' }}><Renewal licenseValues={licenseValues} showLoader={showLoader} applicationType="2" title="Renewal" /></div>}
 
-                            {/** component to show Renewal Screen fieldData={getSelectFieldData} */}
-                            {tabIndex == 1 && <div className='col-span-12 sm:col-span-10 shadow-lg overflow-y-scroll' style={{ 'height': '90vh' }}><Renewal licenseValues={licenseValues} showLoader={showLoader} applicationType="2" title="Renewal" /></div>}
+                    {/* component to show Surrender Screenm */}
+                    {tabIndex == 2 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><Surrender licenseValues={licenseValues} showLoader={showLoader} applicationType="4"  title="Surrender" /></div>}
 
-                            {/* component to show Surrender Screenm */}
-                            {tabIndex == 2 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><Surrender licenseValues={licenseValues} showLoader={showLoader} applicationType="4" title="Surrender" /></div>}
+                    {/** component to show  Role-Users */}
+                    {tabIndex == 3 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><Amendment licenseValues={licenseValues} title="Amendment"  showLoader={showLoader}  applicationType="3" /></div>}
 
-                            {/** component to show  Role-Users */}
-                            {tabIndex == 3 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><Amendment licenseValues={licenseValues} title="Amendment" applicationType="3" /></div>}
+                    {/** component to show  Application */}
+                    {tabIndex == 4 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><ApplicationList applicationTypeFun={setapplicationTypeFun} applicationType={applicationType} fun={tabSwitch} title="list" /></div>}
 
-                            {/** component to show  Application */}
-                            {(tabIndex == 4 && loginType == 0) && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><ApplicationList applicationTypeFun={setapplicationTypeFun} applicationType={applicationType} fun={tabSwitch} title="list" /></div>}
+                    {/** component to show  Application */}
+                    {tabIndex == 5 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><UpdateApplicationMain applicationType={applicationType} applicationTypeFun={setapplicationTypeFun} fun={tabSwitch} title="viewApplication" /></div>}
 
-                            {/** component to show  Application */}
-                            {tabIndex == 5 && <div className='col-span-12 sm:col-span-10 shadow-lg  overflow-y-scroll' style={{ 'height': '90vh' }}><UpdateApplicationMain applicationType={applicationType} applicationTypeFun={setapplicationTypeFun} fun={tabSwitch} title="viewApplication" /></div>}
-
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </>

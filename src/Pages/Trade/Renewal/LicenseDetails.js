@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions'
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles';
 // import TradeLoader from '../tradeComponent/TradeLoader'
 import { TRADE, HEADER } from '../tradeComponent/TradeApiListFile';
@@ -12,16 +11,22 @@ function LicenseDetails(props) {
 
     const { colorCode, currentStep, currentStepFun, collectFormDataFun, firmStepFun, firmStep, colorCodeFun, allFormData, showLoader, finalSubmit } = props.values;
 
-    console.log('props values in license charge :', props.values);
+    console.log('props values :', props.values);
+    const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
+    const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
+    const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false);
     const [paymentToggelStatus, setpaymentToggelStatus] = useState(false);
+
 
     const validationSchema = yup.object({
         licenseFor: yup.string().required('Select License For'),
         // licenseCharge: yup.string().required('Select firm type'),
         // firmName: yup.string().required('Select ownership type'),
         // penalty: yup.string().required('Select firm type'),
-        paymentMode: yup.string().required('Select Payment Mode'),
-
+        bankName: yup.string().when("paymentMode", { is: (paymentMode) => paymentMode == "CHEQUE" || paymentMode == "DD", then: yup.string().required('Bank Name is required') }),
+        chequeNo: yup.string().when("paymentMode", { is: (paymentMode) => paymentMode == "CHEQUE" || paymentMode == "DD", then: yup.string().required('Cheque No is required') }),
+        chequeDate: yup.string().when("paymentMode", { is: (paymentMode) => paymentMode == "CHEQUE" || paymentMode == "DD", then: yup.string().required('Cheque Date is required') }),
+        branchName: yup.string().when("paymentMode", { is: (paymentMode) => paymentMode == "CHEQUE" || paymentMode == "DD", then: yup.string().required('Cheque Date is required') }),
 
 
     })
@@ -34,7 +39,11 @@ function LicenseDetails(props) {
         penalty: '0',
         denialAmount: '0',
         totalCharge: '0',
-        paymentMode: ''
+        paymentMode: '',
+        bankName: '',
+        chequeNo: '',
+        chequeDate: '',
+        branchName: ''
 
     }
     const formik = useFormik(
@@ -85,13 +94,12 @@ function LicenseDetails(props) {
     const handleOnChange = (event) => {
         let name = event.target.name
         let value = event.target.value
-
+        { name === 'applyWith' && (value === '1' ? setMobileTowerStatusToggle(true) : setMobileTowerStatusToggle(false)) }
         { name === 'licenseFor' && getLicenseCharge(value) }
-        { name === 'paymentMode' && (value == 'CHEQUE' || value == 'DD') ? setpaymentToggelStatus(true) : setpaymentToggelStatus(false) }
+        { name === 'paymentMode' && (value == 'CASH') ? setpaymentToggelStatus(false) : setpaymentToggelStatus(true) }
     };
 
     const getLicenseCharge = (value) => {
-        console.log("calculation application type", convertApplicationTypeToString(props.values?.applicationType));
         showLoader(true)
         let data = [];
         data['licenseFor'] = value;
@@ -100,6 +108,7 @@ function LicenseDetails(props) {
         data['areaSqft'] = allFormData.firmDetails?.areaSqft;
         data['applicationType'] = convertApplicationTypeToString(props.values?.applicationType);
         data['tocStatus'] = allFormData.firmDetails?.tocStatus;
+       
         console.log('charge calculation data', Object.assign({}, data))
 
         axios.post(TRADE.GET_CHARGE, Object.assign({}, data), HEADER)
@@ -206,13 +215,41 @@ function LicenseDetails(props) {
                                 </span>
                             </div>
                         </div>
-                        <div className='grid grid-cols-1 md:grid-cols-3 gap-1'>
-                            <div className={`${inputContainerStyle}`}>
+                        <div className={`${paymentToggelStatus ? '' : 'hidden'}`}>
+                            <div className='grid grid-cols-1 md:grid-cols-3 gap-1'>
+                                <div className={`${inputContainerStyle}`}>
 
-                                <label className={`${inputLabelStyle} text-xs`}><small className=" text-sm font-semibold text-red-600 inline ">*</small>Cheque/DD Date</label>
-                                
-                                <input type="number" name="totalCharge" className={`${commonInputStyle} pointer-events-none bg-gray-100 `} value={formik.values.totalCharge} onChange={formik.handleChange} />
+                                    <label className={`${inputLabelStyle} text-xs`}><small className=" text-sm font-semibold text-red-600 inline ">*</small>Cheque/DD Date</label>
+                                    <input type="date" name="chequeDate" className={`${commonInputStyle} `} value={formik.values.chequeDate} onChange={formik.handleChange} min={JSON.stringify(new Date()).slice(1, 11)} />
 
+                                    <span className={`${inputErrorStyle}`}>  {formik.touched.chequeDate && formik.errors.chequeDate ? formik.errors.chequeDate : null}
+                                    </span>
+
+                                </div>
+                                <div className={`${inputContainerStyle}`}>
+
+                                    <label className={`${inputLabelStyle} text-xs`}><small className=" text-sm font-semibold text-red-600 inline ">*</small>Cheque/DD No.</label>
+                                    <input type="number" name="chequeNo" className={`${commonInputStyle} `} value={formik.values.chequeNo} onChange={formik.handleChange} />
+
+                                    <span className={`${inputErrorStyle}`}>  {formik.touched.chequeNo && formik.errors.chequeNo ? formik.errors.chequeNo : null}
+                                    </span>
+                                </div>
+                                <div className={`${inputContainerStyle}`}>
+
+                                    <label className={`${inputLabelStyle} text-xs`}><small className=" text-sm font-semibold text-red-600 inline ">*</small>Bank Name</label>
+                                    <input type="text" name="bankName" className={`${commonInputStyle}  `} value={formik.values.bankName} onChange={formik.handleChange} />
+
+                                    <span className={`${inputErrorStyle}`}>  {formik.touched.bankName && formik.errors.bankName ? formik.errors.bankName : null}
+                                    </span>
+                                </div>
+                                <div className={`${inputContainerStyle}`}>
+
+                                    <label className={`${inputLabelStyle} text-xs`}><small className=" text-sm font-semibold text-red-600 inline ">*</small>Branch Name</label>
+                                    <input type="text" name="branchName" className={`${commonInputStyle}  `} value={formik.values.branchName} onChange={formik.handleChange} />
+
+                                    <span className={`${inputErrorStyle}`}>  {formik.touched.branchName && formik.errors.branchName ? formik.errors.branchName : null}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div className="grid grid-cols-1">

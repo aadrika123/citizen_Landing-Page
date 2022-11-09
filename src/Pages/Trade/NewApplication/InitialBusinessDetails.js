@@ -14,18 +14,18 @@ import { useState } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions'
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles'
 import axios from 'axios'
 import TradeAssetComponent from '../TradeAssests/TradeAssetComponent';
 import newImg from '../TradeAssests/new.png';
+import { HEADER, TRADE } from '../tradeComponent/TradeApiListFile'
 function InitialBusinessDetails(props) {
 
     const { applicationType, colorCode, currentStep, currentStepFun, collectAllFormData, collectFormDataFun, firmStepFun, firmStep, colorCodeFun, fieldData, licenseData } = props.values;
     const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
     const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
     const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false)
-    const [noticeDate, setnoticeDate] = useState()
+    const [DenialDetails, setDenialDetails] = useState()
     // const [applicationType, setapplicationType] = useState(2);
     const coverStyle = "text-teal-400 text-xs";
     const [otherfirmToggleStatus, setotherfirmToggleStatus] = useState(false)
@@ -40,7 +40,7 @@ function InitialBusinessDetails(props) {
         firmType: yup.string().required('Select firm type'),
         ownershipType: yup.string().required('Select ownership type'),
         categroyTypeId: yup.string().required("select an option"),
-        noticeNo: yup.string().when("applyWith", { is: "1", then: yup.string().required('notice No is required') }),
+        noticeNo: yup.string().when("applyWith", { is: "1", then: yup.string().required('Notice No. is required') }),
         noticeDate: yup.string().when("applyWith", { is: "1", then: yup.string().required('Notice date is required') })
     });
 
@@ -81,16 +81,25 @@ function InitialBusinessDetails(props) {
 
     const handleNoticeDate = (e) => {
 
-        console.log('handleNoticeDate', e.target.value);
-        const noticeno = e.target.value;
-        alert(noticeno)
+        const noticeNo = e.target.value;
+        if (noticeNo != '') {
+            alert(noticeNo);
+            axios.post(TRADE.GET_DENIAL_DETAILS, { noticeNo: noticeNo }, HEADER)
+                .then(function (response) {
+                    console.log('notice data ', response.data);
 
-        axios.get('http://localhost:3333/notices/' + noticeno)
-            .then(function (response) {
-                console.log('notice data ', response.data.noticeDate);
-                setnoticeDate(response.data.noticeDate);
-                formik.setFieldValue('noticeDate', response.data.noticeDate);
-            })
+                    props.denialDetailsFun(response.data);
+                    // setDenialDetails(response.data);
+                    if (response.data.status) {
+                        formik.setFieldValue("noticeDate", response.data.data.denialDetails.noticedate);
+                    }else{
+                        formik.setFieldValue("noticeNo", '');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
     }
 
     //onchange event for form fields
@@ -139,7 +148,7 @@ function InitialBusinessDetails(props) {
                                     </label>
                                     <div className='flex'>
                                         <div className='flex-1'>
-                                            <input name="noticeNo" type="text" className={` ${commonInputStyle} `} placeholder="Enter 1 or 2" min={6} onBlur={handleNoticeDate} value={formik.values.noticeNo} onChange={formik.handleChange} />
+                                            <input name="noticeNo" type="text" className={` ${commonInputStyle} `} placeholder="Enter Notice No." min={6} onBlur={handleNoticeDate} value={formik.values.noticeNo} onChange={formik.handleChange} />
                                         </div>
                                     </div>
                                     <span className={`${inputErrorStyle}`}>

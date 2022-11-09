@@ -213,6 +213,7 @@ function CitizenPropSafApplicationFormIndex() {
 
         const requestBody = {
             // basic details
+            assessmentType:"NewAssessment",
             ward: allFormData.basicDetails.wardNo,
             newWard: allFormData.basicDetails.newWardNo,
             ownershipType: allFormData.basicDetails.ownerShiptype,
@@ -265,7 +266,7 @@ function CitizenPropSafApplicationFormIndex() {
         console.log('form request body....', requestBody)
 
         // return
-        axios.post(`${api_postNewAssissment}/NewAssessment`, requestBody, header)
+        axios.post(`${api_postNewAssissment}`, requestBody, header)
             .then(function (response) {
                 setloader(false)
                 console.log('response after pushing saf data', response)
@@ -295,7 +296,7 @@ function CitizenPropSafApplicationFormIndex() {
     useEffect(() => {
 
         let token = window.localStorage.getItem('token')
-        // let token = '1174|kfo4o1NYJ1lu8xXSetVC4yU5Nu5RlLxHOEQugI3L'
+        // let token = '1381|X8WPkk66z3YnsnPGQejX59jkE2HZuh0KuBWFU4ux'
        
         console.log('token at basic details is  get method...', token)
         const header = {
@@ -306,7 +307,7 @@ function CitizenPropSafApplicationFormIndex() {
             }
         }
 
-        axios.get(`${api_getMasterData}/NewAssessment`, header)
+        axios.get(`${api_getMasterData}`, header)
             .then(function (response) {
                 console.log('saf master data ....', response.data.data)
                 setPreFormData(response.data.data)
@@ -366,6 +367,7 @@ function CitizenPropSafApplicationFormIndex() {
                         <div className={`${animateform3} transition-all relative`}><CitizenPropElectricityWaterDetails preFormData={preFormData} collectFormDataFun={collectAllFormData} backFun={backFun} nextFun={nextFun} /></div>
                         <div className={`${animateform4} transition-all relative`}><CitizenPropOwnerDetails preFormData={preFormData} assType={assTypeText} collectFormDataFun={collectAllFormData} toastFun={notify} backFun={backFun} nextFun={nextFun} /></div>
                         <div className={`${animateform5} transition-all relative`}><CitizenPropFloorDetails preFormData={preFormData} collectFormDataFun={collectAllFormData} submitStatus={submitStatus} toastFun={notify} backFun={backFun} nextFun={nextFun} /></div>
+                        
                         {formIndex == 6 && <div className={`${animateform6} transition-all relative`}><SafFormReview formReviewData={allFormData} collectFormDataFun={collectAllFormData} submitFun={submitButtonToggle} submitStatus={submitStatus} toastFun={notify} backFun={backFun} nextFun={nextFun} /></div>}
                     </>}
                     {/*//> after successfully form submit show safformdemand page */}

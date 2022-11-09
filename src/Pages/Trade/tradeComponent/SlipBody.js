@@ -14,7 +14,7 @@ class SlipBody extends React.Component {
         const { paymentRecipt, applicationNo, applyLicenseId } = this.props?.successData;
 
         //transaction data
-        const { transaction_no, payment_mode, paid_amount, transaction_date, penalty } = this.props?.paymentData.transaction;
+        const { transaction_no, payment_mode, paid_amount, transaction_date, penalty, rate, delay_fee, denial_fee, paid_amount_in_words } = this.props?.paymentData.transaction;
 
         //application data
         const { application_no, firm_name, address, mobile, owner_name, provisional_license_no, ward_no } = this.props?.paymentData.application;
@@ -67,7 +67,7 @@ class SlipBody extends React.Component {
                             </tr>
                             <tr>
                                 <td className='w-80 '>(in words)
-                                    <span className='font-semibold border-b-2 border-gray-600 border-dashed'> Two Thousand Rupees Only</span>
+                                    <span className='font-semibold border-b-2 border-gray-600 border-dashed'> {paid_amount_in_words}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -85,17 +85,17 @@ class SlipBody extends React.Component {
                             </tr>
                             <tr className='border-b border-gray-800 py-1'>
                                 <td>Municipal License Fee </td>
-                                <td>{paid_amount}</td>
+                                <td>{rate}</td>
 
                             </tr>
                             <tr className='border-b border-gray-800 py-1'>
                                 <td>Delay Fee </td>
-                                <td>{penalty}</td>
+                                <td>{delay_fee}</td>
 
                             </tr>
                             <tr className='border-b border-gray-800 py-1'>
                                 <td>Denial Fee </td>
-                                <td>0.00</td>
+                                <td>{denial_fee}</td>
 
                             </tr>
                             <tr className='border-b border-gray-800 py-1'>

@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 // import {inputContainerStyle} from '../tradeComponent/CommonStyles'
 import axios from 'axios';
 import TradeLoader from '../tradeComponent/TradeLoader';
+import Dcr from './DCR/Dcr';
+import Cls from './CLS/Cls';
+import Dcc from './DCC/Dcc';
 
 
 function TradeReportParams() {
@@ -10,6 +13,7 @@ function TradeReportParams() {
     const [reportType, setreportType] = useState(0);            // REPORT TYPE IF PRIMARY OR SECONDARY
     const [keys, setkeys] = useState(["key1", "key2", "key3"]); // SET ARRAY KEYS FOR RENDERING DYNAMIC TABLE COLUMNS
     const [reportData, setreportData] = useState([])
+    const [ReportType, setReportType] = useState('NULL')
     const [loaderShow, setloaderShow] = useState('hidden');
     const [show, setshow] = useState(false);
 
@@ -51,23 +55,28 @@ function TradeReportParams() {
         return Object.keys(arr[0]);
     }
     const handleChange = (e) => {
-        // alert(e.target.value)
+
         let reportType = e.target.value;
         setreportType(reportType)
         console.log("primary", reportType);
     }
 
-    const getReport = () => {
+    const getReport = (e) => {
+        let name = e.target.name;
+        let val = e.target.value;
+
+        setReportType(val);
+        alert(val);
         setshow(true);
         axios.get('http://localhost:3333/vel')
             .then(function (response) {
                 console.log("response ", response.data)
                 setreportData(response.data);
-                setTimeout(()=>{
+                setTimeout(() => {
                     setshow(false);
-                },500)
-                
-               
+                }, 500)
+
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -150,6 +159,11 @@ function TradeReportParams() {
                         </tbody>
                     </table>
                 </div>
+                {/* <div className='mt-8 w-full h-screen bg-amber-50'>
+                    {ReportType == 'DCR' && <Dcr />}
+                    {ReportType == 'CLS' && <Cls />}
+                    {ReportType == 'DCC' && <Dcc />}
+                </div> */}
             </div>
         </>
     )

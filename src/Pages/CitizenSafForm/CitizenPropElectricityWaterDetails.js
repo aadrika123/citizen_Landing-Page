@@ -28,49 +28,7 @@ function CitizenPropElectricityWaterDetails(props) {
         bpApprovalNo: yup.string(),
         bpApprovalDate: yup.string(),
         waterConsumerNo: yup.string(),
-        waterConnectionDate: yup.string(),
-
-
-        // electricityKNo: yup.string().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.string().required('Enter electricity k no')
-        // }),
-        // accNo: yup.string().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.string().required('Enter ACC no')
-        // }),
-        // bindBookNo: yup.string().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.string().required('Enter bind/book no.')
-        // }),
-        // electrictyConsumerNo: yup.string().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.string().required('Enter electricity consumer no.')
-        // }),
-        // bpApprovalNo: yup.string().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.string().required('Enter building plan approval no.')
-        // }),
-        // bpApprovalDate: yup.date().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.date().required('Select building plan approval date')
-        // }),
-        // waterConsumerNo: yup.string().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.string().required('Enter water consumer no.')
-        // }),
-        // waterConnectionDate: yup.date().when('elecToggleCheckbox', {
-        //     is: false,
-        //     then: yup.date().required('Select water connection date')
-        // }),
-        // electricityKNo: yup.string().required('Enter electricity k no').max(50, 'Enter maximum 50 characters'),
-        // accNo: yup.string().required('Enter ACC no'),
-        // bindBookNo: yup.string().required('Enter bind/book no.'),
-        // electrictyConsumerNo: yup.string().required('Enter electricity consumer no.'),
-        // bpApprovalNo: yup.string().required('Enter building plan approval no.'),
-        // bpApprovalDate: yup.string().required('Select building plan approval date'),
-        // waterConsumerNo: yup.string().required('Enter water consumer no.'),
-        // waterConnectionDate: yup.string().required('Select water connection date'),
+        waterConnectionDate: yup.string(), 
 
     })
     const formik = useFormik({

@@ -20,14 +20,14 @@ import axios from 'axios';
 import { baseUrlLocal, baseUrl } from '../Constants';
 // import { MultiSelect } from "react-multi-select-component";
 import Multiselect from 'multiselect-react-dropdown';
-import { TRADE, HEADER } from '../tradeComponent/TradeApiListFile';
+import { TRADE,HEADER } from '../tradeComponent/TradeApiListFile';
 import { Debounce } from '../tradeComponent/TradeDebounce';
 
 function FirmDetails(props) {
 
     const { applicationType, colorCode, currentStep, currentStepFun, collectFormDataFun, firmStepFun, firmStep, colorCodeFun, allFormData, showLoader } = props.values;
-    const { ward_mstr_id, holding_no, new_ward_mstr_id, area_in_sqft, firm_name, establishment_date, address, landmark, pin_code, premises_owner_name, brife_desp_firm, nature_of_bussiness, tobacco_status, prop_dtl_id } = props.values.licenseData?.licenceDtl;
-
+    const {ward_mstr_id,holding_no,new_ward_mstr_id,area_in_sqft,firm_name,establishment_date,address,landmark,pin_code,premises_owner_name,brife_desp_firm,nature_of_bussiness,tobacco_status,prop_dtl_id} = props.values.licenseData?.licenceDtl;
+    
     const [minHeight, setminHeight] = useState(false)
     const [propertyData, setpropertyData] = useState({})
     const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
@@ -51,12 +51,15 @@ function FirmDetails(props) {
         formik.values.natureOfBusiness = selectedList
     }
     const validationSchema =
-        yup.object({
-            holdingNo: yup.string().required('Select holdingNo'),
-        });
+        yup.object(
+            {
+                holdingNo: yup.string().required('Select holdingNo'),
+            }
+        );
 
-    const initialValues =
-    {
+   
+    
+    const initialValues = {
         wardNo: ward_mstr_id,
         holdingNo: holding_no,
         newWardNo: new_ward_mstr_id,
@@ -128,7 +131,7 @@ function FirmDetails(props) {
                         setTimeout(() => {
                             showLoader(false)
                         }, 500)
-                        setformValues(response.data.data.property)
+                        // setformValues(response.data.data.property)
                     } else {
                         alert("holding no not found !");
                         formik.setFieldValue("holdingNo", '');
@@ -171,89 +174,97 @@ function FirmDetails(props) {
         }
     }
 
+
+
     return (
         <>
             <div className={`absolute w-full`} >
                 <h1 className=' mb-2 font-serif font-semibold text-gray-600'><FaHome className="inline mr-2" />Firm Details</h1>
 
                 <form onChange={handleOnChange} onSubmit={formik.handleSubmit} autoComplete="off" >
-
                     <>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
 
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Ward No</label>
-                                <input type="hidden" name="wardNo" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.wardNo}</div>
+                                <input type="hidden" name="wardNo" value={formik.values.wardNo} className={`${commonInputStyle} cursor-pointer `} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.ward_no}</div>
                             </div>
-
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small> Holding No. </label>
-                                <input type="text" name="holdingNo" className={`${commonInputStyle} cursor-pointer `} placeholder="Enter Holding No" onChange={formik.handleChange}/>
+                                <input type="text" name="holdingNo" className={`${commonInputStyle} cursor-pointer `} placeholder="Enter Holding No" value={formik.values.holdingNo} onChange={formik.handleChange} onBlur={validateHolding}/>
 
-                                <span className={`${inputErrorStyle}`}>   {formik.touched.holdingNo && formik.errors.holdingNo ? formik.errors.holdingNo : null}
+                                <span className={`${inputErrorStyle}`}>
+                                    {formik.touched.holdingNo && formik.errors.holdingNo ? formik.errors.holdingNo : null}
                                 </span>
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>New Ward No.</label>
-                                <input type="hidden" name="newWardNo" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.wardNo}</div>
+                                <input type="hidden" name="newWardNo" className={`${commonInputStyle} cursor-pointer `} value={formik.values.newWardNo} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.ward_no}</div>
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Total Area (sqft).</label>
-                                <input type="hidden" name="areaSqft" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.areaSqft}</div>
+                                <input type="hidden" name="areaSqft" className={`${commonInputStyle} cursor-pointer `} value={formik.values.areaSqft} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.area_in_sqft}</div>
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Firm Name.</label>
-                                <input type="hidden" name="firmName" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.firmName}</div>
+                                <input type="hidden" name="firmName" className={`${commonInputStyle} cursor-pointer `} value={formik.values.firmName} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.firm_name}</div>
 
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Firm Establishment Date</label>
-                                <input type="hidden" name="firmEstdDate" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.firmEstdDate}</div>
+                                <input type="hidden" name="firmEstdDate" className={`${commonInputStyle} cursor-pointer `} value={formik.values.firmEstdDate} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.establishment_date}</div>
 
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Business Address</label>
-                                <input type="hidden" name="businessAddress" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.businessAddress}</div>
+                                <input type="hidden" name="businessAddress" className={`${commonInputStyle} cursor-pointer `} value={formik.values.businessAddress} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.address}</div>
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Landmark</label>
-                                <input type="hidden" name="landmark" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.landmark}</div>
+                                <input type="hidden" name="landmark" className={`${commonInputStyle} cursor-pointer `} value={formik.values.landmark} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.landmark}</div>
 
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Pin Code</label>
-                                <input type="hidden" name="pincode" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.wardNo}{initialValues.pincode}</div>
+                                <input type="hidden" name="pincode" className={`${commonInputStyle} cursor-pointer `} value={formik.values.pincode} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.pin_code}</div>
                             </div>
                             <div className={`${inputContainerStyle} `}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Owner of Business Premises</label>
-                                <input type="hidden" name="premisesOwner" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{initialValues.premisesOwner}</div>
+                                <input type="hidden" name="premisesOwner" className={`${commonInputStyle} cursor-pointer `} value={formik.values.wardNo} readOnly />
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.premisesOwner?props.values.licenseData.licenceDtl.premisesOwner:"N/A"}</div>
                             </div>
 
                             <div className={` col-span-2 mx-4`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Business Description</label>
-                                <input type="hidden" name="businessDescription" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-2.5 rounded-lg">{initialValues.businessDescription}</div>
+                                <input type="hidden" name="businessDescription" className={`${commonInputStyle} cursor-pointer `} value={formik.values.businessDescription} readOnly />
+                                <div className="border bg-gray-400 px-4 py-2.5 rounded-lg">{props.values.licenseData.licenceDtl.brife_desp_firm}</div>
                             </div>
 
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-1 gap-1">
                             <div className={`mx-4`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Nature of Business</label>
-                                <input type="hidden" name="natureOfBusiness" className={`${commonInputStyle} cursor-pointer `} readOnly />
-                                <div className="border bg-gray-400 px-4 py-2.5 rounded-lg">{initialValues.businessDescription}</div>
+                                <input type="hidden" name="natureOfBusiness" className={`${commonInputStyle} cursor-pointer `} value={formik.values.natureOfBusiness} readOnly />
+                                <div className="border bg-gray-400 px-4 py-2.5 rounded-lg">
+                                    {/* {props.values.licenseData.licenceDtl?.nature_of_bussiness} */}
+                                    {
+                                        props.values.licenseData.licenceDtl?.nature_of_bussiness.map((item) => (
+                                            <p>{item.trade_item} </p>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div className="grid grid-cols-1">
@@ -264,6 +275,7 @@ function FirmDetails(props) {
 
                         </div>
                     </>
+
 
                 </form>
 

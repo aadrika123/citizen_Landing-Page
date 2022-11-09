@@ -1,8 +1,14 @@
 import React from 'react'
+import TrackLicenseComponent from '../TrackLicense/TrackLicenseComponent';
+import TradeFormReview from './TradeFormReview';
 
 function TrackLicense() {
   return (
-    <div>TrackLicense</div>
+    <div>
+    {/* Track license component for searching application or license number */}
+      <TrackLicenseComponent />
+      <TradeFormReview/>
+    </div>
   )
 }
 

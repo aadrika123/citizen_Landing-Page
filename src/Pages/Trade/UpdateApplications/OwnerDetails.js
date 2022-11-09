@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions'
-import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from 'Components/Common/CommonTailwind/CommonTailwind'
+// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions'
+import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles'
 import DifferenceIcon from '@mui/icons-material/Difference';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import BorderColorIcon from '@mui/icons-material/BorderColor';

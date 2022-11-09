@@ -14,7 +14,6 @@ import React, { useState, useRef } from 'react';
 import { FaHome } from 'react-icons/fa';
 import { useFormik, Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik';
 import * as yup from 'yup';
-// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions';
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles'
 import axios from 'axios';
 import { baseUrlLocal, baseUrl } from '../Constants';
@@ -22,6 +21,7 @@ import { baseUrlLocal, baseUrl } from '../Constants';
 import Multiselect from 'multiselect-react-dropdown';
 import { TRADE, HEADER } from '../tradeComponent/TradeApiListFile';
 import { Debounce } from '../tradeComponent/TradeDebounce';
+import { useEffect } from 'react';
 
 function FirmDetails(props) {
 
@@ -31,9 +31,12 @@ function FirmDetails(props) {
     const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
     const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
     const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false)
-    // const [establishmentDate, setestablishmentDate] = useState(getCurrentDate());
+    const [establishmentDate, setestablishmentDate] = useState();
     let natureOfBusinessSelectedOptions = [];
     const [tocState, settocState] = useState(true);
+
+
+
     const handleHeight = () => {
         minHeight == true ? setminHeight(false) : setminHeight(true);
     }
@@ -47,6 +50,7 @@ function FirmDetails(props) {
         // console.log("removedList index ", removedItem)
         formik.values.natureOfBusiness = selectedList
     }
+
 
     // validation rules for form
     const validationSchema =
@@ -75,7 +79,7 @@ function FirmDetails(props) {
         newWardNo: '',
         areaSqft: '',
         firmName: '',
-        firmEstdDate: '',
+        firmEstdDate: establishmentDate,
         businessAddress: '',
         landmark: '',
         pincode: '',
@@ -106,15 +110,42 @@ function FirmDetails(props) {
         });
 
     let nob = [];
-    if (applicationType == 1) {
-        // alert("applicationType", applicationType)
+    function getNatureOfBusiness() {
         let tempArray = {};
-        console.log("nature of business ", fieldData?.natureOfBusiness);
+        // console.log("nature of business ", fieldData?.natureOfBusiness);
         fieldData.natureOfBusiness?.forEach(element => {
             tempArray = { name: '(' + element.trade_code + ')' + element.trade_item, id: element.id }
             nob.push(tempArray);
         });
+        return nob.reverse()
     }
+
+
+    console.log("natureOfBusiness", getNatureOfBusiness());
+
+
+    if (props.denialDetails.status) {
+        console.log("denialDetails", props.denialDetails);
+        // formik.setFieldValue("holdingNo",props.denialDetails.data?.denialDetails.holding_no);
+        // formik.setFieldValue("firmName", "HELLO");
+    } else {
+        // alert("No denialDetails found !");
+    }
+
+    useEffect(() => {
+        if (props.denialDetails.status) {
+            formik.setFieldValue("holdingNo", props.denialDetails.data?.denialDetails.holding_no);
+            formik.setFieldValue("firmName", props.denialDetails.data?.denialDetails.firm_name);
+            formik.setFieldValue("wardNo", props.denialDetails.data?.denialDetails.ward_id);
+            formik.setFieldValue("pincode", props.denialDetails.data?.denialDetails.pincode);
+            formik.setFieldValue("premisesOwner", props.denialDetails.data?.denialDetails.applicant_name);
+            formik.setFieldValue("landmark", props.denialDetails.data?.denialDetails.landmark);
+            formik.setFieldValue("businessAddress", props.denialDetails.data?.denialDetails.address);
+        } else {
+            console.log("hello");
+        }
+    }, [props.denialDetails?.status])
+
 
 
     const handleBack = () => {
@@ -196,6 +227,17 @@ function FirmDetails(props) {
         }
     }
 
+    const validateEstdDate = (e) => {
+        let esstdDate = e.target.value;
+
+        if (props.denialDetails?.status) {
+            //if firmestablish date is greater than notice date
+            if (esstdDate > props.denialDetails.data?.denialDetails.noticedate) {
+                formik.setFieldValue("firmEstdDate", '');
+            }
+        }
+    }
+
 
 
     return (
@@ -224,7 +266,7 @@ function FirmDetails(props) {
                                 <label className={`${inputLabelStyle} text-xs`}>
                                     <small className=" text-sm font-semibold text-red-600 inline "> </small> Holding No.
                                 </label>
-                                <input type="text" name="holdingNo" className={`${commonInputStyle} cursor-pointer `} onBlur={validateHolding} value={formik.values.holdingNo} onChange={formik.handleChange} placeholder="eg: HOL/12345" />
+                                <input type="text" name="holdingNo" className={`${commonInputStyle} cursor-pointer uppercase `} onBlur={validateHolding} value={formik.values.holdingNo} onChange={formik.handleChange} placeholder="eg: HOL/12345" />
                                 <span className={`${inputErrorStyle}`}>
                                     {formik.touched.holdingNo && formik.errors.holdingNo ? formik.errors.holdingNo : null}
                                 </span>
@@ -267,7 +309,7 @@ function FirmDetails(props) {
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className="text-sm font-semibold text-red-600 inline ">*</small>Firm Establishment Date</label>
-                                <input type="date" name="firmEstdDate" placeholder="Firm Establishment Date" className={`${commonInputStyle} cursor-pointer `} value={formik.values.firmEstdDate} onChange={formik.handleChange} />
+                                <input type="date" name="firmEstdDate" placeholder="Firm Establishment Date" className={`${commonInputStyle} cursor-pointer `} value={formik.values.firmEstdDate} onChange={formik.handleChange} onBlur={validateEstdDate} max={JSON.stringify(new Date()).slice(1, 11)} />
 
                                 <span className={`${inputErrorStyle}`}>
                                     {/* <ErrorMessage name='firmEstdDate' /> */}
@@ -332,7 +374,7 @@ function FirmDetails(props) {
                                 <div className={`${tocState ? 'grid' : 'hidden'} w-full  border`} onClick={handleHeight}>
                                     {/* <h1>Select Fruits</h1> */}
                                     <Multiselect
-                                        options={nob.reverse()}
+                                        options={getNatureOfBusiness()}
                                         selectedValues={natureOfBusinessSelectedOptions}
                                         onSelect={onSelectFun}
                                         onRemove={onRemoveFun}

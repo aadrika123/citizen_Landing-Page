@@ -15,8 +15,11 @@ function TradeAssetComponent(props) {
     return (
         <div className={`${iconContainerStyle}`}>
             {applicationType == 1 && <div className={`${iconBoxStyle}`}><img className={`${iconStyle}`} src={newImg} alt="application type" title='New Application' /> &nbsp;Apply New  <span className='text-xs pt-2 font-semibold'> (TRADE LICENSE)</span></div>}
+
             {applicationType == 2 && <div className={`${iconBoxStyle}`}> <img className={`${iconStyle}`} src={energy} alt="application type" title='Renewal' /> &nbsp;Apply Renewal <span className='text-xs pt-2 font-semibold'>(TRADE LICENSE)</span></div>}
-            {applicationType == 3 && <div className={`${iconBoxStyle}`}>New Application <img className={`${iconStyle}`} src={amend} alt="application type" title='Amendment' />&nbsp;Apply Amendment <span className='text-xs pt-2 font-semibold'>(TRADE LICENSE)</span></div>}
+
+            {applicationType == 3 && <div className={`${iconBoxStyle}`}><img className={`${iconStyle}`} src={amend} alt="application type" title='Amendment' />&nbsp;Apply Amendment <span className='text-xs pt-2 font-semibold'>(TRADE LICENSE)</span></div>}
+
             {applicationType == 4 && <div className={`${iconBoxStyle}`}> <img className={`${iconStyle}`} src={flag} alt="application type" title='Surrender' />&nbsp; Apply Surrender <span className='text-xs pt-2 font-semibold'>(TRADE LICENSE)</span></div>}
         </div>
     )

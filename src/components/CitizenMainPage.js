@@ -22,6 +22,8 @@ import TestComponent from './testDelete/TestComponent'
 import CitizenDashboard from './CitizenDashboard/CitizenDashboard'
 import CitizenNavbar from './CitizenDashboard/CitizenNavbar'
 import Footer from './Footer'
+import CitizenDashboard2 from './CitizenDashboardNewlyModified/CitizenDashboard2'
+
 
 
 function CitizenMainPage() {
@@ -62,8 +64,9 @@ function CitizenMainPage() {
         <div className='w-full'> <CitizenNavbar /></div>
 
         <div className='w-full bg-gray-50'>
-          <CitizenDashboard />
-          {/* <Footer /> */}
+          {/* <CitizenDashboard2/> */}
+          <CitizenDashboard/>
+          <Footer />
         </div>
       </div>
 

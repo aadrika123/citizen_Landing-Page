@@ -15,7 +15,6 @@ import { useState } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions'
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles'
 import DifferenceIcon from '@mui/icons-material/Difference';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -151,14 +150,14 @@ function OwnerDetails(props) {
         <>
             <div className={`absolute w-full`} >
                 <div className='w-full text-center'>
-                    <button type='submit' className={`${AddMore ? '' : 'hidden'} bg-green-600 px-4 py-2 rounded-lg`} onClick={handleOwnerShow}> Add More Owners <DifferenceIcon /> </button>
+                    <button type='submit' className={`${AddMore ? '' : 'hidden'} bg-teal-400 hover:bg-teal-500 px-4 py-1 rounded-lg uppercase text-xs text-white font-mono`} onClick={handleOwnerShow}> Add More Owners <DifferenceIcon /> </button>
                 </div>
                 {/* <Formik initialValues={initialValues} validationSchema={validationSchema}  > */}
                 <form onChange={handleOnChange} onSubmit={formik.handleSubmit} >
 
                     <div className='h-12'>
                         <h1 className=' font-serif font-semibold  text-gray-600'>
-                            <FaHome className="inline mr-2" />Owner Details</h1>
+                            <FaHome className="inline mr-2" />Business Owner Details</h1>
                     </div>
                     <>
                         <div className={`${formToggleStatus ? '' : 'hidden'}`}>
@@ -201,7 +200,7 @@ function OwnerDetails(props) {
 
 
                                 <div className='p-4'>
-                                    <button type="submit" onClick={() => setAddMore(true)} className=" mt-4 px-10 py-1.5  bg-indigo-600 text-white font-bold text-xs leading-tight  rounded  hover:bg-indigo-700 hover:text-white hover:shadow-lg focus:bg-indigo-700 focus:text-white focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:text-white active:shadow-lg transition duration-150 ease-in-out">confirm <GroupAddIcon />  </button>
+                                    <button type="submit" onClick={() => setAddMore(true)} className=" mt-4 px-10 py-1.5  bg-indigo-600 text-white font-bold text-xs leading-tight  rounded  hover:bg-indigo-700 hover:text-white hover:shadow-lg focus:bg-indigo-700 focus:text-white focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:text-white active:shadow-lg transition duration-150 ease-in-out">confirm owner<GroupAddIcon />  </button>
                                 </div>
                             </div>
                         </div>

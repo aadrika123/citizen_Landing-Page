@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaHome } from 'react-icons/fa';
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions';
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles';
 import axios from 'axios';
 import { baseUrlLocal, baseUrl } from '../Constants';
@@ -17,7 +16,7 @@ function FirmDetails(props) {
     const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
     const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
     const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false)
-    const [establishmentDate, setestablishmentDate] = useState();
+    const [establishmentDate, setestablishmentDate] = useState()
 
     const validationSchema = yup.object(
 

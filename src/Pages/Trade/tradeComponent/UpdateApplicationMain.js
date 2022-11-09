@@ -108,7 +108,7 @@ function UpdateApplicationMain(props) {
    
     return (
         <>
-            <div className=" overflow-x-clip ">
+            <div className="  ">
                 {/* Form stepper for New trade License */}
 
                 {FirmStep == 6 ? '' : <Timeline colorCode={colorCode} currentStep={regCurrentStep} />}
@@ -117,7 +117,7 @@ function UpdateApplicationMain(props) {
                 <div className={`mt-8 transition-all ${FirmStep == 3 ? ' translate-x-0  ' : 'translate-x-full'}`}><UpdateLicenseDetails values={values} /></div>
                 <div className={`mt-8 transition-all ${FirmStep == 4 ? ' translate-x-0  ' : 'translate-x-full'}`}><LicenseDetails values={values} /></div>
                 <div className={`mt-8 transition-all ${FirmStep == 5 ? ' translate-x-0  ' : 'translate-x-full'}`}><UpdateDocumentUpload values={values} /></div>
-                <div className={`mt-8 transition-all ${FirmStep == 6 ? ' translate-x-0  ' : 'translate-x-full'}`}><SuccessScreen values={values} /></div>
+                {/* <div className={`mt-8 transition-all ${FirmStep == 6 ? ' translate-x-0  ' : 'translate-x-full'}`}><SuccessScreen values={values} /></div> */}
               
             </div>
         </>

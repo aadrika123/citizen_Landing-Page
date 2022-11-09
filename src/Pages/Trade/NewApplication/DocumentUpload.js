@@ -14,7 +14,6 @@ import { useState } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-// import { getCurrentDate, allowFloatInput } from 'Components/Common/PowerUps/PowerupFunctions'
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles'
 function DocumentUpload(props) {
 

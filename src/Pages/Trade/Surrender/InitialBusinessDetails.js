@@ -19,10 +19,10 @@ import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle
 import axios from 'axios'
 import TradeAssetComponent from '../TradeAssests/TradeAssetComponent';
 import newImg from '../TradeAssests/new.png';
+import { convertApplicationTypeToString } from '../tradeComponent/UsefulFunctions'
 function InitialBusinessDetails(props) {
 
-    const { applicationType, colorCode, currentStep, currentStepFun, collectAllFormData, collectFormDataFun, firmStepFun, firmStep, colorCodeFun, fieldData, licenseData } = props.values;
-
+    const { applicationType, colorCode, currentStep, currentStepFun, collectAllFormData, collectFormDataFun, firmStepFun, firmStep, colorCodeFun, licenseData } = props.values;
     const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
     const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
     const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false)
@@ -32,15 +32,14 @@ function InitialBusinessDetails(props) {
     const [otherfirmToggleStatus, setotherfirmToggleStatus] = useState(false)
     const [NoticeField, setNoticeField] = useState(false);
 
-
-    // console.log("props license detl", props.values.licenseData.licenceDtl.license_no);
-
     console.log('applicationType initial ', applicationType)
     const validationSchema = yup.object({
 
-    })
+
+    });
 
     const initialValues = {
+        oldLicenseId:licenseData?.licenceDtl.id,
         applicationType: licenseData?.licenceDtl.application_type,
         firmType: licenseData?.licenceDtl.firm_type_id,
         ownershipType: licenseData?.licenceDtl.ownership_type_id,
@@ -69,7 +68,9 @@ function InitialBusinessDetails(props) {
 
     ];
 
+
     const handleNoticeDate = (e) => {
+
         console.log('handleNoticeDate', e.target.value);
         const noticeno = e.target.value;
         alert(noticeno)
@@ -94,50 +95,43 @@ function InitialBusinessDetails(props) {
     return (
         <>
             <div className={` absolute w-full md:w-full sm:w-full`} >
-                <h1 className=' flex justify-between mb-2 font-serif font-semibold  text-gray-600'>
-                    <span><FaHome className="inline ml-4" /> Basic Details</span></h1>
-                {/* <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}> */}
+                <h1 className=' flex justify-between mb-2 font-serif font-semibold  text-gray-600'> <span><FaHome className="inline ml-4" /> Basic Details</span> </h1>
                 <form onChange={handleOnChange} onSubmit={formik.handleSubmit}>
-
                     <>
-
-                        {/* <h1 className="text-2xl text-green-400">Surrender</h1> */}
-                        <div className="grid grid-cols-1 md:grid-cols-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3">
                             <div className={`${inputContainerStyle}`}>
 
-                                <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Application type</label>
+                                <label className={`${inputLabelStyle} text-xs`}>
+                                    <small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Application type
+                                </label>
 
-                                <input type="hidden" name="applyWith" className={`${commonInputStyle} cursor-pointer `} value="2" readOnly />
-                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg">Renewal</div>
+                                <input type="hidden" name="oldLicenseId" className={`${commonInputStyle} cursor-pointer `} value={formik.values.oldLicenseId} readOnly />
+
+                                <input type="hidden" name="applicationType" className={`${commonInputStyle} cursor-pointer `} value={formik.values.applicationType} readOnly />
+                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg">{convertApplicationTypeToString(4)}</div>
                             </div>
-
-                            {/* if notice no is available ${mobileTowerStatusToggle ? 'grid' : 'hidden'}  */}
-                            <div className={`relative  col-span-2 md:col-span-3 grid-cols-2 md:grid-cols-2 `}>
-                                <div className={`${inputContainerStyle}`}>
-                                    <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal">
-                                        <small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>License No.</label>
-                                    <input name="licenseNo" type="hidden" value="RAN123456789" className={`read-only:bg-gray-100  ${commonInputStyle}`} readOnly />
-                                    <div className="border px-4 py-1.5 bg-gray-400 rounded-lg w-1/2"> RAN123456789 </div>
-                                </div>
-
-
+                            <div className={`${inputContainerStyle}`}>
+                                <label className={`${inputLabelStyle} text-xs`}>
+                                    <small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>License No.
+                                </label>
+                                {/* <label className="form-label inline-block mb-1 text-gray-600 text-xs font-normal">
+                                        <small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>License No.</label> */}
+                                <input name="licenseNo" type="hidden" value={formik.values.licenseNo} className={`read-only:bg-gray-100  ${commonInputStyle}`} readOnly />
+                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg"> {licenseData?.licenceDtl.license_no} </div>
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-4">
-
-                            {/* Notice no fields hidden  */}
-
+                        <div className="grid grid-cols-1 md:grid-cols-3">
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small> Firm Type </label>
-                                <input type="hidden" name="firmType" className={`${commonInputStyle} cursor-pointer text-xs`} value="1" readOnly />
-                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg">Proprietorship</div>
+                                <input type="hidden" name="firmType" className={`${commonInputStyle} cursor-pointer text-xs`} value={formik.values.firmType} readOnly />
+                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg">{licenseData?.licenceDtl.firm_type}</div>
 
                             </div>
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className="block mt-1 text-sm font-semibold text-red-600 inline ">*</small>Premises Ownership Type</label>
-                                <input type="hidden" name="ownershipType" className={`${commonInputStyle} cursor-pointer text-xs`} value="1" readOnly />
-                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg">Own Property</div>
+                                <input type="hidden" name="ownershipType" className={`${commonInputStyle} cursor-pointer text-xs`} value={formik.values.ownershipType} readOnly />
+                                <div className="border px-4 py-1.5 bg-gray-400 rounded-lg">{licenseData?.licenceDtl.ownership_type_id}</div>
 
                             </div>
                             <div className="col-span-4 grid grid-cols-2">
@@ -152,7 +146,6 @@ function InitialBusinessDetails(props) {
                     </>
 
                 </form>
-                {/* </Formik> */}
 
             </div>
 

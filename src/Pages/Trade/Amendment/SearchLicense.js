@@ -6,13 +6,17 @@ import * as yup from 'yup'
 import { inputContainerStyle, commonInputStyle, inputErrorStyle, inputLabelStyle } from '../tradeComponent/CommonStyles'
 import DisplayFindings from './DisplayFindings'
 import axios from 'axios';
+import { TRADE, HEADER } from '../tradeComponent/TradeApiListFile';
 
 function SearchLicense(props) {
 
-    const { renewToggleStatus, renewToggleStatusFun, applicationType, applicationTypeFun } = props.values;
-    // const [toggleSwitch, settoggleSwitch] = useState(false)
+    // Destructuring prop values and setting required component states
+    const { renewToggleStatus, renewToggleStatusFun, applicationType, applicationTypeFun, showLoader } = props.values;
+    const [toggleSwitch, settoggleSwitch] = useState(false);
     const [TableToggle, setTableToggle] = useState(true);
-    const [licenseData, setlicenseData] = useState([{
+
+    //setting temporary license data
+    const [licenseData, setlicenseData] = useState({
         id: 0,
         firm_name: "",
         application_no: "",
@@ -21,28 +25,56 @@ function SearchLicense(props) {
         address: "",
         valid_upto: ""
 
-    }])
-    const baseUrl = "http://localhost:3333/";
-    const apiLicenseurl = "licenseDetails/";
+    })
 
+    //validaton Schema for formik form fields
     const validationSchema = yup.object({
         licenseNo: yup.string().required('Enter a valid License No.'),
     })
 
-    const getLicenseData = (licenseNo) => {
+    // initial form values
+    const initialValues = {
+        licenseNo: '',
+    }
 
-        console.log('Findings Values ', licenseNo)
-        console.log('full url ', baseUrl + apiLicenseurl + licenseNo)
-        axios.get(baseUrl + apiLicenseurl + licenseNo)
+    // form submit event
+    const onSubmit = (values, resetForm) => {
+        alert(values);
+        getLicenseData(values.licenseNo);
+        settoggleSwitch(true)
+
+
+    }
+
+    //for tracking changes in a form field
+    const handleOnChange = (event) => {
+
+        let name = event.target.name
+        let value = event.target.value
+
+        // { toggleSwitch === true ? settoggleSwitch(true) : settoggleSwitch(false) }
+
+    };
+
+    // SEARCH LICENSE DATA FOR RENEWAL
+    const getLicenseData = (licenseNo) => {
+        showLoader(true)
+        console.log('license data ', licenseNo,props.values?.applicationType)
+
+        axios.post(TRADE.SEARCH_LICENSE_FOR_APPLY, { licenceNo: licenseNo, applicationType:applicationType }, HEADER)
             .then(function (response) {
-                console.log('license data ', response.data);
-                setlicenseData([response.data]);
+                console.log('license data for Amendment', response);
+                setlicenseData(response.data);
                 setTableToggle(true);
+                setTimeout(() => {
+                    showLoader(false);
+                }, 500);
+
             })
             .catch(function (error) {
 
                 setTableToggle(false);
-
+                showLoader(false);
                 if (error.response) {
                     // The request was made and the server responded with a status code
                     // that falls out of the range of 2xx
@@ -64,28 +96,11 @@ function SearchLicense(props) {
 
     }
 
-    const initialValues = {
-        licenseNo: '',
-    }
 
-    const onSubmit = (values, resetForm) => {
-        alert(values);
-        getLicenseData(values.licenseNo);
-        // settoggleSwitch(true)
-
-    }
-    const handleOnChange = (event) => {
-
-        let name = event.target.name
-        let value = event.target.value
-
-        // { toggleSwitch === true ? settoggleSwitch(true) : settoggleSwitch(false) }
-
-    };
     return (
         <>
             <div className={`block p-4 w-full md:py-6`} >
-                <h1 className=' mb-2 font-serif font-semibold  text-gray-600'><FaHome className="inline mr-2" />Search License For Renewal</h1>
+                <h1 className=' mb-2 font-serif font-semibold  text-gray-600'><FaHome className="inline mr-2" />Search License For Amendment</h1>
 
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     <Form onChange={handleOnChange} autoComplete="off">
@@ -98,7 +113,6 @@ function SearchLicense(props) {
                                 <Field type="text" name="licenseNo" className={`${commonInputStyle} cursor-pointer `} placeholder="Enter a license No" />
                                 <span className={`${inputErrorStyle}`}> <ErrorMessage name='licenseNo' />
                                 </span>
-
                             </div>
                             <div className={`${inputContainerStyle}  `}>
                                 <button type="submit" n className={`hover:bg-gray-300  bg-[#367ed1] text-white text-xs font-bold w-36 cursor-pointer py-2.5 px-4 rounded-lg mt-7 `} >
@@ -106,10 +120,8 @@ function SearchLicense(props) {
                                 </button>
                                 <span className={`${inputErrorStyle}`}> <ErrorMessage name='licenseNo' />
                                 </span>
-
                             </div>
                         </div>
-
                     </Form>
                 </Formik>
                 <div className='bg-gray-100  rounded-md '>
@@ -126,7 +138,7 @@ function SearchLicense(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {TableToggle ? <DisplayFindings values={props.values} licenseData={licenseData} /> : <span id='errorText' className="text-red-500">Data No Found ...</span>}
+                            {TableToggle ? <DisplayFindings licenseValues={props.licenseValues} values={props.values} licenseData={licenseData}  /> : <span id='errorText' className="text-red-500">Data No Found ...</span>}
                         </tbody>
                     </table>
                 </div>

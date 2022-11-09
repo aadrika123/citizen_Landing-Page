@@ -33,7 +33,7 @@ function FirmDetails(props) {
     const [mobileTowerStatusToggle, setMobileTowerStatusToggle] = useState(false)
     const [hoardingStatusToggle, setHoardingStatusToggle] = useState(false)
     const [petrolPumpStatusToggle, setPetrolPumpStatusToggle] = useState(false)
-    // const [establishmentDate, setestablishmentDate] = useState(getCurrentDate());
+    const [establishmentDate, setestablishmentDate] = useState();
     let natureOfBusinessSelectedOptions = [];
     const [tocState, settocState] = useState(true);
 
@@ -230,7 +230,7 @@ function FirmDetails(props) {
                             <div className={`${inputContainerStyle}`}>
                                 <label className={`${inputLabelStyle} text-xs`}><small className=" mt-1 text-sm font-semibold text-red-600 inline ">*</small>Landmark</label>
                                 <input type="hidden" name="landmark" className={`${commonInputStyle} cursor-pointer `} value={formik.values.landmark} readOnly />
-                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.landmark}</div>
+                                <div className="border bg-gray-400 px-4 py-1.5 rounded-lg">{props.values.licenseData.licenceDtl.landmark !=""?props.values.licenseData.licenceDtl.landmark:'N/A'}</div>
 
                             </div>
                         </div>

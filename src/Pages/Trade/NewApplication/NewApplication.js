@@ -108,16 +108,18 @@ function NewApplication(props) {
             })
     }
 
+    const [denialDetails,setdenialDetails] = useState({});
+
     return (
         <>
             <TradeAssetComponent applicationType={props.applicationType} />
             <div className=" overflow-x-clip">
                 {/* Form stepper for New trade License */}
                 {FirmStep == 5 ? '' : <Timeline colorCode={colorCode} currentStep={regCurrentStep} />}
-                <div className={`mt-8  pl-5 transition-all ${FirmStep == 1 ? 'translate-x-0' : 'translate-x-full'}`}><InitialBusinessDetails values={values} /> </div>
-                <div className={`mt-8  pl-5 transition-all ${FirmStep == 2 ? ' translate-x-0  ' : 'translate-x-full'}`}><FirmDetails values={values} /></div>
-                <div className={`mt-8  pl-5 transition-all ${FirmStep == 3 ? ' translate-x-0  ' : 'translate-x-full'}`}><OwnerDetails values={values} /></div>
-                <div className={`mt-8  pl-5 transition-all ${FirmStep == 4 ? ' translate-x-0  ' : 'translate-x-full'}`}><LicenseDetails values={values} successData={successValues} /></div>
+                <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 1 ? 'translate-x-0' : 'translate-x-full'}`}><InitialBusinessDetails values={values} denialDetailsFun={setdenialDetails}/> </div>
+                <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 2 ? ' translate-x-0  ' : 'translate-x-full'}`}><FirmDetails values={values} denialDetails={denialDetails}/></div>
+                <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 3 ? ' translate-x-0  ' : 'translate-x-full'}`}><OwnerDetails values={values} /></div>
+                <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 4 ? ' translate-x-0  ' : 'translate-x-full'}`}><LicenseDetails values={values} successData={successValues} /></div>
                 {/* <div className={`mt-8 transition-all ${FirmStep == 5 ? ' translate-x-0  ' : 'translate-x-full'}`}>
                     <DocumentUpload values={values} />
                 </div> */}

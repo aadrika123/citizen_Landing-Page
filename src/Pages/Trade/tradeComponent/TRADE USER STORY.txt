@@ -1,0 +1,164 @@
+TRADE USER STORY (CITIZEN'S PERSPECTIVE)
+
+* THE PROCESS OF APPLICATION
+	
+* NEW APPLICATION REQUEST
+	* I WANT TO APPLY FOR A NEW TRADE APPLICATION.
+	
+	* I will visit my nearest JSK or i can visit the MUNICIPAL
+		 OFFICE myself or I can APPLY ONLINE.
+
+	* I have BASIC INFORMATION with me like FIRM DETAILS and
+		BUSINESS PARTNER details AND RELEVANT DOCUMENTS etc.
+	
+	* I have filled my details and made a successfull PAYMENT
+		 according to my FIRM ESTABLISHMENT DATE and the 
+		 availability of the NOTICE NO.
+	
+	* I can PRINT-OUT my PAYMENT RECEIPT
+	
+	* I can PRINT-OUT my PROVISIONAL CERTIFICATE once the application
+		is SENT TO ULB for further ACTIONS.
+	
+	* I can TRACK the progress of my application ANYTIME i want.
+
+* RENEWAL APPLICATION REQUEST
+	* I HAVE A LICENSE WHICH IS EXPIRED OR ABOUT TO EXPIRE IN A MONTH.
+	
+	* I will visit my nearest JSK or i can visit the MUNICIPAL
+		 OFFICE myself or I can APPLY ONLINE.
+	
+	* I have my OLD APPLICATION number as well as the required
+		 documents with me.
+	
+	* I can search, if my EXISITING application number is valid
+		for RENEWAL or NOT.
+
+	* On confirmation i will proceed with the application process.
+	
+	* My old application details should come pre-filled with 
+		the renewal form.
+	
+	* I make the full payment including LICENSE RATE, number of 
+		years and PENALTY (if applicable).
+	
+	* I can PRINT-OUT my PAYMENT RECEIPT.
+	
+	
+	* I can PRINT-OUT my PROVISIONAL CERTIFICATE once the application
+		is SENT TO ULB for further ACTIONS.
+	
+	* I can TRACK the progress of my application ANYTIME i want.
+
+* AMENDMENT APPLICATION REQUEST
+	* I HAVE AN APPLICATION WHICH holds ERRONEOUS information 
+		regarding the firm.
+	
+	* I can search, if my EXISITING application number is valid
+		for RENEWAL or NOT.
+	
+	* I will have to SURRENDER my existing license in order to
+		apply for an AMENDMENT.
+
+	* On confirmation i will proceed with the application process.
+	
+	* My old application details should come pre-filled with 
+		the AMENDMENT form.
+	
+	* I make the full payment including LICENSE RATE, number of 
+		years and PENALTY (if applicable).
+	
+	* I can PRINT-OUT my PAYMENT RECEIPT.
+	
+	
+	* I can PRINT-OUT my PROVISIONAL CERTIFICATE once the application
+		is SENT TO ULB for further ACTIONS.
+	
+	* I can TRACK the progress of my application ANYTIME i want.
+
+
+* SURRENDER APPLICATION REQUEST
+	* I HAVE A LICENSE THAT I WANT TO SURRENDER.
+	
+	* I can search, if my EXISITING application number is valid
+		for SURRENDER or NOT.
+	
+	* I will have to SURRENDER my existing license in order to
+		apply for an AMENDMENT.
+
+	* On confirmation i will proceed with the application process.
+	
+	* My old application details should come pre-filled with 
+		the AMENDMENT form.
+	
+	* I DON'T NEED TO MAKE A PAYMENT FOR THIS REQUEST.
+	
+	* I WILL HAVE TO SURRENDER THE HARD COPY OF MY EXISTING 
+		license.
+
+	* AFTER proper verification my application for surrender will
+		be approved and my license will be INEFFECTIVE.
+	
+	* I can TRACK the progress of my application ANYTIME i want.
+
+////////////////////////////////////////////////////////////////////
+
+TRADE DEVELOPER STORY (DEVELOPER'S PERSPECTIVE)
+
+* THE PROCESS OF APPLICATION
+
+* NEW APPLICATION REQUEST
+	* CITIZEN REQUIRES A NEW TRADE LICENSE
+	
+	* I'll ask for different informations from the citizen.
+	
+	* CHECK if form is filled using the NOTICE NO.
+		* I'll make sure to calculate the daily penalty using 
+			provided notice number.
+		* I'll get basic FIRM and OWNERSHIP details with the
+			notice no. and pull them in relevant fields.
+		* i'll make sure the firm establishment date doesn't 
+			exceed the denial notice date.
+	
+	* For Normal applications i will calculate the license charge
+		based on their FIRM ESTABLISHMENT DATE and LICENSE FOR
+		YEARS value.
+	
+	* IF the consumer has a valid HOLDING NO. , i'll map relevant
+		property details with that info.
+	
+	* IF the consumer has opted for a TOBACCO LICENSE, i'll make 
+		sure license can be applied only for an year.
+
+	* IF the consumer has made a payment USING CHEQUE OR DEMAND
+		DRAFT i'll make sure the payment doesn't get confirmed
+		before bank reconciliation.
+	
+	* ONCE the application is finally submitted i'll make sure
+		the BACK OFFICE has the permission to update the application
+		details according to the given DOCUMENTS.
+	
+	* APPLIED applications are sent to the workflow to be processed 
+		further.
+	
+	* MULTIPLE ACTORS are involved in a workflow to carry forward
+		specific task within the system.
+		
+		* For e.g :- 
+		
+		* DEALING ASSISTANT will be provided with an option to
+			varify given documents of the applicant.
+		
+		* TRADE TAX DAROGA should have an option to do an
+			ON-SITE VERIFICATION.
+			* He should be able to SENT a NOTIFICATION to the
+				customer before visiting the site.
+		
+		* TRADE SECTION HEAD should be able to re-confirm the 
+			authenticity of the application. Thus sending it forward
+			 to be apporved by the executive officers.
+
+		* EXECUTIVE OFFICER should have the authority to finally 
+			APPROVE the application or REJECT it.
+			
+====================================================================

@@ -78,8 +78,8 @@ console.log("prop data for receipt print ",props);
     const componentRef = React.useRef();
     return (
         <div>
-            <button onClick={handleClickOpen} className=' bg-indigo-500 hover:bg-indigo-600 text-white w-full py-1 rounded-xl mb-2 block'>
-                Open dialog
+            <button onClick={handleClickOpen} className=' bg-indigo-500 hover:bg-indigo-600 text-white w-full py-1 rounded-xl mb-2 block text-xs font-mono'>
+                VIEW PAYMENT RECEIPT
             </button>
             <BootstrapDialog
                 onClose={handleClose}

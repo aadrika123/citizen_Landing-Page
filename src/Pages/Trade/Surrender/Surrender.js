@@ -45,10 +45,11 @@ function Surrender(props) {
     }
 
     const finalSubmit = (dataToSend) => {
+        let oldLicenseId = dataToSend.initialBusinessDetails?.oldLicenseId;
         setTimeout(() => {
             console.log("allFormData in state", collectAllFormData)
             console.log("allFormData", dataToSend)
-            axios.post(TRADE.MASTER_DATA_API + convertApplicationTypeToString(applicationType), Object.assign({}, dataToSend), HEADER)
+            axios.post(TRADE.MASTER_DATA_API + convertApplicationTypeToString(applicationType) + "/" + oldLicenseId, Object.assign({}, dataToSend), HEADER)
                 .then(function (response) {
                     console.log("success data ", response.data);
                     if (response.data.status) {
@@ -58,7 +59,7 @@ function Surrender(props) {
                     }
                     else {
                         alert(response.data.data.message);
-                        console.log("success", response.data.message)
+                        console.log("success", response.data)
                         setFirmStep(4);
                     }
                     // props.showLoader(false);
@@ -126,10 +127,10 @@ function Surrender(props) {
                 <div className=" overflow-x-clip">
                     {/* Form stepper for New trade License */}
                     {FirmStep == 5 ? '' : <Timeline colorCode={colorCode} currentStep={regCurrentStep} />}
-                    <div className={`mt-8  pl-5 transition-all ${FirmStep == 1 ? 'translate-x-0' : 'translate-x-full'}`}><InitialBusinessDetails values={values} /> </div>
-                    <div className={`mt-8  pl-5 transition-all ${FirmStep == 2 ? ' translate-x-0  ' : 'translate-x-full'}`}><FirmDetails values={values} /></div>
-                    <div className={`mt-8  pl-5 transition-all ${FirmStep == 3 ? ' translate-x-0  ' : 'translate-x-full'}`}><OwnerDetails values={values} /></div>
-                    <div className={`mt-8  pl-5 transition-all ${FirmStep == 4 ? ' translate-x-0  ' : 'translate-x-full'}`}><LicenseDetails values={values} successData={successValues} /></div>
+                    <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 1 ? 'translate-x-0' : 'translate-x-full'}`}><InitialBusinessDetails values={values} /> </div>
+                    <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 2 ? ' translate-x-0  ' : 'translate-x-full'}`}><FirmDetails values={values} /></div>
+                    <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 3 ? ' translate-x-0  ' : 'translate-x-full'}`}><OwnerDetails values={values} /></div>
+                    <div className={`mt-8 mr-2 pl-5 transition-all ${FirmStep == 4 ? ' translate-x-0  ' : 'translate-x-full'}`}><LicenseDetails values={values} successData={successValues} /></div>
                     {/* <div className={`mt-8 transition-all ${FirmStep == 5 ? ' translate-x-0  ' : 'translate-x-full'}`}>
                     <DocumentUpload values={values} />
                 </div> */}
